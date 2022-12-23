@@ -1,3 +1,5 @@
-# betaMC 0.0.0.9000
+# betaSandwich 1.0.0
 
-Latest development version.
+## Major
+
+* And so it begins.
