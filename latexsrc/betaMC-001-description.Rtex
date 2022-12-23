@@ -1,0 +1,81 @@
+\documentclass{article}
+
+\input{latexsrc/preamble/preamble}
+
+%% begin.rcode
+% #| label = "root",
+% #| include = FALSE
+% root <- rprojroot::is_rstudio_project
+%% end.rcode
+
+%% begin.rcode
+% #| label = "knitr",
+% #| include = FALSE,
+% #| file = root$find_file(
+% #|   "latexsrc",
+% #|   "r-scripts",
+% #|   "knitr.R"
+% #| )
+%% end.rcode
+
+%% begin.rcode
+% #| label = "biblatex",
+% #| echo = FALSE,
+% #| warning = FALSE,
+% #| results = "asis"
+% cat(
+%   .PreambleBiblatexCombined(
+%     path = root$find_file(
+%       "latexsrc",
+%       "bib"
+%     ),
+%     output_path = root$find_file(
+%       "latexsrc"
+%     )
+%   )
+% )
+%% end.rcode
+
+\title{betaMC: Monte Carlo Confidence Intervals for Standardized Regression Coefficients}
+\author{Ivan Jacob Agaloos Pesigan}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Description}
+
+Generates Monte Carlo confidence intervals for standardized regression coefficients
+for models fitted by \texttt{lm()}.
+\texttt{betaMC} combines ideas from Monte Carlo confidence intervals for the indirect effect
+\parencite{Lib-Mediation-Monte-Carlo-Method-Preacher-2012}
+and the sampling covariance matrix of regression coefficients
+\parencite{Lib-Regression-Standardized-Coefficients-HC-Dudgeon-2017}
+to generate confidence intervals for standardized regression coefficients.
+
+\section*{Installation}
+
+You can install the released version of
+\texttt{betaMC}
+from
+\href{https://github.com/jeksterslab/betaMC}{GitHub}
+with:
+
+%% begin.rcode
+% #| eval = FALSE
+% install.packages("remotes")
+% remotes::install_github("jeksterslab/betaMC")
+%% end.rcode
+
+\section*{More Information}
+
+See
+\href{https://jeksterslab.github.io/betaMC/index.html}{GitHub Pages}
+for package documentation.
+
+\nocite{Lib-R-Manual-2022}
+
+\printbibliography
+
+\end{document}

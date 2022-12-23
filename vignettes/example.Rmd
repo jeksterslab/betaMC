@@ -1,0 +1,107 @@
+---
+title: "betaMC: Example"
+author: "Ivan Jacob Agaloos Pesigan"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{betaMC: Example}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In this example, a multiple regression model is fitted
+using program quality ratings (`QUALITY`) as the regressand/outcome variable
+and number of published articles attributed to the program faculty members (`NARTIC`),
+percent of faculty members holding research grants (`PCTGRT`), and
+percentage of program graduates who received support (`PCTSUPP`) as regressor/predictor variables
+using a data set from 1982 ratings of 46 doctoral programs in psychology in the USA (National Research Council, 1982).
+Robust confidence intervals for the standardized regression coefficients are generated
+using the `BetaMC()` function from the `betaMC` package.
+
+```{r}
+#| message = FALSE
+library(betaMC)
+```
+
+```{r}
+#| echo = FALSE
+if (!exists("nas1982")) {
+  try(
+    data(
+      "nas1982",
+      package = "betaMC"
+    ),
+    silent = TRUE
+  )
+}
+df <- nas1982
+```
+
+```{r}
+#| eval = FALSE
+df <- betaMC::nas1982
+```
+
+## Fit the regression model using the `lm()` function.
+
+```{r}
+object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+```
+
+## Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.
+
+```{r}
+BetaMC(object)
+```
+
+## Methods
+
+```{r}
+out <- BetaMC(object)
+```
+
+### summary
+
+Summary of the results of `BetaMC()`.
+
+```{r}
+summary(out)
+```
+
+### coef
+
+Calculate the standardized regression slopes.
+
+```{r}
+coef(out)
+```
+
+### vcov
+
+Calculate the robust sampling covariance matrix of the standardized regression slopes.
+
+```{r}
+vcov(out)
+```
+
+### confint
+
+Generate robust confidence intervals for standardized regression slopes.
+
+```{r}
+confint(out, level = 0.95)
+```
+
+## References
+
+National Research Council. (1982).
+*An assessment of research-doctorate programs in the United States: Social and behavioral sciences*.
+https://doi.org/10.17226/9781.
+Reproduced with permission from the National Academy of Sciences,
+Courtesy of the National Academies Press, Washington, D.C.

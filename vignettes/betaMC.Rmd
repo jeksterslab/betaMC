@@ -1,0 +1,56 @@
+---
+title: "betaMC: Monte Carlo Confidence Intervals for Standardized Regression Coefficients"
+author: "Ivan Jacob Agaloos Pesigan"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{betaMC: Monte Carlo Confidence Intervals for Standardized Regression Coefficients}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+<!-- badges: start -->
+[![CRAN Status](https://www.r-pkg.org/badges/version/betaMC)](https://cran.r-project.org/package=betaMC)
+[![R-Universe Status](https://jeksterslab.r-universe.dev/badges/betaMC)](https://jeksterslab.r-universe.dev)
+[![R-CMD-check](https://github.com/jeksterslab/betaMC/workflows/R-CMD-check/badge.svg)](https://github.com/jeksterslab/betaMC/actions)
+[![test-coverage](https://github.com/jeksterslab/betaMC/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/test-coverage.yaml)
+[![lint](https://github.com/jeksterslab/betaMC/actions/workflows/lint.yaml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/lint.yaml)
+[![codecov](https://codecov.io/gh/jeksterslab/betaMC/branch/main/graph/badge.svg?token=KVLUET3DJ6)](https://codecov.io/gh/jeksterslab/betaMC)
+<!-- badges: end -->
+
+## Description
+
+Generates Monte Carlo confidence intervals for standardized regression coefficients
+for models fitted by `lm()`.
+`betaMC` combines ideas from Monte Carlo confidence intervals for the indirect effect
+(Preacher and Selig, 2012: http://doi.org/10.1080/19312458.2012.679848)
+and the sampling covariance matrix of regression coefficients
+(Dudgeon, 2017: http://doi.org/10.1007/s11336-017-9563-z)
+to generate confidence intervals for standardized regression coefficients.
+
+## Installation
+
+You can install the development version of `betaMC` from
+[GitHub](https://github.com/jeksterslab/betaMC) with:
+
+```r
+if (!require("remotes")) install.packages("remotes")
+remotes::install_github("jeksterslab/betaMC")
+```
+
+## References
+
+Dudgeon, P. (2017).
+Some improvements in confidence intervals for standardized regression coefficients. 
+*Psychometrika*, *82*(4), 928–951.
+https://doi.org/10.1007/s11336-017-9563-z
+
+National Research Council. (1982).
+*An assessment of research-doctorate programs in the United States: Social and behavioral sciences*.
+https://doi.org/10.17226/9781.
+Reproduced with permission from the National Academy of Sciences,
+Courtesy of the National Academies Press, Washington, D.C.
+
+Preacher, K. J., & Selig, J. P. (2012).
+Advantages of Monte Carlo confidence intervals for indirect effects.
+*Communication Methods and Measures*, *6*(2), 77-98.
+https://doi.org/10.1080/19312458.2012.679848

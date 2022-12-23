@@ -1,0 +1,16 @@
+destination: docs
+url: https://github.com/jeksterslab/betaMC/
+
+template:
+  bootstrap: 5
+
+reference:
+- title: Functions
+  contents:
+  - has_concept("Beta Monte Carlo Functions")
+- title: Methods
+  contents:
+  - has_keyword("methods")
+- title: Data
+  contents:
+  - has_keyword("data")

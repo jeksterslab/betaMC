@@ -1,0 +1,99 @@
+\documentclass{article}
+
+\input{latexsrc/preamble/preamble}
+
+%% begin.rcode
+% #| label = "root",
+% #| include = FALSE
+% root <- rprojroot::is_rstudio_project
+%% end.rcode
+
+%% begin.rcode
+% #| label = "knitr",
+% #| include = FALSE,
+% #| file = root$find_file(
+% #|   "latexsrc",
+% #|   "r-scripts",
+% #|   "knitr.R"
+% #| )
+%% end.rcode
+
+%% begin.rcode
+% #| label = "biblatex",
+% #| echo = FALSE,
+% #| warning = FALSE,
+% #| results = "asis"
+% cat(
+%   .PreambleBiblatexCombined(
+%     path = root$find_file(
+%       "latexsrc",
+%       "bib"
+%     ),
+%     output_path = root$find_file(
+%       "latexsrc"
+%     )
+%   )
+% )
+%% end.rcode
+
+\renewcommand{\baselinestretch}{1}
+
+\title{betaMC: Methods}
+\author{Ivan Jacob Agaloos Pesigan}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+%% begin.rcode
+% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+%% end.rcode
+
+%% begin.rcode
+% set.seed(42)
+% out <- BetaMC(object)
+% str(out)
+% set.seed(42)
+% BetaMC(object)
+%% end.rcode
+
+\subsection*{print}
+
+%% begin.rcode
+% print(out)
+%% end.rcode
+
+\subsection*{coef}
+
+%% begin.rcode
+% coef(out)
+%% end.rcode
+
+\subsection*{vcov}
+
+%% begin.rcode
+% vcov(out)
+%% end.rcode
+
+\subsection*{confint}
+
+%% begin.rcode
+% confint(out, level = 0.95)
+%% end.rcode
+
+\subsection*{summary}
+
+%% begin.rcode
+% summary(out)
+%% end.rcode
+
+\nocite{Lib-R-Manual-2022}
+
+\nocite{Lib-Regression-Standardized-Coefficients-HC-Dudgeon-2017}
+
+\nocite{Lib-Mediation-Monte-Carlo-Method-Preacher-2012}
+
+\printbibliography
+
+\end{document}
