@@ -27,6 +27,3 @@
 ^make.*$
 ^betaMC.pdf$
 ^vignettes$
-^betaMC\.Rcheck$
-^betaMC.*\.tar\.gz$
-^betaMC.*\.tgz$
