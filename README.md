@@ -81,12 +81,12 @@ BetaMC(object)
 #> Call:
 #> BetaMC(object = object)
 #> 
-#> Standardized regression slopes.
-#>  HC3 sampling variance-covariance matrix:
+#> Standardized regression slopes
+#> type = "HC3"
 #>            est     se     R   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4951 0.0808 20000  0.1380 0.2591 0.3187 0.6349 0.6793 0.7275
-#> PCTGRT  0.3915 0.0820 20000  0.1034 0.1645 0.2179 0.5372 0.5886 0.6402
-#> PCTSUPP 0.2632 0.0851 20000 -0.0372 0.0281 0.0908 0.4250 0.4788 0.5461
+#> NARTIC  0.4951 0.0805 20000  0.1462 0.2626 0.3188 0.6332 0.6808 0.7271
+#> PCTGRT  0.3915 0.0824 20000  0.0905 0.1613 0.2176 0.5406 0.5913 0.6424
+#> PCTSUPP 0.2632 0.0862 20000 -0.0308 0.0310 0.0877 0.4251 0.4778 0.5543
 ```
 
 ### References

@@ -1,4 +1,4 @@
-# betaSandwich 1.0.0
+# betaMC 1.0.0
 
 ## Major
 
