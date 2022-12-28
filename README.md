@@ -80,11 +80,13 @@ object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 BetaMC(object)
 #> Call:
 #> BetaMC(object = object)
-#> HC3 sampling variance-covariance matrix:
+#> 
+#> Standardized regression slopes.
+#>  HC3 sampling variance-covariance matrix:
 #>            est     se     R   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4951 0.0810 20000  0.1394 0.2608 0.3198 0.6332 0.6768 0.7287
-#> PCTGRT  0.3915 0.0822 20000  0.0868 0.1639 0.2205 0.5421 0.5902 0.6419
-#> PCTSUPP 0.2632 0.0854 20000 -0.0341 0.0306 0.0897 0.4244 0.4771 0.5314
+#> NARTIC  0.4951 0.0808 20000  0.1380 0.2591 0.3187 0.6349 0.6793 0.7275
+#> PCTGRT  0.3915 0.0820 20000  0.1034 0.1645 0.2179 0.5372 0.5886 0.6402
+#> PCTSUPP 0.2632 0.0851 20000 -0.0372 0.0281 0.0908 0.4250 0.4788 0.5461
 ```
 
 ### References

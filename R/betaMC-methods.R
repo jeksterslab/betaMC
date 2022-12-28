@@ -22,6 +22,7 @@ print.betamc <- function(x,
   cat("Call:\n")
   base::print(x$call)
   cat(
+    "\nStandardized regression slopes.\n",
     toupper(x$type),
     "sampling variance-covariance matrix:\n"
   )
@@ -60,9 +61,9 @@ summary.betamc <- function(object,
   cat("Call:\n")
   base::print(object$call)
   cat(
-    "\nStandardized regression slopes with",
+    "\nStandardized regression slopes.\n",
     toupper(object$type),
-    "standard errors:\n"
+    "sampling variance-covariance matrix:\n"
   )
   return(
     round(
