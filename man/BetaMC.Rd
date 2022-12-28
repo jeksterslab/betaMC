@@ -84,13 +84,14 @@ Using the Monte Carlo Method
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaMC(object)
+out <- BetaMC(object, R = 100)
+# use a large R, for example, R = 20000 for actual research
 # Methods -------------------------------------------------------
-print(std)
-summary(std)
-coef(std)
-vcov(std)
-confint(std, level = 0.95)
+print(out)
+summary(out)
+coef(out)
+vcov(out)
+confint(out, level = 0.95)
 }
 \references{
 Dudgeon, P. (2017).

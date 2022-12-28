@@ -10,8 +10,9 @@
 #'   standard errors, test statistics, p-values, and confidence intervals.
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaMC(object)
-#' print(std)
+#' out <- BetaMC(object, R = 100)
+#' # use a large R, for example, R = 20000 for actual research
+#' print(out)
 #' @export
 #' @keywords methods
 print.betamc <- function(x,
@@ -47,8 +48,9 @@ print.betamc <- function(x,
 #'   standard errors, test statistics, p-values, and confidence intervals.
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaMC(object)
-#' summary(std)
+#' out <- BetaMC(object, R = 100)
+#' # use a large R, for example, R = 20000 for actual research
+#' summary(out)
 #' @export
 #' @keywords methods
 summary.betamc <- function(object,
@@ -83,8 +85,9 @@ summary.betamc <- function(object,
 #'   of standardized slopes.
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaMC(object)
-#' vcov(std)
+#' out <- BetaMC(object, R = 100)
+#' # use a large R, for example, R = 20000 for actual research
+#' vcov(out)
 #' @export
 #' @keywords methods
 vcov.betamc <- function(object,
@@ -104,8 +107,9 @@ vcov.betamc <- function(object,
 #' @return Returns a vector of standardized regression slopes.
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaMC(object)
-#' coef(std)
+#' out <- BetaMC(object, R = 100)
+#' # use a large R, for example, R = 20000 for actual research
+#' coef(out)
 #' @export
 #' @keywords methods
 coef.betamc <- function(object,
@@ -127,8 +131,9 @@ coef.betamc <- function(object,
 #' @return Returns a matrix of confidence intervals.
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaMC(object)
-#' confint(std, level = 0.95)
+#' out <- BetaMC(object, R = 100)
+#' # use a large R, for example, R = 20000 for actual research
+#' confint(out, level = 0.95)
 #' @export
 #' @keywords methods
 confint.betamc <- function(object,

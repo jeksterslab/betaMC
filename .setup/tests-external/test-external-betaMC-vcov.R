@@ -1,4 +1,4 @@
-## ---- test-betaMC-vcov
+## ---- test-external-betaMC-vcov
 lapply(
   X = 1,
   FUN = function(i,
@@ -44,15 +44,15 @@ lapply(
     )
     df <- as.data.frame(df)
     object <- lm(y ~ ., data = df)
-    mvn <- BetaMC(object, R = 1000L, type = "mvn")
-    adf <- BetaMC(object, R = 1000L, type = "adf")
-    hc0 <- BetaMC(object, R = 1000L, type = "hc0")
-    hc1 <- BetaMC(object, R = 1000L, type = "hc1")
-    hc2 <- BetaMC(object, R = 1000L, type = "hc2")
-    hc3 <- BetaMC(object, R = 1000L, type = "hc3")
-    hc4 <- BetaMC(object, R = 1000L, type = "hc4")
-    hc4m <- BetaMC(object, R = 1000L, type = "hc4m")
-    hc5 <- BetaMC(object, R = 1000L, type = "hc5")
+    mvn <- BetaMC(object, type = "mvn")
+    adf <- BetaMC(object, type = "adf")
+    hc0 <- BetaMC(object, type = "hc0")
+    hc1 <- BetaMC(object, type = "hc1")
+    hc2 <- BetaMC(object, type = "hc2")
+    hc3 <- BetaMC(object, type = "hc3")
+    hc4 <- BetaMC(object, type = "hc4")
+    hc4m <- BetaMC(object, type = "hc4m")
+    hc5 <- BetaMC(object, type = "hc5")
     testthat::test_that(
       paste(text, "adf"),
       {
@@ -160,9 +160,9 @@ lapply(
     BetaMC(object, decomposition = "chol")
     BetaMC(object, decomposition = "svd")
   },
-  text = "test-betaMC-vcov",
-  tol = 0.01,
-  n = 1000,
+  text = "test-external-betaMC-vcov",
+  tol = 0.001,
+  n = 100000,
   k = 2,
   beta = 0.5
 )

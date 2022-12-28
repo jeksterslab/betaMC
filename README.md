@@ -1,7 +1,7 @@
 betaMC
 ================
 Ivan Jacob Agaloos Pesigan
-2022-12-23
+2022-12-28
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -82,9 +82,9 @@ BetaMC(object)
 #> BetaMC(object = object)
 #> HC3 sampling variance-covariance matrix:
 #>            est     se     R   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4951 0.0815 20000  0.1294 0.2575 0.3205 0.6355 0.6787 0.7325
-#> PCTGRT  0.3915 0.0824 20000  0.0841 0.1617 0.2155 0.5391 0.5890 0.6567
-#> PCTSUPP 0.2632 0.0870 20000 -0.0455 0.0218 0.0864 0.4300 0.4802 0.5362
+#> NARTIC  0.4951 0.0805 20000  0.1401 0.2620 0.3223 0.6355 0.6805 0.7231
+#> PCTGRT  0.3915 0.0821 20000  0.1045 0.1655 0.2182 0.5415 0.5870 0.6293
+#> PCTSUPP 0.2632 0.0857 20000 -0.0331 0.0307 0.0883 0.4231 0.4726 0.5263
 ```
 
 ### References
