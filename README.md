@@ -56,9 +56,9 @@ number of published articles attributed to the program faculty members
 (`PCTGRT`), and percentage of program graduates who received support
 (`PCTSUPP`) as regressor/predictor variables using a data set from 1982
 ratings of 46 doctoral programs in psychology in the USA (National
-Research Council, 1982). Robust confidence intervals for the
-standardized regression coefficients are generated using the `BetaMC()`
-function from the `betaMC` package.
+Research Council, 1982). Confidence intervals for the standardized
+regression coefficients are generated using the `BetaMC()` function from
+the `betaMC` package.
 
 ``` r
 library(betaMC)
@@ -82,9 +82,9 @@ BetaMC(object)
 #> BetaMC(object = object)
 #> HC3 sampling variance-covariance matrix:
 #>            est     se     R   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4951 0.0805 20000  0.1401 0.2620 0.3223 0.6355 0.6805 0.7231
-#> PCTGRT  0.3915 0.0821 20000  0.1045 0.1655 0.2182 0.5415 0.5870 0.6293
-#> PCTSUPP 0.2632 0.0857 20000 -0.0331 0.0307 0.0883 0.4231 0.4726 0.5263
+#> NARTIC  0.4951 0.0810 20000  0.1394 0.2608 0.3198 0.6332 0.6768 0.7287
+#> PCTGRT  0.3915 0.0822 20000  0.0868 0.1639 0.2205 0.5421 0.5902 0.6419
+#> PCTSUPP 0.2632 0.0854 20000 -0.0341 0.0306 0.0897 0.4244 0.4771 0.5314
 ```
 
 ### References

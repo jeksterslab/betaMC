@@ -55,6 +55,7 @@ citEntry(
     "(", year, ")", ".", " ",
     title, " ",
     "[Unpublished doctoral dissertation].",
+    " ",
     "University of Macau.",
     " "
   )

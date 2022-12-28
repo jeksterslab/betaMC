@@ -21,7 +21,7 @@ and number of published articles attributed to the program faculty members (`NAR
 percent of faculty members holding research grants (`PCTGRT`), and
 percentage of program graduates who received support (`PCTSUPP`) as regressor/predictor variables
 using a data set from 1982 ratings of 46 doctoral programs in psychology in the USA (National Research Council, 1982).
-Robust confidence intervals for the standardized regression coefficients are generated
+Confidence intervals for the standardized regression coefficients are generated
 using the `BetaMC()` function from the `betaMC` package.
 
 ```{r}
@@ -54,7 +54,7 @@ df <- betaMC::nas1982
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
-## Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.
+## Estimate the standardized regression slopes and the corresponding sampling covariance matrix.
 
 ```{r}
 BetaMC(object)
@@ -84,7 +84,7 @@ coef(out)
 
 ### vcov
 
-Calculate the robust sampling covariance matrix of the standardized regression slopes.
+Calculate the sampling covariance matrix of the standardized regression slopes.
 
 ```{r}
 vcov(out)
@@ -92,7 +92,7 @@ vcov(out)
 
 ### confint
 
-Generate robust confidence intervals for standardized regression slopes.
+Generate confidence intervals for standardized regression slopes.
 
 ```{r}
 confint(out, level = 0.95)
