@@ -1,11 +1,11 @@
-# Process the lm object
+#' Process the lm object
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param object Object of class `lm`.
 #'
-#' @family Beta Sandwich Functions
-#' @keywords betaSandwich lm internal
+#' @family Process lm Functions
+#' @keywords processLM lm internal
 #' @noRd
 .ProcessLM <- function(object) {
   stopifnot(
@@ -16,7 +16,6 @@
   )
   y <- object$model[, 1]
   x <- stats::model.matrix(object)
-  beta <- object$coefficients[-1]
   x[, 1] <- y
   varnames <- colnames(x)
   xnames <- varnames[-1]
@@ -26,6 +25,7 @@
   p <- k - 1
   df <- n - k
   q <- p + 1 + 0.5 * p * (p + 1)
+  beta <- object$coefficients[-1]
   sigmacap <- stats::cov(x)
   vechsigmacap <- .Vech(
     sigmacap

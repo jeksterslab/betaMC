@@ -7,7 +7,7 @@
 #' @param alpha Significance level.
 #' @param digits Digits to print.
 #' @return Returns a matrix of standardized regression slopes,
-#'   standard errors, test statistics, p-values, and confidence intervals.
+#'   standard errors, and confidence intervals.
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' out <- BetaMC(object, R = 100)
@@ -51,7 +51,7 @@ print.betamc <- function(x,
 #' @param alpha Significance level.
 #' @param digits Digits to print.
 #' @return Returns a matrix of standardized regression slopes,
-#'   standard errors, test statistics, p-values, and confidence intervals.
+#'   standard errors, and confidence intervals.
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' out <- BetaMC(object, R = 100)
