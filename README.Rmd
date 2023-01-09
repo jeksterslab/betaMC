@@ -117,6 +117,11 @@ https://doi.org/10.17226/9781.
 Reproduced with permission from the National Academy of Sciences,
 Courtesy of the National Academies Press, Washington, D.C.
 
+Pesigan, I. J. A. (2022).
+Confidence intervals for standardized coefficients:
+Applied to regression coefficients in primary studies and indirect effects in meta-analytic structural equation modeling [Unpublished doctoral dissertation].
+University of Macau. 
+
 Preacher, K. J., & Selig, J. P. (2012).
 Advantages of Monte Carlo confidence intervals for indirect effects.
 *Communication Methods and Measures*, *6*(2), 77-98.

@@ -84,9 +84,9 @@ BetaMC(object)
 #> Standardized regression slopes
 #> type = "HC3"
 #>            est     se     R   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4951 0.0806 20000  0.1690 0.2608 0.3185 0.6328 0.6788 0.7293
-#> PCTGRT  0.3915 0.0821 20000  0.1015 0.1638 0.2176 0.5379 0.5809 0.6360
-#> PCTSUPP 0.2632 0.0851 20000 -0.0343 0.0380 0.0915 0.4231 0.4730 0.5326
+#> NARTIC  0.4951 0.0807 20000  0.1387 0.2628 0.3196 0.6358 0.6794 0.7156
+#> PCTGRT  0.3915 0.0823 20000  0.0830 0.1564 0.2194 0.5404 0.5866 0.6504
+#> PCTSUPP 0.2632 0.0861 20000 -0.0436 0.0312 0.0864 0.4259 0.4763 0.5390
 ```
 
 ### References
@@ -100,6 +100,11 @@ programs in the United States: Social and behavioral sciences*.
 <https://doi.org/10.17226/9781>. Reproduced with permission from the
 National Academy of Sciences, Courtesy of the National Academies Press,
 Washington, D.C.
+
+Pesigan, I. J. A. (2022). Confidence intervals for standardized
+coefficients: Applied to regression coefficients in primary studies and
+indirect effects in meta-analytic structural equation modeling
+\[Unpublished doctoral dissertation\]. University of Macau.
 
 Preacher, K. J., & Selig, J. P. (2012). Advantages of Monte Carlo
 confidence intervals for indirect effects. *Communication Methods and
