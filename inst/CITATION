@@ -1,7 +1,7 @@
-year <- 2022
+year <- 2023
 author_text <- "Pesigan, I. J. A."
 pkg <- meta$Package
-title <- "Confidence intervals for standardized coefficients: Applied to regression coefficients in primary studies and indirect effects in meta-analytic structural equation modeling"
+title <- meta$Title
 version <- meta$Version
 author <- c(
   person(
@@ -29,34 +29,34 @@ citHeader(
   )
 )
 
-#citEntry(
-#  entry = "Manual",
-#  author = author,
-#  title = paste0(pkg, ":", " ", title),
-#  year = year,
-#  note = note,
-#  textVersion = paste0(
-#    author_text, " ",
-#    "(", year, ")", ".", " ",
-#    pkg, ":", " ", title, ".", " ",
-#    note, ".", " ",
-#    url
-#  )
-#)
-
 citEntry(
   entry = "PhdThesis",
   author = author,
-  title = title,
-  year = year,
+  title = "Confidence intervals for standardized coefficients: Applied to regression coefficients in primary studies and indirect effects in meta-analytic structural equation modeling",
+  year = 2022,
   school = "University of Macau",
   textVersion = paste0(
     author_text, " ",
-    "(", year, ")", ".", " ",
+    "(2022)", ".", " ",
     title, " ",
     "[Unpublished doctoral dissertation].",
     " ",
     "University of Macau.",
     " "
+  )
+)
+
+citEntry(
+  entry = "Manual",
+  author = author,
+  title = paste0(pkg, ":", " ", title),
+  year = year,
+  note = note,
+  textVersion = paste0(
+    author_text, " ",
+    "(", year, ")", ".", " ",
+    pkg, ":", " ", title, ".", " ",
+    note, ".", " ",
+    url
   )
 )
