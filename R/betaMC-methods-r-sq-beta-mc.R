@@ -21,7 +21,7 @@ print.rsqbetamc <- function(x,
                             ...) {
   cat(
     paste0(
-      "Multiple correlation ",
+      "Multiple correlation\n",
       "type = ",
       "\"",
       toupper(x$fit$type),
@@ -63,7 +63,7 @@ summary.rsqbetamc <- function(object,
                               ...) {
   cat(
     paste0(
-      "Multiple correlation ",
+      "Multiple correlation\n",
       "type = ",
       "\"",
       toupper(object$fit$type),

@@ -19,7 +19,11 @@
       "betamc"
     )
   )
-  thetahatstar <- object$thetahatstar[, seq_len(object$lm_process$p), drop = FALSE]
+  thetahatstar <- object$thetahatstar[
+    ,
+    seq_len(object$lm_process$p),
+    drop = FALSE
+  ]
   thetahat <- object$est
   ci <- vector(
     mode = "list",
