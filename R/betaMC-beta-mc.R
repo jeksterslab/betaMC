@@ -272,22 +272,42 @@ BetaMC <- function(object,
         sigmasqx <- diag(sigmacapx)
         if (count >= counter_max) {
           return(
-            rep(x = NA, times = lm_process$p)
+            rep(x = NA, times = lm_process$k)
           )
         }
       }
-      return(
+      sigmaysq <- .SigmaYSq(
+        beta = beta,
+        sigmasq = sigmasq,
+        sigmacapx = sigmacapx
+      )
+      sigmacap <- matrix(
+        data = 0.0,
+        nrow = lm_process$k,
+        ncol = lm_process$k
+      )
+      sigmacap[1, 1] <- sigmaysq
+      sigmacap[1, 2:lm_process$k] <- sigmacap[2:lm_process$k, 1] <- .SigmaYX(
+        beta = beta,
+        sigmacapx = sigmacapx
+      )
+      sigmacap[2:lm_process$k, 2:lm_process$k] <- sigmacapx
+      betastar <- (
         (
           sqrt(
             sigmasqx
           ) / sqrt(
-            .SigmaYSq(
-              beta = beta,
-              sigmasq = sigmasq,
-              sigmacapx = sigmacapx
-            )
+            sigmaysq
           )
         ) * beta
+      )
+      rsq <- (
+        1 - (
+          det(sigmacap) / det(sigmacapx)
+        ) / sigmaysq
+      )
+      return(
+        c(betastar, rsq)
       )
     }
   )
@@ -295,7 +315,17 @@ BetaMC <- function(object,
     what = "rbind",
     args = thetahatstar
   )
-  colnames(thetahatstar) <- lm_process$xnames
+  adj <- (
+    1 - (
+      1 - thetahatstar[, lm_process$k]
+    ) * ((lm_process$n - 1) / (lm_process$n - lm_process$k))
+  )
+  thetahatstar <- cbind(thetahatstar, adj)
+  colnames(thetahatstar) <- c(
+    lm_process$xnames,
+    "rsq",
+    "adj"
+  )
   rownames(thetahatstar) <- NULL
   out <- list(
     call = match.call(),

@@ -4,7 +4,7 @@
 #'   `p` regressors.
 #'
 #' @family Parameters Functions
-#' @keywords strRegression parameters dot
+#' @keywords strRegression parameters internal
 #' @noRd
 .ThetaIndex <- function(p) {
   list(

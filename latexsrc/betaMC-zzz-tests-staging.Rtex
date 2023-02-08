@@ -48,6 +48,27 @@
 
 Staging...
 
+%% begin.rcode
+% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+%% end.rcode
+
+%% begin.rcode
+% dif(BetaMC(object))
+% dif(BetaMC(object, type = "mvn"))
+% dif(BetaMC(object, type = "adf"))
+%% end.rcode
+
+%% begin.rcode
+% out <- rsq(BetaMC(object))
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
+% rsq(BetaMC(object, type = "mvn"))
+% rsq(BetaMC(object, type = "adf"))
+%% end.rcode
+
 \nocite{Lib-R-Manual-2022}
 
 \printbibliography

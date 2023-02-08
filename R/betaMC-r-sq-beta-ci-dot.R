@@ -1,4 +1,4 @@
-#' Confidence Intervals for Standardized Regression Coefficients
+#' Confidence Intervals for R-Squared
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -9,17 +9,17 @@
 #'   Significance level.
 #'
 #' @family Beta Monte Carlo Functions
-#' @keywords betaMC ci internal
+#' @keywords betaMC ci rsq internal
 #' @noRd
-.BetaCI <- function(object,
-                    alpha = c(0.05, 0.01, 0.001)) {
+.RSqCI <- function(object,
+                   alpha = c(0.05, 0.01, 0.001)) {
   stopifnot(
     methods::is(
       object,
-      "betamc"
+      "rsqbetamc"
     )
   )
-  thetahatstar <- object$thetahatstar[, seq_len(object$lm_process$p), drop = FALSE]
+  thetahatstar <- object$thetahatstar
   thetahat <- object$est
   ci <- vector(
     mode = "list",
