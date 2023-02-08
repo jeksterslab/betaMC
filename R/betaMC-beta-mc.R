@@ -124,7 +124,11 @@ BetaMC <- function(object,
   constant <- k
   jcap <- .JacobianVechSigmaWRTTheta(
     beta = lm_process$beta,
-    sigmacapx = lm_process$sigmacap[2:lm_process$k, 2:lm_process$k, drop = FALSE],
+    sigmacapx = lm_process$sigmacap[
+      2:lm_process$k,
+      2:lm_process$k,
+      drop = FALSE
+    ],
     q = lm_process$q,
     p = lm_process$p
   )

@@ -1,4 +1,4 @@
-## ---- test-betaSandwich-diff-beta-sandwich-methods
+## ---- test-betaMC-diff-beta-mc-methods
 lapply(
   X = 1,
   FUN = function(i,
@@ -8,7 +8,7 @@ lapply(
       try(
         data(
           "nas1982",
-          package = "betaSandwich"
+          package = "betaMC"
         ),
         silent = TRUE
       )
@@ -70,5 +70,5 @@ lapply(
     vcov.difbetamc(hc5)
     confint.difbetamc(hc5)
   },
-  text = "test-betaSandwich-diff-beta-sandwich-methods"
+  text = "test-betaMC-diff-beta-mc-methods"
 )
