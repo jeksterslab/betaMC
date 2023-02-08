@@ -6,7 +6,9 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param rhocap Correlation matrix.
+#' @param rhocap Numeric matrix.
+#'   Correlation matrix of
+#'   \eqn{\left\{ Y, X_{1}, \dots, X_{p} \right\}}.
 #' @param k Positive integer.
 #'   Dimension of the `k` by `k` correlation matrix.
 #'

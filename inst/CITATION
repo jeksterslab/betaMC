@@ -38,7 +38,7 @@ citEntry(
   textVersion = paste0(
     author_text, " ",
     "(2022)", ".", " ",
-    title, " ",
+    "Confidence intervals for standardized coefficients: Applied to regression coefficients in primary studies and indirect effects in meta-analytic structural equation modeling", " ",
     "[Unpublished doctoral dissertation].",
     " ",
     "University of Macau.",

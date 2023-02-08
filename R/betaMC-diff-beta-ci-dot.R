@@ -1,22 +1,22 @@
-#' Confidence Intervals for Standardized Regression Coefficients
+#' Confidence Intervals for Differences of Standardized Regression Slopes
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns a matrix.
 #'
-#' @param object Object of class `betamc`.
+#' @param object Object of class `difbetamc`.
 #' @param alpha Numeric vector.
 #'   Significance level.
 #'
 #' @family Beta Monte Carlo Functions
-#' @keywords betaMC ci internal
+#' @keywords betaMC dif ci internal
 #' @noRd
-.BetaCI <- function(object,
-                    alpha = c(0.05, 0.01, 0.001)) {
+.DiffBetaCI <- function(object,
+                        alpha = c(0.05, 0.01, 0.001)) {
   stopifnot(
     methods::is(
       object,
-      "betamc"
+      "difbetamc"
     )
   )
   thetahatstar <- object$thetahatstar

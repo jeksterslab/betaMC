@@ -48,16 +48,6 @@
 
 Staging...
 
-%% begin.rcode
-% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-%% end.rcode
-
-%% begin.rcode
-% BetaMC(object)
-% BetaMC(object, type = "mvn")
-% BetaMC(object, type = "adf")
-%% end.rcode
-
 \nocite{Lib-R-Manual-2022}
 
 \printbibliography

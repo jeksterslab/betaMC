@@ -39,7 +39,7 @@ Possible values are
 \code{type = "mvn"} uses the normal-theory sampling covariance matrix.
 \code{type = "adf"} uses the asymptotic distribution-free
 sampling covariance matrix.
-\code{type = "hc0"} through \code{hc5} uses different versions of
+\code{type = "hc0"} through \code{"hc5"} uses different versions of
 heteroskedasticity-consistent sampling covariance matrix.}
 
 \item{g1}{Numeric.
@@ -72,14 +72,13 @@ which is a list with the following elements:
 \describe{
 \item{call}{Function call.}
 \item{lm}{Object of class \code{lm}.}
+\item{lm_process}{Pre-processed object of class \code{lm}.}
 \item{type}{Standard error type.}
-\item{beta}{Vector of standardized slopes.}
-\item{vcov}{Sampling covariance matrix of the standardized slopes.}
 \item{thetahatstar}{Sampling distribution
-of estimates of standardized slopes.}
-\item{n}{Sample size.}
-\item{p}{Number of regressors.}
-\item{df}{\eqn{n - p - 1} degrees of freedom.}
+of standardized estimates.}
+\item{vcov}{Sampling distribution
+of standardized estimates.}
+\item{est}{Vector of standardized slopes.}
 }
 }
 \description{

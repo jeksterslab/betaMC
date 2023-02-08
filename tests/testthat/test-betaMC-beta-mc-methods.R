@@ -1,4 +1,4 @@
-## ---- test-betaMC-methods
+## ---- test-betaMC-beta-mc-methods
 lapply(
   X = 1,
   FUN = function(i,
@@ -29,5 +29,5 @@ lapply(
     vcov.betamc(out)
     confint.betamc(out)
   },
-  text = "test-betaMC-methods"
+  text = "test-betaMC-beta-mc-methods"
 )

@@ -27,14 +27,13 @@
 #' \describe{
 #'   \item{call}{Function call.}
 #'   \item{lm}{Object of class `lm`.}
+#'   \item{lm_process}{Pre-processed object of class `lm`.}
 #'   \item{type}{Standard error type.}
-#'   \item{beta}{Vector of standardized slopes.}
-#'   \item{vcov}{Sampling covariance matrix of the standardized slopes.}
 #'   \item{thetahatstar}{Sampling distribution
-#'                         of estimates of standardized slopes.}
-#'   \item{n}{Sample size.}
-#'   \item{p}{Number of regressors.}
-#'   \item{df}{\eqn{n - p - 1} degrees of freedom.}
+#'                         of standardized estimates.}
+#'   \item{vcov}{Sampling distribution
+#'                         of standardized estimates.}
+#'   \item{est}{Vector of standardized slopes.}
 #' }
 #' @param object Object of class `lm`.
 #' @param R Positive integer.
@@ -54,7 +53,7 @@
 #'   `type = "mvn"` uses the normal-theory sampling covariance matrix.
 #'   `type = "adf"` uses the asymptotic distribution-free
 #'   sampling covariance matrix.
-#'   `type = "hc0"` through `hc5` uses different versions of
+#'   `type = "hc0"` through `"hc5"` uses different versions of
 #'   heteroskedasticity-consistent sampling covariance matrix.
 #' @param g1 Numeric.
 #'   `g1` value for `type = "hc4m"` or `type = "hc5"`.
@@ -107,7 +106,7 @@ BetaMC <- function(object,
                    decomposition = "eigen",
                    pd = TRUE,
                    tol = 1e-06) {
-  input <- .ProcessLM(object)
+  lm_process <- .ProcessLM(object)
   stopifnot(
     type %in% c(
       "adf",
@@ -124,36 +123,36 @@ BetaMC <- function(object,
   stopifnot(0 < k & k < 1)
   constant <- k
   jcap <- .JacobianVechSigmaWRTTheta(
-    beta = input$beta,
-    sigmacapx = input$sigmacap[2:input$k, 2:input$k, drop = FALSE],
-    q = input$q,
-    p = input$p
+    beta = lm_process$beta,
+    sigmacapx = lm_process$sigmacap[2:lm_process$k, 2:lm_process$k, drop = FALSE],
+    q = lm_process$q,
+    p = lm_process$p
   )
   if (type == "adf") {
     gammacapmvn_consistent <- .GammaN(
-      sigmacap = input$sigmacap_consistent,
-      pinv_of_dcap = input$pinv_of_dcap
+      sigmacap = lm_process$sigmacap_consistent,
+      pinv_of_dcap = lm_process$pinv_of_dcap
     )
     gammacap <- .GammaADFUnbiased(
       gammacapadf_consistent = .GammaADFConsistent(
         d = .DofMat(
-          input$x,
-          center = colMeans(input$x),
-          n = input$n,
-          k = input$k
+          lm_process$x,
+          center = colMeans(lm_process$x),
+          n = lm_process$n,
+          k = lm_process$k
         ),
-        vechsigmacap_consistent = input$vechsigmacap_consistent,
-        n = input$n
+        vechsigmacap_consistent = lm_process$vechsigmacap_consistent,
+        n = lm_process$n
       ),
       gammacapmvn_consistent = gammacapmvn_consistent,
-      vechsigmacap_consistent = input$vechsigmacap_consistent,
-      n = input$n
+      vechsigmacap_consistent = lm_process$vechsigmacap_consistent,
+      n = lm_process$n
     )
   }
   if (type == "mvn") {
     gammacap <- .GammaN(
-      sigmacap = input$sigmacap,
-      pinv_of_dcap = input$pinv_of_dcap
+      sigmacap = lm_process$sigmacap,
+      pinv_of_dcap = lm_process$pinv_of_dcap
     )
   }
   if (type %in% c("adf", "mvn")) {
@@ -164,7 +163,7 @@ BetaMC <- function(object,
     )
     vcov <- .CovN(
       acov = avcov,
-      n = input$n
+      n = lm_process$n
     )
   }
   if (
@@ -179,26 +178,26 @@ BetaMC <- function(object,
     )
   ) {
     gammacap_mvn <- .GammaN(
-      sigmacap = input$sigmacap,
-      pinv_of_dcap = input$pinv_of_dcap
+      sigmacap = lm_process$sigmacap,
+      pinv_of_dcap = lm_process$pinv_of_dcap
     )
     gammacap_hc <- .GammaHC(
       d = .DofMat(
-        input$x,
-        center = colMeans(input$x),
-        n = input$n,
-        k = input$k
+        lm_process$x,
+        center = colMeans(lm_process$x),
+        n = lm_process$n,
+        k = lm_process$k
       ),
-      sigmacap = input$sigmacap,
+      sigmacap = lm_process$sigmacap,
       qcap = .QMat(
         h = stats::hatvalues(object),
-        k = input$k,
+        k = lm_process$k,
         type = type,
         g1 = g1,
         g2 = g2,
         constant = constant
       ),
-      n = input$n
+      n = lm_process$n
     )
     avcov <- .ACovHC(
       jcap = jcap,
@@ -208,14 +207,14 @@ BetaMC <- function(object,
     vcov <- .CovHC(
       acov = avcov,
       type = type,
-      n = input$n,
-      df = input$df
+      n = lm_process$n,
+      df = lm_process$df
     )
   }
   thetahatstar <- .ThetaHatStar(
     R = R,
     scale = vcov,
-    location = input$theta,
+    location = lm_process$theta,
     decomposition = decomposition,
     pd = pd,
     tol = tol
@@ -229,15 +228,15 @@ BetaMC <- function(object,
       )
     ),
     FUN = function(x) {
-      beta <- x[1:input$p]
-      sigmasq <- x[input$k]
+      beta <- x[1:lm_process$p]
+      sigmasq <- x[lm_process$k]
       sigmacapx <- matrix(
         data = 0,
-        nrow = input$p,
-        ncol = input$p
+        nrow = lm_process$p,
+        ncol = lm_process$p
       )
       sigmacapx[lower.tri(sigmacapx, diag = TRUE)] <- x[
-        (input$k + 1):input$q
+        (lm_process$k + 1):lm_process$q
       ]
       sigmacapx[upper.tri(sigmacapx)] <- t(sigmacapx)[upper.tri(sigmacapx)]
       sigmasqx <- diag(sigmacapx)
@@ -255,21 +254,21 @@ BetaMC <- function(object,
           .ThetaHatStar(
             R = 1,
             scale = vcov,
-            location = input$theta,
+            location = lm_process$theta,
             decomposition = decomposition,
             pd = FALSE
           )$thetahatstar
         )
-        beta <- x[1:input$p]
-        sigmasq <- x[input$k]
+        beta <- x[1:lm_process$p]
+        sigmasq <- x[lm_process$k]
         sigmacapx[lower.tri(sigmacapx, diag = TRUE)] <- x[
-          (input$k + 1):input$q
+          (lm_process$k + 1):lm_process$q
         ]
         sigmacapx[upper.tri(sigmacapx)] <- t(sigmacapx)[upper.tri(sigmacapx)]
         sigmasqx <- diag(sigmacapx)
         if (count >= counter_max) {
           return(
-            rep(x = NA, times = input$p)
+            rep(x = NA, times = lm_process$p)
           )
         }
       }
@@ -292,18 +291,16 @@ BetaMC <- function(object,
     what = "rbind",
     args = thetahatstar
   )
-  colnames(thetahatstar) <- input$xnames
+  colnames(thetahatstar) <- lm_process$xnames
   rownames(thetahatstar) <- NULL
   out <- list(
     call = match.call(),
     lm = object,
+    lm_process = lm_process,
     type = type,
-    beta = input$betastar,
-    vcov = stats::var(thetahatstar),
     thetahatstar = thetahatstar,
-    n = input$n,
-    p = input$p,
-    df = input$df
+    vcov = stats::var(thetahatstar),
+    est = lm_process$betastar
   )
   class(out) <- c(
     "betamc",

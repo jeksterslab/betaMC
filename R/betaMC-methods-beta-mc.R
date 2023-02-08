@@ -103,10 +103,13 @@ summary.betamc <- function(object,
 #' @keywords methods
 vcov.betamc <- function(object,
                         ...) {
-  p <- length(object$beta)
-  out <- object$vcov[1:p, 1:p, drop = FALSE]
-  rownames(out) <- colnames(out) <- names(object$beta)
-  return(out)
+  return(
+    object$vcov[
+      seq_len(object$lm_process$p),
+      seq_len(object$lm_process$p),
+      drop = FALSE
+    ]
+  )
 }
 
 #' Standardized Regression Slopes
@@ -125,7 +128,9 @@ vcov.betamc <- function(object,
 #' @keywords methods
 coef.betamc <- function(object,
                         ...) {
-  object$beta
+  return(
+    object$est
+  )
 }
 
 #' Confidence Intervals for Standardized Regression Slopes
@@ -152,7 +157,7 @@ confint.betamc <- function(object,
                            level = 0.95,
                            ...) {
   if (is.null(parm)) {
-    parm <- 1:object$p
+    parm <- seq_len(object$lm_process$p)
   }
   return(
     .BetaCI(
