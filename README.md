@@ -42,11 +42,6 @@ install.packages("remotes")
 remotes::install_github("jeksterslab/betaMC")
 ```
 
-## Documentation
-
-See [GitHub Pages](https://jeksterslab.github.io/betaMC/index.html) for
-package documentation.
-
 ## Example
 
 In this example, a multiple regression model is fitted using program
@@ -84,9 +79,9 @@ BetaMC(object)
 #> Standardized regression slopes
 #> type = "hc3"
 #>            est     se     R   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4951 0.0803 20000  0.1784 0.2609 0.3201 0.6328 0.6765 0.7259
-#> PCTGRT  0.3915 0.0824 20000  0.0888 0.1539 0.2191 0.5398 0.5857 0.6306
-#> PCTSUPP 0.2632 0.0858 20000 -0.0421 0.0322 0.0872 0.4264 0.4793 0.5393
+#> NARTIC  0.4951 0.0815 20000  0.1200 0.2544 0.3167 0.6356 0.6782 0.7307
+#> PCTGRT  0.3915 0.0830 20000  0.1023 0.1623 0.2166 0.5431 0.5900 0.6470
+#> PCTSUPP 0.2632 0.0856 20000 -0.0329 0.0343 0.0897 0.4278 0.4757 0.5477
 ```
 
 ### References
@@ -109,3 +104,8 @@ indirect effects in meta-analytic structural equation modeling
 Preacher, K. J., & Selig, J. P. (2012). Advantages of Monte Carlo
 confidence intervals for indirect effects. *Communication Methods and
 Measures*, *6*(2), 77-98. <https://doi.org/10.1080/19312458.2012.679848>
+
+## Documentation
+
+See [GitHub Pages](https://jeksterslab.github.io/betaMC/index.html) for
+package documentation.

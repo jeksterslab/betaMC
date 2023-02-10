@@ -51,12 +51,6 @@ install.packages("remotes")
 remotes::install_github("jeksterslab/betaMC")
 ```
 
-## Documentation
-
-See
-[GitHub Pages](https://jeksterslab.github.io/betaMC/index.html)
-for package documentation.
-
 ## Example
 
 In this example, a multiple regression model is fitted
@@ -126,3 +120,9 @@ Preacher, K. J., & Selig, J. P. (2012).
 Advantages of Monte Carlo confidence intervals for indirect effects.
 *Communication Methods and Measures*, *6*(2), 77-98.
 https://doi.org/10.1080/19312458.2012.679848
+
+## Documentation
+
+See
+[GitHub Pages](https://jeksterslab.github.io/betaMC/index.html)
+for package documentation.
