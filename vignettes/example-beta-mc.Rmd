@@ -1,9 +1,9 @@
 ---
-title: "betaMC: Example using BetaMC"
+title: "betaMC: Example Using the BetaMC Function"
 author: "Ivan Jacob Agaloos Pesigan"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{betaMC: Example using BetaMC}
+  %\VignetteIndexEntry{betaMC: Example Using the BetaMC Function}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

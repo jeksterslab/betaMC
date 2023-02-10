@@ -24,17 +24,18 @@
 #'
 #' @return Returns an object of class `betamc`
 #'   which is a list with the following elements:
-#' \describe{
-#'   \item{call}{Function call.}
-#'   \item{lm}{Object of class `lm`.}
-#'   \item{lm_process}{Pre-processed object of class `lm`.}
-#'   \item{type}{Standard error type.}
-#'   \item{thetahatstar}{Sampling distribution
+#'   \describe{
+#'     \item{call}{Function call.}
+#'     \item{lm}{Object of class `lm`.}
+#'     \item{lm_process}{Pre-processed object of class `lm`.}
+#'     \item{type}{Standard error type.}
+#'     \item{thetahatstar}{Sampling distribution
 #'                         of standardized estimates.}
-#'   \item{vcov}{Sampling distribution
-#'                         of standardized estimates.}
-#'   \item{est}{Vector of standardized slopes.}
+#'     \item{vcov}{Sampling distribution
+#'                 of standardized estimates.}
+#'     \item{est}{Vector of standardized slopes.}
 #' }
+#'
 #' @param object Object of class `lm`.
 #' @param R Positive integer.
 #'   Number of Monte Carlo replications.
@@ -73,6 +74,7 @@
 #'   is positive definite using `tol`.
 #' @param tol Numeric.
 #'   Tolerance used for `pd`.
+#'
 #' @references
 #' Dudgeon, P. (2017).
 #' Some improvements in confidence intervals
@@ -84,16 +86,17 @@
 #' Advantages of Monte Carlo confidence intervals for indirect effects.
 #' *Communication Methods and Measures*, *6*(2), 77-98.
 #' \doi{10.1080/19312458.2012.679848}
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' out <- BetaMC(object, R = 100)
+#' std <- BetaMC(object, R = 100)
 #' # use a large R, for example, R = 20000 for actual research
 #' # Methods -------------------------------------------------------
-#' print(out)
-#' summary(out)
-#' coef(out)
-#' vcov(out)
-#' confint(out, level = 0.95)
+#' print(std)
+#' summary(std)
+#' coef(std)
+#' vcov(std)
+#' confint(std, level = 0.95)
 #' @export
 #' @family Beta Monte Carlo Functions
 #' @keywords betaMC

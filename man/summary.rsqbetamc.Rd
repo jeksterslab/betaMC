@@ -16,8 +16,13 @@
 \item{...}{additional arguments.}
 }
 \value{
-Returns a matrix of standardized regression slopes,
-standard errors, test statistics, p-values, and confidence intervals.
+Returns a matrix of
+multiple correlation
+(R-squared and adjusted R-squared),
+standard errors,
+number of Monte Carlo replications,
+and
+confidence intervals.
 }
 \description{
 Summary Method for an Object of Class \code{rsqbetamc}
@@ -25,8 +30,8 @@ Summary Method for an Object of Class \code{rsqbetamc}
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaMC(object)
-out <- rsq(std)
-summary(out)
+rsq <- RSqBetaMC(std)
+summary(rsq)
 }
 \author{
 Ivan Jacob Agaloos Pesigan

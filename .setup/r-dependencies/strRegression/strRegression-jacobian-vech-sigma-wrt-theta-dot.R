@@ -12,6 +12,10 @@
 #'   Length of the parameter vector.
 #' @param p Positive integer.
 #'   `p` regressors.
+#' @param rsq Numeric.
+#'   R-squared.
+#'   If `rsq = NULL`, the kth element in `theta` is \eqn{R^{2}}.
+#'   If `rsq = Numeric`, the kth element in `theta` is \eqn{\sigma^{2}}.
 #'
 #' @return Returns a matrix.
 #' @family Derivatives Functions
@@ -20,7 +24,8 @@
 .JacobianVechSigmaWRTTheta <- function(beta,
                                        sigmacapx,
                                        q,
-                                       p) {
+                                       p,
+                                       rsq = NULL) {
   theta <- .ThetaIndex(
     p = p
   )
@@ -40,11 +45,19 @@
     moments$sigmayx,
     moments$vechsigmacapx
   )
-  colnames(jcap) <- c(
-    theta$beta,
-    theta$sigmasq,
-    theta$vechsigmacapx
-  )
+  if (is.null(rsq)) {
+    colnames(jcap) <- c(
+      theta$beta,
+      theta$sigmasq,
+      theta$vechsigmacapx
+    )
+  } else {
+    colnames(jcap) <- c(
+      theta$beta,
+      "rsq",
+      theta$vechsigmacapx
+    )
+  }
   jcap[
     moments$sigmaysq,
     theta$beta
@@ -54,10 +67,19 @@
       sigmacapx
     )
   )
-  jcap[
-    moments$sigmaysq,
-    theta$sigmasq
-  ] <- 1
+  if (is.null(rsq)) {
+    jcap[
+      moments$sigmaysq,
+      theta$sigmasq
+    ] <- 1
+  } else {
+    jcap[
+      moments$sigmaysq,
+      "rsq"
+    ] <- -(
+      t(beta) %*% sigmacapx %*% beta
+    ) / rsq^2
+  }
   jcap[
     moments$sigmaysq,
     theta$vechsigmacapx

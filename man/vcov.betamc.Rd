@@ -12,7 +12,8 @@
 \item{...}{additional arguments.}
 }
 \value{
-Returns a matrix of the variance-covariance matrix
+Returns a matrix of the
+variance-covariance matrix
 of standardized slopes.
 }
 \description{

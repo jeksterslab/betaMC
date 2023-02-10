@@ -1,31 +1,39 @@
-#' Print Method for an Object of Class `difbetamc`
+#' Print Method for an Object of Class `diffbetamc`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param x Object of class `difbetamc`.
+#' @return Returns a matrix of
+#'   differences of standardized regression slopes,
+#'   standard errors,
+#'   number of Monte Carlo replications,
+#'   and
+#'   confidence intervals.
+#'
+#' @param x Object of class `diffbetamc`.
 #' @param ... additional arguments.
 #' @param alpha Significance level.
 #' @param digits Digits to print.
-#' @return Returns a matrix of standardized regression slopes,
-#'   standard errors, test statistics, p-values, and confidence intervals.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaMC(object)
-#' out <- dif(std)
-#' print(out)
+#' diff <- DiffBetaMC(std)
+#' print(diff)
 #' @export
 #' @keywords methods
-print.difbetamc <- function(x,
-                            alpha = c(0.05, 0.01, 0.001),
-                            digits = 4,
-                            ...) {
+print.diffbetamc <- function(x,
+                             alpha = c(0.05, 0.01, 0.001),
+                             digits = 4,
+                             ...) {
   cat(
-    "Difference between standardized regression coefficients with",
-    "type = ",
-    "\"",
-    toupper(x$fit$type),
-    "\"",
-    "\n"
+    paste0(
+      "Difference between standardized regression coefficients\n",
+      "type = ",
+      "\"",
+      x$fit$type,
+      "\"",
+      "\n"
+    )
   )
   base::print(
     round(
@@ -38,33 +46,39 @@ print.difbetamc <- function(x,
   )
 }
 
-#' Summary Method for an Object of Class `difbetamc`
+#' Summary Method for an Object of Class `diffbetamc`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param object Object of class `difbetamc`.
+#' @return Returns a matrix of
+#'   differences of standardized regression slopes,
+#'   standard errors,
+#'   number of Monte Carlo replications,
+#'   and
+#'   confidence intervals.
+#'
+#' @param object Object of class `diffbetamc`.
 #' @param ... additional arguments.
 #' @param alpha Significance level.
 #' @param digits Digits to print.
-#' @return Returns a matrix of standardized regression slopes,
-#'   standard errors, test statistics, p-values, and confidence intervals.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaMC(object)
-#' out <- dif(std)
-#' summary(out)
+#' diff <- DiffBetaMC(std)
+#' summary(diff)
 #' @export
 #' @keywords methods
-summary.difbetamc <- function(object,
-                              alpha = c(0.05, 0.01, 0.001),
-                              digits = 4,
-                              ...) {
+summary.diffbetamc <- function(object,
+                               alpha = c(0.05, 0.01, 0.001),
+                               digits = 4,
+                               ...) {
   cat(
     paste0(
-      "Difference between standardized regression coefficients with",
+      "Difference between standardized regression coefficients\n",
       "type = ",
       "\"",
-      toupper(object$fit$type),
+      object$fit$type,
       "\"",
       "\n"
     )
@@ -85,19 +99,22 @@ summary.difbetamc <- function(object,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param object Object of class `difbetamc`.
-#' @param ... additional arguments.
-#' @return Returns a matrix of the variance-covariance matrix
+#' @return Returns a matrix of the
+#'   variance-covariance matrix
 #'   of differences of standardized regression slopes.
+#'
+#' @param object Object of class `diffbetamc`.
+#' @param ... additional arguments.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaMC(object)
-#' out <- dif(std)
-#' vcov(out)
+#' diff <- DiffBetaMC(std)
+#' vcov(diff)
 #' @export
 #' @keywords methods
-vcov.difbetamc <- function(object,
-                           ...) {
+vcov.diffbetamc <- function(object,
+                            ...) {
   return(
     object$vcov
   )
@@ -107,18 +124,20 @@ vcov.difbetamc <- function(object,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param object Object of class `difbetamc`.
-#' @param ... additional arguments.
 #' @return Returns a vector of differences of standardized regression slopes.
+#'
+#' @param object Object of class `diffbetamc`.
+#' @param ... additional arguments.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaMC(object)
-#' out <- dif(std)
-#' coef(out)
+#' diff <- DiffBetaMC(std)
+#' coef(diff)
 #' @export
 #' @keywords methods
-coef.difbetamc <- function(object,
-                           ...) {
+coef.diffbetamc <- function(object,
+                            ...) {
   return(
     object$est
   )
@@ -129,25 +148,27 @@ coef.difbetamc <- function(object,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param object Object of class `difbetamc`.
+#' @return Returns a matrix of confidence intervals.
+#'
+#' @param object Object of class `diffbetamc`.
 #' @param ... additional arguments.
 #' @param parm a specification of which parameters
 #'   are to be given confidence intervals,
 #'   either a vector of numbers or a vector of names.
 #'   If missing, all parameters are considered.
 #' @param level the confidence level required.
-#' @return Returns a matrix of confidence intervals.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaMC(object)
-#' out <- dif(std)
-#' confint(out, level = 0.95)
+#' diff <- DiffBetaMC(std)
+#' confint(diff, level = 0.95)
 #' @export
 #' @keywords methods
-confint.difbetamc <- function(object,
-                              parm = NULL,
-                              level = 0.95,
-                              ...) {
+confint.diffbetamc <- function(object,
+                               parm = NULL,
+                               level = 0.95,
+                               ...) {
   if (is.null(parm)) {
     parm <- seq_len(
       length(object$est)

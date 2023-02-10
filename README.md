@@ -1,7 +1,7 @@
 betaMC
 ================
 Ivan Jacob Agaloos Pesigan
-2023-02-08
+2023-02-10
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -82,11 +82,11 @@ BetaMC(object)
 #> BetaMC(object = object)
 #> 
 #> Standardized regression slopes
-#> type = "HC3"
+#> type = "hc3"
 #>            est     se     R   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4951 0.0807 20000  0.1327 0.2642 0.3194 0.6337 0.6804 0.7330
-#> PCTGRT  0.3915 0.0824 20000  0.0891 0.1588 0.2186 0.5411 0.5858 0.6443
-#> PCTSUPP 0.2632 0.0865 20000 -0.0353 0.0258 0.0830 0.4245 0.4764 0.5372
+#> NARTIC  0.4951 0.0803 20000  0.1784 0.2609 0.3201 0.6328 0.6765 0.7259
+#> PCTGRT  0.3915 0.0824 20000  0.0888 0.1539 0.2191 0.5398 0.5857 0.6306
+#> PCTSUPP 0.2632 0.0858 20000 -0.0421 0.0322 0.0872 0.4264 0.4793 0.5393
 ```
 
 ### References

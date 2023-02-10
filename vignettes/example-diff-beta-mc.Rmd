@@ -1,9 +1,9 @@
 ---
-title: "betaMC: Example using the dif Method"
+title: "betaMC: Example Using the DiffBetaMC Function"
 author: "Ivan Jacob Agaloos Pesigan"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{betaMC: Example using the dif Method}
+  %\VignetteIndexEntry{betaMC: Example Using the DiffBetaMC Function}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -18,10 +18,10 @@ knitr::opts_chunk$set(
 Confidence intervals for
 differences of standardized regression slopes
 are generated using
-the `dif()` method from the `betaMC` package.
+the `DiffBetaMC()` function from the `betaMC` package.
 In this example,
 we use the data set and the model used in
-[betaMC: Example using BetaMC](example-beta-mc.html).
+[betaMC: Example Using the BetaMC Function](example-beta-mc.html).
 
 ```{r}
 #| message = FALSE
@@ -73,19 +73,19 @@ std_adf <- BetaMC(object, type = "adf")
 std_hc3 <- BetaMC(object, type = "hc3")
 ```
 
-## Methods
-
-### dif
+## Estimate differences of standardized regression slopes and the corresponding sampling covariance matrix.
 
 ```{r}
-mvn <- dif(std_mvn)
-adf <- dif(std_adf)
-hc3 <- dif(std_hc3)
+mvn <- DiffBetaMC(std_mvn)
+adf <- DiffBetaMC(std_adf)
+hc3 <- DiffBetaMC(std_hc3)
 ```
+
+## Methods
 
 ### summary
 
-Summary of the results of `dif()`.
+Summary of the results of `DiffBetaMC()`.
 
 ```{r}
 summary(mvn)

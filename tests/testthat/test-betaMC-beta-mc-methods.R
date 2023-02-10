@@ -2,7 +2,8 @@
 lapply(
   X = 1,
   FUN = function(i,
-                 text) {
+                 text,
+                 R) {
     message(text)
     if (!exists("nas1982")) {
       try(
@@ -15,19 +16,20 @@ lapply(
     }
     df <- nas1982
     object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-    out <- BetaMC(object)
+    out <- BetaMC(object, R = R)
     print.betamc(out)
     summary.betamc(out)
     coef.betamc(out)
     vcov.betamc(out)
     confint.betamc(out)
     object <- lm(QUALITY ~ NARTIC, data = df)
-    out <- BetaMC(object)
+    out <- BetaMC(object, R = R)
     print.betamc(out)
     summary.betamc(out)
     coef.betamc(out)
     vcov.betamc(out)
     confint.betamc(out)
   },
-  text = "test-betaMC-beta-mc-methods"
+  text = "test-betaMC-beta-mc-methods",
+  R = 10L
 )

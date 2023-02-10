@@ -13,8 +13,9 @@ Differences of Standardized Regression Slopes}
 \item{...}{additional arguments.}
 }
 \value{
-Returns a matrix of the variance-covariance matrix
-of differences of standardized regression slopes.
+Returns a matrix of the
+variance-covariance matrix
+of multiple correlation.
 }
 \description{
 Sampling Covariance Matrix of
@@ -23,8 +24,8 @@ Differences of Standardized Regression Slopes
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaMC(object)
-out <- rsq(std)
-vcov(out)
+rsq <- RSqBetaMC(std)
+vcov(rsq)
 }
 \author{
 Ivan Jacob Agaloos Pesigan

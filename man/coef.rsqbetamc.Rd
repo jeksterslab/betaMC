@@ -12,7 +12,7 @@
 \item{...}{additional arguments.}
 }
 \value{
-Returns a vector of differences of standardized regression slopes.
+Returns a vector of multiple correlation.
 }
 \description{
 Differences of Standardized Regression Slopes
@@ -20,8 +20,8 @@ Differences of Standardized Regression Slopes
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaMC(object)
-out <- rsq(std)
-coef(out)
+rsq <- RSqBetaMC(std)
+coef(rsq)
 }
 \author{
 Ivan Jacob Agaloos Pesigan

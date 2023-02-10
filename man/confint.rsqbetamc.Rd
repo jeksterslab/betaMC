@@ -29,8 +29,8 @@ of Standardized Regression Slopes
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaMC(object)
-out <- rsq(std)
-confint(out, level = 0.95)
+rsq <- RSqBetaMC(std)
+confint(rsq, level = 0.95)
 }
 \author{
 Ivan Jacob Agaloos Pesigan

@@ -1,8 +1,13 @@
-#' Confidence Intervals for Differences of Standardized Regression Slopes
+#' Confidence Intervals for
+#' Differences of Standardized Regression Coefficients
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns a matrix.
+#' @return Returns a matrix of
+#'   differences of standardized regression slopes,
+#'   standard errors,
+#'   and
+#'   confidence intervals.
 #'
 #' @param object Object of class `difbetamc`.
 #' @param alpha Numeric vector.
@@ -16,7 +21,7 @@
   stopifnot(
     methods::is(
       object,
-      "difbetamc"
+      "diffbetamc"
     )
   )
   thetahatstar <- object$thetahatstar

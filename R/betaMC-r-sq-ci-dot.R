@@ -1,8 +1,15 @@
-#' Confidence Intervals for R-Squared
+#' Confidence Intervals for
+#' Multiple Correlation
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns a matrix.
+#' @return Returns a matrix of
+#'   multiple correlation
+#'   (R-squared and adjusted R-squared),
+#'   standard errors,
+#'   number of Monte Carlo replications,
+#'   and
+#'   confidence intervals.
 #'
 #' @param object Object of class `betamc`.
 #' @param alpha Numeric vector.

@@ -107,14 +107,14 @@ where \eqn{\alpha} is the significance level.
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-out <- BetaMC(object, R = 100)
+std <- BetaMC(object, R = 100)
 # use a large R, for example, R = 20000 for actual research
 # Methods -------------------------------------------------------
-print(out)
-summary(out)
-coef(out)
-vcov(out)
-confint(out, level = 0.95)
+print(std)
+summary(std)
+coef(std)
+vcov(std)
+confint(std, level = 0.95)
 }
 \references{
 Dudgeon, P. (2017).
@@ -127,6 +127,11 @@ Preacher, K. J., & Selig, J. P. (2012).
 Advantages of Monte Carlo confidence intervals for indirect effects.
 \emph{Communication Methods and Measures}, \emph{6}(2), 77-98.
 \doi{10.1080/19312458.2012.679848}
+}
+\seealso{
+Other Beta Monte Carlo Functions: 
+\code{\link{DiffBetaMC}()},
+\code{\link{RSqBetaMC}()}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

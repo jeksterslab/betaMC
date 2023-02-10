@@ -2,17 +2,24 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
+#' @return Returns a matrix of
+#'   multiple correlation
+#'   (R-squared and adjusted R-squared),
+#'   standard errors,
+#'   number of Monte Carlo replications,
+#'   and
+#'   confidence intervals.
+#'
 #' @param x Object of class `rsqbetamc`.
 #' @param ... additional arguments.
 #' @param alpha Significance level.
 #' @param digits Digits to print.
-#' @return Returns a matrix of standardized regression slopes,
-#'   standard errors, test statistics, p-values, and confidence intervals.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaMC(object)
-#' out <- rsq(std)
-#' print(out)
+#' rsq <- RSqBetaMC(std)
+#' print(rsq)
 #' @export
 #' @keywords methods
 print.rsqbetamc <- function(x,
@@ -24,7 +31,7 @@ print.rsqbetamc <- function(x,
       "Multiple correlation\n",
       "type = ",
       "\"",
-      toupper(x$fit$type),
+      x$fit$type,
       "\"",
       "\n"
     )
@@ -44,17 +51,24 @@ print.rsqbetamc <- function(x,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
+#' @return Returns a matrix of
+#'   multiple correlation
+#'   (R-squared and adjusted R-squared),
+#'   standard errors,
+#'   number of Monte Carlo replications,
+#'   and
+#'   confidence intervals.
+#'
 #' @param object Object of class `rsqbetamc`.
 #' @param ... additional arguments.
 #' @param alpha Significance level.
 #' @param digits Digits to print.
-#' @return Returns a matrix of standardized regression slopes,
-#'   standard errors, test statistics, p-values, and confidence intervals.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaMC(object)
-#' out <- rsq(std)
-#' summary(out)
+#' rsq <- RSqBetaMC(std)
+#' summary(rsq)
 #' @export
 #' @keywords methods
 summary.rsqbetamc <- function(object,
@@ -66,7 +80,7 @@ summary.rsqbetamc <- function(object,
       "Multiple correlation\n",
       "type = ",
       "\"",
-      toupper(object$fit$type),
+      object$fit$type,
       "\"",
       "\n"
     )
@@ -87,15 +101,18 @@ summary.rsqbetamc <- function(object,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
+#' @return Returns a matrix of the
+#'   variance-covariance matrix
+#'   of multiple correlation.
+#'
 #' @param object Object of class `rsqbetamc`.
 #' @param ... additional arguments.
-#' @return Returns a matrix of the variance-covariance matrix
-#'   of differences of standardized regression slopes.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaMC(object)
-#' out <- rsq(std)
-#' vcov(out)
+#' rsq <- RSqBetaMC(std)
+#' vcov(rsq)
 #' @export
 #' @keywords methods
 vcov.rsqbetamc <- function(object,
@@ -109,14 +126,16 @@ vcov.rsqbetamc <- function(object,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
+#' @return Returns a vector of multiple correlation.
+#'
 #' @param object Object of class `rsqbetamc`.
 #' @param ... additional arguments.
-#' @return Returns a vector of differences of standardized regression slopes.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaMC(object)
-#' out <- rsq(std)
-#' coef(out)
+#' rsq <- RSqBetaMC(std)
+#' coef(rsq)
 #' @export
 #' @keywords methods
 coef.rsqbetamc <- function(object,
@@ -131,6 +150,8 @@ coef.rsqbetamc <- function(object,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
+#' @return Returns a matrix of confidence intervals.
+#'
 #' @param object Object of class `rsqbetamc`.
 #' @param ... additional arguments.
 #' @param parm a specification of which parameters
@@ -138,12 +159,12 @@ coef.rsqbetamc <- function(object,
 #'   either a vector of numbers or a vector of names.
 #'   If missing, all parameters are considered.
 #' @param level the confidence level required.
-#' @return Returns a matrix of confidence intervals.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaMC(object)
-#' out <- rsq(std)
-#' confint(out, level = 0.95)
+#' rsq <- RSqBetaMC(std)
+#' confint(rsq, level = 0.95)
 #' @export
 #' @keywords methods
 confint.rsqbetamc <- function(object,

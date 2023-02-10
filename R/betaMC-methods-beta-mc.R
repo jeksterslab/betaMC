@@ -2,12 +2,18 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
+#' @return Returns a matrix of
+#'   standardized regression slopes,
+#'   standard errors,
+#'   number of Monte Carlo replications,
+#'   and
+#'   confidence intervals.
+#'
 #' @param x Object of Class `betamc`.
 #' @param ... additional arguments.
 #' @param alpha Significance level.
 #' @param digits Digits to print.
-#' @return Returns a matrix of standardized regression slopes,
-#'   standard errors, and confidence intervals.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' out <- BetaMC(object, R = 100)
@@ -26,7 +32,7 @@ print.betamc <- function(x,
       "\nStandardized regression slopes\n",
       "type = ",
       "\"",
-      toupper(x$type),
+      x$type,
       "\"",
       "\n"
     )
@@ -46,12 +52,18 @@ print.betamc <- function(x,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
+#' @return Returns a matrix of
+#'   standardized regression slopes,
+#'   standard errors,
+#'   number of Monte Carlo replications,
+#'   and
+#'   confidence intervals.
+#'
 #' @param object Object of class `betamc`.
 #' @param ... additional arguments.
 #' @param alpha Significance level.
 #' @param digits Digits to print.
-#' @return Returns a matrix of standardized regression slopes,
-#'   standard errors, and confidence intervals.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' out <- BetaMC(object, R = 100)
@@ -70,7 +82,7 @@ summary.betamc <- function(object,
       "\nStandardized regression slopes\n",
       "type = ",
       "\"",
-      toupper(object$type),
+      object$type,
       "\"",
       "\n"
     )
@@ -90,10 +102,13 @@ summary.betamc <- function(object,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
+#' @return Returns a matrix of the
+#'   variance-covariance matrix
+#'   of standardized slopes.
+#'
 #' @param object Object of class `betamc`.
 #' @param ... additional arguments.
-#' @return Returns a matrix of the variance-covariance matrix
-#'   of standardized slopes.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' out <- BetaMC(object, R = 100)
@@ -116,9 +131,11 @@ vcov.betamc <- function(object,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
+#' @return Returns a vector of standardized regression slopes.
+#'
 #' @param object Object of class `betamc`.
 #' @param ... additional arguments.
-#' @return Returns a vector of standardized regression slopes.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' out <- BetaMC(object, R = 100)
@@ -137,6 +154,8 @@ coef.betamc <- function(object,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
+#' @return Returns a matrix of confidence intervals.
+#'
 #' @param object Object of class `betamc`.
 #' @param ... additional arguments.
 #' @param parm a specification of which parameters
@@ -144,7 +163,7 @@ coef.betamc <- function(object,
 #'   either a vector of numbers or a vector of names.
 #'   If missing, all parameters are considered.
 #' @param level the confidence level required.
-#' @return Returns a matrix of confidence intervals.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' out <- BetaMC(object, R = 100)
