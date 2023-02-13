@@ -29,8 +29,8 @@ citHeader(
   )
 )
 
-citEntry(
-  entry = "PhdThesis",
+bibentry(
+  bibtype = "PhdThesis",
   author = author,
   title = "Confidence intervals for standardized coefficients: Applied to regression coefficients in primary studies and indirect effects in meta-analytic structural equation modeling",
   year = 2022,
@@ -43,11 +43,16 @@ citEntry(
     " ",
     "University of Macau.",
     " "
+  ),
+  header = paste(
+    "To cite",
+    pkg,
+    "in publications, please use:"
   )
 )
 
-citEntry(
-  entry = "Manual",
+bibentry(
+  bibtype = "Manual",
   author = author,
   title = paste0(pkg, ":", " ", title),
   year = year,

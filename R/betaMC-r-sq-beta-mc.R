@@ -1,5 +1,7 @@
-#' Estimate Differences of Standardized Slopes
-#' and Sampling Covariance Matrix
+#' Estimate Multiple Correlation Coefficients
+#' (R-Squared and Adjusted R-Squared)
+#' and Generate the Corresponding Sampling Distribution
+#' Using the Monte Carlo Method
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -7,11 +9,15 @@
 #'   which is a list with the following elements:
 #'   \describe{
 #'     \item{fit}{The argument `object`.}
-#'     \item{thetahatstar}{Sampling distribution.}
+#'     \item{thetahatstar}{Sampling distribution of
+#'       multiple correlation coefficients
+#'       (R-squared and adjusted R-squared).}
 #'     \item{vcov}{Sampling covariance matrix of
-#'       differences of standardized slopes.}
+#'       multiple correlation coefficients
+#'       (R-squared and adjusted R-squared).}
 #'     \item{est}{Vector of
-#'       differences of standardized slopes.}
+#'       multiple correlation coefficients
+#'       (R-squared and adjusted R-squared).}
 #'   }
 #'
 #' @param object Object of class `betamc`,
@@ -28,9 +34,9 @@
 #' coef(rsq)
 #' vcov(rsq)
 #' confint(rsq, level = 0.95)
+#' @export
 #' @family Beta Monte Carlo Functions
 #' @keywords betaMC rsq
-#' @export
 RSqBetaMC <- function(object) {
   stopifnot(
     methods::is(

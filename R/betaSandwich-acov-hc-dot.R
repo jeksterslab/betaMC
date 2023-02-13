@@ -1,4 +1,5 @@
-#' Asymptotic Covariance Matrix of the Standardized Parameter Vector
+#' Asymptotic Covariance Matrix of the
+#' Standardized Parameter Vector
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'

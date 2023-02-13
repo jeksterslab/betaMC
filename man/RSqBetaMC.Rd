@@ -2,8 +2,10 @@
 % Please edit documentation in R/betaMC-r-sq-beta-mc.R
 \name{RSqBetaMC}
 \alias{RSqBetaMC}
-\title{Estimate Differences of Standardized Slopes
-and Sampling Covariance Matrix}
+\title{Estimate Multiple Correlation Coefficients
+(R-Squared and Adjusted R-Squared)
+and Generate the Corresponding Sampling Distribution
+Using the Monte Carlo Method}
 \usage{
 RSqBetaMC(object)
 }
@@ -17,16 +19,22 @@ Returns an object of class \code{rsqbetamc}
 which is a list with the following elements:
 \describe{
 \item{fit}{The argument \code{object}.}
-\item{thetahatstar}{Sampling distribution.}
+\item{thetahatstar}{Sampling distribution of
+multiple correlation coefficients
+(R-squared and adjusted R-squared).}
 \item{vcov}{Sampling covariance matrix of
-differences of standardized slopes.}
+multiple correlation coefficients
+(R-squared and adjusted R-squared).}
 \item{est}{Vector of
-differences of standardized slopes.}
+multiple correlation coefficients
+(R-squared and adjusted R-squared).}
 }
 }
 \description{
-Estimate Differences of Standardized Slopes
-and Sampling Covariance Matrix
+Estimate Multiple Correlation Coefficients
+(R-Squared and Adjusted R-Squared)
+and Generate the Corresponding Sampling Distribution
+Using the Monte Carlo Method
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)

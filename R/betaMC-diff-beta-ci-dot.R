@@ -14,7 +14,7 @@
 #'   Significance level.
 #'
 #' @family Beta Monte Carlo Functions
-#' @keywords betaMC dif ci internal
+#' @keywords betaMC diff ci internal
 #' @noRd
 .DiffBetaCI <- function(object,
                         alpha = c(0.05, 0.01, 0.001)) {

@@ -5,9 +5,15 @@ template:
   bootstrap: 5
 
 reference:
-- title: Functions
+- title: Standardized Regression Coefficients
   contents:
-  - has_concept("Beta Monte Carlo Functions")
+  - has_keyword("std")
+- title: Multiple Correlation
+  contents:
+  - has_keyword("rsq")
+- title: Differences of Standardized Regression Coefficients
+  contents:
+  - has_keyword("diff")
 - title: Methods
   contents:
   - has_keyword("methods")

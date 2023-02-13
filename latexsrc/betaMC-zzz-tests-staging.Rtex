@@ -52,4 +52,76 @@ Staging...
 
 \printbibliography
 
+\section{Standardized Slopes}
+
+%% begin.rcode
+% df <- nas1982
+% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+% mvn <- BetaMC(object, type = "mvn")
+% adf <- BetaMC(object, type = "adf")
+% hc3 <- BetaMC(object, type = "hc3")
+% summary(mvn)
+% summary(adf)
+% summary(hc3)
+% coef(mvn)
+% coef(adf)
+% coef(hc3)
+% vcov(mvn)
+% vcov(adf)
+% vcov(hc3)
+% confint(mvn)
+% confint(adf)
+% confint(hc3)
+%% end.rcode
+
+\section{Multiple Correlation}
+
+%% begin.rcode
+% df <- nas1982
+% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+% std_mvn <- BetaMC(object, type = "mvn")
+% std_adf <- BetaMC(object, type = "adf")
+% std_hc3 <- BetaMC(object, type = "hc3")
+% mvn <- RSqBetaMC(std_mvn)
+% adf <- RSqBetaMC(std_adf)
+% hc3 <- RSqBetaMC(std_hc3)
+% summary(mvn)
+% summary(adf)
+% summary(hc3)
+% coef(mvn)
+% coef(adf)
+% coef(hc3)
+% vcov(mvn)
+% vcov(adf)
+% vcov(hc3)
+% confint(mvn)
+% confint(adf)
+% confint(hc3)
+%% end.rcode
+
+\section{Differences of Standardized Slopes}
+
+%% begin.rcode
+% df <- nas1982
+% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+% std_mvn <- BetaMC(object, type = "mvn")
+% std_adf <- BetaMC(object, type = "adf")
+% std_hc3 <- BetaMC(object, type = "hc3")
+% mvn <- DiffBetaMC(std_mvn)
+% adf <- DiffBetaMC(std_adf)
+% hc3 <- DiffBetaMC(std_hc3)
+% summary(mvn)
+% summary(adf)
+% summary(hc3)
+% coef(mvn)
+% coef(adf)
+% coef(hc3)
+% vcov(mvn)
+% vcov(adf)
+% vcov(hc3)
+% confint(mvn)
+% confint(adf)
+% confint(hc3)
+%% end.rcode
+
 \end{document}

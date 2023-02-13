@@ -3,7 +3,7 @@
 \name{BetaMC}
 \alias{BetaMC}
 \title{Estimate Standardized Regression Coefficients
-and Generate Sampling Distributions
+and Generate the Corresponding Sampling Distribution
 Using the Monte Carlo Method}
 \usage{
 BetaMC(
@@ -83,7 +83,7 @@ of standardized estimates.}
 }
 \description{
 Estimate Standardized Regression Coefficients
-and Generate Sampling Distributions
+and Generate the Corresponding Sampling Distribution
 Using the Monte Carlo Method
 }
 \details{
@@ -138,3 +138,4 @@ Ivan Jacob Agaloos Pesigan
 }
 \concept{Beta Monte Carlo Functions}
 \keyword{betaMC}
+\keyword{std}

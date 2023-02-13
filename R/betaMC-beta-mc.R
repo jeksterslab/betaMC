@@ -1,5 +1,5 @@
 #' Estimate Standardized Regression Coefficients
-#' and Generate Sampling Distributions
+#' and Generate the Corresponding Sampling Distribution
 #' Using the Monte Carlo Method
 #'
 #' @details The empirical sampling distribution
@@ -99,7 +99,7 @@
 #' confint(std, level = 0.95)
 #' @export
 #' @family Beta Monte Carlo Functions
-#' @keywords betaMC
+#' @keywords betaMC std
 BetaMC <- function(object,
                    R = 20000L,
                    type = "hc3",
@@ -133,7 +133,8 @@ BetaMC <- function(object,
       drop = FALSE
     ],
     q = lm_process$q,
-    p = lm_process$p
+    p = lm_process$p,
+    rsq = NULL
   )
   if (type == "adf") {
     gammacapmvn_consistent <- .GammaN(
@@ -164,14 +165,15 @@ BetaMC <- function(object,
   }
   if (type %in% c("adf", "mvn")) {
     # the procedure from here is the same for adf and mvn
-    avcov <- .ACovN(
-      jcap = jcap,
-      gammacap_mvn = gammacap
+    acov <- chol2inv(
+      chol(
+        .ACovSEMInverse(
+          jcap = jcap,
+          acov = gammacap
+        )
+      )
     )
-    vcov <- .CovN(
-      acov = avcov,
-      n = lm_process$n
-    )
+    vcov <- (1 / lm_process$n) * acov
   }
   if (
     type %in% c(

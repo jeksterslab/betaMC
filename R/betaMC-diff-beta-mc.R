@@ -1,5 +1,6 @@
 #' Estimate Differences of Standardized Slopes
-#' and Sampling Covariance Matrix
+#' and Generate the Corresponding Sampling Distribution
+#' Using the Monte Carlo Method
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -7,7 +8,8 @@
 #'   which is a list with the following elements:
 #'   \describe{
 #'     \item{fit}{The argument `object`.}
-#'     \item{thetahatstar}{Sampling distribution.}
+#'     \item{thetahatstar}{Sampling distribution of
+#'       differences of standardized slopes.}
 #'     \item{vcov}{Sampling covariance matrix of
 #'       differences of standardized slopes.}
 #'     \item{est}{Vector of
@@ -28,9 +30,9 @@
 #' coef(diff)
 #' vcov(diff)
 #' confint(diff, level = 0.95)
+#' @export
 #' @family Beta Monte Carlo Functions
 #' @keywords betaMC diff
-#' @export
 DiffBetaMC <- function(object) {
   stopifnot(
     methods::is(
