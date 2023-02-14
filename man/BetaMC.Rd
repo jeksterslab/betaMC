@@ -74,10 +74,11 @@ which is a list with the following elements:
 \item{lm}{Object of class \code{lm}.}
 \item{lm_process}{Pre-processed object of class \code{lm}.}
 \item{type}{Standard error type.}
-\item{thetahatstar}{Sampling distribution
-of standardized estimates.}
+\item{thetahatstar}{List of parameters.}
+\item{thetahatstar_std}{Sampling distribution
+of standardized slopes.}
 \item{vcov}{Sampling distribution
-of standardized estimates.}
+of standardized slopes.}
 \item{est}{Vector of standardized slopes.}
 }
 }

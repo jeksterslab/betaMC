@@ -20,3 +20,15 @@ reference:
 - title: Data
   contents:
   - has_keyword("data")
+
+articles:
+- title: Examples
+  navbar: Examples
+  contents:
+  - example_beta_mc
+  - example_r_sq_beta_mc
+  - example_diff_beta_mc
+- title: Benchmark
+  navbar: Benchmark
+  contents:
+  - benchmark

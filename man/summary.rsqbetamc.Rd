@@ -29,7 +29,8 @@ Summary Method for an Object of Class \code{rsqbetamc}
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaMC(object)
+std <- BetaMC(object, R = 100)
+# use a large R, for example, R = 20000 for actual research
 rsq <- RSqBetaMC(std)
 summary(rsq)
 }

@@ -21,14 +21,6 @@ url <- paste0(
   pkg
 )
 
-citHeader(
-  paste(
-    "To cite",
-    pkg,
-    "in publications, please use:"
-  )
-)
-
 bibentry(
   bibtype = "PhdThesis",
   author = author,

@@ -16,7 +16,8 @@
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaMC(object)
+#' std <- BetaMC(object, R = 100)
+#' # use a large R, for example, R = 20000 for actual research
 #' diff <- DiffBetaMC(std)
 #' print(diff)
 #' @export
@@ -64,7 +65,8 @@ print.diffbetamc <- function(x,
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaMC(object)
+#' std <- BetaMC(object, R = 100)
+#' # use a large R, for example, R = 20000 for actual research
 #' diff <- DiffBetaMC(std)
 #' summary(diff)
 #' @export
@@ -108,7 +110,8 @@ summary.diffbetamc <- function(object,
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaMC(object)
+#' std <- BetaMC(object, R = 100)
+#' # use a large R, for example, R = 20000 for actual research
 #' diff <- DiffBetaMC(std)
 #' vcov(diff)
 #' @export
@@ -131,7 +134,8 @@ vcov.diffbetamc <- function(object,
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaMC(object)
+#' std <- BetaMC(object, R = 100)
+#' # use a large R, for example, R = 20000 for actual research
 #' diff <- DiffBetaMC(std)
 #' coef(diff)
 #' @export
@@ -160,7 +164,8 @@ coef.diffbetamc <- function(object,
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaMC(object)
+#' std <- BetaMC(object, R = 100)
+#' # use a large R, for example, R = 20000 for actual research
 #' diff <- DiffBetaMC(std)
 #' confint(diff, level = 0.95)
 #' @export

@@ -1,0 +1,199 @@
+---
+title: "Benchmark: Comparing the Monte Carlo Method with Nonparametric Bootstrapping"
+author: "Ivan Jacob Agaloos Pesigan"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{Benchmark: Comparing the Monte Carlo Method with Nonparametric Bootstrapping}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+#| include = FALSE
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  fig.path = "fig-vignettes-benchmark-",
+  fig.cap = "",
+  fig.width = 11,
+  fig.height = 8,
+  fig.retina = 2,
+  dpi = 300,
+  comment = "#>"
+)
+```
+
+```{r}
+#| include = FALSE
+set.seed(42)
+```
+
+```{r}
+#| include = FALSE
+root <- rprojroot::is_rstudio_project
+```
+
+```{r}
+#| include = FALSE
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+We compare the Monte Carlo (MC) method with nonparametric bootstrapping (NB)
+for standardized regression coefficients.
+In this example,
+we use the data set and the model used in
+[betaMC: Example Using the BetaMC Function](example-beta-mc.html).
+
+```{r}
+#| message = FALSE
+library(betaMC)
+library(boot)
+library(microbenchmark)
+```
+
+The `BetaMC()` function is used to generate MC confidence intervals.
+The `BetaNB()` function is used to generate NB confidence intervals.
+
+```{r}
+BetaNB <- function(data,
+                   B) {
+  beta <- function(rhocap) {
+    k <- dim(rhocap)[1]
+    return(as.vector(
+      solve(rhocap[2:k, 2:k, drop = FALSE], rhocap[2:k, 1, drop = FALSE])
+    ))
+  }
+  statistic <- function(data,
+                        indices) {
+    return(beta(rhocap = cor(data[indices, ])))
+  }
+  results <- boot(data = data, statistic = statistic, R = B)
+  return(boot.ci(results))
+}
+```
+
+## Data and Model
+
+```{r}
+#| echo = FALSE
+if (!exists("nas1982")) {
+  try(
+    data(
+      "nas1982",
+      package = "betaMC"
+    ),
+    silent = TRUE
+  )
+}
+df <- nas1982
+```
+
+```{r}
+#| eval = FALSE
+df <- betaMC::nas1982
+```
+
+```{r}
+df <- df[, c("QUALITY", "NARTIC", "PCTGRT", "PCTSUPP")]
+object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+```
+
+## Benchmark
+
+### Arguments
+
+```{r}
+#| include = FALSE
+production <- TRUE
+if (production) {
+  R <- 5000L
+  B <- 5000L
+} else {
+  R <- 10L
+  B <- 10L
+}
+```
+
+```{r}
+#| echo = FALSE
+variables <- c(
+  "R",
+  "B"
+)
+values <- c(
+  R,
+  B
+)
+notes <- c(
+  "Number of Monte Carlo replications.",
+  "Number of bootstrap samples."
+)
+tab <- cbind(
+  Variables = variables,
+  Values = values,
+  Notes = notes
+)
+knitr::kable(
+  x = tab
+)
+```
+
+```{r}
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE
+benchmark_file <- root$find_file(
+  ".data-raw",
+  "benchmark.Rds"
+)
+if (!file.exists(benchmark_file)) {
+  benchmark <- microbenchmark(
+    MC = BetaMC(object, R = R),
+    NB = BetaNB(data = df, B = B),
+    times = 10
+  )
+  saveRDS(
+    object = benchmark,
+    file = benchmark_file,
+    compress = "xz"
+  )
+}
+benchmark <- readRDS(
+  file = benchmark_file
+)
+```
+
+```{r}
+#| eval = FALSE
+benchmark <- microbenchmark(
+  MC = BetaMC(object, R = R),
+  NB = BetaNB(data = df, B = B),
+  times = 10
+)
+```
+
+### Summary of Benchmark Results
+
+```{r}
+summary(benchmark, unit = "ms")
+```
+
+### Summary of Benchmark Results Relative to the Faster Method
+
+```{r}
+summary(benchmark, unit = "relative")
+```
+
+## Plot
+
+```{r}
+#| echo = FALSE,
+#| warning = FALSE,
+#| message = FALSE
+boxplot(benchmark)
+```

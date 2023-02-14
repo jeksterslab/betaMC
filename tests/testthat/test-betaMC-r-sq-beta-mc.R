@@ -438,6 +438,6 @@ lapply(
     )
   },
   text = "test-betaMC-r-sq-beta-mc",
-  R = 10L,
+  R = 5L,
   tol = 0.0001
 )

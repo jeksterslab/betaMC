@@ -33,7 +33,8 @@ Using the Monte Carlo Method
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaMC(object)
+std <- BetaMC(object, R = 100)
+# use a large R, for example, R = 20000 for actual research
 diff <- DiffBetaMC(std)
 # Methods -------------------------------------------------------
 print(diff)

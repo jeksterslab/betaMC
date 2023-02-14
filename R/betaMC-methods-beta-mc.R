@@ -16,9 +16,9 @@
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' out <- BetaMC(object, R = 100)
+#' std <- BetaMC(object, R = 100)
 #' # use a large R, for example, R = 20000 for actual research
-#' print(out)
+#' print(std)
 #' @export
 #' @keywords methods
 print.betamc <- function(x,
@@ -66,9 +66,9 @@ print.betamc <- function(x,
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' out <- BetaMC(object, R = 100)
+#' std <- BetaMC(object, R = 100)
 #' # use a large R, for example, R = 20000 for actual research
-#' summary(out)
+#' summary(std)
 #' @export
 #' @keywords methods
 summary.betamc <- function(object,
@@ -111,9 +111,9 @@ summary.betamc <- function(object,
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' out <- BetaMC(object, R = 100)
+#' std <- BetaMC(object, R = 100)
 #' # use a large R, for example, R = 20000 for actual research
-#' vcov(out)
+#' vcov(std)
 #' @export
 #' @keywords methods
 vcov.betamc <- function(object,
@@ -138,9 +138,9 @@ vcov.betamc <- function(object,
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' out <- BetaMC(object, R = 100)
+#' std <- BetaMC(object, R = 100)
 #' # use a large R, for example, R = 20000 for actual research
-#' coef(out)
+#' coef(std)
 #' @export
 #' @keywords methods
 coef.betamc <- function(object,
@@ -166,9 +166,9 @@ coef.betamc <- function(object,
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' out <- BetaMC(object, R = 100)
+#' std <- BetaMC(object, R = 100)
 #' # use a large R, for example, R = 20000 for actual research
-#' confint(out, level = 0.95)
+#' confint(std, level = 0.95)
 #' @export
 #' @keywords methods
 confint.betamc <- function(object,

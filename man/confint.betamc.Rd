@@ -26,9 +26,9 @@ Confidence Intervals for Standardized Regression Slopes
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-out <- BetaMC(object, R = 100)
+std <- BetaMC(object, R = 100)
 # use a large R, for example, R = 20000 for actual research
-confint(out, level = 0.95)
+confint(std, level = 0.95)
 }
 \author{
 Ivan Jacob Agaloos Pesigan

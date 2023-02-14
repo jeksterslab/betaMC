@@ -28,9 +28,9 @@ Summary Method for an Object of Class \code{betamc}
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-out <- BetaMC(object, R = 100)
+std <- BetaMC(object, R = 100)
 # use a large R, for example, R = 20000 for actual research
-summary(out)
+summary(std)
 }
 \author{
 Ivan Jacob Agaloos Pesigan

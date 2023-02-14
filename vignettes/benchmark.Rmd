@@ -1,0 +1,117 @@
+---
+title: "Benchmark: Comparing the Monte Carlo Method with Nonparametric Bootstrapping"
+author: "Ivan Jacob Agaloos Pesigan"
+date: "2023-02-14"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{Benchmark: Comparing the Monte Carlo Method with Nonparametric Bootstrapping}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+
+
+
+
+
+
+We compare the Monte Carlo (MC) method with nonparametric bootstrapping (NB)
+for standardized regression coefficients.
+In this example,
+we use the data set and the model used in
+[betaMC: Example Using the BetaMC Function](example-beta-mc.html).
+
+
+```r
+library(betaMC)
+library(boot)
+library(microbenchmark)
+```
+
+The `BetaMC()` function is used to generate MC confidence intervals.
+The `BetaNB()` function is used to generate NB confidence intervals.
+
+
+```r
+BetaNB <- function(data,
+                   B) {
+  beta <- function(rhocap) {
+    k <- dim(rhocap)[1]
+    return(as.vector(
+      solve(rhocap[2:k, 2:k, drop = FALSE], rhocap[2:k, 1, drop = FALSE])
+    ))
+  }
+  statistic <- function(data,
+                        indices) {
+    return(beta(rhocap = cor(data[indices, ])))
+  }
+  results <- boot(data = data, statistic = statistic, R = B)
+  return(boot.ci(results))
+}
+```
+
+## Data and Model
+
+
+
+
+```r
+df <- betaMC::nas1982
+```
+
+
+```r
+df <- df[, c("QUALITY", "NARTIC", "PCTGRT", "PCTSUPP")]
+object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+```
+
+## Benchmark
+
+### Arguments
+
+
+
+
+|Variables |Values |Notes                               |
+|:---------|:------|:-----------------------------------|
+|R         |5000   |Number of Monte Carlo replications. |
+|B         |5000   |Number of bootstrap samples.        |
+
+
+
+
+```r
+benchmark <- microbenchmark(
+  MC = BetaMC(object, R = R),
+  NB = BetaNB(data = df, B = B),
+  times = 10
+)
+```
+
+### Summary of Benchmark Results
+
+
+```r
+summary(benchmark, unit = "ms")
+#>   expr      min       lq     mean   median       uq       max neval
+#> 1   MC 156.6184 172.8313 183.2276 181.1139 193.3462  220.8804    10
+#> 2   NB 936.2134 963.6515 984.1373 991.9039 999.5828 1017.6154    10
+```
+
+### Summary of Benchmark Results Relative to the Faster Method
+
+
+```r
+summary(benchmark, unit = "relative")
+#>   expr      min       lq     mean   median       uq      max neval
+#> 1   MC 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000    10
+#> 2   NB 5.977673 5.575675 5.371118 5.476687 5.169911 4.607088    10
+```
+
+## Plot
+
+<img src="fig-vignettes-benchmark-unnamed-chunk-16-1.png" width="3300" />

@@ -22,7 +22,8 @@
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaMC(object)
+#' std <- BetaMC(object, R = 100)
+#' # use a large R, for example, R = 20000 for actual research
 #' diff <- DiffBetaMC(std)
 #' # Methods -------------------------------------------------------
 #' print(diff)
@@ -48,13 +49,13 @@ DiffBetaMC <- function(object) {
   dif_betastar <- matrix(
     data = 0.0,
     ncol = p_dif,
-    nrow = dim(object$thetahatstar)[1]
+    nrow = dim(object$thetahatstar_std)[1]
   )
   for (i in seq_len(p_dif)) {
-    dif_betastar[, i] <- object$thetahatstar[
+    dif_betastar[, i] <- object$thetahatstar_std[
       ,
       object$lm_process$dif_idx[1, i]
-    ] - object$thetahatstar[
+    ] - object$thetahatstar_std[
       ,
       object$lm_process$dif_idx[2, i]
     ]

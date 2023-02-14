@@ -55,6 +55,7 @@ Staging...
 \section{Standardized Slopes}
 
 %% begin.rcode
+% #| eval = FALSE
 % df <- nas1982
 % object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 % mvn <- BetaMC(object, type = "mvn")

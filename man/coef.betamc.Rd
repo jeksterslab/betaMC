@@ -19,9 +19,9 @@ Standardized Regression Slopes
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-out <- BetaMC(object, R = 100)
+std <- BetaMC(object, R = 100)
 # use a large R, for example, R = 20000 for actual research
-coef(out)
+coef(std)
 }
 \author{
 Ivan Jacob Agaloos Pesigan

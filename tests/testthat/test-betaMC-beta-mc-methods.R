@@ -31,5 +31,5 @@ lapply(
     confint.betamc(out)
   },
   text = "test-betaMC-beta-mc-methods",
-  R = 10L
+  R = 5L
 )

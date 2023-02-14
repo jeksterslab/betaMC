@@ -6,7 +6,8 @@ lapply(
                  tol,
                  n,
                  k,
-                 beta) {
+                 beta,
+                 R) {
     # This test is based on the assumption
     # that the sampling covariance matrix
     # for all the methods are asymptotically equivalent
@@ -44,15 +45,15 @@ lapply(
     )
     df <- as.data.frame(df)
     object <- lm(y ~ ., data = df)
-    mvn <- BetaMC(object, R = 1000L, type = "mvn")
-    adf <- BetaMC(object, R = 1000L, type = "adf")
-    hc0 <- BetaMC(object, R = 1000L, type = "hc0")
-    hc1 <- BetaMC(object, R = 1000L, type = "hc1")
-    hc2 <- BetaMC(object, R = 1000L, type = "hc2")
-    hc3 <- BetaMC(object, R = 1000L, type = "hc3")
-    hc4 <- BetaMC(object, R = 1000L, type = "hc4")
-    hc4m <- BetaMC(object, R = 1000L, type = "hc4m")
-    hc5 <- BetaMC(object, R = 1000L, type = "hc5")
+    mvn <- BetaMC(object, R = R, type = "mvn")
+    adf <- BetaMC(object, R = R, type = "adf")
+    hc0 <- BetaMC(object, R = R, type = "hc0")
+    hc1 <- BetaMC(object, R = R, type = "hc1")
+    hc2 <- BetaMC(object, R = R, type = "hc2")
+    hc3 <- BetaMC(object, R = R, type = "hc3")
+    hc4 <- BetaMC(object, R = R, type = "hc4")
+    hc4m <- BetaMC(object, R = R, type = "hc4m")
+    hc5 <- BetaMC(object, R = R, type = "hc5")
     testthat::test_that(
       paste(text, "adf"),
       {
@@ -157,12 +158,13 @@ lapply(
         )
       }
     )
-    BetaMC(object, decomposition = "chol")
-    BetaMC(object, decomposition = "svd")
+    BetaMC(object, R = 5L, decomposition = "chol")
+    BetaMC(object, R = 5L, decomposition = "svd")
   },
   text = "test-betaMC-vcov",
   tol = 0.01,
   n = 1000,
   k = 2,
-  beta = 0.5
+  beta = 0.5,
+  R = 500L
 )

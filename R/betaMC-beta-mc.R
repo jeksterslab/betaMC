@@ -29,10 +29,11 @@
 #'     \item{lm}{Object of class `lm`.}
 #'     \item{lm_process}{Pre-processed object of class `lm`.}
 #'     \item{type}{Standard error type.}
-#'     \item{thetahatstar}{Sampling distribution
-#'                         of standardized estimates.}
+#'     \item{thetahatstar}{List of parameters.}
+#'     \item{thetahatstar_std}{Sampling distribution
+#'                         of standardized slopes.}
 #'     \item{vcov}{Sampling distribution
-#'                 of standardized estimates.}
+#'                 of standardized slopes.}
 #'     \item{est}{Vector of standardized slopes.}
 #' }
 #'
@@ -229,116 +230,106 @@ BetaMC <- function(object,
     tol = tol
   )$thetahatstar
   # rerun cases with negative variances
-  # max iterations = counter_max
+  # max iterations = iter
+  foo <- function(x,
+                  iter = 1000L) {
+    bar <- function(x) {
+      beta <- x[1:lm_process$p]
+      sigmasq <- x[lm_process$k]
+      sigmacapx <- .SymofVech(
+        x = x[
+          (lm_process$k + 1):lm_process$q
+        ],
+        k = lm_process$p
+      )
+      sigmaysq <- .SigmaYSq(
+        beta = beta,
+        sigmasq = sigmasq,
+        sigmacapx = sigmacapx
+      )
+      return(
+        list(
+          beta = beta,
+          sigmasq = sigmasq,
+          sigmacapx = sigmacapx,
+          sigmasqx = diag(sigmacapx),
+          sigmaysq = sigmaysq
+        )
+      )
+    }
+    count <- 0
+    params <- bar(x)
+    sigmasq <- params$sigmasq
+    sigmaysq <- params$sigmaysq
+    sigmasqx <- params$sigmasqx
+    while (
+      any(
+        c(
+          sigmasq,
+          sigmaysq,
+          sigmasqx
+        ) <= 0
+      )
+    ) {
+      x <- .Vec(
+        .ThetaHatStar(
+          R = 1,
+          scale = vcov,
+          location = lm_process$theta,
+          decomposition = decomposition,
+          pd = FALSE
+        )$thetahatstar
+      )
+      params <- bar(x)
+      sigmasq <- params$sigmasq
+      sigmaysq <- params$sigmaysq
+      sigmasqx <- params$sigmasqx
+      count <- count + 1
+      if (count >= iter) {
+        return(NA)
+      }
+    }
+    return(params)
+  }
   thetahatstar <- lapply(
     X = as.data.frame(
       t(
         thetahatstar
       )
     ),
+    FUN = foo
+  )
+  thetahatstar <- thetahatstar[!is.na(thetahatstar)]
+  thetahatstar_std <- lapply(
+    X = thetahatstar,
     FUN = function(x) {
-      beta <- x[1:lm_process$p]
-      sigmasq <- x[lm_process$k]
-      sigmacapx <- matrix(
-        data = 0,
-        nrow = lm_process$p,
-        ncol = lm_process$p
-      )
-      sigmacapx[lower.tri(sigmacapx, diag = TRUE)] <- x[
-        (lm_process$k + 1):lm_process$q
-      ]
-      sigmacapx[upper.tri(sigmacapx)] <- t(sigmacapx)[upper.tri(sigmacapx)]
-      sigmasqx <- diag(sigmacapx)
-      counter_max <- 100000
-      count <- 0
-      while (
-        any(
-          c(
-            sigmasq,
-            sigmasqx
-          ) <= 0
-        )
-      ) {
-        x <- .Vec(
-          .ThetaHatStar(
-            R = 1,
-            scale = vcov,
-            location = lm_process$theta,
-            decomposition = decomposition,
-            pd = FALSE
-          )$thetahatstar
-        )
-        beta <- x[1:lm_process$p]
-        sigmasq <- x[lm_process$k]
-        sigmacapx[lower.tri(sigmacapx, diag = TRUE)] <- x[
-          (lm_process$k + 1):lm_process$q
-        ]
-        sigmacapx[upper.tri(sigmacapx)] <- t(sigmacapx)[upper.tri(sigmacapx)]
-        sigmasqx <- diag(sigmacapx)
-        if (count >= counter_max) {
-          return(
-            rep(x = NA, times = lm_process$k)
-          )
-        }
-      }
-      sigmaysq <- .SigmaYSq(
-        beta = beta,
-        sigmasq = sigmasq,
-        sigmacapx = sigmacapx
-      )
-      sigmacap <- matrix(
-        data = 0.0,
-        nrow = lm_process$k,
-        ncol = lm_process$k
-      )
-      sigmacap[1, 1] <- sigmaysq
-      sigmacap[1, 2:lm_process$k] <- sigmacap[2:lm_process$k, 1] <- .SigmaYX(
-        beta = beta,
-        sigmacapx = sigmacapx
-      )
-      sigmacap[2:lm_process$k, 2:lm_process$k] <- sigmacapx
-      betastar <- (
-        (
-          sqrt(
-            sigmasqx
-          ) / sqrt(
-            sigmaysq
-          )
-        ) * beta
-      )
-      rsq <- (
-        1 - (
-          det(sigmacap) / det(sigmacapx)
-        ) / sigmaysq
-      )
       return(
-        c(betastar, rsq)
+        .Vec(
+          (
+            sqrt(
+              x$sigmasqx
+            ) / sqrt(
+              x$sigmaysq
+            )
+          ) * x$beta
+        )
       )
     }
   )
-  thetahatstar <- do.call(
+  thetahatstar_std <- do.call(
     what = "rbind",
-    args = thetahatstar
+    args = thetahatstar_std
   )
-  adj <- (
-    1 - (
-      1 - thetahatstar[, lm_process$k]
-    ) * ((lm_process$n - 1) / (lm_process$n - lm_process$k))
-  )
-  thetahatstar <- cbind(thetahatstar, adj)
-  colnames(thetahatstar) <- c(
-    lm_process$xnames,
-    "rsq",
-    "adj"
-  )
-  rownames(thetahatstar) <- NULL
+  rownames(thetahatstar_std) <- NULL
+  colnames(thetahatstar_std) <- lm_process$xnames
   out <- list(
     call = match.call(),
     lm = object,
     lm_process = lm_process,
     type = type,
     thetahatstar = thetahatstar,
-    vcov = stats::var(thetahatstar),
+    thetahatstar_std = thetahatstar_std,
+    vcov = stats::var(thetahatstar_std),
     est = lm_process$betastar
   )
   class(out) <- c(
