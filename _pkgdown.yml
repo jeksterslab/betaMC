@@ -11,12 +11,12 @@ reference:
 - title: Multiple Correlation
   contents:
   - has_keyword("rsq")
-- title: Differences of Standardized Regression Coefficients
-  contents:
-  - has_keyword("diff")
 - title: Partial Correlation
   contents:
   - has_keyword("pcor")
+- title: Differences of Standardized Regression Coefficients
+  contents:
+  - has_keyword("diff")
 - title: Methods
   contents:
   - has_keyword("methods")
@@ -30,8 +30,8 @@ articles:
   contents:
   - example_beta_mc
   - example_r_sq_beta_mc
-  - example_diff_beta_mc
   - example_p_cor_beta_mc
+  - example_diff_beta_mc
 - title: Benchmark
   navbar: Benchmark
   contents:

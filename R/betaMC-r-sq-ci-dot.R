@@ -1,5 +1,6 @@
 #' Confidence Intervals for
-#' Multiple Correlation
+#' Multiple Correlation Coefficients
+#' (R-Squared and Adjusted R-Squared)
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'

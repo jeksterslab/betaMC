@@ -3,7 +3,8 @@
 \name{confint.rsqbetamc}
 \alias{confint.rsqbetamc}
 \title{Confidence Intervals for
-Multiple Correlation Coefficients}
+Multiple Correlation Coefficients
+(R-Squared and Adjusted R-Squared)}
 \usage{
 \method{confint}{rsqbetamc}(object, parm = NULL, level = 0.95, ...)
 }
@@ -25,6 +26,7 @@ Returns a matrix of confidence intervals.
 \description{
 Confidence Intervals for
 Multiple Correlation Coefficients
+(R-Squared and Adjusted R-Squared)
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)

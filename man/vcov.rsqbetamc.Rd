@@ -3,7 +3,8 @@
 \name{vcov.rsqbetamc}
 \alias{vcov.rsqbetamc}
 \title{Sampling Covariance Matrix of
-Multiple Correlation Coefficients}
+Multiple Correlation Coefficients
+(R-Squared and Adjusted R-Squared)}
 \usage{
 \method{vcov}{rsqbetamc}(object, ...)
 }
@@ -15,11 +16,13 @@ Multiple Correlation Coefficients}
 \value{
 Returns a matrix of the
 variance-covariance matrix
-of multiple correlation coefficients.
+of multiple correlation coefficients
+(R-squared and adjusted R-squared).
 }
 \description{
 Sampling Covariance Matrix of
 Multiple Correlation Coefficients
+(R-Squared and Adjusted R-Squared)
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)

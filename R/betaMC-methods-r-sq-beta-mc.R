@@ -100,12 +100,14 @@ summary.rsqbetamc <- function(object,
 
 #' Sampling Covariance Matrix of
 #' Multiple Correlation Coefficients
+#' (R-Squared and Adjusted R-Squared)
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns a matrix of the
 #'   variance-covariance matrix
-#'   of multiple correlation coefficients.
+#'   of multiple correlation coefficients
+#'   (R-squared and adjusted R-squared).
 #'
 #' @param object Object of class `rsqbetamc`.
 #' @param ... additional arguments.
@@ -126,10 +128,12 @@ vcov.rsqbetamc <- function(object,
 }
 
 #' Multiple Correlation Coefficients
+#' (R-Squared and Adjusted R-Squared)
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns a vector of multiple correlation coefficients.
+#' @return Returns a vector of multiple correlation coefficients
+#' (R-squared and adjusted R-squared)
 #'
 #' @param object Object of class `rsqbetamc`.
 #' @param ... additional arguments.
@@ -151,6 +155,7 @@ coef.rsqbetamc <- function(object,
 
 #' Confidence Intervals for
 #' Multiple Correlation Coefficients
+#' (R-Squared and Adjusted R-Squared)
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'

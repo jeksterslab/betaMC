@@ -2,7 +2,8 @@
 % Please edit documentation in R/betaMC-methods-r-sq-beta-mc.R
 \name{coef.rsqbetamc}
 \alias{coef.rsqbetamc}
-\title{Multiple Correlation Coefficients}
+\title{Multiple Correlation Coefficients
+(R-Squared and Adjusted R-Squared)}
 \usage{
 \method{coef}{rsqbetamc}(object, ...)
 }
@@ -12,10 +13,12 @@
 \item{...}{additional arguments.}
 }
 \value{
-Returns a vector of multiple correlation coefficients.
+Returns a vector of multiple correlation coefficients
+(R-squared and adjusted R-squared)
 }
 \description{
 Multiple Correlation Coefficients
+(R-Squared and Adjusted R-Squared)
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
