@@ -67,8 +67,8 @@ is positive definite using \code{tol}.}
 Tolerance used for \code{pd}.}
 }
 \value{
-Returns an object of class \code{betamc}
-which is a list with the following elements:
+Returns an object
+of class \code{betamc} which is a list with the following elements:
 \describe{
 \item{call}{Function call.}
 \item{lm}{Object of class \code{lm}.}

@@ -22,8 +22,8 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns an object of class `betamc`
-#'   which is a list with the following elements:
+#' @return Returns an object
+#' of class `betamc` which is a list with the following elements:
 #'   \describe{
 #'     \item{call}{Function call.}
 #'     \item{lm}{Object of class `lm`.}

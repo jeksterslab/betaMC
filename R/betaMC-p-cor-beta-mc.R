@@ -4,8 +4,8 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns an object of class `rsqbetamc`
-#'   which is a list with the following elements:
+#' @return Returns an object
+#' of class `pcorbetamc` which is a list with the following elements:
 #'   \describe{
 #'     \item{fit}{The argument `object`.}
 #'     \item{thetahatstar}{Sampling distribution of
@@ -97,37 +97,22 @@ PCorBetaMC <- function(object) {
       drop = FALSE
     ]
   )
-  # names(sr) <- paste0(
-  #  object$lm_process$xnames,
-  #  "_",
-  #  "sr"
-  # )
   names(sr) <- paste0(
-    object$lm_process$xnames,
-    "*"
+    "*",
+    object$lm_process$xnames
   )
   srsq <- sr^2
-  # names(srsq) <- paste0(
-  #  object$lm_process$xnames,
-  #  "_",
-  #  "srsq"
-  # )
   names(srsq) <- paste0(
-    object$lm_process$xnames,
-    "^"
+    "^",
+    object$lm_process$xnames
   )
   prsq <- .PCorSq(
     srsq = sr^2,
     rsq = object$lm_process$summary_lm$r.squared
   )
-  # names(prsq) <- paste0(
-  #  object$lm_process$xnames,
-  #  "_",
-  #  "prsq"
-  # )
   names(prsq) <- paste0(
-    object$lm_process$xnames,
-    "+"
+    "+",
+    object$lm_process$xnames
   )
   colnames(thetahatstar) <- c(
     names(sr),

@@ -4,8 +4,8 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns an object of class `diffbetamc`
-#'   which is a list with the following elements:
+#' @return Returns an object
+#' of class `diffbetamc` which is a list with the following elements:
 #'   \describe{
 #'     \item{fit}{The argument `object`.}
 #'     \item{thetahatstar}{Sampling distribution of

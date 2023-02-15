@@ -15,8 +15,8 @@ that is,
 the output of the \code{BetaMC()} function.}
 }
 \value{
-Returns an object of class \code{rsqbetamc}
-which is a list with the following elements:
+Returns an object
+of class \code{rsqbetamc} which is a list with the following elements:
 \describe{
 \item{fit}{The argument \code{object}.}
 \item{thetahatstar}{Sampling distribution of
