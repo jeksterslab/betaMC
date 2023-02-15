@@ -92,9 +92,9 @@ benchmark <- microbenchmark(
 
 ```r
 summary(benchmark, unit = "ms")
-#>   expr      min       lq     mean   median       uq       max neval
-#> 1   MC 278.3120 290.2758 310.8985 303.8099  324.160  358.6498    10
-#> 2   NB 917.1874 947.0540 991.3077 989.9707 1001.872 1109.2998    10
+#>   expr      min       lq      mean    median        uq       max neval
+#> 1   MC 301.7904 304.9975  339.8266  337.2706  367.6531  394.0003    10
+#> 2   NB 933.2067 942.8669 1032.4396 1055.7756 1075.9652 1129.5061    10
 ```
 
 ### Summary of Benchmark Results Relative to the Faster Method
@@ -102,9 +102,9 @@ summary(benchmark, unit = "ms")
 
 ```r
 summary(benchmark, unit = "relative")
-#>   expr      min     lq     mean   median       uq      max neval
-#> 1   MC 1.000000 1.0000 1.000000 1.000000 1.000000 1.000000    10
-#> 2   NB 3.295537 3.2626 3.188525 3.258521 3.090671 3.092989    10
+#>   expr      min       lq     mean   median       uq      max neval
+#> 1   MC 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000    10
+#> 2   NB 3.092235 3.091393 3.038136 3.130351 2.926578 2.866765    10
 ```
 
 ## Plot
