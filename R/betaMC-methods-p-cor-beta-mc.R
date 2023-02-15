@@ -28,7 +28,7 @@ print.pcorbetamc <- function(x,
                              ...) {
   cat(
     paste0(
-      "Multiple correlation\n",
+      "Semipartial correlation (*)\nSquared semipartial correlation (^)\nSquared partial correlation (+)\n",
       "type = ",
       "\"",
       x$fit$type,
@@ -77,7 +77,7 @@ summary.pcorbetamc <- function(object,
                                ...) {
   cat(
     paste0(
-      "Multiple correlation\n",
+      "Semipartial correlation (*)\nSquared semipartial correlation (^)\nSquared partial correlation (+)\n",
       "type = ",
       "\"",
       object$fit$type,

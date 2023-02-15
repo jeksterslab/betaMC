@@ -97,25 +97,37 @@ PCorBetaMC <- function(object) {
       drop = FALSE
     ]
   )
+  # names(sr) <- paste0(
+  #  object$lm_process$xnames,
+  #  "_",
+  #  "sr"
+  # )
   names(sr) <- paste0(
     object$lm_process$xnames,
-    "_",
-    "sr"
+    "*"
   )
   srsq <- sr^2
+  # names(srsq) <- paste0(
+  #  object$lm_process$xnames,
+  #  "_",
+  #  "srsq"
+  # )
   names(srsq) <- paste0(
     object$lm_process$xnames,
-    "_",
-    "srsq"
+    "^"
   )
   prsq <- .PCorSq(
     srsq = sr^2,
     rsq = object$lm_process$summary_lm$r.squared
   )
+  # names(prsq) <- paste0(
+  #  object$lm_process$xnames,
+  #  "_",
+  #  "prsq"
+  # )
   names(prsq) <- paste0(
     object$lm_process$xnames,
-    "_",
-    "prsq"
+    "+"
   )
   colnames(thetahatstar) <- c(
     names(sr),

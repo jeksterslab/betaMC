@@ -51,12 +51,6 @@
 % set.seed(42)
 %% end.rcode
 
-Staging...
-
-\nocite{Lib-R-Manual-2022}
-
-\printbibliography
-
 \section{Standardized Slopes}
 
 %% begin.rcode
@@ -154,5 +148,9 @@ Staging...
 % confint(adf)
 % confint(hc3)
 %% end.rcode
+
+\nocite{Lib-R-Manual-2022}
+
+\printbibliography
 
 \end{document}
