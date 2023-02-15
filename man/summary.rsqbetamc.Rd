@@ -17,7 +17,7 @@
 }
 \value{
 Returns a matrix of
-multiple correlation
+multiple correlation coefficients
 (R-squared and adjusted R-squared),
 standard errors,
 number of Monte Carlo replications,

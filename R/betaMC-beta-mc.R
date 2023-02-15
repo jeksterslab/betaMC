@@ -247,29 +247,50 @@ BetaMC <- function(object,
         sigmasq = sigmasq,
         sigmacapx = sigmacapx
       )
+      sigmayx <- .SigmaYX(
+        beta = beta,
+        sigmacapx = sigmacapx
+      )
+      sigmacap <- matrix(
+        data = 0.0,
+        nrow = lm_process$k,
+        ncol = lm_process$k
+      )
+      sigmacap[1, 1] <- sigmaysq
+      sigmacap[
+        1,
+        2:lm_process$k
+      ] <- sigmacap[
+        2:lm_process$k,
+        1
+      ] <- sigmayx
+      sigmacap[
+        2:lm_process$k,
+        2:lm_process$k
+      ] <- sigmacapx
+
       return(
         list(
           beta = beta,
           sigmasq = sigmasq,
           sigmacapx = sigmacapx,
-          sigmasqx = diag(sigmacapx),
-          sigmaysq = sigmaysq
+          sigmaysq = sigmaysq,
+          sigmayx = sigmayx,
+          sigmacap = sigmacap
         )
       )
     }
     count <- 0
     params <- bar(x)
-    sigmasq <- params$sigmasq
-    sigmaysq <- params$sigmaysq
-    sigmasqx <- params$sigmasqx
-    while (
-      any(
-        c(
-          sigmasq,
-          sigmaysq,
-          sigmasqx
-        ) <= 0
+    psd <- .TestPositiveDefinite(
+      eigen = eigen(
+        params$sigmacap,
+        symmetric = TRUE,
+        only.values = TRUE
       )
+    )
+    while (
+      !psd
     ) {
       x <- .Vec(
         .ThetaHatStar(
@@ -281,9 +302,13 @@ BetaMC <- function(object,
         )$thetahatstar
       )
       params <- bar(x)
-      sigmasq <- params$sigmasq
-      sigmaysq <- params$sigmaysq
-      sigmasqx <- params$sigmasqx
+      psd <- .TestPositiveDefinite(
+        eigen = eigen(
+          params$sigmacap,
+          symmetric = TRUE,
+          only.values = TRUE
+        )
+      )
       count <- count + 1
       if (count >= iter) {
         return(NA)
@@ -307,7 +332,7 @@ BetaMC <- function(object,
         .Vec(
           (
             sqrt(
-              x$sigmasqx
+              diag(x$sigmacapx)
             ) / sqrt(
               x$sigmaysq
             )

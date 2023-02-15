@@ -1,4 +1,4 @@
-## ---- test-betaMC-diff-beta-mc
+## ---- test-betaMC-p-cor-beta-mc
 lapply(
   X = 1,
   FUN = function(i,
@@ -17,15 +17,15 @@ lapply(
     }
     df <- nas1982
     object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-    mvn <- DiffBetaMC(BetaMC(object, type = "mvn", R = R))
-    adf <- DiffBetaMC(BetaMC(object, type = "adf", R = R))
-    hc0 <- DiffBetaMC(BetaMC(object, type = "hc0", R = R))
-    hc1 <- DiffBetaMC(BetaMC(object, type = "hc1", R = R))
-    hc2 <- DiffBetaMC(BetaMC(object, type = "hc2", R = R))
-    hc3 <- DiffBetaMC(BetaMC(object, type = "hc3", R = R))
-    hc4 <- DiffBetaMC(BetaMC(object, type = "hc4", R = R))
-    hc4m <- DiffBetaMC(BetaMC(object, type = "hc4m", R = R))
-    hc5 <- DiffBetaMC(BetaMC(object, type = "hc5", R = R))
+    mvn <- PCorBetaMC(BetaMC(object, type = "mvn", R = R))
+    adf <- PCorBetaMC(BetaMC(object, type = "adf", R = R))
+    hc0 <- PCorBetaMC(BetaMC(object, type = "hc0", R = R))
+    hc1 <- PCorBetaMC(BetaMC(object, type = "hc1", R = R))
+    hc2 <- PCorBetaMC(BetaMC(object, type = "hc2", R = R))
+    hc3 <- PCorBetaMC(BetaMC(object, type = "hc3", R = R))
+    hc4 <- PCorBetaMC(BetaMC(object, type = "hc4", R = R))
+    hc4m <- PCorBetaMC(BetaMC(object, type = "hc4m", R = R))
+    hc5 <- PCorBetaMC(BetaMC(object, type = "hc5", R = R))
     testthat::test_that(
       paste(text, "mvn", "multiple regression"),
       {
@@ -33,9 +33,15 @@ lapply(
           all(
             abs(
               c(
-                0.4951 - 0.3915,
-                0.4951 - 0.2632,
-                0.3915 - 0.2632
+                .4312,
+                .3430,
+                .2385,
+                .1859,
+                .1177,
+                .0569,
+                .4874,
+                .3757,
+                .2254
               ) - coef(mvn)
             ) <= tol
           )
@@ -56,9 +62,15 @@ lapply(
           all(
             abs(
               c(
-                0.4951 - 0.3915,
-                0.4951 - 0.2632,
-                0.3915 - 0.2632
+                .4312,
+                .3430,
+                .2385,
+                .1859,
+                .1177,
+                .0569,
+                .4874,
+                .3757,
+                .2254
               ) - coef(adf)
             ) <= tol
           )
@@ -79,9 +91,15 @@ lapply(
           all(
             abs(
               c(
-                0.4951 - 0.3915,
-                0.4951 - 0.2632,
-                0.3915 - 0.2632
+                .4312,
+                .3430,
+                .2385,
+                .1859,
+                .1177,
+                .0569,
+                .4874,
+                .3757,
+                .2254
               ) - coef(hc0)
             ) <= tol
           )
@@ -102,9 +120,15 @@ lapply(
           all(
             abs(
               c(
-                0.4951 - 0.3915,
-                0.4951 - 0.2632,
-                0.3915 - 0.2632
+                .4312,
+                .3430,
+                .2385,
+                .1859,
+                .1177,
+                .0569,
+                .4874,
+                .3757,
+                .2254
               ) - coef(hc1)
             ) <= tol
           )
@@ -125,9 +149,15 @@ lapply(
           all(
             abs(
               c(
-                0.4951 - 0.3915,
-                0.4951 - 0.2632,
-                0.3915 - 0.2632
+                .4312,
+                .3430,
+                .2385,
+                .1859,
+                .1177,
+                .0569,
+                .4874,
+                .3757,
+                .2254
               ) - coef(hc2)
             ) <= tol
           )
@@ -148,9 +178,15 @@ lapply(
           all(
             abs(
               c(
-                0.4951 - 0.3915,
-                0.4951 - 0.2632,
-                0.3915 - 0.2632
+                .4312,
+                .3430,
+                .2385,
+                .1859,
+                .1177,
+                .0569,
+                .4874,
+                .3757,
+                .2254
               ) - coef(hc3)
             ) <= tol
           )
@@ -171,9 +207,15 @@ lapply(
           all(
             abs(
               c(
-                0.4951 - 0.3915,
-                0.4951 - 0.2632,
-                0.3915 - 0.2632
+                .4312,
+                .3430,
+                .2385,
+                .1859,
+                .1177,
+                .0569,
+                .4874,
+                .3757,
+                .2254
               ) - coef(hc4)
             ) <= tol
           )
@@ -194,9 +236,15 @@ lapply(
           all(
             abs(
               c(
-                0.4951 - 0.3915,
-                0.4951 - 0.2632,
-                0.3915 - 0.2632
+                .4312,
+                .3430,
+                .2385,
+                .1859,
+                .1177,
+                .0569,
+                .4874,
+                .3757,
+                .2254
               ) - coef(hc4m)
             ) <= tol
           )
@@ -217,9 +265,15 @@ lapply(
           all(
             abs(
               c(
-                0.4951 - 0.3915,
-                0.4951 - 0.2632,
-                0.3915 - 0.2632
+                .4312,
+                .3430,
+                .2385,
+                .1859,
+                .1177,
+                .0569,
+                .4874,
+                .3757,
+                .2254
               ) - coef(hc5)
             ) <= tol
           )
@@ -238,7 +292,7 @@ lapply(
       paste(text, "mvn", "simple regression"),
       {
         testthat::expect_error(
-          DiffBetaMC(BetaMC(object, type = "mvn"))
+          PCorBetaMC(BetaMC(object, type = "mvn"))
         )
       }
     )
@@ -246,7 +300,7 @@ lapply(
       paste(text, "adf", "simple regression"),
       {
         testthat::expect_error(
-          DiffBetaMC(BetaMC(object, type = "adf"))
+          PCorBetaMC(BetaMC(object, type = "adf"))
         )
       }
     )
@@ -254,7 +308,7 @@ lapply(
       paste(text, "hc0", "simple regression"),
       {
         testthat::expect_error(
-          DiffBetaMC(BetaMC(object, type = "hc0"))
+          PCorBetaMC(BetaMC(object, type = "hc0"))
         )
       }
     )
@@ -262,7 +316,7 @@ lapply(
       paste(text, "hc1", "simple regression"),
       {
         testthat::expect_error(
-          DiffBetaMC(BetaMC(object, type = "hc1"))
+          PCorBetaMC(BetaMC(object, type = "hc1"))
         )
       }
     )
@@ -270,7 +324,7 @@ lapply(
       paste(text, "hc2", "simple regression"),
       {
         testthat::expect_error(
-          DiffBetaMC(BetaMC(object, type = "hc2"))
+          PCorBetaMC(BetaMC(object, type = "hc2"))
         )
       }
     )
@@ -278,7 +332,7 @@ lapply(
       paste(text, "hc3", "simple regression"),
       {
         testthat::expect_error(
-          DiffBetaMC(BetaMC(object, type = "hc3"))
+          PCorBetaMC(BetaMC(object, type = "hc3"))
         )
       }
     )
@@ -286,7 +340,7 @@ lapply(
       paste(text, "hc4", "simple regression"),
       {
         testthat::expect_error(
-          DiffBetaMC(BetaMC(object, type = "hc4"))
+          PCorBetaMC(BetaMC(object, type = "hc4"))
         )
       }
     )
@@ -294,7 +348,7 @@ lapply(
       paste(text, "hc4m", "simple regression"),
       {
         testthat::expect_error(
-          DiffBetaMC(BetaMC(object, type = "hc4m"))
+          PCorBetaMC(BetaMC(object, type = "hc4m"))
         )
       }
     )
@@ -302,12 +356,12 @@ lapply(
       paste(text, "hc5", "simple regression"),
       {
         testthat::expect_error(
-          DiffBetaMC(BetaMC(object, type = "hc5"))
+          PCorBetaMC(BetaMC(object, type = "hc5"))
         )
       }
     )
   },
-  text = "test-betaMC-diff-beta-mc",
+  text = "test-betaMC-p-cor-beta-mc",
   R = 5L,
   tol = 0.0001
 )

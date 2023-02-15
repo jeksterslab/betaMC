@@ -72,5 +72,5 @@ lapply(
     confint.diffbetamc(hc5)
   },
   text = "test-betaMC-diff-beta-mc-methods",
-  R = 10L
+  R = 5L
 )

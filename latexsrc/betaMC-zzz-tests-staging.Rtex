@@ -46,6 +46,11 @@
 
 \maketitle
 
+%% begin.rcode
+% #| echo = FALSE
+% set.seed(42)
+%% end.rcode
+
 Staging...
 
 \nocite{Lib-R-Manual-2022}
@@ -111,6 +116,31 @@ Staging...
 % mvn <- DiffBetaMC(std_mvn)
 % adf <- DiffBetaMC(std_adf)
 % hc3 <- DiffBetaMC(std_hc3)
+% summary(mvn)
+% summary(adf)
+% summary(hc3)
+% coef(mvn)
+% coef(adf)
+% coef(hc3)
+% vcov(mvn)
+% vcov(adf)
+% vcov(hc3)
+% confint(mvn)
+% confint(adf)
+% confint(hc3)
+%% end.rcode
+
+\section{Partial Correlations}
+
+%% begin.rcode
+% df <- nas1982
+% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+% std_mvn <- BetaMC(object, type = "mvn")
+% std_adf <- BetaMC(object, type = "adf")
+% std_hc3 <- BetaMC(object, type = "hc3")
+% mvn <- PCorBetaMC(std_mvn)
+% adf <- PCorBetaMC(std_adf)
+% hc3 <- PCorBetaMC(std_hc3)
 % summary(mvn)
 % summary(adf)
 % summary(hc3)

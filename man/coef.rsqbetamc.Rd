@@ -2,7 +2,7 @@
 % Please edit documentation in R/betaMC-methods-r-sq-beta-mc.R
 \name{coef.rsqbetamc}
 \alias{coef.rsqbetamc}
-\title{Differences of Standardized Regression Slopes}
+\title{Multiple Correlation Coefficients}
 \usage{
 \method{coef}{rsqbetamc}(object, ...)
 }
@@ -12,10 +12,10 @@
 \item{...}{additional arguments.}
 }
 \value{
-Returns a vector of multiple correlation.
+Returns a vector of multiple correlation coefficients.
 }
 \description{
-Differences of Standardized Regression Slopes
+Multiple Correlation Coefficients
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)

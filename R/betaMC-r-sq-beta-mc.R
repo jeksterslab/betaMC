@@ -48,29 +48,9 @@ RSqBetaMC <- function(object) {
   rsq <- lapply(
     X = object$thetahatstar,
     FUN = function(x) {
-      sigmacap <- matrix(
-        data = 0.0,
-        nrow = object$lm_process$k,
-        ncol = object$lm_process$k
-      )
-      sigmacap[1, 1] <- x$sigmaysq
-      sigmacap[
-        1,
-        2:object$lm_process$k
-      ] <- sigmacap[
-        2:object$lm_process$k,
-        1
-      ] <- .SigmaYX(
-        beta = x$beta,
-        sigmacapx = x$sigmacapx
-      )
-      sigmacap[
-        2:object$lm_process$k,
-        2:object$lm_process$k
-      ] <- x$sigmacapx
       return(
         .RSqofSigma(
-          sigmacap = sigmacap,
+          sigmacap = x$sigmacap,
           k = object$lm_process$k
         )
       )

@@ -16,6 +16,22 @@ lapply(
     }
     df <- nas1982
     object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+    ############################################################
+    # coverage #################################################
+    ############################################################
+    lm_process <- .ProcessLM(object)
+    .JacobianVechSigmaWRTTheta(
+      beta = lm_process$beta,
+      sigmacapx = lm_process$sigmacap[
+        2:lm_process$k,
+        2:lm_process$k,
+        drop = TRUE
+      ],
+      q = lm_process$q,
+      p = lm_process$p,
+      rsq = summary(object)$r.squared
+    )
+    ############################################################
     mvn <- RSqBetaMC(BetaMC(object, type = "mvn", R = R))
     print.rsqbetamc(mvn)
     summary.rsqbetamc(mvn)
@@ -72,5 +88,5 @@ lapply(
     confint.rsqbetamc(hc5)
   },
   text = "test-betaMC-r-sq-beta-mc-methods",
-  R = 10L
+  R = 5L
 )

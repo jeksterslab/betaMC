@@ -132,6 +132,7 @@ Advantages of Monte Carlo confidence intervals for indirect effects.
 \seealso{
 Other Beta Monte Carlo Functions: 
 \code{\link{DiffBetaMC}()},
+\code{\link{PCorBetaMC}()},
 \code{\link{RSqBetaMC}()}
 }
 \author{

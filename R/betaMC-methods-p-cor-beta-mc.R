@@ -1,16 +1,15 @@
-#' Print Method for an Object of Class `rsqbetamc`
+#' Print Method for an Object of Class `pcorbetamc`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns a matrix of
-#'   multiple correlation coefficients
-#'   (R-squared and adjusted R-squared),
+#'   partial and semipartial correlation coefficients,
 #'   standard errors,
 #'   number of Monte Carlo replications,
 #'   and
 #'   confidence intervals.
 #'
-#' @param x Object of class `rsqbetamc`.
+#' @param x Object of class `pcorbetamc`.
 #' @param ... additional arguments.
 #' @param alpha Significance level.
 #' @param digits Digits to print.
@@ -19,14 +18,14 @@
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaMC(object, R = 100)
 #' # use a large R, for example, R = 20000 for actual research
-#' rsq <- RSqBetaMC(std)
-#' print(rsq)
+#' pcor <- PCorBetaMC(std)
+#' print(pcor)
 #' @export
 #' @keywords methods
-print.rsqbetamc <- function(x,
-                            alpha = c(0.05, 0.01, 0.001),
-                            digits = 4,
-                            ...) {
+print.pcorbetamc <- function(x,
+                             alpha = c(0.05, 0.01, 0.001),
+                             digits = 4,
+                             ...) {
   cat(
     paste0(
       "Multiple correlation\n",
@@ -39,7 +38,7 @@ print.rsqbetamc <- function(x,
   )
   base::print(
     round(
-      .RSqCI(
+      .PCorCI(
         object = x,
         alpha = alpha
       ),
@@ -48,19 +47,18 @@ print.rsqbetamc <- function(x,
   )
 }
 
-#' Summary Method for an Object of Class `rsqbetamc`
+#' Summary Method for an Object of Class `pcorbetamc`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns a matrix of
-#'   multiple correlation coefficients
-#'   (R-squared and adjusted R-squared),
+#'   partial and semipartial correlation coefficients,
 #'   standard errors,
 #'   number of Monte Carlo replications,
 #'   and
 #'   confidence intervals.
 #'
-#' @param object Object of class `rsqbetamc`.
+#' @param object Object of class `pcorbetamc`.
 #' @param ... additional arguments.
 #' @param alpha Significance level.
 #' @param digits Digits to print.
@@ -69,14 +67,14 @@ print.rsqbetamc <- function(x,
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaMC(object, R = 100)
 #' # use a large R, for example, R = 20000 for actual research
-#' rsq <- RSqBetaMC(std)
-#' summary(rsq)
+#' pcor <- PCorBetaMC(std)
+#' summary(pcor)
 #' @export
 #' @keywords methods
-summary.rsqbetamc <- function(object,
-                              alpha = c(0.05, 0.01, 0.001),
-                              digits = 4,
-                              ...) {
+summary.pcorbetamc <- function(object,
+                               alpha = c(0.05, 0.01, 0.001),
+                               digits = 4,
+                               ...) {
   cat(
     paste0(
       "Multiple correlation\n",
@@ -89,7 +87,7 @@ summary.rsqbetamc <- function(object,
   )
   return(
     round(
-      .RSqCI(
+      .PCorCI(
         object = object,
         alpha = alpha
       ),
@@ -99,64 +97,64 @@ summary.rsqbetamc <- function(object,
 }
 
 #' Sampling Covariance Matrix of
-#' Multiple Correlation Coefficients
+#' Partial and Semipartial Correlation Coefficients
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns a matrix of the
 #'   variance-covariance matrix
-#'   of multiple correlation coefficients.
+#'   of partial and semipartial correlation coefficients.
 #'
-#' @param object Object of class `rsqbetamc`.
+#' @param object Object of class `pcorbetamc`.
 #' @param ... additional arguments.
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaMC(object, R = 100)
 #' # use a large R, for example, R = 20000 for actual research
-#' rsq <- RSqBetaMC(std)
-#' vcov(rsq)
+#' pcor <- PCorBetaMC(std)
+#' vcov(pcor)
 #' @export
 #' @keywords methods
-vcov.rsqbetamc <- function(object,
-                           ...) {
+vcov.pcorbetamc <- function(object,
+                            ...) {
   return(
     object$vcov
   )
 }
 
-#' Multiple Correlation Coefficients
+#' Partial and Semipartial Correlation Coefficients
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns a vector of multiple correlation coefficients.
+#' @return Returns a vector of partial and semipartial correlation coefficients
 #'
-#' @param object Object of class `rsqbetamc`.
+#' @param object Object of class `pcorbetamc`.
 #' @param ... additional arguments.
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaMC(object, R = 100)
 #' # use a large R, for example, R = 20000 for actual research
-#' rsq <- RSqBetaMC(std)
-#' coef(rsq)
+#' pcor <- PCorBetaMC(std)
+#' coef(pcor)
 #' @export
 #' @keywords methods
-coef.rsqbetamc <- function(object,
-                           ...) {
+coef.pcorbetamc <- function(object,
+                            ...) {
   return(
     object$est
   )
 }
 
 #' Confidence Intervals for
-#' Multiple Correlation Coefficients
+#' Partial and Semipartial Correlation Coefficients
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns a matrix of confidence intervals.
 #'
-#' @param object Object of class `rsqbetamc`.
+#' @param object Object of class `pcorbetamc`.
 #' @param ... additional arguments.
 #' @param parm a specification of which parameters
 #'   are to be given confidence intervals,
@@ -168,21 +166,21 @@ coef.rsqbetamc <- function(object,
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaMC(object, R = 100)
 #' # use a large R, for example, R = 20000 for actual research
-#' rsq <- RSqBetaMC(std)
-#' confint(rsq, level = 0.95)
+#' pcor <- PCorBetaMC(std)
+#' confint(pcor, level = 0.95)
 #' @export
 #' @keywords methods
-confint.rsqbetamc <- function(object,
-                              parm = NULL,
-                              level = 0.95,
-                              ...) {
+confint.pcorbetamc <- function(object,
+                               parm = NULL,
+                               level = 0.95,
+                               ...) {
   if (is.null(parm)) {
     parm <- seq_len(
       length(object$est)
     )
   }
   return(
-    .RSqCI(
+    .PCorCI(
       object = object,
       alpha = 1 - level[1]
     )[parm, 4:5]

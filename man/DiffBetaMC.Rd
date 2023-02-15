@@ -46,6 +46,7 @@ confint(diff, level = 0.95)
 \seealso{
 Other Beta Monte Carlo Functions: 
 \code{\link{BetaMC}()},
+\code{\link{PCorBetaMC}()},
 \code{\link{RSqBetaMC}()}
 }
 \author{
