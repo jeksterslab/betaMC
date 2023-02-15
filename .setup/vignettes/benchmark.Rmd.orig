@@ -60,20 +60,15 @@ The `BetaMC()` function is used to generate MC confidence intervals.
 The `BetaNB()` function is used to generate NB confidence intervals.
 
 ```{r}
-BetaNB <- function(data,
-                   B) {
-  beta <- function(rhocap) {
-    k <- dim(rhocap)[1]
-    return(as.vector(
-      solve(rhocap[2:k, 2:k, drop = FALSE], rhocap[2:k, 1, drop = FALSE])
-    ))
+BetaNB <- function(data, B) {
+  beta <- function(x) {
+    k <- dim(x)[1]
+    return(as.vector(solve(x[2:k, 2:k, drop = FALSE], x[2:k, 1, drop = FALSE])))
   }
-  statistic <- function(data,
-                        indices) {
-    return(beta(rhocap = cor(data[indices, ])))
+  statistic <- function(data, indices) {
+    return(beta(x = cor(data[indices, ])))
   }
-  results <- boot(data = data, statistic = statistic, R = B)
-  return(boot.ci(results))
+  return(boot.ci(boot(data = data, statistic = statistic, R = B)))
 }
 ```
 

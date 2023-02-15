@@ -2,7 +2,7 @@
 
 Latest development version.
 
-* Added the `DiffBetaMC()` and the `RSqBetaMC()` functions.
+* Added the `DiffBetaMC()`, the `RSqBetaMC()`, and the `PCorBetaMC()` functions.
 
 # betaMC 1.0.0
 

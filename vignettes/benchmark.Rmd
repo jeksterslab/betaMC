@@ -37,20 +37,15 @@ The `BetaNB()` function is used to generate NB confidence intervals.
 
 
 ```r
-BetaNB <- function(data,
-                   B) {
-  beta <- function(rhocap) {
-    k <- dim(rhocap)[1]
-    return(as.vector(
-      solve(rhocap[2:k, 2:k, drop = FALSE], rhocap[2:k, 1, drop = FALSE])
-    ))
+BetaNB <- function(data, B) {
+  beta <- function(x) {
+    k <- dim(x)[1]
+    return(as.vector(solve(x[2:k, 2:k, drop = FALSE], x[2:k, 1, drop = FALSE])))
   }
-  statistic <- function(data,
-                        indices) {
-    return(beta(rhocap = cor(data[indices, ])))
+  statistic <- function(data, indices) {
+    return(beta(x = cor(data[indices, ])))
   }
-  results <- boot(data = data, statistic = statistic, R = B)
-  return(boot.ci(results))
+  return(boot.ci(boot(data = data, statistic = statistic, R = B)))
 }
 ```
 
@@ -97,9 +92,9 @@ benchmark <- microbenchmark(
 
 ```r
 summary(benchmark, unit = "ms")
-#>   expr      min       lq     mean   median       uq      max neval
-#> 1   MC 258.2239 265.1673 282.6775 276.2248 287.1598  347.473    10
-#> 2   NB 839.8698 862.8717 924.4031 943.3838 962.8696 1006.593    10
+#>   expr      min       lq     mean   median       uq       max neval
+#> 1   MC 278.3120 290.2758 310.8985 303.8099  324.160  358.6498    10
+#> 2   NB 917.1874 947.0540 991.3077 989.9707 1001.872 1109.2998    10
 ```
 
 ### Summary of Benchmark Results Relative to the Faster Method
@@ -107,9 +102,9 @@ summary(benchmark, unit = "ms")
 
 ```r
 summary(benchmark, unit = "relative")
-#>   expr      min       lq     mean   median       uq      max neval
-#> 1   MC 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000    10
-#> 2   NB 3.252486 3.254065 3.270169 3.415275 3.353079 2.896895    10
+#>   expr      min     lq     mean   median       uq      max neval
+#> 1   MC 1.000000 1.0000 1.000000 1.000000 1.000000 1.000000    10
+#> 2   NB 3.295537 3.2626 3.188525 3.258521 3.090671 3.092989    10
 ```
 
 ## Plot
