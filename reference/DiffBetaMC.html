@@ -156,29 +156,29 @@ where \(\alpha\) is the significance level.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Differences of standardized regression slopes</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> type = "hc3"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   est     se   R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTGRT  0.1037 0.1352 100 -0.2816 -0.2769 -0.1553 0.3483 0.4035 0.4277</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTSUPP 0.2319 0.1320 100 -0.1990 -0.1580 -0.0351 0.4674 0.5018 0.5265</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT-PCTSUPP 0.1282 0.1257 100 -0.1439 -0.1300 -0.0964 0.3585 0.3961 0.4178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTGRT  0.1037 0.1526 100 -0.1976 -0.1948 -0.1552 0.3743 0.4624 0.4874</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTSUPP 0.2319 0.1192 100 -0.1050 -0.0647  0.0073 0.4357 0.4858 0.4930</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT-PCTSUPP 0.1282 0.1209 100 -0.1691 -0.1462 -0.0934 0.3786 0.4515 0.4612</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">diff</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Differences of standardized regression slopes</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> type = "hc3"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   est     se   R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTGRT  0.1037 0.1352 100 -0.2816 -0.2769 -0.1553 0.3483 0.4035 0.4277</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTSUPP 0.2319 0.1320 100 -0.1990 -0.1580 -0.0351 0.4674 0.5018 0.5265</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT-PCTSUPP 0.1282 0.1257 100 -0.1439 -0.1300 -0.0964 0.3585 0.3961 0.4178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTGRT  0.1037 0.1526 100 -0.1976 -0.1948 -0.1552 0.3743 0.4624 0.4874</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTSUPP 0.2319 0.1192 100 -0.1050 -0.0647  0.0073 0.4357 0.4858 0.4930</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT-PCTSUPP 0.1282 0.1209 100 -0.1691 -0.1462 -0.0934 0.3786 0.4515 0.4612</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">diff</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      0.1036564      0.2318974      0.1282410 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">diff</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTGRT    0.018271400    0.009953679   -0.008317720</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTSUPP   0.009953679    0.017427812    0.007474132</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT-PCTSUPP  -0.008317720    0.007474132    0.015791852</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTGRT     0.02328858    0.011435072   -0.011853504</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTSUPP    0.01143507    0.014208154    0.002773082</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT-PCTSUPP   -0.01185350    0.002773082    0.014626586</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">diff</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       2.5%     97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTGRT  -0.15534120 0.3482961</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTSUPP -0.03508485 0.4674325</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT-PCTSUPP -0.09642408 0.3585347</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                        2.5%     97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTGRT  -0.155249408 0.3743249</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTSUPP  0.007266663 0.4357292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT-PCTSUPP -0.093396881 0.3786455</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

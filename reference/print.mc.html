@@ -101,36 +101,38 @@ and model-implied covariance matrix.</p>
 <span class="r-in"><span><span class="va">mc</span> <span class="op">&lt;-</span> <span class="fu"><a href="MC.html">MC</a></span><span class="op">(</span><span class="va">object</span>, R <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># use a large R, for example, R = 20000 for actual research</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mc</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MC(object = object, R = 100)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> The first set of simulated parameter estimates</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> and model-implied covariance matrix.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $coef</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1019835 0.1546366 0.1111759</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.08920412 0.21846789 0.08999652</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sigmasq</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20.77445</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24.97136</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $vechsigmacapx</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2566.97119  489.54498  607.69890  270.99066   56.25547  411.99654</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2067.7191  470.2760  290.4451  345.6013  103.2336  401.1376</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sigmacapx</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]      [,2]      [,3]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 2566.9712 489.54498 607.69890</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]  489.5450 270.99066  56.25547</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]  607.6989  56.25547 411.99654</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]     [,2]     [,3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 2067.7191 470.2760 290.4451</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]  470.2760 345.6013 103.2336</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]  290.4451 103.2336 401.1376</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sigmaysq</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 90.20012</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 88.22142</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sigmayx</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 405.05163  98.08482 116.47847</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 313.32832 126.74401  84.56311</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sigmacap</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]      [,2]      [,3]      [,4]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  90.20012  405.0516  98.08482 116.47847</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] 405.05163 2566.9712 489.54498 607.69890</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]  98.08482  489.5450 270.99066  56.25547</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4,] 116.47847  607.6989  56.25547 411.99654</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]      [,2]     [,3]      [,4]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  88.22142  313.3283 126.7440  84.56311</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] 313.32832 2067.7191 470.2760 290.44509</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] 126.74401  470.2760 345.6013 103.23357</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4,]  84.56311  290.4451 103.2336 401.13762</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $pd</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>

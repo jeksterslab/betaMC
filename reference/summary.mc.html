@@ -136,47 +136,48 @@ function.</p></dd>
 <span class="r-in"><span><span class="co"># (use a large R, for example, R = 20000 for actual research)</span></span></span>
 <span class="r-in"><span><span class="va">mc</span> <span class="op">&lt;-</span> <span class="fu"><a href="MC.html">MC</a></span><span class="op">(</span><span class="va">object</span>, R <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mc</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MC(object = object, R = 100)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mean</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        b1        b2        b3   sigmasq sigmax1x1 sigmax2x1 sigmax3x1 sigmax2x2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    0.0844    0.2146    0.1166   21.4439 3360.3628  469.8566  512.1759  340.1588 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    0.0843    0.2151    0.1165   21.0859 3384.1317  451.5810  497.1771  327.9081 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sigmax3x2 sigmax3x3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  150.9590  541.5641 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  147.8969  563.5630 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $var</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                b1      b2      b3    sigmasq   sigmax1x1  sigmax2x1   sigmax3x1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b1         0.0002 -0.0004 -0.0001    -0.0195     -3.9806    -0.1107      0.1753</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b2        -0.0004  0.0024 -0.0005     0.0530      1.1264     0.3037     -2.1434</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b3        -0.0001 -0.0005  0.0015    -0.0544      5.7680     0.2721      2.8368</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigmasq   -0.0195  0.0530 -0.0544    17.6739  -1060.3415  -102.1306   -308.6317</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax1x1 -3.9806  1.1264  5.7680 -1060.3415 999767.0030 48214.0471 113505.8242</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax2x1 -0.1107  0.3037  0.2721  -102.1306  48214.0471 32819.5995  16196.7280</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax3x1  0.1753 -2.1434  2.8368  -308.6317 113505.8242 16196.7280  42433.3282</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax2x2  0.2454 -1.2861  0.9099   -54.8785   2752.8861  4890.5884   5166.8797</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax3x2 -0.2655  0.3621  0.5235    -6.9680   6676.4153  6365.9884   4771.9282</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax3x3  0.5117 -0.4869 -0.9445    71.2407 -19282.8748  1054.4771   -137.7314</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           sigmax2x2 sigmax3x2   sigmax3x3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b1           0.2454   -0.2655      0.5117</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b2          -1.2861    0.3621     -0.4869</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b3           0.9099    0.5235     -0.9445</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigmasq    -54.8785   -6.9680     71.2407</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax1x1 2752.8861 6676.4153 -19282.8748</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax2x1 4890.5884 6365.9884   1054.4771</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax3x1 5166.8797 4771.9282   -137.7314</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax2x2 6997.3249 1933.0834   1083.7587</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax3x2 1933.0834 3255.1501   -421.9237</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax3x3 1083.7587 -421.9237   6865.1461</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                b1      b2      b3   sigmasq   sigmax1x1  sigmax2x1   sigmax3x1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b1         0.0002 -0.0003 -0.0002   -0.0159     -4.9249    -0.1930      0.0247</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b2        -0.0003  0.0026 -0.0005    0.0364     12.2814     2.1848      0.7934</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b3        -0.0002 -0.0005  0.0015   -0.0503      2.9937    -0.1862      1.1702</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigmasq   -0.0159  0.0364 -0.0503   13.7910   -397.5069  -154.5304   -205.0297</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax1x1 -4.9249 12.2814  2.9937 -397.5069 821680.6828 59807.2956 106678.1933</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax2x1 -0.1930  2.1848 -0.1862 -154.5304  59807.2956 31430.3554  15471.7352</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax3x1  0.0247  0.7934  1.1702 -205.0297 106678.1933 15471.7352  43773.0487</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax2x2  0.1321 -0.6297  0.5288    0.1734   1598.0106  -424.0564   2987.4428</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax3x2 -0.1447  0.9532  0.2018  -35.6075  10487.2208  5981.9022   6228.7166</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax3x3 -0.0013  0.3933 -0.7728   26.2955   8526.5381   313.0198   4282.9155</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            sigmax2x2  sigmax3x2  sigmax3x3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b1            0.1321    -0.1447    -0.0013</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b2           -0.6297     0.9532     0.3933</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b3            0.5288     0.2018    -0.7728</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigmasq       0.1734   -35.6075    26.2955</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax1x1  1598.0106 10487.2208  8526.5381</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax2x1  -424.0564  5981.9022   313.0198</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax3x1  2987.4428  6228.7166  4282.9155</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax2x2  5067.1345   487.0955 -1453.7511</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax3x2   487.0955  3356.5716   710.5083</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigmax3x3 -1453.7511   710.5083  7891.9193</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $bias</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        b1        b2        b3   sigmasq sigmax1x1 sigmax2x1 sigmax3x1 sigmax2x2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    0.0002   -0.0014    0.0040    0.1991 -146.8062   -1.3492    1.6329    6.9293 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    0.0001   -0.0009    0.0039   -0.1589 -123.0373  -19.6248  -13.3659   -5.3214 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sigmax3x2 sigmax3x3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    0.0469  -12.8746 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   -3.0152    9.1244 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $rmse</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        b1        b2        b3   sigmasq sigmax1x1 sigmax2x1 sigmax3x1 sigmax2x2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    0.0148    0.0485    0.0384    4.1877 1005.6448  180.2588  204.9675   83.5187 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    0.0140    0.0509    0.0388    3.6984  910.2758  177.4857  208.6000   71.0266 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sigmax3x2 sigmax3x3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   56.7680   83.4401 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   57.7243   88.8609 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $location</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        b1        b2        b3   sigmasq sigmax1x1 sigmax2x1 sigmax3x1 sigmax2x2 </span>
