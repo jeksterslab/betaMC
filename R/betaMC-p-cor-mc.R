@@ -76,11 +76,7 @@ PCorMC <- function(object) {
   est <- .PCorSq(
     srsq = .SPCor(
       betastar = object$lm_process$betastar,
-      sigmacapx = object$lm_process$sigmacap[
-        2:object$lm_process$k,
-        2:object$lm_process$k,
-        drop = FALSE
-      ]
+      sigmacapx = object$lm_process$sigmacapx
     )^2,
     rsq = object$lm_process$summary_lm$r.squared
   )

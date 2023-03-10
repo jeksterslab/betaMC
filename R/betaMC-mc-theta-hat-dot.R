@@ -26,7 +26,7 @@
   if (sigmasq < 0) {
     return(
       list(
-        beta = beta,
+        coef = beta,
         sigmasq = sigmasq,
         vechsigmacapx = NA,
         sigmacapx = NA,

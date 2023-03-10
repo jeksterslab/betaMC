@@ -73,11 +73,7 @@ SCorMC <- function(object) {
   )
   est <- .SPCor(
     betastar = object$lm_process$betastar,
-    sigmacapx = object$lm_process$sigmacap[
-      2:object$lm_process$k,
-      2:object$lm_process$k,
-      drop = FALSE
-    ]
+    sigmacapx = object$lm_process$sigmacapx
   )
   names(est) <- object$lm_process$xnames
   out <- list(

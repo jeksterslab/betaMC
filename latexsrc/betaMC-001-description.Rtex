@@ -47,6 +47,7 @@
 \section*{Description}
 
 Generates Monte Carlo confidence intervals for standardized regression coefficients
+and other effect sizes
 for models fitted by \texttt{lm()}.
 \texttt{betaMC} combines ideas from Monte Carlo confidence intervals for the indirect effect
 \parencite{Lib-Mediation-Monte-Carlo-Method-Preacher-2012}
