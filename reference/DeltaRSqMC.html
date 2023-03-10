@@ -156,29 +156,29 @@ where \(\alpha\) is the significance level.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Improvement in R-squared</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> type = "hc3"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            est     se   R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.1859 0.0590 100 0.0492 0.0510 0.0607 0.2686 0.3097 0.3343</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.1177 0.0563 100 0.0222 0.0237 0.0282 0.2305 0.2831 0.3279</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.0569 0.0420 100 0.0008 0.0030 0.0063 0.1653 0.2070 0.2254</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.1859 0.0668 100 0.0237 0.0323 0.0534 0.3041 0.3587 0.3603</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.1177 0.0520 100 0.0090 0.0117 0.0232 0.2192 0.2616 0.2685</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.0569 0.0376 100 0.0016 0.0027 0.0091 0.1351 0.2195 0.2368</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">deltarsq</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Improvement in R-squared</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> type = "hc3"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            est     se   R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.1859 0.0590 100 0.0492 0.0510 0.0607 0.2686 0.3097 0.3343</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.1177 0.0563 100 0.0222 0.0237 0.0282 0.2305 0.2831 0.3279</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.0569 0.0420 100 0.0008 0.0030 0.0063 0.1653 0.2070 0.2254</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.1859 0.0668 100 0.0237 0.0323 0.0534 0.3041 0.3587 0.3603</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.1177 0.0520 100 0.0090 0.0117 0.0232 0.2192 0.2616 0.2685</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.0569 0.0376 100 0.0016 0.0027 0.0091 0.1351 0.2195 0.2368</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">deltarsq</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    NARTIC    PCTGRT   PCTSUPP </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.1858925 0.1176542 0.0568722 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">deltarsq</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                NARTIC        PCTGRT       PCTSUPP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC   0.0034758803  0.0002790026 -0.0001229488</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT   0.0002790026  0.0031650532 -0.0005557068</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP -0.0001229488 -0.0005557068  0.0017665446</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                NARTIC        PCTGRT      PCTSUPP</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC   0.0044568914 -0.0001835322 0.0001489246</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  -0.0001835322  0.0027017886 0.0001617944</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP  0.0001489246  0.0001617944 0.0014155525</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">deltarsq</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               2.5%     97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.06065803 0.2686144</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.02823427 0.2304915</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.00628138 0.1652913</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                2.5%     97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.053398100 0.3041199</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.023182130 0.2191959</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.009063428 0.1351291</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
