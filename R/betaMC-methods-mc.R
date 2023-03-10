@@ -17,6 +17,8 @@
 #' @keywords methods
 print.mc <- function(x,
                      ...) {
+  cat("Call:\n")
+  base::print(x$call)
   cat(
     paste0(
       "The first set of simulated parameter estimates\n",
@@ -94,6 +96,7 @@ summary.mc <- function(object,
     names(location) <- varnames
     rownames(scale) <- colnames(scale) <- varnames
   }
+  base::print(object$call)
   return(
     list(
       mean = round(mean, digits = digits),

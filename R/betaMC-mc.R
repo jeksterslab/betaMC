@@ -43,6 +43,7 @@
 #' @return Returns an object
 #' of class `mc` which is a list with the following elements:
 #'   \describe{
+#'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{lm_process}{Processed `lm` object.}
 #'     \item{scale}{Sampling variance-covariance matrix of parameter estimates.}
@@ -310,6 +311,7 @@ MC <- function(object,
     thetahatstar[!is.na(thetahatstar)]
   )
   out <- list(
+    call = match.call(),
     args = list(
       object = object,
       R = R,

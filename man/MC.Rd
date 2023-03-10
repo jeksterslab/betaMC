@@ -78,6 +78,7 @@ Seed number for reproducibility.}
 Returns an object
 of class \code{mc} which is a list with the following elements:
 \describe{
+\item{call}{Function call.}
 \item{args}{Function arguments.}
 \item{lm_process}{Processed \code{lm} object.}
 \item{scale}{Sampling variance-covariance matrix of parameter estimates.}
