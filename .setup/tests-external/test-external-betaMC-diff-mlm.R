@@ -5,7 +5,6 @@ lapply(
                  text,
                  n,
                  tol) {
-    library(semmcci)
     set.seed(42)
     message(text)
     if (!exists("nas1982")) {
@@ -31,8 +30,7 @@ lapply(
       )
     )
     object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-    mc <- BetaMC(object, type = "hc0")
-    diff <- DiffBetaMC(mc)
+    diff <- DiffBetaMC(MC(object, type = "hc0"))
     model <- paste(
       "QUALITY ~ b1 * NARTIC + b2 * PCTGRT + b3 * PCTSUPP;",
       "diff12 := b1 - b2; diff13 := b1 - b3; diff23 := b2 - b3"
@@ -42,7 +40,7 @@ lapply(
       data = df,
       estimator = "MLM"
     )
-    std <- summary(MCStd(MC(lav)))
+    std <- semmcci:::summary.semmccistd(semmcci::MCStd(semmcci::MC(lav)))
     testthat::test_that(
       paste(text, "coef"),
       {

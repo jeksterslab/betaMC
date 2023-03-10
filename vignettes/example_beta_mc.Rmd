@@ -48,54 +48,94 @@ df <- nas1982
 df <- betaMC::nas1982
 ```
 
-## Fit the regression model using the `lm()` function.
+### Regression
+
+Fit the regression model using the `lm()` function.
 
 ```{r}
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
-## Estimate the standardized regression slopes and the corresponding sampling covariance matrix.
+### Monte Carlo Sampling Distribution of Parameters
+
+#### Normal-Theory Approach
 
 ```{r}
-BetaMC(object)
+mvn <- MC(object, type = "mvn")
+```
+
+#### Asymptotic distribution-free Approach
+
+```{r}
+adf <- MC(object, type = "adf")
+```
+
+#### Heteroskedasticity Consistent Approach (HC3)
+
+```{r}
+hc3 <- MC(object, type = "hc3")
+```
+
+### Standardized Regression Slopes
+
+#### Normal-Theory Approach
+
+```{r}
+mvn <- BetaMC(mvn)
+```
+
+#### Asymptotic distribution-free Approach
+
+```{r}
+adf <- BetaMC(adf)
+```
+
+#### Heteroskedasticity Consistent Approach (HC3)
+
+```{r}
+hc3 <- BetaMC(hc3)
 ```
 
 ## Methods
-
-```{r}
-out <- BetaMC(object)
-```
 
 ### summary
 
 Summary of the results of `BetaMC()`.
 
 ```{r}
-summary(out)
+summary(mvn)
+summary(adf)
+summary(hc3)
 ```
 
 ### coef
 
-Calculate the standardized regression slopes.
+Return the vector of estimates.
 
 ```{r}
-coef(out)
+coef(mvn)
+coef(adf)
+coef(hc3)
 ```
 
 ### vcov
 
-Calculate the sampling covariance matrix of the standardized regression slopes.
+Return the sampling covariance matrix.
 
 ```{r}
-vcov(out)
+vcov(mvn)
+vcov(adf)
+vcov(hc3)
 ```
 
 ### confint
 
-Generate confidence intervals for standardized regression slopes.
+Return confidence intervals.
 
 ```{r}
-confint(out, level = 0.95)
+confint(mvn, level = 0.95)
+confint(adf, level = 0.95)
+confint(hc3, level = 0.95)
 ```
 
 ## References

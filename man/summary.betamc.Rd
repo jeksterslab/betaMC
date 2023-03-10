@@ -2,12 +2,21 @@
 % Please edit documentation in R/betaMC-methods-beta-mc.R
 \name{summary.betamc}
 \alias{summary.betamc}
-\title{Summary Method for an Object of Class \code{betamc}}
+\title{Summary Method for an Object of Class
+\code{betamc}}
 \usage{
 \method{summary}{betamc}(object, alpha = c(0.05, 0.01, 0.001), digits = 4, ...)
 }
 \arguments{
-\item{object}{Object of class \code{betamc}.}
+\item{object}{Object of Class \code{betamc},
+that is,
+the output of the
+\code{BetaMC()},
+\code{RSqMC()},
+\code{SCorMC()},
+\code{DeltaRSqMC()}, or
+\code{PCorMC()}
+functions.}
 
 \item{alpha}{Significance level.}
 
@@ -17,19 +26,25 @@
 }
 \value{
 Returns a matrix of
-standardized regression slopes,
+estimates,
 standard errors,
 number of Monte Carlo replications,
 and
 confidence intervals.
 }
 \description{
-Summary Method for an Object of Class \code{betamc}
+Summary Method for an Object of Class
+\code{betamc}
 }
 \examples{
+# Fit the regression model
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaMC(object, R = 100)
-# use a large R, for example, R = 20000 for actual research
+# Generate the sampling distribution of parameter estimates
+# (use a large R, for example, R = 20000 for actual research)
+mc <- MC(object, R = 100)
+# Generate confidence intervals for standardized regression slopes
+std <- BetaMC(mc)
+# Method ---------------------------------------------------------
 summary(std)
 }
 \author{

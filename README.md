@@ -1,7 +1,7 @@
 betaMC
 ================
 Ivan Jacob Agaloos Pesigan
-2023-02-15
+2023-03-10
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -19,12 +19,13 @@ Status](https://jeksterslab.r-universe.dev/badges/betaMC)](https://jeksterslab.r
 ## Description
 
 Generates Monte Carlo confidence intervals for standardized regression
-coefficients for models fitted by `lm()`. `betaMC` combines ideas from
-Monte Carlo confidence intervals for the indirect effect (Preacher and
-Selig, 2012: <http://doi.org/10.1080/19312458.2012.679848>) and the
-sampling covariance matrix of regression coefficients (Dudgeon, 2017:
+coefficients and other effect sizes for models fitted by `lm()`.
+`betaMC` combines ideas from Monte Carlo confidence intervals for the
+indirect effect (Preacher and Selig, 2012:
+<http://doi.org/10.1080/19312458.2012.679848>) and the sampling
+covariance matrix of regression coefficients (Dudgeon, 2017:
 <http://doi.org/10.1007/s11336-017-9563-z>) to generate confidence
-intervals for standardized regression coefficients.
+intervals effect sizes in regression.
 
 ## Installation
 
@@ -63,26 +64,81 @@ library(betaMC)
 df <- betaMC::nas1982
 ```
 
-### Fit the regression model using the `lm()` function.
+### Regression
+
+Fit the regression model using the `lm()` function.
 
 ``` r
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
-### Estimate the standardized regression slopes and the corresponding sampling covariance matrix.
+### Monte Carlo Sampling Distribution of Parameters
+
+#### Normal-Theory Approach
 
 ``` r
-BetaMC(object)
-#> Call:
-#> BetaMC(object = object)
-#> 
+mvn <- MC(object, type = "mvn")
+```
+
+#### Asymptotic distribution-free Approach
+
+``` r
+adf <- MC(object, type = "adf")
+```
+
+#### Heteroskedasticity Consistent Approach (HC3)
+
+``` r
+hc3 <- MC(object, type = "hc3")
+```
+
+### Standardized Regression Slopes
+
+#### Normal-Theory Approach
+
+``` r
+BetaMC(mvn)
+#> Standardized regression slopes
+#> type = "mvn"
+#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
+#> NARTIC  0.4951 0.0748 20000 0.2391 0.2887 0.3405 0.6323 0.6777 0.7174
+#> PCTGRT  0.3915 0.0759 20000 0.1405 0.1943 0.2411 0.5352 0.5816 0.6333
+#> PCTSUPP 0.2632 0.0740 20000 0.0234 0.0778 0.1190 0.4105 0.4588 0.5237
+```
+
+#### Asymptotic distribution-free Approach
+
+``` r
+BetaMC(adf)
+#> Standardized regression slopes
+#> type = "adf"
+#>            est     se     R   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
+#> NARTIC  0.4951 0.0676 20000  0.2497 0.3123 0.3509 0.6156 0.6558 0.7100
+#> PCTGRT  0.3915 0.0712 20000  0.1276 0.1954 0.2429 0.5210 0.5641 0.6032
+#> PCTSUPP 0.2632 0.0768 20000 -0.0031 0.0559 0.1088 0.4092 0.4535 0.4937
+```
+
+#### Heteroskedasticity Consistent Approach (HC3)
+
+``` r
+BetaMC(hc3)
 #> Standardized regression slopes
 #> type = "hc3"
 #>            est     se     R   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4951 0.0801 20000  0.2103 0.2685 0.3227 0.6352 0.6791 0.7263
-#> PCTGRT  0.3915 0.0827 20000  0.1056 0.1590 0.2173 0.5414 0.5878 0.6473
-#> PCTSUPP 0.2632 0.0862 20000 -0.0325 0.0309 0.0878 0.4248 0.4766 0.5471
+#> NARTIC  0.4951 0.0793 20000  0.2173 0.2771 0.3244 0.6344 0.6782 0.7198
+#> PCTGRT  0.3915 0.0819 20000  0.0824 0.1561 0.2209 0.5392 0.5888 0.6537
+#> PCTSUPP 0.2632 0.0851 20000 -0.0352 0.0301 0.0920 0.4253 0.4800 0.5422
 ```
+
+### Other Effect Sizes
+
+The `betaMC` package also has functions to generate Monte Carlo
+confidence intervals for other effect sizes such as `RSqMC()` for
+multiple correlation coefficients (R-squared and adjusted R-squared),
+`DeltaRSqMC()` for improvement in R-squared, `SCorMC()` for semipartial
+correlation coefficients, `PCorMC()` for squared partial correlation
+coefficients, and `DiffBetaMC()` for differences of standardized
+regression coefficients.
 
 ### References
 

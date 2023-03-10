@@ -2,25 +2,40 @@
 % Please edit documentation in R/betaMC-methods-beta-mc.R
 \name{coef.betamc}
 \alias{coef.betamc}
-\title{Standardized Regression Slopes}
+\title{Estimated Parameter Method for an Object of Class
+\code{betamc}}
 \usage{
 \method{coef}{betamc}(object, ...)
 }
 \arguments{
-\item{object}{Object of class \code{betamc}.}
+\item{object}{Object of Class \code{betamc},
+that is,
+the output of the
+\code{BetaMC()},
+\code{RSqMC()},
+\code{SCorMC()},
+\code{DeltaRSqMC()}, or
+\code{PCorMC()}
+functions.}
 
 \item{...}{additional arguments.}
 }
 \value{
-Returns a vector of standardized regression slopes.
+Returns a vector of estimated parameters.
 }
 \description{
-Standardized Regression Slopes
+Estimated Parameter Method for an Object of Class
+\code{betamc}
 }
 \examples{
+# Fit the regression model
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaMC(object, R = 100)
-# use a large R, for example, R = 20000 for actual research
+# Generate the sampling distribution of parameter estimates
+# (use a large R, for example, R = 20000 for actual research)
+mc <- MC(object, R = 100)
+# Generate confidence intervals for standardized regression slopes
+std <- BetaMC(mc)
+# Method ---------------------------------------------------------
 coef(std)
 }
 \author{

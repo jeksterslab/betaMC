@@ -1,7 +1,7 @@
 ---
 title: "Benchmark: Comparing the Monte Carlo Method with Nonparametric Bootstrapping"
 author: "Ivan Jacob Agaloos Pesigan"
-date: "2023-02-15"
+date: "2023-03-10"
 output:
   rmarkdown::html_vignette:
     toc: true
@@ -37,15 +37,13 @@ The `BetaNB()` function is used to generate NB confidence intervals.
 
 
 ```r
-BetaNB <- function(data, B) {
-  beta <- function(x) {
-    k <- dim(x)[1]
-    return(as.vector(solve(x[2:k, 2:k, drop = FALSE], x[2:k, 1, drop = FALSE])))
+BetaNB <- function(formula, data, B) {
+  statistic <- function(formula, data, indices) {
+    return(
+      coef(lm(formula = formula, data = as.data.frame(scale(data[indices, ]))))[-1]
+    )
   }
-  statistic <- function(data, indices) {
-    return(beta(x = cor(data[indices, ])))
-  }
-  return(boot.ci(boot(data = data, statistic = statistic, R = B)))
+  return(boot.ci(boot(data = data, statistic = statistic, formula = formula, R = B)))
 }
 ```
 
@@ -56,12 +54,6 @@ BetaNB <- function(data, B) {
 
 ```r
 df <- betaMC::nas1982
-```
-
-
-```r
-df <- df[, c("QUALITY", "NARTIC", "PCTGRT", "PCTSUPP")]
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
 ## Benchmark
@@ -81,8 +73,17 @@ object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 
 ```r
 benchmark <- microbenchmark(
-  MC = BetaMC(object, R = R),
-  NB = BetaNB(data = df, B = B),
+  MC = {
+    formula <- "QUALITY ~ NARTIC + PCTGRT + PCTSUPP"
+    object <- lm(formula = formula, data = df)
+    mc <- MC(object = object, R = R, type = "mvn")
+    BetaMC(object = mc)
+  },
+  NB = {
+    formula <- "QUALITY ~ NARTIC + PCTGRT + PCTSUPP"
+    object <- lm(formula = formula, data = df)
+    BetaNB(formula = formula, data = df, B = B)
+  },
   times = 10
 )
 ```
@@ -92,9 +93,9 @@ benchmark <- microbenchmark(
 
 ```r
 summary(benchmark, unit = "ms")
-#>   expr      min       lq      mean    median        uq       max neval
-#> 1   MC 301.7904 304.9975  339.8266  337.2706  367.6531  394.0003    10
-#> 2   NB 933.2067 942.8669 1032.4396 1055.7756 1075.9652 1129.5061    10
+#>   expr       min        lq      mean    median        uq       max neval
+#> 1   MC  283.2131  295.3165  307.8969  308.7909  316.8838  334.5955    10
+#> 2   NB 5683.7113 5711.9927 5763.9586 5734.4717 5837.9753 5879.6083    10
 ```
 
 ### Summary of Benchmark Results Relative to the Faster Method
@@ -103,10 +104,10 @@ summary(benchmark, unit = "ms")
 ```r
 summary(benchmark, unit = "relative")
 #>   expr      min       lq     mean   median       uq      max neval
-#> 1   MC 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000    10
-#> 2   NB 3.092235 3.091393 3.038136 3.130351 2.926578 2.866765    10
+#> 1   MC  1.00000  1.00000  1.00000  1.00000  1.00000  1.00000    10
+#> 2   NB 20.06867 19.34193 18.72042 18.57073 18.42308 17.57229    10
 ```
 
 ## Plot
 
-<img src="fig-vignettes-benchmark-unnamed-chunk-16-1.png" width="3300" />
+<img src="fig-vignettes-benchmark-unnamed-chunk-15-1.png" width="3300" />

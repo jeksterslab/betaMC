@@ -27,13 +27,15 @@ knitr::opts_chunk$set(
 
 ## Description
 
-Generates Monte Carlo confidence intervals for standardized regression coefficients
+Generates Monte Carlo confidence intervals for
+standardized regression coefficients
+and other effect sizes
 for models fitted by `lm()`.
 `betaMC` combines ideas from Monte Carlo confidence intervals for the indirect effect
 (Preacher and Selig, 2012: http://doi.org/10.1080/19312458.2012.679848)
 and the sampling covariance matrix of regression coefficients
 (Dudgeon, 2017: http://doi.org/10.1007/s11336-017-9563-z)
-to generate confidence intervals for standardized regression coefficients.
+to generate confidence intervals effect sizes in regression.
 
 ## Installation
 
@@ -86,17 +88,64 @@ df <- nas1982
 df <- betaMC::nas1982
 ```
 
-### Fit the regression model using the `lm()` function.
+### Regression
+
+Fit the regression model using the `lm()` function.
 
 ```{r}
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
-### Estimate the standardized regression slopes and the corresponding sampling covariance matrix.
+### Monte Carlo Sampling Distribution of Parameters
+
+#### Normal-Theory Approach
 
 ```{r}
-BetaMC(object)
+mvn <- MC(object, type = "mvn")
 ```
+
+#### Asymptotic distribution-free Approach
+
+```{r}
+adf <- MC(object, type = "adf")
+```
+
+#### Heteroskedasticity Consistent Approach (HC3)
+
+```{r}
+hc3 <- MC(object, type = "hc3")
+```
+
+### Standardized Regression Slopes
+
+#### Normal-Theory Approach
+
+```{r}
+BetaMC(mvn)
+```
+
+#### Asymptotic distribution-free Approach
+
+```{r}
+BetaMC(adf)
+```
+
+#### Heteroskedasticity Consistent Approach (HC3)
+
+```{r}
+BetaMC(hc3)
+```
+
+### Other Effect Sizes
+
+The `betaMC` package also has functions to generate Monte Carlo confidence intervals
+for other effect sizes such as
+`RSqMC()` for multiple correlation coefficients (R-squared and adjusted R-squared),
+`DeltaRSqMC()` for improvement in R-squared,
+`SCorMC()` for semipartial correlation coefficients,
+`PCorMC()` for squared partial correlation coefficients,
+and
+`DiffBetaMC()` for differences of standardized regression coefficients.
 
 ### References
 

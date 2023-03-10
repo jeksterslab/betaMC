@@ -4,9 +4,9 @@
 \name{betaMC-package}
 \alias{betaMC-package}
 \alias{_PACKAGE}
-\title{betaMC: Monte Carlo Confidence Intervals for Standardized Regression Coefficients}
+\title{betaMC: Monte Carlo Confidence Intervals for Standardized Regression Coefficients and Other Effect Sizes}
 \description{
-Generates Monte Carlo confidence intervals for standardized regression coefficients for models fitted by lm(). 'betaMC' combines ideas from Monte Carlo confidence intervals for the indirect effect (Preacher and Selig, 2012 \doi{10.1080/19312458.2012.679848}) and the sampling covariance matrix of regression coefficients (Dudgeon, 2017 \doi{10.1007/s11336-017-9563-z}) to generate confidence intervals for standardized regression coefficients.
+Generates Monte Carlo confidence intervals for standardized regression coefficients and other effect sizes for models fitted by lm(). 'betaMC' combines ideas from Monte Carlo confidence intervals for the indirect effect (Preacher and Selig, 2012 \doi{10.1080/19312458.2012.679848}) and the sampling covariance matrix of regression coefficients (Dudgeon, 2017 \doi{10.1007/s11336-017-9563-z}) to generate confidence intervals effect sizes in regression.
 }
 \seealso{
 Useful links:

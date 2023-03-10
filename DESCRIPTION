@@ -1,6 +1,7 @@
 Package: betaMC
 Title: Monte Carlo Confidence Intervals for Standardized Regression Coefficients
-Version: 1.0.0.9000
+   and Other Effect Sizes
+Version: 1.2.0.9000
 Authors@R: 
     person(given = "Ivan Jacob Agaloos",
            family = "Pesigan",
@@ -8,12 +9,12 @@ Authors@R:
            email = "r.jeksterslab@gmail.com",
            comment = c(ORCID = "0000-0003-4818-8420"))
 Description: Generates Monte Carlo confidence intervals for standardized regression coefficients
-    for models fitted by lm().
+    and other effect sizes for models fitted by lm().
     'betaMC' combines ideas from Monte Carlo confidence intervals for the indirect effect
     (Preacher and Selig, 2012 <doi:10.1080/19312458.2012.679848>)
     and the sampling covariance matrix of regression coefficients
     (Dudgeon, 2017 <doi:10.1007/s11336-017-9563-z>)
-    to generate confidence intervals for standardized regression coefficients.
+    to generate confidence intervals effect sizes in regression.
 URL: https://github.com/jeksterslab/betaMC, https://jeksterslab.github.io/betaMC/
 BugReports: https://github.com/jeksterslab/betaMC/issues
 License: MIT + file LICENSE

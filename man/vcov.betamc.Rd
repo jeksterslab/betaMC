@@ -2,27 +2,40 @@
 % Please edit documentation in R/betaMC-methods-beta-mc.R
 \name{vcov.betamc}
 \alias{vcov.betamc}
-\title{Sampling Covariance Matrix of the Standardized Regression Slopes}
+\title{Sampling Variance-Covariance Matrix Method for an Object of Class
+\code{betamc}}
 \usage{
 \method{vcov}{betamc}(object, ...)
 }
 \arguments{
-\item{object}{Object of class \code{betamc}.}
+\item{object}{Object of Class \code{betamc},
+that is,
+the output of the
+\code{BetaMC()},
+\code{RSqMC()},
+\code{SCorMC()},
+\code{DeltaRSqMC()}, or
+\code{PCorMC()}
+functions.}
 
 \item{...}{additional arguments.}
 }
 \value{
-Returns a matrix of the
-variance-covariance matrix
-of standardized slopes.
+Returns the variance-covariance matrix of estimates.
 }
 \description{
-Sampling Covariance Matrix of the Standardized Regression Slopes
+Sampling Variance-Covariance Matrix Method for an Object of Class
+\code{betamc}
 }
 \examples{
+# Fit the regression model
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaMC(object, R = 100)
-# use a large R, for example, R = 20000 for actual research
+# Generate the sampling distribution of parameter estimates
+# (use a large R, for example, R = 20000 for actual research)
+mc <- MC(object, R = 100)
+# Generate confidence intervals for standardized regression slopes
+std <- BetaMC(mc)
+# Method ---------------------------------------------------------
 vcov(std)
 }
 \author{

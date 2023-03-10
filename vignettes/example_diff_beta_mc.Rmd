@@ -21,7 +21,7 @@ are generated using
 the `DiffBetaMC()` function from the `betaMC` package.
 In this example,
 we use the data set and the model used in
-[betaMC: Example Using the BetaMC Function](example-beta-mc.html).
+[betaMC: Example Using the BetaMC Function](example_beta_mc.html).
 
 ```{r}
 #| message = FALSE
@@ -47,38 +47,52 @@ df <- nas1982
 df <- betaMC::nas1982
 ```
 
-## Fit the regression model using the `lm()` function.
+### Regression
+
+Fit the regression model using the `lm()` function.
 
 ```{r}
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
-## Estimate the standardized regression slopes and the corresponding sampling covariance matrix.
+### Monte Carlo Sampling Distribution of Parameters
 
-#### Multivariate Normal-Theory Approach
+#### Normal-Theory Approach
 
 ```{r}
-std_mvn <- BetaMC(object, type = "mvn")
+mvn <- MC(object, type = "mvn")
 ```
 
-#### Asymptotic Distribution-Free Approach
+#### Asymptotic distribution-free Approach
 
 ```{r}
-std_adf <- BetaMC(object, type = "adf")
+adf <- MC(object, type = "adf")
 ```
 
-#### HC3
+#### Heteroskedasticity Consistent Approach (HC3)
 
 ```{r}
-std_hc3 <- BetaMC(object, type = "hc3")
+hc3 <- MC(object, type = "hc3")
 ```
 
-## Estimate differences of standardized regression slopes and the corresponding sampling covariance matrix.
+### Standardized Regression Slopes
+
+#### Normal-Theory Approach
 
 ```{r}
-mvn <- DiffBetaMC(std_mvn)
-adf <- DiffBetaMC(std_adf)
-hc3 <- DiffBetaMC(std_hc3)
+mvn <- DiffBetaMC(mvn)
+```
+
+#### Asymptotic distribution-free Approach
+
+```{r}
+adf <- DiffBetaMC(adf)
+```
+
+#### Heteroskedasticity Consistent Approach (HC3)
+
+```{r}
+hc3 <- DiffBetaMC(hc3)
 ```
 
 ## Methods
@@ -95,7 +109,7 @@ summary(hc3)
 
 ### coef
 
-Calculate differences of standardized regression slopes.
+Return the vector of estimates.
 
 ```{r}
 coef(mvn)
@@ -105,7 +119,7 @@ coef(hc3)
 
 ### vcov
 
-Calculate the sampling covariance matrix of differences of standardized regression slopes.
+Return the sampling covariance matrix.
 
 ```{r}
 vcov(mvn)
@@ -115,7 +129,7 @@ vcov(hc3)
 
 ### confint
 
-Generate confidence intervals for differences of standardized regression slopes.
+Return confidence intervals.
 
 ```{r}
 confint(mvn, level = 0.95)

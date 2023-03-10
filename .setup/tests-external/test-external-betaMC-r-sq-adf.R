@@ -5,7 +5,6 @@ lapply(
                  text,
                  n,
                  tol) {
-    library(semmcci)
     set.seed(42)
     message(text)
     if (!exists("nas1982")) {
@@ -31,8 +30,7 @@ lapply(
       )
     )
     object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-    mc <- BetaMC(object, type = "adf")
-    rsq <- RSqBetaMC(mc)
+    rsq <- RSqMC(MC(object, type = "adf"))
     model <- paste(
       "QUALITY ~ NARTIC + PCTGRT + PCTSUPP;",
       "QUALITY ~~ sigmasq * QUALITY;",
@@ -44,7 +42,7 @@ lapply(
       data = df,
       estimator = "WLS"
     )
-    std <- summary(MCStd(MC(lav)))
+    std <- semmcci:::summary.semmccistd(semmcci::MCStd(semmcci::MC(lav)))
     testthat::test_that(
       paste(text, "coef"),
       {

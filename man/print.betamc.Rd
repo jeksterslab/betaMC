@@ -2,12 +2,21 @@
 % Please edit documentation in R/betaMC-methods-beta-mc.R
 \name{print.betamc}
 \alias{print.betamc}
-\title{Print Method for an Object of Class \code{betamc}}
+\title{Print Method for an Object of Class
+\code{betamc}}
 \usage{
 \method{print}{betamc}(x, alpha = c(0.05, 0.01, 0.001), digits = 4, ...)
 }
 \arguments{
-\item{x}{Object of Class \code{betamc}.}
+\item{x}{Object of Class \code{betamc},
+that is,
+the output of the
+\code{BetaMC()},
+\code{RSqMC()},
+\code{SCorMC()},
+\code{DeltaRSqMC()}, or
+\code{PCorMC()}
+functions.}
 
 \item{alpha}{Significance level.}
 
@@ -16,20 +25,26 @@
 \item{...}{additional arguments.}
 }
 \value{
-Returns a matrix of
-standardized regression slopes,
+Prints a matrix of
+estimates,
 standard errors,
 number of Monte Carlo replications,
 and
 confidence intervals.
 }
 \description{
-Print Method for an Object of Class \code{betamc}
+Print Method for an Object of Class
+\code{betamc}
 }
 \examples{
+# Fit the regression model
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaMC(object, R = 100)
-# use a large R, for example, R = 20000 for actual research
+# Generate the sampling distribution of parameter estimates
+# (use a large R, for example, R = 20000 for actual research)
+mc <- MC(object, R = 100)
+# Generate confidence intervals for standardized regression slopes
+std <- BetaMC(mc)
+# Method ---------------------------------------------------------
 print(std)
 }
 \author{

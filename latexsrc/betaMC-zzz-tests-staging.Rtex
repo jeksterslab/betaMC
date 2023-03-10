@@ -46,107 +46,87 @@
 
 \maketitle
 
+Staging...
+
+\section{Monte Carlo Simulation}
+
 %% begin.rcode
-% #| echo = FALSE
-% set.seed(42)
+% # Fit the regression model
+% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+% # Generate the sampling distribution of parameter estimates
+% mc <- MC(object, R = 20000, type = "mvn", seed = 42)
 %% end.rcode
 
-\section{Standardized Slopes}
+\section{Standardized Regression Slopes}
 
 %% begin.rcode
-% #| eval = FALSE
-% df <- nas1982
-% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-% mvn <- BetaMC(object, type = "mvn")
-% adf <- BetaMC(object, type = "adf")
-% hc3 <- BetaMC(object, type = "hc3")
-% summary(mvn)
-% summary(adf)
-% summary(hc3)
-% coef(mvn)
-% coef(adf)
-% coef(hc3)
-% vcov(mvn)
-% vcov(adf)
-% vcov(hc3)
-% confint(mvn)
-% confint(adf)
-% confint(hc3)
+% out <- BetaMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
 %% end.rcode
 
 \section{Multiple Correlation}
 
 %% begin.rcode
-% df <- nas1982
-% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-% std_mvn <- BetaMC(object, type = "mvn")
-% std_adf <- BetaMC(object, type = "adf")
-% std_hc3 <- BetaMC(object, type = "hc3")
-% mvn <- RSqBetaMC(std_mvn)
-% adf <- RSqBetaMC(std_adf)
-% hc3 <- RSqBetaMC(std_hc3)
-% summary(mvn)
-% summary(adf)
-% summary(hc3)
-% coef(mvn)
-% coef(adf)
-% coef(hc3)
-% vcov(mvn)
-% vcov(adf)
-% vcov(hc3)
-% confint(mvn)
-% confint(adf)
-% confint(hc3)
+% out <- RSqMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
+%% end.rcode
+
+\section{Semipartial Correlation}
+
+%% begin.rcode
+% out <- SCorMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
+%% end.rcode
+
+\section{Improvement in R-Squared}
+
+%% begin.rcode
+% out <- DeltaRSqMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
+%% end.rcode
+
+\section{Squared Partial Correlation}
+
+%% begin.rcode
+% out <- PCorMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
 %% end.rcode
 
 \section{Differences of Standardized Slopes}
 
 %% begin.rcode
-% df <- nas1982
-% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-% std_mvn <- BetaMC(object, type = "mvn")
-% std_adf <- BetaMC(object, type = "adf")
-% std_hc3 <- BetaMC(object, type = "hc3")
-% mvn <- DiffBetaMC(std_mvn)
-% adf <- DiffBetaMC(std_adf)
-% hc3 <- DiffBetaMC(std_hc3)
-% summary(mvn)
-% summary(adf)
-% summary(hc3)
-% coef(mvn)
-% coef(adf)
-% coef(hc3)
-% vcov(mvn)
-% vcov(adf)
-% vcov(hc3)
-% confint(mvn)
-% confint(adf)
-% confint(hc3)
-%% end.rcode
-
-\section{Partial Correlations}
-
-%% begin.rcode
-% df <- nas1982
-% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-% std_mvn <- BetaMC(object, type = "mvn")
-% std_adf <- BetaMC(object, type = "adf")
-% std_hc3 <- BetaMC(object, type = "hc3")
-% mvn <- PCorBetaMC(std_mvn)
-% adf <- PCorBetaMC(std_adf)
-% hc3 <- PCorBetaMC(std_hc3)
-% summary(mvn)
-% summary(adf)
-% summary(hc3)
-% coef(mvn)
-% coef(adf)
-% coef(hc3)
-% vcov(mvn)
-% vcov(adf)
-% vcov(hc3)
-% confint(mvn)
-% confint(adf)
-% confint(hc3)
+% out <- DiffBetaMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
 %% end.rcode
 
 \nocite{Lib-R-Manual-2022}

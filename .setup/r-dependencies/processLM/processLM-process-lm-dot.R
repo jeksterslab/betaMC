@@ -31,6 +31,10 @@
   vechsigmacap <- .Vech(
     sigmacap
   )
+  sigmacapx <- sigmacap[2:k, 2:k, drop = FALSE]
+  vechsigmacapx <- .Vech(
+    sigmacapx
+  )
   sigma <- sqrt(diag(sigmacap))
   rhocap <- .RhoofSigma(
     sigmacap,
@@ -41,10 +45,11 @@
     k = k
   )
   names(betastar) <- xnames
+  sigmasq <- summary_lm$sigma^2
   theta <- c(
     beta,
-    summary_lm$sigma^2,
-    .Vech(sigmacap[2:k, 2:k, drop = FALSE])
+    sigmasq,
+    vechsigmacapx
   )
   sigmacap_consistent <- (
     sigmacap * (
@@ -73,6 +78,10 @@
     dif_beta <- NULL
     dif_idx <- NULL
   }
+  rsq <- c(
+    rsq = summary_lm$r.squared,
+    adj = summary_lm$adj.r.squared
+  )
   list(
     summary_lm = summary_lm,
     x = x, # {y, X}
@@ -87,15 +96,19 @@
     xnames = xnames,
     sigmacap = sigmacap,
     vechsigmacap = vechsigmacap,
+    sigmacapx = sigmacapx,
+    vechsigmacapx = vechsigmacapx,
     sigma = sigma, # standard deviations
     sigmacap_consistent = sigmacap_consistent,
     vechsigmacap_consistent = vechsigmacap_consistent,
     rhocap = rhocap,
     betastar = betastar,
     beta = beta,
-    theta = theta,
+    sigmasq = sigmasq,
+    theta = unname(theta),
     dif_betastar = dif_betastar,
     dif_beta = dif_beta,
-    dif_idx = dif_idx
+    dif_idx = dif_idx,
+    rsq = rsq
   )
 }

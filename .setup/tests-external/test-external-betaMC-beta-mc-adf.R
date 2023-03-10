@@ -5,7 +5,6 @@ lapply(
                  text,
                  n,
                  tol) {
-    library(semmcci)
     set.seed(42)
     message(text)
     if (!exists("nas1982")) {
@@ -31,14 +30,14 @@ lapply(
       )
     )
     object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-    mc <- BetaMC(object, type = "adf")
+    mc <- BetaMC(MC(object, type = "adf"))
     model <- "QUALITY ~ b1 * NARTIC + b2 * PCTGRT + b3 * PCTSUPP"
     lav <- lavaan::sem(
       model = model,
       data = df,
       estimator = "WLS"
     )
-    std <- summary(MCStd(MC(lav)))
+    std <- semmcci:::summary.semmccistd(semmcci::MCStd(semmcci::MC(lav)))
     testthat::test_that(
       paste(text, "coef"),
       {

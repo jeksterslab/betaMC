@@ -2,12 +2,21 @@
 % Please edit documentation in R/betaMC-methods-beta-mc.R
 \name{confint.betamc}
 \alias{confint.betamc}
-\title{Confidence Intervals for Standardized Regression Slopes}
+\title{Confidence Intervals Method for an Object of Class
+\code{betamc}}
 \usage{
 \method{confint}{betamc}(object, parm = NULL, level = 0.95, ...)
 }
 \arguments{
-\item{object}{Object of class \code{betamc}.}
+\item{object}{Object of Class \code{betamc},
+that is,
+the output of the
+\code{BetaMC()},
+\code{RSqMC()},
+\code{SCorMC()},
+\code{DeltaRSqMC()}, or
+\code{PCorMC()}
+functions.}
 
 \item{parm}{a specification of which parameters
 are to be given confidence intervals,
@@ -22,12 +31,18 @@ If missing, all parameters are considered.}
 Returns a matrix of confidence intervals.
 }
 \description{
-Confidence Intervals for Standardized Regression Slopes
+Confidence Intervals Method for an Object of Class
+\code{betamc}
 }
 \examples{
+# Fit the regression model
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaMC(object, R = 100)
-# use a large R, for example, R = 20000 for actual research
+# Generate the sampling distribution of parameter estimates
+# (use a large R, for example, R = 20000 for actual research)
+mc <- MC(object, R = 100)
+# Generate confidence intervals for standardized regression slopes
+std <- BetaMC(mc)
+# Method ---------------------------------------------------------
 confint(std, level = 0.95)
 }
 \author{

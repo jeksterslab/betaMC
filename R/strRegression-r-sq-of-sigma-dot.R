@@ -3,7 +3,7 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param sigmacap Numeric vector.
+#' @param sigmacap Numeric matrix.
 #'   Covariance matrix of
 #'   \eqn{\left\{ Y, X_{1}, \dots, X_{p} \right\}^{\prime}}.
 #' @param k Positive integer.
