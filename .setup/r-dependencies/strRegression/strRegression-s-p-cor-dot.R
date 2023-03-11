@@ -17,7 +17,12 @@
     betastar * sqrt(
       1 / diag(
         chol2inv(
-          chol(stats::cov2cor(sigmacapx))
+          chol(
+            .RhoofSigma(
+              x = sigmacapx,
+              q = 1 / sqrt(diag(sigmacapx))
+            )
+          )
         )
       )
     )

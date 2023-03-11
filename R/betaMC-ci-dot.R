@@ -21,11 +21,9 @@
     methods::is(
       object,
       "betamc"
-    ) | methods::is(
-      object,
-      "mc"
     )
   )
+  probs <- .PCProbs(alpha = alpha)
   thetahatstar <- do.call(
     what = "rbind",
     args = object$thetahatstar
@@ -41,7 +39,7 @@
     ci[[i]] <- .PCCI(
       thetahatstar = thetahatstar[, i],
       thetahat = thetahat[[i]],
-      alpha = alpha
+      probs = probs
     )
   }
   ci <- do.call(
