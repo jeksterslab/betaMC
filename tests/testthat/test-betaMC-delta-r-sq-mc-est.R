@@ -26,7 +26,7 @@ lapply(
     confint.betamc(out)
     object <- lm(QUALITY ~ NARTIC, data = df)
     testthat::test_that(
-      paste(text, "multiple regression"),
+      paste(text, "improvement in R-squared"),
       {
         testthat::expect_true(
           all(

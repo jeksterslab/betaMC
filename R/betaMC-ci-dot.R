@@ -8,7 +8,7 @@
 #'   and
 #'   confidence intervals.
 #'
-#' @param object Object of class `betamc`, or `rsqmc`.
+#' @param object Object of class `betamc`.
 #' @param alpha Numeric vector.
 #'   Significance level.
 #'

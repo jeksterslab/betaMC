@@ -17,6 +17,7 @@ the output of the \code{MC()} function.}
 Returns an object
 of class \code{betamc} which is a list with the following elements:
 \describe{
+\item{call}{Function call.}
 \item{object}{The function argument \code{object}.}
 \item{thetahatstar}{Sampling distribution of
 \eqn{R^{2}} and \eqn{\bar{R}^{2}}.}

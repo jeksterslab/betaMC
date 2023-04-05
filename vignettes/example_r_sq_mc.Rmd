@@ -76,7 +76,7 @@ adf <- MC(object, type = "adf")
 hc3 <- MC(object, type = "hc3")
 ```
 
-### Standardized Regression Slopes
+### Multiple Correlation Coefficients
 
 #### Normal-Theory Approach
 

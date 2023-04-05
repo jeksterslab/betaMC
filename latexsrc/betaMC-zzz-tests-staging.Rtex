@@ -55,6 +55,7 @@ Staging...
 % object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 % # Generate the sampling distribution of parameter estimates
 % mc <- MC(object, R = 20000, type = "mvn", seed = 42)
+% mc
 %% end.rcode
 
 \section{Standardized Regression Slopes}

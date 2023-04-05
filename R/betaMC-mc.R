@@ -48,7 +48,7 @@
 #'     \item{lm_process}{Processed `lm` object.}
 #'     \item{scale}{Sampling variance-covariance matrix of parameter estimates.}
 #'     \item{location}{Parameter estimates.}
-#'     \item{thetahatstar}{Sampling distribution parameter estimates.}
+#'     \item{thetahatstar}{Sampling distribution of parameter estimates.}
 #' }
 #'
 #' @param object Object of class `lm`.

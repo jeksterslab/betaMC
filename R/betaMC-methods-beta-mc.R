@@ -56,8 +56,11 @@ print.betamc <- function(x,
   if (x$fun == "DiffBetaMC") {
     label <- "Differences of standardized regression slopes"
   }
+  cat("Call:\n")
+  base::print(x$call)
   cat(
     paste0(
+      "\n",
       label,
       "\n",
       "type = ",
@@ -138,8 +141,11 @@ summary.betamc <- function(object,
   if (object$fun == "DiffBetaMC") {
     label <- "Differences of standardized regression slopes"
   }
+  cat("Call:\n")
+  base::print(object$call)
   cat(
     paste0(
+      "\n",
       label,
       "\n",
       "type = ",

@@ -25,7 +25,7 @@ lapply(
     vcov.betamc(out)
     confint.betamc(out)
     testthat::test_that(
-      paste(text, "multiple regression"),
+      paste(text, "standardized regression slopes"),
       {
         testthat::expect_true(
           all(

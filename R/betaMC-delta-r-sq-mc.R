@@ -16,6 +16,7 @@
 #' @return Returns an object
 #'   of class `betamc` which is a list with the following elements:
 #'   \describe{
+#'     \item{call}{Function call.}
 #'     \item{object}{The function argument `object`.}
 #'     \item{thetahatstar}{Sampling distribution of
 #'       \eqn{\Delta R^{2}}.}
@@ -48,6 +49,7 @@
 DeltaRSqMC <- function(object) {
   sr <- SCorMC(object)
   out <- list(
+    call = match.call(),
     object = object,
     thetahatstar = lapply(
       X = sr$thetahatstar,
