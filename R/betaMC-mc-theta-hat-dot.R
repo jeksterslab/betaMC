@@ -34,7 +34,7 @@
   sigmayx <- NA
   sigmacap <- NA
   pd <- FALSE
-  if (sigmasq > 0 & all(diag(sigmacapx) > 0)) {
+  if (sigmasq > 0 && all(diag(sigmacapx) > 0)) {
     sigmaysq <- .SigmaYSq(
       beta = beta,
       sigmasq = sigmasq,
