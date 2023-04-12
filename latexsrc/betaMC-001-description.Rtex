@@ -57,15 +57,20 @@ to generate confidence intervals for standardized regression coefficients.
 
 \section*{Installation}
 
-You can install the released version of
-\texttt{betaMC}
-from
+You can install the CRAN release of \texttt{betaMC} with:
+
+%% begin.rcode
+% #| eval = FALSE
+% install.packages("betaMC")
+%% end.rcode
+
+You can install the development version of \texttt{betaMC} from
 \href{https://github.com/jeksterslab/betaMC}{GitHub}
 with:
 
 %% begin.rcode
 % #| eval = FALSE
-% install.packages("remotes")
+% if (!require("remotes")) install.packages("remotes")
 % remotes::install_github("jeksterslab/betaMC")
 %% end.rcode
 
@@ -75,7 +80,7 @@ See
 \href{https://jeksterslab.github.io/betaMC/index.html}{GitHub Pages}
 for package documentation.
 
-\nocite{Lib-R-Manual-2022}
+\nocite{Lib-R-Manual-2023}
 
 \printbibliography
 

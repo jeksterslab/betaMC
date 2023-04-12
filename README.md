@@ -1,7 +1,7 @@
 betaMC
 ================
 Ivan Jacob Agaloos Pesigan
-2023-04-09
+2023-04-12
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -39,7 +39,7 @@ You can install the development version of `betaMC` from
 [GitHub](https://github.com/jeksterslab/betaMC) with:
 
 ``` r
-install.packages("remotes")
+if (!require("remotes")) install.packages("remotes")
 remotes::install_github("jeksterslab/betaMC")
 ```
 
@@ -104,9 +104,9 @@ BetaMC(mvn)
 #> Standardized regression slopes
 #> type = "mvn"
 #>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4951 0.0755 20000 0.2543 0.2962 0.3398 0.6350 0.6765 0.7200
-#> PCTGRT  0.3915 0.0764 20000 0.1456 0.1924 0.2362 0.5365 0.5865 0.6459
-#> PCTSUPP 0.2632 0.0749 20000 0.0210 0.0736 0.1193 0.4099 0.4619 0.5166
+#> NARTIC  0.4951 0.0762 20000 0.2437 0.2914 0.3378 0.6366 0.6831 0.7266
+#> PCTGRT  0.3915 0.0769 20000 0.1452 0.1894 0.2370 0.5396 0.5867 0.6435
+#> PCTSUPP 0.2632 0.0747 20000 0.0266 0.0750 0.1176 0.4129 0.4616 0.5091
 ```
 
 #### Asymptotic distribution-free Approach
@@ -119,9 +119,9 @@ BetaMC(adf)
 #> Standardized regression slopes
 #> type = "adf"
 #>            est     se     R   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4951 0.0678 20000  0.2533 0.3079 0.3504 0.6146 0.6531 0.6954
-#> PCTGRT  0.3915 0.0702 20000  0.1423 0.2025 0.2460 0.5197 0.5616 0.6031
-#> PCTSUPP 0.2632 0.0767 20000 -0.0176 0.0547 0.1081 0.4076 0.4524 0.5070
+#> NARTIC  0.4951 0.0671 20000  0.2634 0.3125 0.3528 0.6160 0.6528 0.6916
+#> PCTGRT  0.3915 0.0706 20000  0.1406 0.1940 0.2431 0.5195 0.5616 0.6088
+#> PCTSUPP 0.2632 0.0767 20000 -0.0117 0.0575 0.1047 0.4056 0.4505 0.5134
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
@@ -134,9 +134,9 @@ BetaMC(hc3)
 #> Standardized regression slopes
 #> type = "hc3"
 #>            est     se     R   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4951 0.0794 20000  0.2247 0.2741 0.3252 0.6352 0.6769 0.7193
-#> PCTGRT  0.3915 0.0828 20000  0.1002 0.1656 0.2193 0.5416 0.5931 0.6415
-#> PCTSUPP 0.2632 0.0857 20000 -0.0304 0.0364 0.0886 0.4249 0.4753 0.5376
+#> NARTIC  0.4951 0.0796 20000  0.2006 0.2677 0.3236 0.6356 0.6794 0.7281
+#> PCTGRT  0.3915 0.0825 20000  0.0999 0.1601 0.2186 0.5415 0.5903 0.6368
+#> PCTSUPP 0.2632 0.0855 20000 -0.0295 0.0257 0.0869 0.4243 0.4762 0.5395
 ```
 
 ### Other Effect Sizes

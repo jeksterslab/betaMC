@@ -16,8 +16,9 @@
 #'   `BetaMC()`,
 #'   `RSqMC()`,
 #'   `SCorMC()`,
-#'   `DeltaRSqMC()`, or
-#'   `PCorMC()`
+#'   `DeltaRSqMC()`,
+#'   `PCorMC()`, or
+#'   `DiffBetaMC()`
 #'   functions.
 #' @inheritParams summary.betamc
 #'
@@ -99,8 +100,9 @@ print.betamc <- function(x,
 #'   `BetaMC()`,
 #'   `RSqMC()`,
 #'   `SCorMC()`,
-#'   `DeltaRSqMC()`, or
-#'   `PCorMC()`
+#'   `DeltaRSqMC()`,
+#'   `PCorMC()`, or
+#'   `DiffBetaMC()`
 #'   functions.
 #' @param ... additional arguments.
 #' @param alpha Significance level.

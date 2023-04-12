@@ -14,8 +14,9 @@ the output of the
 \code{BetaMC()},
 \code{RSqMC()},
 \code{SCorMC()},
-\code{DeltaRSqMC()}, or
-\code{PCorMC()}
+\code{DeltaRSqMC()},
+\code{PCorMC()}, or
+\code{DiffBetaMC()}
 functions.}
 
 \item{alpha}{Significance level.}
