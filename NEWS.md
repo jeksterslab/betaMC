@@ -1,6 +1,4 @@
-# betaMC 1.2.0.9000
-
-Latest development version.
+# betaMC 1.2.0
 
 ## Major
 
