@@ -1,6 +1,6 @@
 Package: betaMC
 Title: Monte Carlo for Regression Effect Sizes
-Version: 1.2.0
+Version: 1.2.0.9000
 Authors@R: 
     person(given = "Ivan Jacob Agaloos",
            family = "Pesigan",
