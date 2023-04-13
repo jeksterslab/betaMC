@@ -27,9 +27,11 @@ knitr::opts_chunk$set(
 
 ## Description
 
-Generates Monte Carlo confidence intervals for
-standardized regression coefficients
-and other effect sizes
+Generates Monte Carlo confidence intervals
+for standardized regression coefficients (beta) and other effect sizes,
+including multiple correlation, semipartial correlations,
+improvement in R-squared, squared partial correlations,
+and differences in standardized regression coefficients,
 for models fitted by `lm()`.
 `betaMC` combines ideas from Monte Carlo confidence intervals for the indirect effect
 (Preacher and Selig, 2012: http://doi.org/10.1080/19312458.2012.679848)

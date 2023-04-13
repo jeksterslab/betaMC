@@ -1,7 +1,7 @@
 betaMC
 ================
 Ivan Jacob Agaloos Pesigan
-2023-04-12
+2023-04-13
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -19,11 +19,13 @@ Status](https://jeksterslab.r-universe.dev/badges/betaMC)](https://jeksterslab.r
 ## Description
 
 Generates Monte Carlo confidence intervals for standardized regression
-coefficients and other effect sizes for models fitted by `lm()`.
-`betaMC` combines ideas from Monte Carlo confidence intervals for the
-indirect effect (Preacher and Selig, 2012:
-<http://doi.org/10.1080/19312458.2012.679848>) and the sampling
-covariance matrix of regression coefficients (Dudgeon, 2017:
+coefficients (beta) and other effect sizes, including multiple
+correlation, semipartial correlations, improvement in R-squared, squared
+partial correlations, and differences in standardized regression
+coefficients, for models fitted by `lm()`. `betaMC` combines ideas from
+Monte Carlo confidence intervals for the indirect effect (Preacher and
+Selig, 2012: <http://doi.org/10.1080/19312458.2012.679848>) and the
+sampling covariance matrix of regression coefficients (Dudgeon, 2017:
 <http://doi.org/10.1007/s11336-017-9563-z>) to generate confidence
 intervals effect sizes in regression.
 
@@ -104,9 +106,9 @@ BetaMC(mvn)
 #> Standardized regression slopes
 #> type = "mvn"
 #>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4951 0.0751 20000 0.2417 0.2953 0.3387 0.6324 0.6749 0.7137
-#> PCTGRT  0.3915 0.0762 20000 0.1556 0.1952 0.2392 0.5381 0.5815 0.6346
-#> PCTSUPP 0.2632 0.0749 20000 0.0275 0.0742 0.1183 0.4104 0.4577 0.5302
+#> NARTIC  0.4951 0.0754 20000 0.2310 0.2923 0.3375 0.6340 0.6706 0.7279
+#> PCTGRT  0.3915 0.0767 20000 0.1403 0.1959 0.2390 0.5397 0.5849 0.6411
+#> PCTSUPP 0.2632 0.0745 20000 0.0287 0.0796 0.1176 0.4090 0.4588 0.5265
 ```
 
 #### Asymptotic distribution-free Approach
@@ -119,9 +121,9 @@ BetaMC(adf)
 #> Standardized regression slopes
 #> type = "adf"
 #>            est     se     R   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4951 0.0678 20000  0.2490 0.3101 0.3515 0.6185 0.6570 0.6967
-#> PCTGRT  0.3915 0.0712 20000  0.1507 0.2002 0.2418 0.5211 0.5619 0.6095
-#> PCTSUPP 0.2632 0.0763 20000 -0.0086 0.0561 0.1074 0.4071 0.4512 0.5025
+#> NARTIC  0.4951 0.0674 20000  0.2690 0.3122 0.3535 0.6169 0.6550 0.6939
+#> PCTGRT  0.3915 0.0709 20000  0.1399 0.1946 0.2418 0.5198 0.5603 0.6063
+#> PCTSUPP 0.2632 0.0764 20000 -0.0117 0.0565 0.1078 0.4068 0.4521 0.5036
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
@@ -134,9 +136,9 @@ BetaMC(hc3)
 #> Standardized regression slopes
 #> type = "hc3"
 #>            est     se     R   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4951 0.0794 20000  0.1878 0.2725 0.3253 0.6348 0.6766 0.7311
-#> PCTGRT  0.3915 0.0823 20000  0.1005 0.1612 0.2198 0.5429 0.5877 0.6311
-#> PCTSUPP 0.2632 0.0856 20000 -0.0261 0.0277 0.0900 0.4264 0.4787 0.5337
+#> NARTIC  0.4951 0.0793 20000  0.2289 0.2745 0.3242 0.6338 0.6840 0.7276
+#> PCTGRT  0.3915 0.0821 20000  0.0808 0.1604 0.2184 0.5395 0.5909 0.6475
+#> PCTSUPP 0.2632 0.0853 20000 -0.0393 0.0301 0.0884 0.4239 0.4774 0.5531
 ```
 
 ### Other Effect Sizes

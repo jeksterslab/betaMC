@@ -36,7 +36,7 @@
 % )
 %% end.rcode
 
-\title{betaMC: Monte Carlo Confidence Intervals for Standardized Regression Coefficients}
+\title{betaMC: Monte Carlo for Regression Effect Sizes}
 \author{Ivan Jacob Agaloos Pesigan}
 \date{}
 
@@ -46,14 +46,17 @@
 
 \section*{Description}
 
-Generates Monte Carlo confidence intervals for standardized regression coefficients
-and other effect sizes
+Generates Monte Carlo confidence intervals
+for standardized regression coefficients (beta) and other effect sizes,
+including multiple correlation, semipartial correlations,
+improvement in R-squared, squared partial correlations,
+and differences in standardized regression coefficients,
 for models fitted by \texttt{lm()}.
 \texttt{betaMC} combines ideas from Monte Carlo confidence intervals for the indirect effect
 \parencite{Lib-Mediation-Monte-Carlo-Method-Preacher-2012}
 and the sampling covariance matrix of regression coefficients
 \parencite{Lib-Regression-Standardized-Coefficients-HC-Dudgeon-2017}
-to generate confidence intervals for standardized regression coefficients.
+to generate confidence intervals effect sizes in regression.
 
 \section*{Installation}
 
