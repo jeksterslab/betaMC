@@ -49,6 +49,7 @@
 #'     \item{scale}{Sampling variance-covariance matrix of parameter estimates.}
 #'     \item{location}{Parameter estimates.}
 #'     \item{thetahatstar}{Sampling distribution of parameter estimates.}
+#'     \item{fun}{Function used ("MC").}
 #' }
 #'
 #' @param object Object of class `lm`.
@@ -142,174 +143,23 @@ MC <- function(object,
     )
   )
   stopifnot(0 < k & k < 1)
-  constant <- k
-  jcap <- .JacobianVechSigmaWRTTheta(
-    beta = lm_process$beta,
-    sigmacapx = lm_process$sigmacap[
-      2:lm_process$k,
-      2:lm_process$k,
-      drop = FALSE
-    ],
-    q = lm_process$q,
-    p = lm_process$p,
-    rsq = NULL,
-    fixed_x = fixed_x
+  vcov <- .Cov(
+    object = object,
+    type = type,
+    g1 = g1,
+    g2 = g2,
+    k = k,
+    lm_process = lm_process,
+    jcap = .J(
+      lm_process = lm_process,
+      rsq = NULL,
+      fixed_x = fixed_x
+    )
   )
-  if (type == "adf") {
-    gammacapmvn_consistent <- .GammaN(
-      sigmacap = lm_process$sigmacap_consistent,
-      pinv_of_dcap = lm_process$pinv_of_dcap
-    )
-    gammacap <- .GammaADFUnbiased(
-      gammacapadf_consistent = .GammaADFConsistent(
-        d = .DofMat(
-          lm_process$x,
-          center = colMeans(lm_process$x),
-          n = lm_process$n,
-          k = lm_process$k
-        ),
-        vechsigmacap_consistent = lm_process$vechsigmacap_consistent,
-        n = lm_process$n
-      ),
-      gammacapmvn_consistent = gammacapmvn_consistent,
-      vechsigmacap_consistent = lm_process$vechsigmacap_consistent,
-      n = lm_process$n
-    )
-  }
-  if (type == "mvn") {
-    gammacap <- .GammaN(
-      sigmacap = lm_process$sigmacap,
-      pinv_of_dcap = lm_process$pinv_of_dcap
-    )
-  }
-  if (type %in% c("adf", "mvn")) {
-    # the procedure from here is the same for adf and mvn
-    acov <- chol2inv(
-      chol(
-        .ACovSEMInverse(
-          jcap = jcap,
-          acov = gammacap
-        )
-      )
-    )
-    vcov <- (1 / lm_process$n) * acov
-  }
-  if (
-    type %in% c(
-      "hc0",
-      "hc1",
-      "hc2",
-      "hc3",
-      "hc4",
-      "hc4m",
-      "hc5"
-    )
-  ) {
-    gammacap_mvn <- .GammaN(
-      sigmacap = lm_process$sigmacap,
-      pinv_of_dcap = lm_process$pinv_of_dcap
-    )
-    gammacap_hc <- .GammaHC(
-      d = .DofMat(
-        lm_process$x,
-        center = colMeans(lm_process$x),
-        n = lm_process$n,
-        k = lm_process$k
-      ),
-      sigmacap = lm_process$sigmacap,
-      qcap = .QMat(
-        h = stats::hatvalues(object),
-        k = lm_process$k,
-        type = type,
-        g1 = g1,
-        g2 = g2,
-        constant = constant
-      ),
-      n = lm_process$n
-    )
-    avcov <- .ACovHC(
-      jcap = jcap,
-      gammacap = gammacap_hc,
-      gammacap_mvn = gammacap_mvn
-    )
-    vcov <- .CovHC(
-      acov = avcov,
-      type = type,
-      n = lm_process$n,
-      df = lm_process$df
-    )
-  }
   theta <- lm_process$theta
   if (fixed_x) {
     theta <- theta[seq_len(lm_process$k)]
   }
-  thetahatstar <- .ThetaHatStar(
-    R = R,
-    scale = vcov,
-    location = theta,
-    decomposition = decomposition,
-    pd = pd,
-    tol = tol
-  )$thetahatstar
-  if (fixed_x) {
-    thetahatstar <- cbind(
-      thetahatstar,
-      t(
-        matrix(
-          data = lm_process$vechsigmacapx,
-          ncol = dim(thetahatstar)[1],
-          nrow = length(lm_process$vechsigmacapx)
-        )
-      )
-    )
-  }
-  # replace cases with nonpositive definite model-implied covariance matrix
-  # max iterations = iter
-  foo <- function(x,
-                  iter = 1000L) {
-    count <- 0
-    params <- .MCThetaHat(
-      thetahat = x,
-      p = lm_process$p,
-      k = lm_process$k,
-      q = lm_process$q
-    )
-    pd <- params$pd
-    while (!pd) {
-      x <- .Vec(
-        .ThetaHatStar(
-          R = 1,
-          scale = vcov,
-          location = theta,
-          decomposition = decomposition,
-          pd = FALSE
-        )$thetahatstar
-      )
-      params <- .MCThetaHat(
-        thetahat = x,
-        p = lm_process$p,
-        k = lm_process$k,
-        q = lm_process$q
-      )
-      pd <- params$pd
-      count <- count + 1
-      if (count >= iter) {
-        return(NA)
-      }
-    }
-    return(params)
-  }
-  thetahatstar <- lapply(
-    X = as.data.frame(
-      t(
-        thetahatstar
-      )
-    ),
-    FUN = foo
-  )
-  thetahatstar <- unname(
-    thetahatstar[!is.na(thetahatstar)]
-  )
   out <- list(
     call = match.call(),
     args = list(
@@ -328,7 +178,21 @@ MC <- function(object,
     lm_process = lm_process,
     scale = vcov,
     location = theta,
-    thetahatstar = thetahatstar
+    thetahatstar = .MC(
+      scale = vcov,
+      location = theta,
+      vechsigmacapx = lm_process$vechsigmacapx,
+      p = lm_process$p,
+      k = lm_process$k,
+      q = lm_process$q,
+      R = R,
+      decomposition = decomposition,
+      pd = pd,
+      tol = tol,
+      fixed_x = fixed_x,
+      seed = seed
+    ),
+    fun = "MC"
   )
   class(out) <- c(
     "mc",

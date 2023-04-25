@@ -43,6 +43,7 @@ articles:
   - example_delta_r_sq_mc
   - example_p_cor_mc
   - example_diff_beta_mc
+  - example_mc_mi
 - title: Benchmark
   navbar: Benchmark
   contents:

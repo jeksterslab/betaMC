@@ -62,6 +62,7 @@ Other Beta Monte Carlo Functions:
 \code{\link{BetaMC}()},
 \code{\link{DeltaRSqMC}()},
 \code{\link{DiffBetaMC}()},
+\code{\link{MCMI}()},
 \code{\link{MC}()},
 \code{\link{RSqMC}()},
 \code{\link{SCorMC}()}

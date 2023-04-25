@@ -61,6 +61,7 @@ confint(std, level = 0.95)
 Other Beta Monte Carlo Functions: 
 \code{\link{DeltaRSqMC}()},
 \code{\link{DiffBetaMC}()},
+\code{\link{MCMI}()},
 \code{\link{MC}()},
 \code{\link{PCorMC}()},
 \code{\link{RSqMC}()},

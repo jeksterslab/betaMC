@@ -1,0 +1,141 @@
+---
+title: "Monte Carlo Method Combined with Multiple Imputation"
+author: "Ivan Jacob Agaloos Pesigan"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Monte Carlo Method Combined with Multiple Imputation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The Monte Carlo Method combined with multiple imputation
+described in Pesigan & Cheung (2023)
+is implemented using the `MCMI()` function
+in the context of linear regression.
+Multiple imputation (`mice::mice()`) is used to deal with missing values in a data set.
+The vector of parameter estimates
+and the corresponding sampling covariance matrix
+are estimated for each of the imputed data sets.
+Results are combined to arrive at the pooled vector of parameter estimates
+and the corresponding sampling covariance matrix.
+The pooled estimates are then used to generate the sampling distribution
+of regression parameters.
+The output of the `MCMI()` function
+can be passed to the
+`BetaMC()`,
+`RSqMC()`,
+`DeltaRSqMC()`,
+`SCorMC()`,
+`PCorMC()`,
+and
+`DiffBetaMC()` functions
+to generate confidence intervals for various
+regression effect sizes.
+
+In this example,
+we use the data set and the model used in
+[betaMC: Example Using the BetaMC Function](example_beta_mc.html).
+We use the `mice::ampute()` function to generate a data set with missing values.
+
+```{r}
+#| message = FALSE
+library(betaMC)
+```
+
+```{r}
+#| echo = FALSE
+if (!exists("nas1982")) {
+  try(
+    data(
+      "nas1982",
+      package = "betaMC"
+    ),
+    silent = TRUE
+  )
+}
+df <- nas1982
+```
+
+```{r}
+#| eval = FALSE
+df <- betaMC::nas1982
+```
+
+```{r}
+set.seed(42)
+df <- mice::ampute(df)$amp
+df
+```
+
+### Regression
+
+Fit the regression model using the `lm()` function.
+Note that this does not deal with missing values.
+The fitted model (`object`) is updated with each imputed data
+within the `MCMI()` function.
+
+```{r}
+object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+```
+
+### Monte Carlo Sampling Distribution of Parameters
+
+```{r}
+hc3 <- MCMI(object, type = "hc3", data = df, m = 100)
+```
+
+### Standardized Regression Slopes
+
+```{r}
+BetaMC(hc3)
+```
+
+### Multiple Correlation Coefficients
+
+```{r}
+RSqMC(hc3)
+```
+
+### Improvement in R-squared
+
+```{r}
+DeltaRSqMC(hc3)
+```
+
+### Semipartial Correlation Coefficients
+
+```{r}
+SCorMC(hc3)
+```
+
+### Squared Partial Correlation Coefficients
+
+```{r}
+PCorMC(hc3)
+```
+
+### Differences of Standardized Regression Slopes
+
+```{r}
+DiffBetaMC(hc3)
+```
+
+## References
+
+National Research Council. (1982).
+*An assessment of research-doctorate programs in the United States: Social and behavioral sciences*.
+https://doi.org/10.17226/9781.
+Reproduced with permission from the National Academy of Sciences,
+Courtesy of the National Academies Press, Washington, D.C.
+
+Pesigan, I. J. A., & Cheung, S. F. (2023).
+Monte Carlo confidence intervals for the indirect effect with missing data.
+*Behavior Research Methods*.
+https://doi.org/10.3758/s13428-023-02114-4

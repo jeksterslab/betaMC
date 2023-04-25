@@ -17,7 +17,7 @@
 #'
 #' @inheritParams BetaMC
 #'
-#' @keywords internal
+#' @keywords eval internal
 #' @noRd
 .MCRMSE <- function(object) {
   return(

@@ -13,7 +13,7 @@
 #'
 #' @inheritParams BetaMC
 #'
-#' @keywords internal
+#' @keywords eval internal
 #' @noRd
 .MCVar <- function(object) {
   return(

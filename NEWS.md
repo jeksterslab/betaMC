@@ -2,6 +2,11 @@
 
 Latest development version.
 
+* Added the `MCMI()` function
+  to perform  Monte Carlo simulation of parameters
+  for data sets with missing values
+  using multiple imputation.
+
 # betaMC 1.2.0
 
 ## Major

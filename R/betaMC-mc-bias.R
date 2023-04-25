@@ -15,7 +15,7 @@
 #'
 #' @inheritParams BetaMC
 #'
-#' @keywords internal
+#' @keywords eval internal
 #' @noRd
 .MCBias <- function(object) {
   return(
