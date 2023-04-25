@@ -19,7 +19,6 @@ MCMI(
   seed = NULL,
   data,
   m = 5,
-  method = NULL,
   ...
 )
 }
@@ -82,14 +81,6 @@ Seed number for reproducibility.}
 values are coded as \code{NA}.}
 
 \item{m}{Number of multiple imputations. The default is \code{m=5}.}
-
-\item{method}{Can be either a single string, or a vector of strings with
-length \code{length(blocks)}, specifying the imputation method to be
-used for each column in data. If specified as a single string, the same
-method will be used for all blocks. The default imputation method (when no
-argument is specified) depends on the measurement level of the target column,
-as regulated by the \code{defaultMethod} argument. Columns that need
-not be imputed have the empty method \code{""}. See details.}
 
 \item{...}{Additional arguments to pass to \code{mice::mice()}.}
 }

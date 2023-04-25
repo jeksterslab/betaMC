@@ -77,7 +77,6 @@ MCMI <- function( # mc argumemts
                  # mi arguments
                  data, # data with missing values
                  m = 5,
-                 method = NULL,
                  ...) {
   lm_process <- .ProcessLM(object)
   stopifnot(
@@ -104,7 +103,6 @@ MCMI <- function( # mc argumemts
     data = mice::mice(
       data = data,
       m = m,
-      method = method,
       print = FALSE,
       seed = mi_seed,
       ...
@@ -210,7 +208,6 @@ MCMI <- function( # mc argumemts
       fixed_x = fixed_x,
       seed = seed,
       m = m,
-      method = method,
       print = print,
       list(...)
     ),
