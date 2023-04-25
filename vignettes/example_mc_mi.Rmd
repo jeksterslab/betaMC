@@ -1,9 +1,9 @@
 ---
-title: "Monte Carlo Method Combined with Multiple Imputation"
+title: "betaMC: Monte Carlo Method Combined with Multiple Imputation"
 author: "Ivan Jacob Agaloos Pesigan"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Monte Carlo Method Combined with Multiple Imputation}
+  %\VignetteIndexEntry{betaMC: Monte Carlo Method Combined with Multiple Imputation}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

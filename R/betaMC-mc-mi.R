@@ -1,7 +1,8 @@
 #' Generate the Sampling Distribution of Regression Parameters
 #' Using the Monte Carlo Method for Data with Missing Values
 #'
-#' @details Multiple imputation (`mice::mice()`) is used to deal with missing values in a data set.
+#' @details Multiple imputation (`mice::mice()`)
+#' is used to deal with missing values in a data set.
 #' The vector of parameter estimates
 #' and the corresponding sampling covariance matrix
 #' are estimated for each of the imputed data sets.
@@ -55,7 +56,8 @@
 #' ## within the `MCMI()` function.
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982_missing)
 #' # Generate the sampling distribution of parameter estimates
-#' # (use large values R and m, for example, R = 20000 and m = 100, for actual research)
+#' # (use large values R and m, for example, R = 20000 and m = 100,
+#' # for actual research)
 #' MCMI(object, R = 100, data = nas1982_missing, m = 5)
 #' @export
 #' @family Beta Monte Carlo Functions

@@ -37,6 +37,12 @@
   )
 }
 
+#' Monte Carlo Simulation Mean
+#'
+#' @inheritParams BetaMC
+#'
+#' @keywords eval internal
+#' @noRd
 .MCMean <- function(object) {
   return(
     colMeans(
