@@ -51,15 +51,33 @@ lapply(
     )
     df <- as.data.frame(df)
     object <- lm(y ~ ., data = df)
-    mvn <- summary.mc(MCMI(object, R = R, type = "mvn", fixed_x = TRUE, m = 100))
-    adf <- summary.mc(MCMI(object, R = R, type = "adf", fixed_x = TRUE, m = 100))
-    hc0 <- summary.mc(MCMI(object, R = R, type = "hc0", fixed_x = TRUE, m = 100))
-    hc1 <- summary.mc(MCMI(object, R = R, type = "hc1", fixed_x = TRUE, m = 100))
-    hc2 <- summary.mc(MCMI(object, R = R, type = "hc2", fixed_x = TRUE, m = 100))
-    hc3 <- summary.mc(MCMI(object, R = R, type = "hc3", fixed_x = TRUE, m = 100))
-    hc4 <- summary.mc(MCMI(object, R = R, type = "hc4", fixed_x = TRUE, m = 100))
-    hc4m <- summary.mc(MCMI(object, R = R, type = "hc4m", fixed_x = TRUE, m = 100))
-    hc5 <- summary.mc(MCMI(object, R = R, type = "hc5", fixed_x = TRUE, m = 100))
+    mvn <- summary.mc(
+      MCMI(object, R = R, type = "mvn", fixed_x = TRUE, m = 100)
+    )
+    adf <- summary.mc(
+      MCMI(object, R = R, type = "adf", fixed_x = TRUE, m = 100)
+    )
+    hc0 <- summary.mc(
+      MCMI(object, R = R, type = "hc0", fixed_x = TRUE, m = 100)
+    )
+    hc1 <- summary.mc(
+      MCMI(object, R = R, type = "hc1", fixed_x = TRUE, m = 100)
+    )
+    hc2 <- summary.mc(
+      MCMI(object, R = R, type = "hc2", fixed_x = TRUE, m = 100)
+    )
+    hc3 <- summary.mc(
+      MCMI(object, R = R, type = "hc3", fixed_x = TRUE, m = 100)
+    )
+    hc4 <- summary.mc(
+      MCMI(object, R = R, type = "hc4", fixed_x = TRUE, m = 100)
+    )
+    hc4m <- summary.mc(
+      MCMI(object, R = R, type = "hc4m", fixed_x = TRUE, m = 100)
+    )
+    hc5 <- summary.mc(
+      MCMI(object, R = R, type = "hc5", fixed_x = TRUE, m = 100)
+    )
     mvn_cov <- as.vector(mvn$var)
     testthat::test_that(
       paste(text, "means"),
