@@ -18,7 +18,7 @@
 #'   Dimension of the `k` by `k` matrix.
 #'
 #' @family Symmetric Functions
-#' @keywords linearAlgebra symmetric dot internal
+#' @keywords linearAlgebra symmetric internal
 #' @noRd
 .SymofVech <- function(x,
                        k) {

@@ -9,31 +9,34 @@
 #'   Half-vectorization of the consistent covariance matrix.
 #' @param n Integer.
 #'   Sample size.
+#'
 #' @family gammaADF Functions
 #' @keywords gammaADF gamma internal
 #' @noRd
 .GammaADFConsistent <- function(d,
                                 vechsigmacap_consistent,
                                 n) {
-  (
-    (1 / n) * (
-      Reduce(
-        f = `+`,
-        x = lapply(
-          X = 1:n,
-          FUN = function(i,
-                         d) {
-            tcrossprod(
-              .Vech(
-                tcrossprod(d[i, ])
+  return(
+    (
+      (1 / n) * (
+        Reduce(
+          f = `+`,
+          x = lapply(
+            X = 1:n,
+            FUN = function(i,
+                           d) {
+              tcrossprod(
+                .Vech(
+                  tcrossprod(d[i, ])
+                )
               )
-            )
-          },
-          d = d
+            },
+            d = d
+          )
         )
       )
+    ) - tcrossprod(
+      vechsigmacap_consistent
     )
-  ) - tcrossprod(
-    vechsigmacap_consistent
   )
 }

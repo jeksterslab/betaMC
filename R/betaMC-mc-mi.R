@@ -26,9 +26,27 @@
 #'     \item{fun}{Function used ("MCMI").}
 #' }
 #'
-#' @param ... Additional arguments to pass to `mice::mice()`.
 #' @inheritParams MC
-#' @inheritParams mice::mice
+#' @param adj Logical.
+#'   If `adj = TRUE`,
+#'   use Li, Raghunathan, and Rubin (1991)
+#'   sampling covariance matrix adjustment.
+#'   If `adj = FALSE`,
+#'   use the multivariate version of Rubin's (1987)
+#'   sampling covariance matrix.
+#' @param seed_mc Integer.
+#'   Random seed for the Monte Carlo method.
+#' @param seed_mi Integer.
+#'   Random seed for multiple imputation.
+#' @param fun Character string.
+#'   Multiple imputation function.
+#'   If `fun = "mice"`, use [mice::mice()].
+#'   If `fun = "amelia"`, use [Amelia::amelia()].
+#' @param imp Optional argument.
+#'   A list of multiply imputed data sets.
+#' @param ... Additional arguments to pass to `fun`.
+#'   If `fun = "mice"`, DO NOT supply `data`, `seed`, or `print`.
+#'   If `fun = "amelia"`, DO NOT supply `x` or `p2s`.
 #'
 #' @references
 #' Dudgeon, P. (2017).
@@ -58,12 +76,11 @@
 #' # Generate the sampling distribution of parameter estimates
 #' # (use large values R and m, for example, R = 20000 and m = 100,
 #' # for actual research)
-#' MCMI(object, R = 100, data = nas1982_missing, m = 5)
+#' MCMI(object, R = 100, M = 5)
 #' @export
 #' @family Beta Monte Carlo Functions
 #' @keywords betaMC mc
-MCMI <- function( # mc argumemts
-                 object,
+MCMI <- function(object,
                  R = 20000L,
                  type = "hc3",
                  g1 = 1,
@@ -73,10 +90,11 @@ MCMI <- function( # mc argumemts
                  pd = TRUE,
                  tol = 1e-06,
                  fixed_x = FALSE,
-                 seed = NULL,
-                 # mi arguments
-                 data, # data with missing values
-                 m = 5,
+                 seed_mc = NULL,
+                 adj = FALSE,
+                 seed_mi = NA,
+                 fun = "mice",
+                 imp = NULL,
                  ...) {
   lm_process <- .ProcessLM(object)
   stopifnot(
@@ -93,106 +111,137 @@ MCMI <- function( # mc argumemts
     )
   )
   stopifnot(0 < k & k < 1)
-  n <- dim(data)[1]
-  if (is.null(seed)) {
-    mi_seed <- NA
-  } else {
-    mi_seed <- seed
-  }
-  mi <- mice::complete(
-    data = mice::mice(
-      data = data,
-      m = m,
-      print = FALSE,
-      seed = mi_seed,
-      ...
-    ),
-    action = "all"
+  constant <- k
+  call0 <- stats::getCall(object)
+  call1 <- call0
+  data0 <- eval(
+    call0$data,
+    envir = parent.frame()
   )
-  foo <- function(data,
-                  orig_object,
-                  type,
-                  g1,
-                  g2,
-                  k,
-                  fixed_x) {
-    object <- stats::update(
-      object = orig_object,
-      data = data
+  for (i in seq_along(call0)) {
+    call1[[i]] <- eval(
+      expr = call0[[i]],
+      envir = parent.frame()
     )
-    lm_process <- .ProcessLM(object)
-    return(
-      list(
-        coef = lm_process$theta,
-        vcov = .Cov(
-          object = object,
-          type = type,
-          g1 = g1,
-          g2 = g2,
-          k = k,
-          lm_process = lm_process,
-          jcap = .J(
-            lm_process = lm_process,
-            rsq = NULL,
-            fixed_x = fixed_x
-          ),
-          fixed_x = fixed_x
+  }
+  if (fixed_x) {
+    # check if the X matrix has complete data
+    n_data <- dim(data0)[1]
+    n_x <- lm_process$x[, -1]
+    n_x <- dim(
+      n_x[
+        stats::complete.cases(n_x), ,
+        drop = FALSE
+      ]
+    )[1]
+    if (n_data - n_x > 0) {
+      stop(
+        paste0(
+          "\n",
+          "There are missing cases in the matrix of regressors.",
+          "\n",
+          "Consider using \'fixed_x = FALSE\'.",
+          "\n"
         )
       )
-    )
+    }
   }
-  est <- lapply(
+  if (is.null(imp)) {
+    if (fun == "mice") {
+      mi <- mice::complete(
+        mice::mice(
+          data = data0,
+          print = FALSE,
+          seed = seed_mi,
+          ...
+        ),
+        action = "all"
+      )
+    }
+    if (fun == "amelia") {
+      if (is.na(seed_mi)) {
+        seed_mi <- NULL
+      }
+      set.seed(seed_mi)
+      mi <- Amelia::amelia(
+        x = data0,
+        p2s = 0,
+        ...
+      )$imputations
+    }
+  } else {
+    stopifnot(
+      inherits(
+        imp,
+        "list"
+      )
+    )
+    mi <- imp
+  }
+  fits <- lapply(
     X = mi,
-    FUN = foo,
-    orig_object = object,
-    type = type,
-    g1 = g1,
-    g2 = g2,
-    k = k,
-    fixed_x = fixed_x
+    FUN = function(x) {
+      call1$data <- x
+      return(
+        eval(expr = call1)
+      )
+    }
   )
-  # pool estimates
-  combine <- .Combine(
-    param_vec = lapply(
-      X = est,
-      FUN = function(x) {
-        x$coef
-      }
-    ),
-    var_mat = lapply(
-      X = est,
-      FUN = function(x) {
-        x$vcov
-      }
-    ),
-    m = m
+  lm_processes <- lapply(
+    X = fits,
+    FUN = .ProcessLM
   )
-  # update lm_process with multiple imputation estimates
-  beta <- combine$est[seq_len(lm_process$p)]
-  sigmasq <- combine$est[lm_process$k]
-  vechsigmacapx <- combine$est[(lm_process$k + 1):lm_process$q]
-  lm_process <- .ProcessLMUpdate(
-    beta = beta,
-    sigmasq = sigmasq,
-    vechsigmacapx = vechsigmacapx,
-    n = n,
-    mi = mi,
-    lm_process = lm_process
+  coefs <- lapply(
+    X = lm_processes,
+    FUN = function(x) {
+      x$theta
+    }
   )
-  # estimates
-  theta <- combine$est
+  theta <- colMeans(
+    do.call(
+      what = "rbind",
+      args = coefs
+    )
+  )
   vechsigmacapx <- theta[
     (lm_process$k + 1):lm_process$q
   ]
-  vechsigmacapx <- .SymofVech(
-    x = vechsigmacapx,
-    k = lm_process$p
-  )
   if (fixed_x) {
-    theta <- theta[seq_len(lm_process$k)]
+    coefs <- lapply(
+      X = coefs,
+      FUN = function(x) {
+        x[seq_len(lm_process$k)]
+      }
+    )
   }
-  # sampling covariance matrix of estimates
-  vcov <- combine$total
+  vcovs <- lapply(
+    X = lm_processes,
+    FUN = .Cov,
+    type = type,
+    g1 = g1,
+    g2 = g2,
+    k = constant,
+    jcap = NULL,
+    fixed_x = fixed_x
+  )
+  pooled <- .MICombine(
+    coefs = coefs,
+    vcovs = vcovs,
+    M = length(coefs),
+    k = length(coefs[[1]]),
+    adj = adj
+  )
+  if (adj) {
+    scale <- pooled$total_adj
+  } else {
+    scale <- pooled$total
+  }
+  location <- pooled$est
+  mi_output <- list(
+    mi = mi,
+    lm = fits,
+    lm_process = lm_processes
+  )
   out <- list(
     call = match.call(),
     args = list(
@@ -206,28 +255,32 @@ MCMI <- function( # mc argumemts
       pd = pd,
       tol = tol,
       fixed_x = fixed_x,
-      seed = seed,
-      m = m,
-      print = print,
-      list(...)
+      seed_mc = seed_mc,
+      adj = adj,
+      seed_mi = seed_mi,
+      fun = fun,
+      imp = imp,
+      dots = list(...)
     ),
     lm_process = lm_process,
-    scale = vcov,
-    location = theta,
+    scale = scale,
+    location = location,
+    theta = theta,
     thetahatstar = .MC(
-      scale = vcov,
-      location = theta,
-      vechsigmacapx = vechsigmacapx,
+      scale = scale,
+      location = location,
       p = lm_process$p,
       k = lm_process$k,
       q = lm_process$q,
+      fixed_x = fixed_x,
+      vechsigmacapx = vechsigmacapx,
       R = R,
       decomposition = decomposition,
       pd = pd,
       tol = tol,
-      fixed_x = fixed_x,
-      seed = seed
+      seed = seed_mc
     ),
+    mi = mi_output,
     fun = "MCMI"
   )
   class(out) <- c(

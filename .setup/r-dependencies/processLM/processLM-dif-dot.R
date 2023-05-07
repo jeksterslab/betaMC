@@ -1,3 +1,21 @@
+#' Differences of Regression Coefficients
+#'
+#' @author Ivan Jacob Agaloos Pesigan
+#'
+#' @param beta Numeric vector.
+#'   Partial regression slopes
+#'   \eqn{\boldsymbol{\beta}}.
+#' @param betastar Numeric vector.
+#'   Standardized partial regression slopes
+#'   \eqn{\boldsymbol{\beta}^{\ast}}.
+#' @param p Positive integer.
+#'   `p` regressors.
+#' @param xnames Character vector.
+#'   Column names of regressors.
+#'
+#' @family Process lm Functions
+#' @keywords processLM lm internal
+#' @noRd
 .Dif <- function(beta,
                  betastar,
                  p,
@@ -11,7 +29,11 @@
     for (i in seq_len(p_dif)) {
       dif_betastar[i] <- betastar[dif_idx[1, i]] - betastar[dif_idx[2, i]]
       dif_beta[i] <- beta[dif_idx[1, i]] - beta[dif_idx[2, i]]
-      dif_names[i] <- paste0(xnames[dif_idx[1, i]], "-", xnames[dif_idx[2, i]])
+      dif_names[i] <- paste0(
+        xnames[dif_idx[1, i]],
+        "-",
+        xnames[dif_idx[2, i]]
+      )
     }
     names(dif_betastar) <- dif_names
     names(dif_beta) <- dif_names
@@ -22,8 +44,8 @@
   }
   return(
     list(
-      dif_betastar = dif_betastar,
       dif_beta = dif_beta,
+      dif_betastar = dif_betastar,
       dif_idx = dif_idx
     )
   )

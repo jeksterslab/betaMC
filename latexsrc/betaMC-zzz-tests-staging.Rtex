@@ -55,7 +55,6 @@ Staging...
 % object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 % # Generate the sampling distribution of parameter estimates
 % mc <- MC(object, R = 20000, type = "mvn", seed = 42)
-% mc
 %% end.rcode
 
 \section{Standardized Regression Slopes}
@@ -130,24 +129,15 @@ Staging...
 % confint(out)
 %% end.rcode
 
-\section{Monte Carlo Simulation with Multiple Imputation}
+\section{Monte Carlo Simulation - Multiple Imputation}
 
 %% begin.rcode
-% set.seed(42)
-% nas1982_missing <- mice::ampute(nas1982)$amp
-% nas1982_missing
-%% end.rcode
-
-%% begin.rcode
+% nas1982_missing <- mice::ampute(nas1982, mech = "MCAR")$amp
 % # Fit the regression model
-% ## Note that this does not deal with missing values.
-% ## The fitted model (`object`) is updated with each imputed data.
 % object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982_missing)
 % # Generate the sampling distribution of parameter estimates
-% # using multiple imputation estimates and sampling covariance matrix
-% mc <- MCMI(object, R = 20000, type = "mvn", seed = 42,
-%            data = nas1982_missing, m = 100)
-% mc
+% mc <- MCMI(object, R = 20000, type = "mvn",
+%            seed_mc = 42, seed_mi = 42, m = 1000)
 %% end.rcode
 
 \section{Standardized Regression Slopes}

@@ -49,11 +49,28 @@
 #' @keywords betaMC rsq
 RSqMC <- function(object) {
   stopifnot(
-    methods::is(
+    inherits(
       object,
       "mc"
     )
   )
+  if (object$fun == "MCMI") {
+    est <- colMeans(
+      do.call(
+        what = "rbind",
+        args = lapply(
+          X = object$mi$lm_process,
+          FUN = function(x) {
+            return(
+              x$rsq
+            )
+          }
+        )
+      )
+    )
+  } else {
+    est <- object$lm_process$rsq
+  }
   thetahatstar <- lapply(
     X = object$thetahatstar,
     FUN = function(x) {
@@ -77,7 +94,7 @@ RSqMC <- function(object) {
     call = match.call(),
     object = object,
     thetahatstar = thetahatstar,
-    est = object$lm_process$rsq,
+    est = est,
     fun = "RSqMC"
   )
   class(out) <- c(

@@ -143,22 +143,25 @@ MC <- function(object,
     )
   )
   stopifnot(0 < k & k < 1)
-  vcov <- .Cov(
-    object = object,
+  scale <- .Cov(
+    lm_process = lm_process,
     type = type,
     g1 = g1,
     g2 = g2,
     k = k,
-    lm_process = lm_process,
     jcap = .J(
       lm_process = lm_process,
       rsq = NULL,
       fixed_x = fixed_x
     )
   )
-  theta <- lm_process$theta
+  location <- lm_process$theta
+  theta <- location
+  vechsigmacapx <- lm_process$theta[
+    (lm_process$k + 1):lm_process$q
+  ]
   if (fixed_x) {
-    theta <- theta[seq_len(lm_process$k)]
+    location <- location[seq_len(lm_process$k)]
   }
   out <- list(
     call = match.call(),
@@ -176,20 +179,21 @@ MC <- function(object,
       seed = seed
     ),
     lm_process = lm_process,
-    scale = vcov,
-    location = theta,
+    scale = scale,
+    location = location,
+    theta = theta,
     thetahatstar = .MC(
-      scale = vcov,
-      location = theta,
-      vechsigmacapx = lm_process$vechsigmacapx,
+      scale = scale,
+      location = location,
       p = lm_process$p,
       k = lm_process$k,
       q = lm_process$q,
+      fixed_x = fixed_x,
+      vechsigmacapx = vechsigmacapx,
       R = R,
       decomposition = decomposition,
       pd = pd,
       tol = tol,
-      fixed_x = fixed_x,
       seed = seed
     ),
     fun = "MC"

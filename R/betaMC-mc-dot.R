@@ -7,10 +7,13 @@
 #'
 #' @param scale Numeric matrix.
 #'   Sampling covariance matrix of the parameter estimates.
+#'   If `fixed_x = TRUE`, scale should exclude `vechsigmacapx`.
 #' @param location Numeric vector.
 #'   Parameter estimates.
+#'   If `fixed_x = TRUE`, scale should exclude `vechsigmacapx`.
 #' @param vechsigmacapx Numeric vector.
-#'   Unique elements of the covariance matrix of the regressors.
+#'   If `fixed_x = TRUE`,
+#'   unique elements of the covariance matrix of the regressors.
 #' @param p Positive integer.
 #'   `p` regressors.
 #' @param k Positive integer.
@@ -24,15 +27,15 @@
 #' @noRd
 .MC <- function(scale,
                 location,
-                vechsigmacapx,
                 p,
                 k,
                 q,
+                fixed_x = FALSE,
+                vechsigmacapx,
                 R = 20000L,
                 decomposition = "eigen",
                 pd = TRUE,
                 tol = 1e-06,
-                fixed_x = FALSE,
                 seed = NULL) {
   set.seed(seed)
   thetahatstar <- .ThetaHatStar(
@@ -43,23 +46,22 @@
     pd = pd,
     tol = tol
   )$thetahatstar
-  if (fixed_x) {
-    thetahatstar <- cbind(
-      thetahatstar,
-      t(
-        matrix(
-          data = vechsigmacapx,
-          ncol = dim(thetahatstar)[1],
-          nrow = length(vechsigmacapx)
-        )
-      )
-    )
-  }
   # replace cases with nonpositive definite model-implied covariance matrix
   # max iterations = iter
   foo <- function(x,
+                  p,
+                  k,
+                  q,
+                  fixed_x,
+                  vechsigmacapx,
                   iter = 1000L) {
     count <- 0
+    if (fixed_x) {
+      x <- c(
+        x,
+        vechsigmacapx
+      )
+    }
     params <- .MCThetaHat(
       thetahat = x,
       p = p,
@@ -77,6 +79,12 @@
           pd = FALSE
         )$thetahatstar
       )
+      if (fixed_x) {
+        x <- c(
+          x,
+          vechsigmacapx
+        )
+      }
       params <- .MCThetaHat(
         thetahat = x,
         p = p,
@@ -97,7 +105,12 @@
         thetahatstar
       )
     ),
-    FUN = foo
+    FUN = foo,
+    p = p,
+    k = k,
+    q = q,
+    fixed_x = fixed_x,
+    vechsigmacapx = vechsigmacapx
   )
   thetahatstar <- unname(
     thetahatstar[!is.na(thetahatstar)]

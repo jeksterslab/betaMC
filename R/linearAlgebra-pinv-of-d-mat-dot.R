@@ -6,6 +6,7 @@
 #'   Duplication matrix.
 #'
 #' @return Returns a matrix.
+#'
 #' @family Symmetric Functions
 #' @keywords linearAlgebra symmetric internal
 #' @noRd

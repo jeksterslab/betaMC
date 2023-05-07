@@ -48,13 +48,30 @@
 #' @keywords betaMC diff
 DiffBetaMC <- function(object) {
   stopifnot(
-    methods::is(
+    inherits(
       object,
       "mc"
     )
   )
   if (object$lm_process$p < 2) {
     stop("Two or more regressors is required.")
+  }
+  if (object$fun == "MCMI") {
+    est <- colMeans(
+      do.call(
+        what = "rbind",
+        args = lapply(
+          X = object$mi$lm_process,
+          FUN = function(x) {
+            return(
+              x$dif_betastar
+            )
+          }
+        )
+      )
+    )
+  } else {
+    est <- object$lm_process$dif_betastar
   }
   std <- BetaMC(object)
   std <- std$thetahatstar
@@ -87,7 +104,7 @@ DiffBetaMC <- function(object) {
     call = match.call(),
     object = object,
     thetahatstar = thetahatstar,
-    est = object$lm_process$dif_betastar,
+    est = est,
     fun = "DiffBetaMC"
   )
   class(out) <- c(

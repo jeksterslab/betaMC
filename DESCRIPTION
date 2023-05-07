@@ -28,8 +28,8 @@ Depends:
     R (>= 3.5.0)
 Imports:
     stats,
-    methods,
-    mice
+    mice,
+    Amelia
 Suggests:
     knitr,
     rmarkdown,

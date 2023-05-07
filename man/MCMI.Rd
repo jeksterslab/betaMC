@@ -16,9 +16,11 @@ MCMI(
   pd = TRUE,
   tol = 1e-06,
   fixed_x = FALSE,
-  seed = NULL,
-  data,
-  m = 5,
+  seed_mc = NULL,
+  adj = FALSE,
+  seed_mi = NA,
+  fun = "mice",
+  imp = NULL,
   ...
 )
 }
@@ -74,15 +76,31 @@ Tolerance used for \code{pd}.}
 If \code{fixed_x = TRUE}, treat the regressors as fixed.
 If \code{fixed_x = FALSE}, treat the regressors as random.}
 
-\item{seed}{Integer.
-Seed number for reproducibility.}
+\item{seed_mc}{Integer.
+Random seed for the Monte Carlo method.}
 
-\item{data}{A data frame or a matrix containing the incomplete data.  Missing
-values are coded as \code{NA}.}
+\item{adj}{Logical.
+If \code{adj = TRUE},
+use Li, Raghunathan, and Rubin (1991)
+sampling covariance matrix adjustment.
+If \code{adj = FALSE},
+use the multivariate version of Rubin's (1987)
+sampling covariance matrix.}
 
-\item{m}{Number of multiple imputations. The default is \code{m=5}.}
+\item{seed_mi}{Integer.
+Random seed for multiple imputation.}
 
-\item{...}{Additional arguments to pass to \code{mice::mice()}.}
+\item{fun}{Character string.
+Multiple imputation function.
+If \code{fun = "mice"}, use \code{\link[mice:mice]{mice::mice()}}.
+If \code{fun = "amelia"}, use \code{\link[Amelia:amelia]{Amelia::amelia()}}.}
+
+\item{imp}{Optional argument.
+A list of multiply imputed data sets.}
+
+\item{...}{Additional arguments to pass to \code{fun}.
+If \code{fun = "mice"}, DO NOT supply \code{data}, \code{seed}, or \code{print}.
+If \code{fun = "amelia"}, DO NOT supply \code{x} or \code{p2s}.}
 }
 \value{
 Returns an object
@@ -124,7 +142,7 @@ object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982_missing)
 # Generate the sampling distribution of parameter estimates
 # (use large values R and m, for example, R = 20000 and m = 100,
 # for actual research)
-MCMI(object, R = 100, data = nas1982_missing, m = 5)
+MCMI(object, R = 100, M = 5)
 }
 \references{
 Dudgeon, P. (2017).

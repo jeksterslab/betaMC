@@ -21,15 +21,17 @@
   )
   sym[lower.tri(sym, diag = TRUE)] <- q
   sym[upper.tri(sym)] <- t(sym)[upper.tri(sym)]
-  outer(
-    X = .Vec(sym),
-    Y = q,
-    FUN = function(x, y) {
-      ifelse(
-        test = x == y,
-        yes = 1,
-        no = 0
-      )
-    }
+  return(
+    outer(
+      X = .Vec(sym),
+      Y = q,
+      FUN = function(x, y) {
+        ifelse(
+          test = x == y,
+          yes = 1,
+          no = 0
+        )
+      }
+    )
   )
 }

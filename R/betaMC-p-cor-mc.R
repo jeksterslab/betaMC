@@ -48,13 +48,30 @@
 #' @keywords betaMC pcor
 PCorMC <- function(object) {
   stopifnot(
-    methods::is(
+    inherits(
       object,
       "mc"
     )
   )
   if (object$lm_process$p < 2) {
     stop("Two or more regressors is required.")
+  }
+  if (object$fun == "MCMI") {
+    est <- colMeans(
+      do.call(
+        what = "rbind",
+        args = lapply(
+          X = object$mi$lm_process,
+          FUN = function(x) {
+            return(
+              x$pcor
+            )
+          }
+        )
+      )
+    )
+  } else {
+    est <- object$lm_process$pcor
   }
   sr <- SCorMC(object)
   sr <- sr$thetahatstar
@@ -74,14 +91,6 @@ PCorMC <- function(object) {
       )
     }
   )
-  est <- .PCorSq(
-    srsq = .SPCor(
-      betastar = object$lm_process$betastar,
-      sigmacapx = object$lm_process$sigmacapx
-    )^2,
-    rsq = object$lm_process$summary_lm$r.squared
-  )
-  names(est) <- object$lm_process$xnames
   out <- list(
     call = match.call(),
     object = object,

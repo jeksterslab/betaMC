@@ -11,17 +11,13 @@
 #'
 #' @keywords mc internal
 #' @noRd
-.Cov <- function(object,
+.Cov <- function(lm_process,
                  type,
                  g1,
                  g2,
                  k,
-                 lm_process = NULL,
                  jcap = NULL,
                  fixed_x) {
-  if (is.null(lm_process)) {
-    lm_process <- .ProcessLM(object)
-  }
   if (is.null(jcap)) {
     jcap <- .J(
       lm_process = lm_process,
@@ -92,7 +88,7 @@
       ),
       sigmacap = lm_process$sigmacap,
       qcap = .QMat(
-        h = stats::hatvalues(object),
+        h = stats::hatvalues(lm_process$object),
         k = lm_process$k,
         type = type,
         g1 = g1,

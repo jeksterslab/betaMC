@@ -2,8 +2,17 @@
 #'
 DataProcessNAS1982 <- function(overwrite = FALSE) {
   root <- rprojroot::is_rstudio_project
-  nas1982_rda <- root$find_file(
-    "data",
+  data_folder <- root$find_file(
+    "data"
+  )
+  if (!dir.exists(data_folder)) {
+    dir.create(
+      data_folder,
+      recursive = TRUE
+    )
+  }
+  nas1982_rda <- file.path(
+    data_folder,
     "nas1982.rda"
   )
   if (!file.exists(nas1982_rda)) {

@@ -6,6 +6,7 @@ lapply(
                  R,
                  tol) {
     message(text)
+    set.seed(42)
     if (!exists("nas1982")) {
       try(
         data(

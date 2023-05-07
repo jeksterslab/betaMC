@@ -5,6 +5,7 @@
 #' @param x Matrix.
 #'
 #' @return Returns a vector.
+#'
 #' @family Vectorization Functions
 #' @keywords linearAlgebra vectorization internal
 #' @noRd

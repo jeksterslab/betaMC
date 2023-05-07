@@ -7,6 +7,7 @@
 #'   Covariance matrix.
 #' @param pinv_of_dcap Numeric matrix.
 #'   Moore-Penrose inverse of the duplication matrix.
+#'
 #' @family gammaN Functions
 #' @keywords gammaN gamma internal
 #' @noRd

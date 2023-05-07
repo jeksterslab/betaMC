@@ -49,11 +49,28 @@
 #' @keywords betaMC std
 BetaMC <- function(object) {
   stopifnot(
-    methods::is(
+    inherits(
       object,
       "mc"
     )
   )
+  if (object$fun == "MCMI") {
+    est <- colMeans(
+      do.call(
+        what = "rbind",
+        args = lapply(
+          X = object$mi$lm_process,
+          FUN = function(x) {
+            return(
+              x$betastar
+            )
+          }
+        )
+      )
+    )
+  } else {
+    est <- object$lm_process$betastar
+  }
   out <- list(
     call = match.call(),
     object = object,
@@ -73,7 +90,7 @@ BetaMC <- function(object) {
         )
       }
     ),
-    est = object$lm_process$betastar,
+    est = est,
     fun = "BetaMC"
   )
   class(out) <- c(

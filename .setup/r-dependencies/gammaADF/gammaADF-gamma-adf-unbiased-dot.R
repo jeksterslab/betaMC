@@ -1,4 +1,3 @@
-################################################################################
 #' Asymptotic Covariance Matrix of the Sample Covariance Matrix
 #' (Asymptotic Distribution Free - Unbiased)
 #'
@@ -14,6 +13,7 @@
 #'   Half-vectorization of the consistent covariance matrix.
 #' @param n Integer.
 #'   Sample size.
+#'
 #' @family gammaADF Functions
 #' @keywords gammaADF gamma internal
 #' @noRd
@@ -21,25 +21,27 @@
                               gammacapmvn_consistent,
                               vechsigmacap_consistent,
                               n) {
-  (
+  return(
     (
       (
-        n * (n - 1)
-      ) / (
-        (n - 2) * (n - 3)
-      )
-    ) * gammacapadf_consistent
-  ) - (
-    (
-      n / (
-        (n - 2) * (n - 3)
-      )
-    ) * (
-      gammacapmvn_consistent - (
         (
-          2 / (n - 1)
-        ) * tcrossprod(
-          vechsigmacap_consistent
+          n * (n - 1)
+        ) / (
+          (n - 2) * (n - 3)
+        )
+      ) * gammacapadf_consistent
+    ) - (
+      (
+        n / (
+          (n - 2) * (n - 3)
+        )
+      ) * (
+        gammacapmvn_consistent - (
+          (
+            2 / (n - 1)
+          ) * tcrossprod(
+            vechsigmacap_consistent
+          )
         )
       )
     )

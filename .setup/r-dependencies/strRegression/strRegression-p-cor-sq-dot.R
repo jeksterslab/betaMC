@@ -12,9 +12,11 @@
 #' @noRd
 .PCorSq <- function(srsq,
                     rsq) {
-  srsq / (
-    1 - (
-      rsq - srsq
+  return(
+    srsq / (
+      1 - (
+        rsq - srsq
+      )
     )
   )
 }

@@ -88,7 +88,7 @@ object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ### Monte Carlo Sampling Distribution of Parameters
 
 ```{r}
-hc3 <- MCMI(object, type = "hc3", data = df, m = 100)
+hc3 <- MCMI(object, type = "hc3", m = 100)
 ```
 
 ### Standardized Regression Slopes
