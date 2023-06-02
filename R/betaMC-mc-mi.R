@@ -1,7 +1,7 @@
 #' Generate the Sampling Distribution of Regression Parameters
 #' Using the Monte Carlo Method for Data with Missing Values
 #'
-#' @details Multiple imputation (`mice::mice()`)
+#' @details Multiple imputation
 #' is used to deal with missing values in a data set.
 #' The vector of parameter estimates
 #' and the corresponding sampling covariance matrix
@@ -27,26 +27,9 @@
 #' }
 #'
 #' @inheritParams MC
-#' @param adj Logical.
-#'   If `adj = TRUE`,
-#'   use Li, Raghunathan, and Rubin (1991)
-#'   sampling covariance matrix adjustment.
-#'   If `adj = FALSE`,
-#'   use the multivariate version of Rubin's (1987)
-#'   sampling covariance matrix.
-#' @param seed_mc Integer.
-#'   Random seed for the Monte Carlo method.
-#' @param seed_mi Integer.
-#'   Random seed for multiple imputation.
-#' @param fun Character string.
-#'   Multiple imputation function.
-#'   If `fun = "mice"`, use [mice::mice()].
-#'   If `fun = "amelia"`, use [Amelia::amelia()].
-#' @param imp Optional argument.
-#'   A list of multiply imputed data sets.
-#' @param ... Additional arguments to pass to `fun`.
-#'   If `fun = "mice"`, DO NOT supply `data`, `seed`, or `print`.
-#'   If `fun = "amelia"`, DO NOT supply `x` or `p2s`.
+#' @param mi Object of class `mids` (output of [mice::mice()]),
+#'   object of class `amelia` (output of [Amelia::amelia()]),
+#'   or a list of multiply imputed data sets.
 #'
 #' @references
 #' Dudgeon, P. (2017).
@@ -66,21 +49,41 @@
 #' \doi{10.1080/19312458.2012.679848}
 #'
 #' @examples
-#' set.seed(42)
-#' nas1982_missing <- mice::ampute(nas1982)$amp
-#' # Fit the regression model
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaMC")
+#' nas1982_missing <- mice::ampute(nas1982)$amp # data set with missing values
+#'
+#' # Multiple Imputation
+#' mi <- mice::mice(nas1982_missing, m = 5, seed = 42, print = FALSE)
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' ## Note that this does not deal with missing values.
 #' ## The fitted model (`object`) is updated with each imputed data
 #' ## within the `MCMI()` function.
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982_missing)
-#' # Generate the sampling distribution of parameter estimates
-#' # (use large values R and m, for example, R = 20000 and m = 100,
-#' # for actual research)
-#' MCMI(object, R = 100, M = 5)
-#' @export
+#'
+#' # Monte Carlo --------------------------------------------------------------
+#' mc <- MCMI(
+#'   object,
+#'   mi = mi,
+#'   R = 100, # use a large value e.g., 20000L for actual research
+#'   seed = 0508
+#' )
+#' mc
+#' # The `mc` object can be passed as the first argument
+#' # to the following functions
+#' #   - BetaMC
+#' #   - DeltaRSqMC
+#' #   - DiffBetaMC
+#' #   - PCorMC
+#' #   - RSqMC
+#' #   - SCorMC
+#'
 #' @family Beta Monte Carlo Functions
 #' @keywords betaMC mc
+#' @export
 MCMI <- function(object,
+                 mi,
                  R = 20000L,
                  type = "hc3",
                  g1 = 1,
@@ -90,12 +93,7 @@ MCMI <- function(object,
                  pd = TRUE,
                  tol = 1e-06,
                  fixed_x = FALSE,
-                 seed_mc = NULL,
-                 adj = FALSE,
-                 seed_mi = NA,
-                 fun = "mice",
-                 imp = NULL,
-                 ...) {
+                 seed = NULL) {
   lm_process <- .ProcessLM(object)
   stopifnot(
     type %in% c(
@@ -146,40 +144,35 @@ MCMI <- function(object,
       )
     }
   }
-  if (is.null(imp)) {
-    if (fun == "mice") {
-      mi <- mice::complete(
-        mice::mice(
-          data = data0,
-          print = FALSE,
-          seed = seed_mi,
-          ...
-        ),
-        action = "all"
-      )
-    }
-    if (fun == "amelia") {
-      if (is.na(seed_mi)) {
-        seed_mi <- NULL
-      }
-      set.seed(seed_mi)
-      mi <- Amelia::amelia(
-        x = data0,
-        p2s = 0,
-        ...
-      )$imputations
-    }
-  } else {
-    stopifnot(
-      inherits(
-        imp,
-        "list"
-      )
+  if (
+    inherits(
+      mi,
+      "mids"
     )
-    mi <- imp
+  ) {
+    imp <- mice::complete(
+      mi,
+      action = "all"
+    )
+  } else if (
+    inherits(
+      mi,
+      "amelia"
+    )
+  ) {
+    imp <- mi$imputations
+  } else if (
+    inherits(
+      mi,
+      "list"
+    )
+  ) {
+    imp <- mi
+  } else {
+    stop("Invalid \'mi\' argument.")
   }
   fits <- lapply(
-    X = mi,
+    X = imp,
     FUN = function(x) {
       call1$data <- x
       return(
@@ -229,13 +222,10 @@ MCMI <- function(object,
     vcovs = vcovs,
     M = length(coefs),
     k = length(coefs[[1]]),
-    adj = adj
+    adj = TRUE
   )
-  if (adj) {
-    scale <- pooled$total_adj
-  } else {
-    scale <- pooled$total
-  }
+  # use default total covariance
+  scale <- pooled$total
   location <- pooled$est
   mi_output <- list(
     mi = mi,
@@ -246,6 +236,7 @@ MCMI <- function(object,
     call = match.call(),
     args = list(
       object = object,
+      mi = mi,
       R = R,
       type = type,
       g1 = g1,
@@ -255,12 +246,8 @@ MCMI <- function(object,
       pd = pd,
       tol = tol,
       fixed_x = fixed_x,
-      seed_mc = seed_mc,
-      adj = adj,
-      seed_mi = seed_mi,
-      fun = fun,
-      imp = imp,
-      dots = list(...)
+      seed = seed,
+      mi_output = mi_output
     ),
     lm_process = lm_process,
     scale = scale,
@@ -278,9 +265,8 @@ MCMI <- function(object,
       decomposition = decomposition,
       pd = pd,
       tol = tol,
-      seed = seed_mc
+      seed = seed
     ),
-    mi = mi_output,
     fun = "MCMI"
   )
   class(out) <- c(

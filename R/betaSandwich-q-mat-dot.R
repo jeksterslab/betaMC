@@ -17,11 +17,12 @@
 #'   `"hc4m"`, and
 #'   `"hc5"`.
 #' @param g1 Numeric.
-#'   `g1` value for `type = "hc4m"` or `type = "hc5"`.
+#'   `g1` value for `type = "hc4m"`.
 #' @param g2 Numeric.
 #'   `g2` value for `type = "hc4m"`.
 #' @param constant Numeric.
-#'   Constant for `type = "hc5"`
+#'   Constant `k` for `type = "hc5"`
+#'   \eqn{0 \leq k \leq 1}.
 #'
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich leverage internal

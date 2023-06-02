@@ -17,6 +17,7 @@
 #'
 #' @inheritParams BetaMC
 #'
+#' @family Beta Monte Carlo Functions
 #' @keywords eval internal
 #' @noRd
 .MCRMSE <- function(object) {

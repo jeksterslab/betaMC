@@ -18,7 +18,13 @@ lapply(
     }
     df <- nas1982
     object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-    mc <- MCMI(object, R = R, type = "mvn")
+    mi <- mice::mice(
+      df,
+      m = 10,
+      seed = 42,
+      print = FALSE
+    )
+    mc <- MCMI(object, mi = mi, R = R, type = "mvn")
     out <- BetaMC(mc)
     print.betamc(out)
     summary.betamc(out)
@@ -42,7 +48,7 @@ lapply(
       }
     )
     object <- lm(QUALITY ~ NARTIC, data = df)
-    mc <- MCMI(object, R = R, type = "mvn")
+    mc <- MCMI(object, mi = mi, R = R, type = "mvn")
     out <- BetaMC(mc)
     print.betamc(out)
     summary.betamc(out)

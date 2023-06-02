@@ -19,7 +19,7 @@ The Monte Carlo Method combined with multiple imputation
 described in Pesigan & Cheung (2023)
 is implemented using the `MCMI()` function
 in the context of linear regression.
-Multiple imputation (`mice::mice()`) is used to deal with missing values in a data set.
+Multiple imputation is used to deal with missing values in a data set.
 The vector of parameter estimates
 and the corresponding sampling covariance matrix
 are estimated for each of the imputed data sets.
@@ -74,6 +74,17 @@ df <- mice::ampute(df)$amp
 df
 ```
 
+### Multiple Imputation
+
+```{r}
+mi <- mice::mice(
+  df,
+  m = 100,
+  seed = 42,
+  print = FALSE
+)
+```
+
 ### Regression
 
 Fit the regression model using the `lm()` function.
@@ -88,7 +99,7 @@ object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ### Monte Carlo Sampling Distribution of Parameters
 
 ```{r}
-hc3 <- MCMI(object, type = "hc3", m = 100)
+hc3 <- MCMI(object, mi = mi, type = "hc3")
 ```
 
 ### Standardized Regression Slopes

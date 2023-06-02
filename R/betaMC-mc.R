@@ -73,7 +73,7 @@
 #'   `type = "hc0"` through `"hc5"` uses different versions of
 #'   heteroskedasticity-consistent sampling covariance matrix.
 #' @param g1 Numeric.
-#'   `g1` value for `type = "hc4m"` or `type = "hc5"`.
+#'   `g1` value for `type = "hc4m"`.
 #' @param g2 Numeric.
 #'   `g2` value for `type = "hc4m"`.
 #' @param k Numeric.
@@ -109,14 +109,31 @@
 #' \doi{10.1080/19312458.2012.679848}
 #'
 #' @examples
-#' # Fit the regression model
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaMC")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' # Generate the sampling distribution of parameter estimates
-#' # (use a large R, for example, R = 20000 for actual research)
-#' MC(object, R = 100)
-#' @export
+#'
+#' # MC -----------------------------------------------------------------------
+#' mc <- MC(
+#'   object,
+#'   R = 100, # use a large value e.g., 20000L for actual research
+#'   seed = 0508
+#' )
+#' mc
+#' # The `mc` object can be passed as the first argument
+#' # to the following functions
+#' #   - BetaMC
+#' #   - DeltaRSqMC
+#' #   - DiffBetaMC
+#' #   - PCorMC
+#' #   - RSqMC
+#' #   - SCorMC
+#'
 #' @family Beta Monte Carlo Functions
 #' @keywords betaMC mc
+#' @export
 MC <- function(object,
                R = 20000L,
                type = "hc3",

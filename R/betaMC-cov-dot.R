@@ -9,6 +9,7 @@
 #'
 #' @inheritParams MC
 #'
+#' @family Beta Monte Carlo Functions
 #' @keywords mc internal
 #' @noRd
 .Cov <- function(lm_process,

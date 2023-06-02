@@ -15,6 +15,7 @@
 #'
 #' @inheritParams BetaMC
 #'
+#' @family Beta Monte Carlo Functions
 #' @keywords eval internal
 #' @noRd
 .MCBias <- function(object) {

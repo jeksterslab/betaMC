@@ -7,6 +7,7 @@ Using the Monte Carlo Method for Data with Missing Values}
 \usage{
 MCMI(
   object,
+  mi,
   R = 20000L,
   type = "hc3",
   g1 = 1,
@@ -16,16 +17,15 @@ MCMI(
   pd = TRUE,
   tol = 1e-06,
   fixed_x = FALSE,
-  seed_mc = NULL,
-  adj = FALSE,
-  seed_mi = NA,
-  fun = "mice",
-  imp = NULL,
-  ...
+  seed = NULL
 )
 }
 \arguments{
 \item{object}{Object of class \code{lm}.}
+
+\item{mi}{Object of class \code{mids} (output of \code{\link[mice:mice]{mice::mice()}}),
+object of class \code{amelia} (output of \code{\link[Amelia:amelia]{Amelia::amelia()}}),
+or a list of multiply imputed data sets.}
 
 \item{R}{Positive integer.
 Number of Monte Carlo replications.}
@@ -49,7 +49,7 @@ sampling covariance matrix.
 heteroskedasticity-consistent sampling covariance matrix.}
 
 \item{g1}{Numeric.
-\code{g1} value for \code{type = "hc4m"} or \code{type = "hc5"}.}
+\code{g1} value for \code{type = "hc4m"}.}
 
 \item{g2}{Numeric.
 \code{g2} value for \code{type = "hc4m"}.}
@@ -76,31 +76,8 @@ Tolerance used for \code{pd}.}
 If \code{fixed_x = TRUE}, treat the regressors as fixed.
 If \code{fixed_x = FALSE}, treat the regressors as random.}
 
-\item{seed_mc}{Integer.
-Random seed for the Monte Carlo method.}
-
-\item{adj}{Logical.
-If \code{adj = TRUE},
-use Li, Raghunathan, and Rubin (1991)
-sampling covariance matrix adjustment.
-If \code{adj = FALSE},
-use the multivariate version of Rubin's (1987)
-sampling covariance matrix.}
-
-\item{seed_mi}{Integer.
-Random seed for multiple imputation.}
-
-\item{fun}{Character string.
-Multiple imputation function.
-If \code{fun = "mice"}, use \code{\link[mice:mice]{mice::mice()}}.
-If \code{fun = "amelia"}, use \code{\link[Amelia:amelia]{Amelia::amelia()}}.}
-
-\item{imp}{Optional argument.
-A list of multiply imputed data sets.}
-
-\item{...}{Additional arguments to pass to \code{fun}.
-If \code{fun = "mice"}, DO NOT supply \code{data}, \code{seed}, or \code{print}.
-If \code{fun = "amelia"}, DO NOT supply \code{x} or \code{p2s}.}
+\item{seed}{Integer.
+Seed number for reproducibility.}
 }
 \value{
 Returns an object
@@ -120,7 +97,7 @@ Generate the Sampling Distribution of Regression Parameters
 Using the Monte Carlo Method for Data with Missing Values
 }
 \details{
-Multiple imputation (\code{mice::mice()})
+Multiple imputation
 is used to deal with missing values in a data set.
 The vector of parameter estimates
 and the corresponding sampling covariance matrix
@@ -132,17 +109,36 @@ of regression parameters.
 See \code{MC()} for more details on the Monte Carlo method.
 }
 \examples{
-set.seed(42)
-nas1982_missing <- mice::ampute(nas1982)$amp
-# Fit the regression model
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaMC")
+nas1982_missing <- mice::ampute(nas1982)$amp # data set with missing values
+
+# Multiple Imputation
+mi <- mice::mice(nas1982_missing, m = 5, seed = 42, print = FALSE)
+
+# Fit Model in lm ----------------------------------------------------------
 ## Note that this does not deal with missing values.
 ## The fitted model (`object`) is updated with each imputed data
 ## within the `MCMI()` function.
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982_missing)
-# Generate the sampling distribution of parameter estimates
-# (use large values R and m, for example, R = 20000 and m = 100,
-# for actual research)
-MCMI(object, R = 100, M = 5)
+
+# Monte Carlo --------------------------------------------------------------
+mc <- MCMI(
+  object,
+  mi = mi,
+  R = 100, # use a large value e.g., 20000L for actual research
+  seed = 0508
+)
+mc
+# The `mc` object can be passed as the first argument
+# to the following functions
+#   - BetaMC
+#   - DeltaRSqMC
+#   - DiffBetaMC
+#   - PCorMC
+#   - RSqMC
+#   - SCorMC
+
 }
 \references{
 Dudgeon, P. (2017).

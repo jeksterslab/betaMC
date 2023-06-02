@@ -136,8 +136,9 @@ Staging...
 % # Fit the regression model
 % object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982_missing)
 % # Generate the sampling distribution of parameter estimates
-% mc <- MCMI(object, R = 20000, type = "mvn",
-%            seed_mc = 42, seed_mi = 42, m = 1000)
+% mi <- mice::mice(nas1982_missing, m = 100, seed = 42, print = FALSE)
+% mc <- MCMI(object, mi = mi, R = 20000, type = "mvn",
+%            seed = 42)
 %% end.rcode
 
 \section{Standardized Regression Slopes}

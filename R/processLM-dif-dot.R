@@ -38,9 +38,9 @@
     names(dif_betastar) <- dif_names
     names(dif_beta) <- dif_names
   } else {
-    dif_betastar <- NULL
-    dif_beta <- NULL
-    dif_idx <- NULL
+    dif_betastar <- NA
+    dif_beta <- NA
+    dif_idx <- NA
   }
   return(
     list(

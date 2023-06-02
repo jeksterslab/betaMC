@@ -13,6 +13,7 @@
 #'
 #' @inheritParams BetaMC
 #'
+#' @family Beta Monte Carlo Functions
 #' @keywords eval internal
 #' @noRd
 .MCVar <- function(object) {
@@ -41,6 +42,7 @@
 #'
 #' @inheritParams BetaMC
 #'
+#' @family Beta Monte Carlo Functions
 #' @keywords eval internal
 #' @noRd
 .MCMean <- function(object) {

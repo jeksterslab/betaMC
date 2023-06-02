@@ -6,8 +6,8 @@
 #'   \describe{
 #'     \item{call}{[lm()] function call.}
 #'     \item{object}{Object of class `lm`.}
-#'     \item{summary_lm}{Summary of the `lm` object.}
-#'     \item{x}{Model matrix (\eqn{Y, X_{1}, \dots, X_{p}} ).}
+#'     \item{X}{Model matrix (\eqn{1, X_{1}, \dots, X_{p}} ).}
+#'     \item{x}{Data matrix (\eqn{Y, X_{1}, \dots, X_{p}} ).}
 #'     \item{varnames}{Variable names of the model matrix.}
 #'     \item{xnames}{Variable names of the regressors in the model matrix.}
 #'     \item{dims}{Dimensions of the model matrix.}
@@ -61,13 +61,12 @@
       "lm"
     )
   )
-  # summary
-  summary_lm <- summary(object)
   # call
   call0 <- stats::getCall(object)
   # data set used by lm
   y <- object$model[, 1]
   x <- stats::model.matrix(object)
+  X <- x
   x[, 1] <- y
   varnames <- colnames(x)
   varnames[1] <- colnames(object$model)[1]
@@ -111,7 +110,7 @@
   coef <- beta <- object$coefficients
   beta0 <- coef[1]
   beta <- coef[-1]
-  sigmasq <- summary_lm$sigma^2
+  sigmasq <- stats::sigma(object)^2
   theta <- unname(
     c(
       beta,
@@ -169,9 +168,9 @@
       # lm
       call = call0,
       object = object,
-      summary_lm = summary_lm,
       # data
       ## data used by lm
+      X = X, # {1, X} model matrix
       x = x, # {y, X}
       # names
       varnames = varnames,

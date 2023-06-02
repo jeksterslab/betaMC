@@ -28,17 +28,6 @@ Returns the variance-covariance matrix of estimates.
 Sampling Variance-Covariance Matrix Method for an Object of Class
 \code{betamc}
 }
-\examples{
-# Fit the regression model
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-# Generate the sampling distribution of parameter estimates
-# (use a large R, for example, R = 20000 for actual research)
-mc <- MC(object, R = 100)
-# Generate confidence intervals for standardized regression slopes
-std <- BetaMC(mc)
-# Method ---------------------------------------------------------
-vcov(std)
-}
 \author{
 Ivan Jacob Agaloos Pesigan
 }

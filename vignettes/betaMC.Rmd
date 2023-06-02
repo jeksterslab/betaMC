@@ -122,19 +122,19 @@ hc3 <- MC(object, type = "hc3")
 #### Normal-Theory Approach
 
 ```{r}
-BetaMC(mvn)
+BetaMC(mvn, alpha = 0.05)
 ```
 
 #### Asymptotic distribution-free Approach
 
 ```{r}
-BetaMC(adf)
+BetaMC(adf, alpha = 0.05)
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 ```{r}
-BetaMC(hc3)
+BetaMC(hc3, alpha = 0.05)
 ```
 
 ### Other Effect Sizes
@@ -147,6 +147,36 @@ for other effect sizes such as
 `PCorMC()` for squared partial correlation coefficients,
 and
 `DiffBetaMC()` for differences of standardized regression coefficients.
+
+#### Multiple Correlation Coefficients (R-squared and adjusted R-squared)
+
+```{r}
+RSqMC(hc3, alpha = 0.05)
+```
+
+#### Improvement in R-squared
+
+```{r}
+DeltaRSqMC(hc3, alpha = 0.05)
+```
+
+#### Semipartial Correlation Coefficients
+
+```{r}
+SCorMC(hc3, alpha = 0.05)
+```
+
+#### Squared Partial Correlation Coefficients
+
+```{r}
+PCorMC(hc3, alpha = 0.05)
+```
+
+#### Differences of Standardized Regression Coefficients
+
+```{r}
+DiffBetaMC(hc3, alpha = 0.05)
+```
 
 ### References
 

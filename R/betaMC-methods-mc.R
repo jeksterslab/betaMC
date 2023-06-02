@@ -11,10 +11,10 @@
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' mc <- MC(object, R = 100)
-#' # use a large R, for example, R = 20000 for actual research
 #' print(mc)
-#' @export
+#'
 #' @keywords methods
+#' @export
 print.mc <- function(x,
                      ...) {
   cat("Call:\n")
@@ -59,12 +59,11 @@ print.mc <- function(x,
 #' @examples
 #' # Fit the regression model
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' # Generate the sampling distribution of parameter estimates
-#' # (use a large R, for example, R = 20000 for actual research)
 #' mc <- MC(object, R = 100)
 #' summary(mc)
-#' @export
+#'
 #' @keywords methods
+#' @export
 summary.mc <- function(object,
                        digits = 4,
                        ...) {

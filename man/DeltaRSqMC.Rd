@@ -6,18 +6,21 @@
 and Generate the Corresponding Sampling Distribution
 Using the Monte Carlo Method}
 \usage{
-DeltaRSqMC(object)
+DeltaRSqMC(object, alpha = c(0.05, 0.01, 0.001))
 }
 \arguments{
 \item{object}{Object of class \code{mc}, that is,
 the output of the \code{MC()} function.}
+
+\item{alpha}{Numeric vector.
+Significance level \eqn{\alpha}.}
 }
 \value{
 Returns an object
 of class \code{betamc} which is a list with the following elements:
 \describe{
 \item{call}{Function call.}
-\item{object}{The function argument \code{object}.}
+\item{args}{Function arguments.}
 \item{thetahatstar}{Sampling distribution of
 \eqn{\Delta R^{2}}.}
 \item{vcov}{Sampling variance-covariance matrix of
@@ -43,19 +46,30 @@ distribution of \eqn{\Delta R^{2}},
 where \eqn{\alpha} is the significance level.
 }
 \examples{
-# Fit the regression model
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaMC")
+
+# Fit Model in lm ----------------------------------------------------------
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-# Generate the sampling distribution of parameter estimates
-# (use a large R, for example, R = 20000 for actual research)
-mc <- MC(object, R = 100)
-# Generate confidence intervals for improvement in R-squared
-deltarsq <- DeltaRSqMC(mc)
-# Methods --------------------------------------------------------
-print(deltarsq)
-summary(deltarsq)
-coef(deltarsq)
-vcov(deltarsq)
-confint(deltarsq, level = 0.95)
+
+# MC -----------------------------------------------------------------------
+mc <- MC(
+  object,
+  R = 100, # use a large value e.g., 20000L for actual research
+  seed = 0508
+)
+
+# DeltaRSqMC ---------------------------------------------------------------
+
+out <- DeltaRSqMC(mc, alpha = 0.05)
+
+## Methods -----------------------------------------------------------------
+print(out)
+summary(out)
+coef(out)
+vcov(out)
+confint(out, level = 0.95)
+
 }
 \seealso{
 Other Beta Monte Carlo Functions: 

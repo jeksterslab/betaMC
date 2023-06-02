@@ -5,7 +5,7 @@
 \title{Print Method for an Object of Class
 \code{betamc}}
 \usage{
-\method{print}{betamc}(x, alpha = c(0.05, 0.01, 0.001), digits = 4, ...)
+\method{print}{betamc}(x, alpha = NULL, digits = 4, ...)
 }
 \arguments{
 \item{x}{Object of Class \code{betamc},
@@ -19,7 +19,10 @@ the output of the
 \code{DiffBetaMC()}
 functions.}
 
-\item{alpha}{Significance level.}
+\item{alpha}{Numeric vector.
+Significance level \eqn{\alpha}.
+If \code{alpha = NULL},
+use the argument \code{alpha} used in \code{x}.}
 
 \item{digits}{Digits to print.}
 
@@ -36,17 +39,6 @@ confidence intervals.
 \description{
 Print Method for an Object of Class
 \code{betamc}
-}
-\examples{
-# Fit the regression model
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-# Generate the sampling distribution of parameter estimates
-# (use a large R, for example, R = 20000 for actual research)
-mc <- MC(object, R = 100)
-# Generate confidence intervals for standardized regression slopes
-std <- BetaMC(mc)
-# Method ---------------------------------------------------------
-print(std)
 }
 \author{
 Ivan Jacob Agaloos Pesigan

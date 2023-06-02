@@ -51,32 +51,38 @@ lapply(
     )
     df <- as.data.frame(df)
     object <- lm(y ~ ., data = df)
+    mi <- mice::mice(
+      df,
+      m = 10,
+      seed = 42,
+      print = FALSE
+    )
     mvn <- summary.mc(
-      MCMI(object, R = R, type = "mvn", fixed_x = TRUE, m = 100)
+      MCMI(object, mi = mi, R = R, type = "mvn", fixed_x = TRUE)
     )
     adf <- summary.mc(
-      MCMI(object, R = R, type = "adf", fixed_x = TRUE, m = 100)
+      MCMI(object, mi = mi, R = R, type = "adf", fixed_x = TRUE)
     )
     hc0 <- summary.mc(
-      MCMI(object, R = R, type = "hc0", fixed_x = TRUE, m = 100)
+      MCMI(object, mi = mi, R = R, type = "hc0", fixed_x = TRUE)
     )
     hc1 <- summary.mc(
-      MCMI(object, R = R, type = "hc1", fixed_x = TRUE, m = 100)
+      MCMI(object, mi = mi, R = R, type = "hc1", fixed_x = TRUE)
     )
     hc2 <- summary.mc(
-      MCMI(object, R = R, type = "hc2", fixed_x = TRUE, m = 100)
+      MCMI(object, mi = mi, R = R, type = "hc2", fixed_x = TRUE)
     )
     hc3 <- summary.mc(
-      MCMI(object, R = R, type = "hc3", fixed_x = TRUE, m = 100)
+      MCMI(object, mi = mi, R = R, type = "hc3", fixed_x = TRUE)
     )
     hc4 <- summary.mc(
-      MCMI(object, R = R, type = "hc4", fixed_x = TRUE, m = 100)
+      MCMI(object, mi = mi, R = R, type = "hc4", fixed_x = TRUE)
     )
     hc4m <- summary.mc(
-      MCMI(object, R = R, type = "hc4m", fixed_x = TRUE, m = 100)
+      MCMI(object, mi = mi, R = R, type = "hc4m", fixed_x = TRUE)
     )
     hc5 <- summary.mc(
-      MCMI(object, R = R, type = "hc5", fixed_x = TRUE, m = 100)
+      MCMI(object, mi = mi, R = R, type = "hc5", fixed_x = TRUE)
     )
     mvn_cov <- as.vector(mvn$var)
     testthat::test_that(
@@ -246,11 +252,17 @@ lapply(
     df[1, 1 + 1] <- NA
     df[2, 1 + p] <- NA
     object <- lm(y ~ ., data = df)
+    mi <- mice::mice(
+      df,
+      m = 10,
+      seed = 42,
+      print = FALSE
+    )
     testthat::test_that(
       paste(text, "error"),
       {
         testthat::expect_error(
-          MCMI(object, fixed_x = TRUE)
+          MCMI(object, mi = mi, fixed_x = TRUE)
         )
       }
     )

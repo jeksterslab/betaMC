@@ -21,8 +21,8 @@ Print Method for an Object of Class \code{mc}
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 mc <- MC(object, R = 100)
-# use a large R, for example, R = 20000 for actual research
 print(mc)
+
 }
 \author{
 Ivan Jacob Agaloos Pesigan

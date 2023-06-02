@@ -38,10 +38,9 @@ Summary Method for an Object of Class
 \examples{
 # Fit the regression model
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-# Generate the sampling distribution of parameter estimates
-# (use a large R, for example, R = 20000 for actual research)
 mc <- MC(object, R = 100)
 summary(mc)
+
 }
 \author{
 Ivan Jacob Agaloos Pesigan

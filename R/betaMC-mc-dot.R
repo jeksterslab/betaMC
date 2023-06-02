@@ -23,6 +23,7 @@
 #'
 #' @inheritParams MC
 #'
+#' @family Beta Monte Carlo Functions
 #' @keywords mc internal
 #' @noRd
 .MC <- function(scale,

@@ -52,15 +52,21 @@ lapply(
     )
     df <- as.data.frame(df)
     object <- lm(y ~ ., data = df)
-    mvn <- summary.mc(MCMI(object, R = R, type = "mvn", m = 100))
-    adf <- summary.mc(MCMI(object, R = R, type = "adf", m = 100))
-    hc0 <- summary.mc(MCMI(object, R = R, type = "hc0", m = 100))
-    hc1 <- summary.mc(MCMI(object, R = R, type = "hc1", m = 100))
-    hc2 <- summary.mc(MCMI(object, R = R, type = "hc2", m = 100))
-    hc3 <- summary.mc(MCMI(object, R = R, type = "hc3", m = 100))
-    hc4 <- summary.mc(MCMI(object, R = R, type = "hc4", m = 100))
-    hc4m <- summary.mc(MCMI(object, R = R, type = "hc4m", m = 100))
-    hc5 <- summary.mc(MCMI(object, R = R, type = "hc5", m = 100))
+    mi <- mice::mice(
+      df,
+      m = 10,
+      seed = 42,
+      print = FALSE
+    )
+    mvn <- summary.mc(MCMI(object, mi = mi, R = R, type = "mvn"))
+    adf <- summary.mc(MCMI(object, mi = mi, R = R, type = "adf"))
+    hc0 <- summary.mc(MCMI(object, mi = mi, R = R, type = "hc0"))
+    hc1 <- summary.mc(MCMI(object, mi = mi, R = R, type = "hc1"))
+    hc2 <- summary.mc(MCMI(object, mi = mi, R = R, type = "hc2"))
+    hc3 <- summary.mc(MCMI(object, mi = mi, R = R, type = "hc3"))
+    hc4 <- summary.mc(MCMI(object, mi = mi, R = R, type = "hc4"))
+    hc4m <- summary.mc(MCMI(object, mi = mi, R = R, type = "hc4m"))
+    hc5 <- summary.mc(MCMI(object, mi = mi, R = R, type = "hc5"))
     mvn_cov <- as.vector(mvn$var)
     testthat::test_that(
       paste(text, "means"),
@@ -226,8 +232,6 @@ lapply(
         )
       }
     )
-    # coverage
-    MCMI(object, R = R, type = "mvn", adj = TRUE)
   },
   text = "test-betaMC-mc-mi",
   tol = 0.05,

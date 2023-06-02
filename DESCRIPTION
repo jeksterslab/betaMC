@@ -27,12 +27,12 @@ Roxygen: list(markdown = TRUE)
 Depends:
     R (>= 3.5.0)
 Imports:
-    stats,
-    mice,
-    Amelia
+    stats
 Suggests:
     knitr,
     rmarkdown,
     testthat,
-    MASS
+    MASS,
+    mice,
+    Amelia
 RoxygenNote: 7.2.3

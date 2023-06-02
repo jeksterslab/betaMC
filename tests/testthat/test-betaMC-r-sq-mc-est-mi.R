@@ -21,7 +21,13 @@ lapply(
     lm_summary <- summary(object)
     rsq <- lm_summary$r.squared
     adj <- lm_summary$adj.r.squared
-    mc <- MCMI(object, R = R, type = "mvn")
+    mi <- mice::mice(
+      df,
+      m = 10,
+      seed = 42,
+      print = FALSE
+    )
+    mc <- MCMI(object, mi = mi, R = R, type = "mvn")
     out <- RSqMC(mc)
     print.betamc(out)
     summary.betamc(out)
@@ -44,7 +50,7 @@ lapply(
     lm_summary <- summary(object)
     rsq <- lm_summary$r.squared
     adj <- lm_summary$adj.r.squared
-    mc <- MCMI(object, R = R, type = "mvn")
+    mc <- MCMI(object, mi = mi, R = R, type = "mvn")
     out <- RSqMC(mc)
     print.betamc(out)
     summary.betamc(out)

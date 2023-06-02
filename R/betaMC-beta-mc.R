@@ -17,7 +17,7 @@
 #'   of class `betamc` which is a list with the following elements:
 #'   \describe{
 #'     \item{call}{Function call.}
-#'     \item{object}{The function argument `object`.}
+#'     \item{args}{Function arguments.}
 #'     \item{thetahatstar}{Sampling distribution of
 #'       \eqn{\boldsymbol{\hat{\beta}}}.}
 #'     \item{vcov}{Sampling variance-covariance matrix of
@@ -29,25 +29,38 @@
 #'
 #' @param object Object of class `mc`, that is,
 #'   the output of the `MC()` function.
+#' @param alpha Numeric vector.
+#'   Significance level \eqn{\alpha}.
 #'
 #' @examples
-#' # Fit the regression model
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaMC")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' # Generate the sampling distribution of parameter estimates
-#' # (use a large R, for example, R = 20000 for actual research)
-#' mc <- MC(object, R = 100)
-#' # Generate confidence intervals for standardized regression slopes
-#' std <- BetaMC(mc)
-#' # Methods --------------------------------------------------------
-#' print(std)
-#' summary(std)
-#' coef(std)
-#' vcov(std)
-#' confint(std, level = 0.95)
-#' @export
+#'
+#' # MC -----------------------------------------------------------------------
+#' mc <- MC(
+#'   object,
+#'   R = 100, # use a large value e.g., 20000L for actual research
+#'   seed = 0508
+#' )
+#'
+#' # BetaMC -------------------------------------------------------------------
+#' out <- BetaMC(mc, alpha = 0.05)
+#'
+#' ## Methods -----------------------------------------------------------------
+#' print(out)
+#' summary(out)
+#' coef(out)
+#' vcov(out)
+#' confint(out, level = 0.95)
+#'
 #' @family Beta Monte Carlo Functions
 #' @keywords betaMC std
-BetaMC <- function(object) {
+#' @export
+BetaMC <- function(object,
+                   alpha = c(0.05, 0.01, 0.001)) {
   stopifnot(
     inherits(
       object,
@@ -59,7 +72,7 @@ BetaMC <- function(object) {
       do.call(
         what = "rbind",
         args = lapply(
-          X = object$mi$lm_process,
+          X = object$args$mi_output$lm_process,
           FUN = function(x) {
             return(
               x$betastar
@@ -73,7 +86,10 @@ BetaMC <- function(object) {
   }
   out <- list(
     call = match.call(),
-    object = object,
+    args = list(
+      object = object,
+      alpha = alpha
+    ),
     thetahatstar = lapply(
       X = object$thetahatstar,
       FUN = function(x) {

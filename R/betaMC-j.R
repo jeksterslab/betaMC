@@ -15,6 +15,7 @@
 #'
 #' @return Returns a matrix.
 #'
+#' @family Beta Monte Carlo Functions
 #' @keywords mc internal
 #' @noRd
 .J <- function(lm_process,

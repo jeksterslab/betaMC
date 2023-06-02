@@ -16,7 +16,7 @@
 #'   of class `betamc` which is a list with the following elements:
 #'   \describe{
 #'     \item{call}{Function call.}
-#'     \item{object}{The function argument `object`.}
+#'     \item{args}{Function arguments.}
 #'     \item{thetahatstar}{Sampling distribution of
 #'       differences of standardized regression slopes.}
 #'     \item{vcov}{Sampling variance-covariance matrix of
@@ -29,24 +29,35 @@
 #' @inheritParams BetaMC
 #'
 #' @examples
-#' # Fit the regression model
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaMC")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' # Generate the sampling distribution of parameter estimates
-#' # (use a large R, for example, R = 20000 for actual research)
-#' mc <- MC(object, R = 100)
-#' # Generate confidence intervals
-#' # for differences of standardized regression slopes
-#' diff <- DiffBetaMC(mc)
-#' # Methods --------------------------------------------------------
-#' print(diff)
-#' summary(diff)
-#' coef(diff)
-#' vcov(diff)
-#' confint(diff, level = 0.95)
-#' @export
+#'
+#' # MC -----------------------------------------------------------------------
+#' mc <- MC(
+#'   object,
+#'   R = 100, # use a large value e.g., 20000L for actual research
+#'   seed = 0508
+#' )
+#'
+#' # DiffBetaMC ---------------------------------------------------------------
+#'
+#' out <- DiffBetaMC(mc, alpha = 0.05)
+#'
+#' ## Methods -----------------------------------------------------------------
+#' print(out)
+#' summary(out)
+#' coef(out)
+#' vcov(out)
+#' confint(out, level = 0.95)
+#'
 #' @family Beta Monte Carlo Functions
 #' @keywords betaMC diff
-DiffBetaMC <- function(object) {
+#' @export
+DiffBetaMC <- function(object,
+                       alpha = c(0.05, 0.01, 0.001)) {
   stopifnot(
     inherits(
       object,
@@ -61,7 +72,7 @@ DiffBetaMC <- function(object) {
       do.call(
         what = "rbind",
         args = lapply(
-          X = object$mi$lm_process,
+          X = object$args$mi_output$lm_process,
           FUN = function(x) {
             return(
               x$dif_betastar
@@ -102,7 +113,10 @@ DiffBetaMC <- function(object) {
   )
   out <- list(
     call = match.call(),
-    object = object,
+    args = list(
+      object = object,
+      alpha = alpha
+    ),
     thetahatstar = thetahatstar,
     est = est,
     fun = "DiffBetaMC"

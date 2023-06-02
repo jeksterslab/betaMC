@@ -20,22 +20,16 @@
 #'   `PCorMC()`, or
 #'   `DiffBetaMC()`
 #'   functions.
+#' @param alpha Numeric vector.
+#'   Significance level \eqn{\alpha}.
+#'   If `alpha = NULL`,
+#'   use the argument `alpha` used in `x`.
 #' @inheritParams summary.betamc
 #'
-#' @examples
-#' # Fit the regression model
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' # Generate the sampling distribution of parameter estimates
-#' # (use a large R, for example, R = 20000 for actual research)
-#' mc <- MC(object, R = 100)
-#' # Generate confidence intervals for standardized regression slopes
-#' std <- BetaMC(mc)
-#' # Method ---------------------------------------------------------
-#' print(std)
-#' @export
 #' @keywords methods
+#' @export
 print.betamc <- function(x,
-                         alpha = c(0.05, 0.01, 0.001),
+                         alpha = NULL,
                          digits = 4,
                          ...) {
   type <- x$object$args$type
@@ -105,23 +99,16 @@ print.betamc <- function(x,
 #'   `DiffBetaMC()`
 #'   functions.
 #' @param ... additional arguments.
-#' @param alpha Significance level.
+#' @param alpha Numeric vector.
+#'   Significance level \eqn{\alpha}.
+#'   If `alpha = NULL`,
+#'   use the argument `alpha` used in `object`.
 #' @param digits Digits to print.
 #'
-#' @examples
-#' # Fit the regression model
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' # Generate the sampling distribution of parameter estimates
-#' # (use a large R, for example, R = 20000 for actual research)
-#' mc <- MC(object, R = 100)
-#' # Generate confidence intervals for standardized regression slopes
-#' std <- BetaMC(mc)
-#' # Method ---------------------------------------------------------
-#' summary(std)
-#' @export
 #' @keywords methods
+#' @export
 summary.betamc <- function(object,
-                           alpha = c(0.05, 0.01, 0.001),
+                           alpha = NULL,
                            digits = 4,
                            ...) {
   type <- object$object$args$type
@@ -177,18 +164,8 @@ summary.betamc <- function(object,
 #'
 #' @inheritParams summary.betamc
 #'
-#' @examples
-#' # Fit the regression model
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' # Generate the sampling distribution of parameter estimates
-#' # (use a large R, for example, R = 20000 for actual research)
-#' mc <- MC(object, R = 100)
-#' # Generate confidence intervals for standardized regression slopes
-#' std <- BetaMC(mc)
-#' # Method ---------------------------------------------------------
-#' vcov(std)
-#' @export
 #' @keywords methods
+#' @export
 vcov.betamc <- function(object,
                         ...) {
   thetahatstar <- do.call(
@@ -211,18 +188,8 @@ vcov.betamc <- function(object,
 #'
 #' @inheritParams summary.betamc
 #'
-#' @examples
-#' # Fit the regression model
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' # Generate the sampling distribution of parameter estimates
-#' # (use a large R, for example, R = 20000 for actual research)
-#' mc <- MC(object, R = 100)
-#' # Generate confidence intervals for standardized regression slopes
-#' std <- BetaMC(mc)
-#' # Method ---------------------------------------------------------
-#' coef(std)
-#' @export
 #' @keywords methods
+#' @export
 coef.betamc <- function(object,
                         ...) {
   return(
@@ -244,18 +211,8 @@ coef.betamc <- function(object,
 #'   If missing, all parameters are considered.
 #' @param level the confidence level required.
 #'
-#' @examples
-#' # Fit the regression model
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' # Generate the sampling distribution of parameter estimates
-#' # (use a large R, for example, R = 20000 for actual research)
-#' mc <- MC(object, R = 100)
-#' # Generate confidence intervals for standardized regression slopes
-#' std <- BetaMC(mc)
-#' # Method ---------------------------------------------------------
-#' confint(std, level = 0.95)
-#' @export
 #' @keywords methods
+#' @export
 confint.betamc <- function(object,
                            parm = NULL,
                            level = 0.95,
@@ -267,10 +224,18 @@ confint.betamc <- function(object,
       )
     )
   }
+  ci <- .CI(
+    object = object,
+    alpha = 1 - level[1]
+  )[parm, 4:5, drop = FALSE]
+  varnames <- colnames(ci)
+  varnames <- gsub(
+    pattern = "%",
+    replacement = " %",
+    x = varnames
+  )
+  colnames(ci) <- varnames
   return(
-    .CI(
-      object = object,
-      alpha = 1 - level[1]
-    )[parm, 4:5]
+    ci
   )
 }
