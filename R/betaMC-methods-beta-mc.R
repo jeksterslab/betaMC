@@ -32,7 +32,7 @@ print.betamc <- function(x,
                          alpha = NULL,
                          digits = 4,
                          ...) {
-  type <- x$object$args$type
+  type <- x$args$object$args$type
   if (x$fun == "BetaMC") {
     label <- "Standardized regression slopes"
   }
@@ -111,7 +111,7 @@ summary.betamc <- function(object,
                            alpha = NULL,
                            digits = 4,
                            ...) {
-  type <- object$object$args$type
+  type <- object$args$object$args$type
   if (object$fun == "BetaMC") {
     label <- "Standardized regression slopes"
   }

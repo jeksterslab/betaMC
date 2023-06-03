@@ -40,7 +40,7 @@ lapply(
       data = df,
       estimator = "MLM"
     )
-    std <- semmcci:::summary.semmccistd(semmcci::MCStd(semmcci::MC(lav)))
+    std <- semmcci:::summary.semmcci(semmcci::MCStd(semmcci::MC(lav)))
     testthat::test_that(
       paste(text, "coef"),
       {

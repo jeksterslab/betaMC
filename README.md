@@ -1,7 +1,7 @@
 betaMC
 ================
 Ivan Jacob Agaloos Pesigan
-2023-06-02
+2023-06-03
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -104,11 +104,11 @@ BetaMC(mvn, alpha = 0.05)
 #> BetaMC(object = mvn, alpha = 0.05)
 #> 
 #> Standardized regression slopes
-#> type = ""
+#> type = "mvn"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0753 20000 0.3399 0.6344
-#> PCTGRT  0.3915 0.0766 20000 0.2371 0.5354
-#> PCTSUPP 0.2632 0.0746 20000 0.1167 0.4105
+#> NARTIC  0.4951 0.0757 20000 0.3380 0.6352
+#> PCTGRT  0.3915 0.0767 20000 0.2366 0.5380
+#> PCTSUPP 0.2632 0.0735 20000 0.1219 0.4089
 ```
 
 #### Asymptotic distribution-free Approach
@@ -119,11 +119,11 @@ BetaMC(adf, alpha = 0.05)
 #> BetaMC(object = adf, alpha = 0.05)
 #> 
 #> Standardized regression slopes
-#> type = ""
+#> type = "adf"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0676 20000 0.3536 0.6168
-#> PCTGRT  0.3915 0.0711 20000 0.2419 0.5211
-#> PCTSUPP 0.2632 0.0764 20000 0.1083 0.4087
+#> NARTIC  0.4951 0.0679 20000 0.3507 0.6163
+#> PCTGRT  0.3915 0.0713 20000 0.2430 0.5230
+#> PCTSUPP 0.2632 0.0767 20000 0.1074 0.4068
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
@@ -134,11 +134,11 @@ BetaMC(hc3, alpha = 0.05)
 #> BetaMC(object = hc3, alpha = 0.05)
 #> 
 #> Standardized regression slopes
-#> type = ""
+#> type = "hc3"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0798 20000 0.3253 0.6348
-#> PCTGRT  0.3915 0.0825 20000 0.2188 0.5417
-#> PCTSUPP 0.2632 0.0852 20000 0.0916 0.4236
+#> NARTIC  0.4951 0.0801 20000 0.3229 0.6352
+#> PCTGRT  0.3915 0.0828 20000 0.2158 0.5426
+#> PCTSUPP 0.2632 0.0859 20000 0.0883 0.4260
 ```
 
 ### Other Effect Sizes
@@ -159,10 +159,10 @@ RSqMC(hc3, alpha = 0.05)
 #> RSqMC(object = hc3, alpha = 0.05)
 #> 
 #> R-squared and adjusted R-squared
-#> type = ""
+#> type = "hc3"
 #>        est     se     R   2.5%  97.5%
-#> rsq 0.8045 0.0617 20000 0.6468 0.8881
-#> adj 0.7906 0.0662 20000 0.6216 0.8801
+#> rsq 0.8045 0.0619 20000 0.6475 0.8878
+#> adj 0.7906 0.0663 20000 0.6223 0.8798
 ```
 
 #### Improvement in R-squared
@@ -173,11 +173,11 @@ DeltaRSqMC(hc3, alpha = 0.05)
 #> DeltaRSqMC(object = hc3, alpha = 0.05)
 #> 
 #> Improvement in R-squared
-#> type = ""
+#> type = "hc3"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.1859 0.0695 20000 0.0489 0.3230
-#> PCTGRT  0.1177 0.0548 20000 0.0253 0.2383
-#> PCTSUPP 0.0569 0.0373 20000 0.0064 0.1491
+#> NARTIC  0.1859 0.0689 20000 0.0499 0.3209
+#> PCTGRT  0.1177 0.0547 20000 0.0260 0.2354
+#> PCTSUPP 0.0569 0.0374 20000 0.0059 0.1505
 ```
 
 #### Semipartial Correlation Coefficients
@@ -188,11 +188,11 @@ SCorMC(hc3, alpha = 0.05)
 #> SCorMC(object = hc3, alpha = 0.05)
 #> 
 #> Semipartial correlations
-#> type = ""
+#> type = "hc3"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4312 0.0874 20000 0.2210 0.5683
-#> PCTGRT  0.3430 0.0833 20000 0.1592 0.4881
-#> PCTSUPP 0.2385 0.0780 20000 0.0798 0.3861
+#> NARTIC  0.4312 0.0864 20000 0.2234 0.5665
+#> PCTGRT  0.3430 0.0831 20000 0.1612 0.4851
+#> PCTSUPP 0.2385 0.0784 20000 0.0768 0.3880
 ```
 
 #### Squared Partial Correlation Coefficients
@@ -203,11 +203,11 @@ PCorMC(hc3, alpha = 0.05)
 #> PCorMC(object = hc3, alpha = 0.05)
 #> 
 #> Squared partial correlations
-#> type = ""
+#> type = "hc3"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4874 0.1195 20000 0.1794 0.6507
-#> PCTGRT  0.3757 0.1152 20000 0.1063 0.5549
-#> PCTSUPP 0.2254 0.1128 20000 0.0275 0.4543
+#> NARTIC  0.4874 0.1195 20000 0.1777 0.6529
+#> PCTGRT  0.3757 0.1153 20000 0.1095 0.5583
+#> PCTSUPP 0.2254 0.1136 20000 0.0240 0.4571
 ```
 
 #### Differences of Standardized Regression Coefficients
@@ -218,11 +218,11 @@ DiffBetaMC(hc3, alpha = 0.05)
 #> DiffBetaMC(object = hc3, alpha = 0.05)
 #> 
 #> Differences of standardized regression slopes
-#> type = ""
+#> type = "hc3"
 #>                   est     se     R    2.5%  97.5%
-#> NARTIC-PCTGRT  0.1037 0.1428 20000 -0.1788 0.3773
-#> NARTIC-PCTSUPP 0.2319 0.1321 20000 -0.0381 0.4817
-#> PCTGRT-PCTSUPP 0.1282 0.1374 20000 -0.1463 0.3883
+#> NARTIC-PCTGRT  0.1037 0.1436 20000 -0.1812 0.3790
+#> NARTIC-PCTSUPP 0.2319 0.1329 20000 -0.0407 0.4822
+#> PCTGRT-PCTSUPP 0.1282 0.1377 20000 -0.1505 0.3894
 ```
 
 ### References
