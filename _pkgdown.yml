@@ -1,4 +1,4 @@
-destination: docs
+destination: pkgdown
 url: https://github.com/jeksterslab/betaMC/
 
 template:
@@ -47,9 +47,6 @@ articles:
   - example_p_cor_mc
   - example_diff_beta_mc
   - example_mc_mi
-- title: Benchmark
-  contents:
-  - benchmark
 - title: Benchmark
   contents:
   - benchmark

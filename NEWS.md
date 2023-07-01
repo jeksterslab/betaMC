@@ -1,6 +1,6 @@
-# betaMC 1.2.0.9000
+# betaMC 1.3.0
 
-Latest development version.
+## Minor
 
 * Added the `MCMI()` function
   to perform  Monte Carlo simulation of parameters
@@ -9,7 +9,7 @@ Latest development version.
 
 # betaMC 1.2.0
 
-## Major
+## Minor
 
 * The Monte Carlo simulation of parameters
   is done by the `MC()` function.
