@@ -110,7 +110,7 @@ confidence intervals effect sizes in regression.</p>
 <a href="https://github.com/jeksterslab/betaMC">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"jeksterslab/betaMC"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"jeksterslab/betaMC"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
@@ -173,9 +173,9 @@ are generated using the <code><a href="../reference/BetaMC.html">BetaMC()</a></c
 <span><span class="co">#&gt; Standardized regression slopes</span></span>
 <span><span class="co">#&gt; type = "mvn"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4951 0.0760 20000 0.3374 0.6361</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3915 0.0767 20000 0.2370 0.5393</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2632 0.0751 20000 0.1172 0.4115</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.4951 0.0758 20000 0.3377 0.6332</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3915 0.0766 20000 0.2382 0.5383</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2632 0.0742 20000 0.1186 0.4091</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="asymptotic-distribution-free-approach-1">Asymptotic distribution-free Approach<a class="anchor" aria-label="anchor" href="#asymptotic-distribution-free-approach-1"></a>
@@ -188,9 +188,9 @@ are generated using the <code><a href="../reference/BetaMC.html">BetaMC()</a></c
 <span><span class="co">#&gt; Standardized regression slopes</span></span>
 <span><span class="co">#&gt; type = "adf"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4951 0.0676 20000 0.3527 0.6178</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3915 0.0711 20000 0.2433 0.5221</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2632 0.0767 20000 0.1056 0.4065</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.4951 0.0683 20000 0.3524 0.6186</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3915 0.0716 20000 0.2399 0.5222</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2632 0.0771 20000 0.1069 0.4081</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="heteroskedasticity-consistent-approach-hc3-1">Heteroskedasticity Consistent Approach (HC3)<a class="anchor" aria-label="anchor" href="#heteroskedasticity-consistent-approach-hc3-1"></a>
@@ -203,9 +203,9 @@ are generated using the <code><a href="../reference/BetaMC.html">BetaMC()</a></c
 <span><span class="co">#&gt; Standardized regression slopes</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4951 0.0798 20000 0.3228 0.6367</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3915 0.0821 20000 0.2183 0.5405</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2632 0.0852 20000 0.0895 0.4271</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.4951 0.0795 20000 0.3226 0.6342</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3915 0.0825 20000 0.2188 0.5412</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2632 0.0861 20000 0.0869 0.4279</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
@@ -231,8 +231,8 @@ R-squared)<a class="anchor" aria-label="anchor" href="#multiple-correlation-coef
 <span><span class="co">#&gt; R-squared and adjusted R-squared</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;        est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; rsq 0.8045 0.0622 20000 0.6445 0.8874</span></span>
-<span><span class="co">#&gt; adj 0.7906 0.0666 20000 0.6191 0.8793</span></span></code></pre></div>
+<span><span class="co">#&gt; rsq 0.8045 0.0625 20000 0.6457 0.8874</span></span>
+<span><span class="co">#&gt; adj 0.7906 0.0670 20000 0.6204 0.8793</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="improvement-in-r-squared">Improvement in R-squared<a class="anchor" aria-label="anchor" href="#improvement-in-r-squared"></a>
@@ -245,9 +245,9 @@ R-squared)<a class="anchor" aria-label="anchor" href="#multiple-correlation-coef
 <span><span class="co">#&gt; Improvement in R-squared</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.1859 0.0694 20000 0.0502 0.3230</span></span>
-<span><span class="co">#&gt; PCTGRT  0.1177 0.0546 20000 0.0257 0.2373</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.0569 0.0376 20000 0.0061 0.1489</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.1859 0.0687 20000 0.0504 0.3228</span></span>
+<span><span class="co">#&gt; PCTGRT  0.1177 0.0548 20000 0.0262 0.2378</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.0569 0.0379 20000 0.0060 0.1531</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="semipartial-correlation-coefficients">Semipartial Correlation Coefficients<a class="anchor" aria-label="anchor" href="#semipartial-correlation-coefficients"></a>
@@ -260,9 +260,9 @@ R-squared)<a class="anchor" aria-label="anchor" href="#multiple-correlation-coef
 <span><span class="co">#&gt; Semipartial correlations</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4312 0.0871 20000 0.2240 0.5683</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3430 0.0830 20000 0.1604 0.4871</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2385 0.0780 20000 0.0784 0.3859</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.4312 0.0862 20000 0.2245 0.5681</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3430 0.0830 20000 0.1618 0.4876</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2385 0.0788 20000 0.0773 0.3913</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="squared-partial-correlation-coefficients">Squared Partial Correlation Coefficients<a class="anchor" aria-label="anchor" href="#squared-partial-correlation-coefficients"></a>
@@ -275,9 +275,9 @@ R-squared)<a class="anchor" aria-label="anchor" href="#multiple-correlation-coef
 <span><span class="co">#&gt; Squared partial correlations</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4874 0.1189 20000 0.1791 0.6487</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3757 0.1157 20000 0.1067 0.5574</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2254 0.1127 20000 0.0256 0.4571</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.4874 0.1186 20000 0.1780 0.6491</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3757 0.1154 20000 0.1101 0.5577</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2254 0.1129 20000 0.0238 0.4543</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="differences-of-standardized-regression-coefficients">Differences of Standardized Regression Coefficients<a class="anchor" aria-label="anchor" href="#differences-of-standardized-regression-coefficients"></a>
@@ -290,9 +290,9 @@ R-squared)<a class="anchor" aria-label="anchor" href="#multiple-correlation-coef
 <span><span class="co">#&gt; Differences of standardized regression slopes</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;                   est     se     R    2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC-PCTGRT  0.1037 0.1422 20000 -0.1790 0.3747</span></span>
-<span><span class="co">#&gt; NARTIC-PCTSUPP 0.2319 0.1332 20000 -0.0411 0.4806</span></span>
-<span><span class="co">#&gt; PCTGRT-PCTSUPP 0.1282 0.1366 20000 -0.1516 0.3868</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC-PCTGRT  0.1037 0.1423 20000 -0.1802 0.3751</span></span>
+<span><span class="co">#&gt; NARTIC-PCTSUPP 0.2319 0.1331 20000 -0.0389 0.4828</span></span>
+<span><span class="co">#&gt; PCTGRT-PCTSUPP 0.1282 0.1381 20000 -0.1513 0.3898</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
