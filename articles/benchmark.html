@@ -78,7 +78,7 @@
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
-            <h4 data-toc-skip class="date">2023-07-01</h4>
+            <h4 data-toc-skip class="date">2023-07-08</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslab/betaMC/blob/HEAD/vignettes/benchmark.Rmd"><code>vignettes/benchmark.Rmd</code></a></small>
       <div class="d-none name"><code>benchmark.Rmd</code></div>
@@ -159,17 +159,17 @@ confidence intervals.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">benchmark</span>, unit <span class="op">=</span> <span class="st">"ms"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   expr       min        lq      mean    median        uq       max neval</span></span>
-<span><span class="co">#&gt; 1   MC  456.1195  462.5925  478.2166  479.0292  489.1565  505.8597    10</span></span>
-<span><span class="co">#&gt; 2   NB 7179.3686 7230.2765 7328.3304 7286.7511 7341.3409 7785.0638    10</span></span></code></pre></div>
+<span><span class="co">#&gt; 1   MC  435.3587  443.6587  464.0301  462.2397  480.1331  500.5078    10</span></span>
+<span><span class="co">#&gt; 2   NB 7183.3303 7361.5814 7441.7902 7383.2383 7585.6564 7756.3902    10</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="summary-of-benchmark-results-relative-to-the-faster-method">Summary of Benchmark Results Relative to the Faster Method<a class="anchor" aria-label="anchor" href="#summary-of-benchmark-results-relative-to-the-faster-method"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">benchmark</span>, unit <span class="op">=</span> <span class="st">"relative"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   expr      min      lq     mean  median       uq      max neval</span></span>
-<span><span class="co">#&gt; 1   MC  1.00000  1.0000  1.00000  1.0000  1.00000  1.00000    10</span></span>
-<span><span class="co">#&gt; 2   NB 15.74011 15.6299 15.32429 15.2115 15.00816 15.38977    10</span></span></code></pre></div>
+<span><span class="co">#&gt;   expr     min       lq    mean   median       uq      max neval</span></span>
+<span><span class="co">#&gt; 1   MC  1.0000  1.00000  1.0000  1.00000  1.00000  1.00000    10</span></span>
+<span><span class="co">#&gt; 2   NB 16.4998 16.59289 16.0373 15.97275 15.79907 15.49704    10</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
