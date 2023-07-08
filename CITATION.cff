@@ -36,7 +36,7 @@ preferred-citation:
   institution:
     name: University of Macau
   thesis-type: PhD Thesis
-repository: https://packagemanager.rstudio.com/all/__linux__/focal/latest/
+repository: https://packagemanager.rstudio.com/all/__linux__/jammy/latest/
 repository-code: https://github.com/jeksterslab/betaMC
 url: https://jeksterslab.github.io/betaMC/
 contact:
@@ -44,6 +44,13 @@ contact:
   given-names: Ivan Jacob Agaloos
   email: r.jeksterslab@gmail.com
   orcid: https://orcid.org/0000-0003-4818-8420
+keywords:
+- confidence-intervals
+- monte-carlo
+- r
+- r-package
+- regression-effect-sizes
+- standardized-regression-coefficients
 references:
 - type: manual
   title: 'betaMC: Monte Carlo for Regression Effect Sizes'
