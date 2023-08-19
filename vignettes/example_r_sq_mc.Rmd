@@ -2,6 +2,11 @@
 title: "betaMC: Example Using the RSqMC Function"
 author: "Ivan Jacob Agaloos Pesigan"
 output: rmarkdown::html_vignette
+bibliography: "vignettes.bib"
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
+nocite: |
+  @Pesigan-Cheung-2023
+  @Dudgeon-2017
 vignette: >
   %\VignetteIndexEntry{betaMC: Example Using the RSqMC Function}
   %\VignetteEngine{knitr::rmarkdown}
@@ -139,9 +144,3 @@ confint(hc3, level = 0.95)
 ```
 
 ## References
-
-National Research Council. (1982).
-*An assessment of research-doctorate programs in the United States: Social and behavioral sciences*.
-https://doi.org/10.17226/9781.
-Reproduced with permission from the National Academy of Sciences,
-Courtesy of the National Academies Press, Washington, D.C.

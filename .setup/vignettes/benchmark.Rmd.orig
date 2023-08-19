@@ -2,9 +2,7 @@
 title: "Benchmark: Comparing the Monte Carlo Method with Nonparametric Bootstrapping"
 author: "Ivan Jacob Agaloos Pesigan"
 date: "`r Sys.Date()`"
-output:
-  rmarkdown::html_vignette:
-    toc: true
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Benchmark: Comparing the Monte Carlo Method with Nonparametric Bootstrapping}
   %\VignetteEngine{knitr::rmarkdown}
@@ -136,7 +134,8 @@ knitr::kable(
 #| message = FALSE,
 #| warning = FALSE
 benchmark_file <- root$find_file(
-  ".data-raw",
+  ".setup",
+  "data-raw",
   "benchmark.Rds"
 )
 if (!file.exists(benchmark_file)) {

@@ -1,0 +1,249 @@
+\documentclass{article}
+
+\input{.setup/latex/preamble/preamble}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BIBLATEX APA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%% begin.rcode
+% #| label = "root",
+% #| include = FALSE
+% root <- rprojroot::is_rstudio_project
+%% end.rcode
+
+%% begin.rcode
+% #| label = "knitr",
+% #| include = FALSE,
+% #| file = root$find_file(
+% #|   ".setup",
+% #|   "latex",
+% #|   "r-scripts",
+% #|   "knitr.R"
+% #| )
+%% end.rcode
+
+%% begin.rcode
+% #| label = "biblatex",
+% #| echo = FALSE,
+% #| message = FALSE,
+% #| warning = FALSE,
+% #| results = "asis"
+% if (require("rProject")) {
+%   Bib(
+%     path = dirname(
+%       root$find_file(
+%         "project.Rproj"
+%       )
+%     )
+%   )
+%   cat(
+%     .PreambleBiblatex(
+%       path = root$find_file(
+%         ".setup",
+%         "latex",
+%         "bib"
+%       )
+%     )
+%   )
+% } else {
+%   cat(
+%     .PreambleBiblatexCombined(
+%       path = root$find_file(
+%         ".setup",
+%         "latex",
+%         "bib"
+%       ),
+%       output_path = root$find_file(
+%         ".setup",
+%         "latex"
+%       )
+%     )
+%   )
+% }
+%% end.rcode
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\baselinestretch}{1}
+
+\title{betaMC: Staging}
+\author{Ivan Jacob Agaloos Pesigan}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Monte Carlo Simulation}
+
+%% begin.rcode
+% # Fit the regression model
+% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+% # Generate the sampling distribution of parameter estimates
+% mc <- MC(object, R = 20000, type = "mvn", seed = 42)
+%% end.rcode
+
+\section{Standardized Regression Slopes}
+
+%% begin.rcode
+% out <- BetaMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
+%% end.rcode
+
+\section{Multiple Correlation}
+
+%% begin.rcode
+% out <- RSqMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
+%% end.rcode
+
+\section{Semipartial Correlation}
+
+%% begin.rcode
+% out <- SCorMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
+%% end.rcode
+
+\section{Improvement in R-Squared}
+
+%% begin.rcode
+% out <- DeltaRSqMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
+%% end.rcode
+
+\section{Squared Partial Correlation}
+
+%% begin.rcode
+% out <- PCorMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
+%% end.rcode
+
+\section{Differences of Standardized Slopes}
+
+%% begin.rcode
+% out <- DiffBetaMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
+%% end.rcode
+
+\section{Monte Carlo Simulation - Multiple Imputation}
+
+%% begin.rcode
+% nas1982_missing <- mice::ampute(nas1982, mech = "MCAR")$amp
+% # Fit the regression model
+% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982_missing)
+% # Generate the sampling distribution of parameter estimates
+% mi <- mice::mice(nas1982_missing, m = 100, seed = 42, print = FALSE)
+% mc <- MCMI(object, mi = mi, R = 20000, type = "mvn",
+%            seed = 42)
+%% end.rcode
+
+\section{Standardized Regression Slopes}
+
+%% begin.rcode
+% out <- BetaMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
+%% end.rcode
+
+\section{Multiple Correlation}
+
+%% begin.rcode
+% out <- RSqMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
+%% end.rcode
+
+\section{Semipartial Correlation}
+
+%% begin.rcode
+% out <- SCorMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
+%% end.rcode
+
+\section{Improvement in R-Squared}
+
+%% begin.rcode
+% out <- DeltaRSqMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
+%% end.rcode
+
+\section{Squared Partial Correlation}
+
+%% begin.rcode
+% out <- PCorMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
+%% end.rcode
+
+\section{Differences of Standardized Slopes}
+
+%% begin.rcode
+% out <- DiffBetaMC(mc)
+% # Methods --------------------------------------------------------
+% print(out)
+% summary(out)
+% coef(out)
+% vcov(out)
+% confint(out)
+%% end.rcode
+
+\nocite{RCoreTeam-2023}
+
+\nocite{Pesigan-Cheung-2023}
+
+\printbibliography
+
+\end{document}

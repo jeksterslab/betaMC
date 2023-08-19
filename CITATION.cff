@@ -9,12 +9,13 @@ type: software
 license: MIT
 title: 'betaMC: Monte Carlo for Regression Effect Sizes'
 version: 1.3.0
+doi: 10.3758/s13428-023-02114-4
 abstract: Generates Monte Carlo confidence intervals for standardized regression coefficients
   (beta) and other effect sizes, including multiple correlation, semipartial correlations,
   improvement in R-squared, squared partial correlations, and differences in standardized
   regression coefficients, for models fitted by lm(). 'betaMC' combines ideas from
-  Monte Carlo confidence intervals for the indirect effect (Preacher and Selig, 2012
-  <doi:10.1080/19312458.2012.679848>) and the sampling covariance matrix of regression
+  Monte Carlo confidence intervals for the indirect effect (Pesigan and Cheung, 2023
+  <doi:10.3758/s13428-023-02114-4>) and the sampling covariance matrix of regression
   coefficients (Dudgeon, 2017 <doi:10.1007/s11336-017-9563-z>) to generate confidence
   intervals effect sizes in regression.
 authors:
@@ -23,20 +24,22 @@ authors:
   email: r.jeksterslab@gmail.com
   orcid: https://orcid.org/0000-0003-4818-8420
 preferred-citation:
-  type: thesis
-  title: 'Confidence intervals for standardized coefficients: Applied to regression
-    coefficients in primary studies and indirect effects in meta-analytic structural
-    equation modeling'
+  type: article
+  title: Monte Carlo for Regression Effect Sizes
   authors:
   - family-names: Pesigan
     given-names: Ivan Jacob Agaloos
     email: r.jeksterslab@gmail.com
     orcid: https://orcid.org/0000-0003-4818-8420
-  year: '2022'
-  institution:
-    name: University of Macau
-  thesis-type: PhD Thesis
-repository: https://packagemanager.rstudio.com/all/__linux__/jammy/latest/
+  - family-names: Cheung
+    given-names: Shu Fai
+    email: shufai.cheung@gmail.com
+    orcid: https://orcid.org/0000-0002-9871-9448
+  year: '2023'
+  doi: 10.3758/s13428-023-02114-4
+  journal: Behavior Research Methods
+  notes: R package version 1.3.0
+repository: https://packagemanager.rstudio.com/all/__linux__/focal/latest/
 repository-code: https://github.com/jeksterslab/betaMC
 url: https://jeksterslab.github.io/betaMC/
 contact:
@@ -51,13 +54,3 @@ keywords:
 - r-package
 - regression-effect-sizes
 - standardized-regression-coefficients
-references:
-- type: manual
-  title: 'betaMC: Monte Carlo for Regression Effect Sizes'
-  authors:
-  - family-names: Pesigan
-    given-names: Ivan Jacob Agaloos
-    email: r.jeksterslab@gmail.com
-    orcid: https://orcid.org/0000-0003-4818-8420
-  year: '2023'
-  notes: R package version 1.3.0

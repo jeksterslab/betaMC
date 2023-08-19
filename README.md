@@ -1,18 +1,30 @@
 betaMC
 ================
 Ivan Jacob Agaloos Pesigan
-2023-07-08
+2023-08-19
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from .setup/readme/README.Rmd. Please edit that file -->
 <!-- badges: start -->
 
 [![CRAN
 Status](https://www.r-pkg.org/badges/version/betaMC)](https://cran.r-project.org/package=betaMC)
 [![R-Universe
 Status](https://jeksterslab.r-universe.dev/badges/betaMC)](https://jeksterslab.r-universe.dev)
-[![R-CMD-check](https://github.com/jeksterslab/betaMC/workflows/R-CMD-check/badge.svg)](https://github.com/jeksterslab/betaMC/actions)
-[![test-coverage](https://github.com/jeksterslab/betaMC/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/test-coverage.yaml)
-[![lint](https://github.com/jeksterslab/betaMC/actions/workflows/lint.yaml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/lint.yaml)
+[![DOI](https://zenodo.org/badge/DOI/10.3758/s13428-023-02114-4.svg)](https://doi.org/10.3758/s13428-023-02114-4)
+[![Make
+Project](https://github.com/jeksterslab/betaMC/actions/workflows/make.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/make.yml)
+[![R-CMD-check](https://github.com/jeksterslab/betaMC/actions/workflows/check-full.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/check-full.yml)
+[![R Package Test
+Coverage](https://github.com/jeksterslab/betaMC/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/test-coverage.yml)
+[![Lint R
+Package](https://github.com/jeksterslab/betaMC/actions/workflows/lint.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/lint.yml)
+[![Package Website (GitHub
+Pages)](https://github.com/jeksterslab/betaMC/actions/workflows/pkgdown-gh-pages.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/pkgdown-gh-pages.yml)
+[![Compile
+LaTeX](https://github.com/jeksterslab/betaMC/actions/workflows/latex.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/latex.yml)
+[![Shell
+Check](https://github.com/jeksterslab/betaMC/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/shellcheck.yml)
+[![pages-build-deployment](https://github.com/jeksterslab/betaMC/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/pages/pages-build-deployment)
 [![codecov](https://codecov.io/gh/jeksterslab/betaMC/branch/main/graph/badge.svg?token=KVLUET3DJ6)](https://codecov.io/gh/jeksterslab/betaMC)
 <!-- badges: end -->
 
@@ -23,8 +35,8 @@ coefficients (beta) and other effect sizes, including multiple
 correlation, semipartial correlations, improvement in R-squared, squared
 partial correlations, and differences in standardized regression
 coefficients, for models fitted by `lm()`. `betaMC` combines ideas from
-Monte Carlo confidence intervals for the indirect effect (Preacher and
-Selig, 2012: <http://doi.org/10.1080/19312458.2012.679848>) and the
+Monte Carlo confidence intervals for the indirect effect (Pesigan and
+Cheung, 2023: <http://doi.org/10.3758/s13428-023-02114-4>) and the
 sampling covariance matrix of regression coefficients (Dudgeon, 2017:
 <http://doi.org/10.1007/s11336-017-9563-z>) to generate confidence
 intervals effect sizes in regression.
@@ -106,9 +118,9 @@ BetaMC(mvn, alpha = 0.05)
 #> Standardized regression slopes
 #> type = "mvn"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0754 20000 0.3387 0.6337
-#> PCTGRT  0.3915 0.0762 20000 0.2377 0.5369
-#> PCTSUPP 0.2632 0.0748 20000 0.1190 0.4101
+#> NARTIC  0.4951 0.0755 20000 0.3396 0.6334
+#> PCTGRT  0.3915 0.0766 20000 0.2389 0.5371
+#> PCTSUPP 0.2632 0.0750 20000 0.1201 0.4123
 ```
 
 #### Asymptotic distribution-free Approach
@@ -121,9 +133,9 @@ BetaMC(adf, alpha = 0.05)
 #> Standardized regression slopes
 #> type = "adf"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0670 20000 0.3546 0.6146
-#> PCTGRT  0.3915 0.0707 20000 0.2436 0.5203
-#> PCTSUPP 0.2632 0.0768 20000 0.1070 0.4075
+#> NARTIC  0.4951 0.0669 20000 0.3525 0.6147
+#> PCTGRT  0.3915 0.0705 20000 0.2446 0.5211
+#> PCTSUPP 0.2632 0.0763 20000 0.1033 0.4055
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
@@ -136,9 +148,9 @@ BetaMC(hc3, alpha = 0.05)
 #> Standardized regression slopes
 #> type = "hc3"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0803 20000 0.3214 0.6351
-#> PCTGRT  0.3915 0.0817 20000 0.2210 0.5385
-#> PCTSUPP 0.2632 0.0858 20000 0.0873 0.4243
+#> NARTIC  0.4951 0.0793 20000 0.3227 0.6336
+#> PCTGRT  0.3915 0.0819 20000 0.2160 0.5359
+#> PCTSUPP 0.2632 0.0855 20000 0.0889 0.4272
 ```
 
 ### Other Effect Sizes
@@ -161,8 +173,8 @@ RSqMC(hc3, alpha = 0.05)
 #> R-squared and adjusted R-squared
 #> type = "hc3"
 #>        est     se     R   2.5%  97.5%
-#> rsq 0.8045 0.0621 20000 0.6456 0.8865
-#> adj 0.7906 0.0665 20000 0.6203 0.8784
+#> rsq 0.8045 0.0626 20000 0.6440 0.8882
+#> adj 0.7906 0.0671 20000 0.6185 0.8802
 ```
 
 #### Improvement in R-squared
@@ -175,9 +187,9 @@ DeltaRSqMC(hc3, alpha = 0.05)
 #> Improvement in R-squared
 #> type = "hc3"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.1859 0.0695 20000 0.0502 0.3226
-#> PCTGRT  0.1177 0.0544 20000 0.0264 0.2364
-#> PCTSUPP 0.0569 0.0373 20000 0.0059 0.1474
+#> NARTIC  0.1859 0.0687 20000 0.0502 0.3216
+#> PCTGRT  0.1177 0.0540 20000 0.0257 0.2334
+#> PCTSUPP 0.0569 0.0380 20000 0.0060 0.1514
 ```
 
 #### Semipartial Correlation Coefficients
@@ -190,9 +202,9 @@ SCorMC(hc3, alpha = 0.05)
 #> Semipartial correlations
 #> type = "hc3"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4312 0.0871 20000 0.2239 0.5680
-#> PCTGRT  0.3430 0.0828 20000 0.1625 0.4862
-#> PCTSUPP 0.2385 0.0783 20000 0.0766 0.3839
+#> NARTIC  0.4312 0.0861 20000 0.2242 0.5671
+#> PCTGRT  0.3430 0.0823 20000 0.1604 0.4831
+#> PCTSUPP 0.2385 0.0784 20000 0.0773 0.3891
 ```
 
 #### Squared Partial Correlation Coefficients
@@ -205,9 +217,9 @@ PCorMC(hc3, alpha = 0.05)
 #> Squared partial correlations
 #> type = "hc3"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4874 0.1189 20000 0.1816 0.6490
-#> PCTGRT  0.3757 0.1145 20000 0.1105 0.5545
-#> PCTSUPP 0.2254 0.1128 20000 0.0245 0.4559
+#> NARTIC  0.4874 0.1188 20000 0.1784 0.6531
+#> PCTGRT  0.3757 0.1145 20000 0.1073 0.5518
+#> PCTSUPP 0.2254 0.1128 20000 0.0252 0.4590
 ```
 
 #### Differences of Standardized Regression Coefficients
@@ -220,33 +232,47 @@ DiffBetaMC(hc3, alpha = 0.05)
 #> Differences of standardized regression slopes
 #> type = "hc3"
 #>                   est     se     R    2.5%  97.5%
-#> NARTIC-PCTGRT  0.1037 0.1425 20000 -0.1787 0.3768
-#> NARTIC-PCTSUPP 0.2319 0.1341 20000 -0.0407 0.4825
-#> PCTGRT-PCTSUPP 0.1282 0.1363 20000 -0.1429 0.3893
+#> NARTIC-PCTGRT  0.1037 0.1415 20000 -0.1733 0.3773
+#> NARTIC-PCTSUPP 0.2319 0.1324 20000 -0.0392 0.4786
+#> PCTGRT-PCTSUPP 0.1282 0.1370 20000 -0.1560 0.3829
 ```
-
-### References
-
-Dudgeon, P. (2017). Some improvements in confidence intervals for
-standardized regression coefficients. *Psychometrika*, *82*(4), 928–951.
-<https://doi.org/10.1007/s11336-017-9563-z>
-
-National Research Council. (1982). *An assessment of research-doctorate
-programs in the United States: Social and behavioral sciences*.
-<https://doi.org/10.17226/9781>. Reproduced with permission from the
-National Academy of Sciences, Courtesy of the National Academies Press,
-Washington, D.C.
-
-Pesigan, I. J. A. (2022). Confidence intervals for standardized
-coefficients: Applied to regression coefficients in primary studies and
-indirect effects in meta-analytic structural equation modeling
-\[Unpublished doctoral dissertation\]. University of Macau.
-
-Preacher, K. J., & Selig, J. P. (2012). Advantages of Monte Carlo
-confidence intervals for indirect effects. *Communication Methods and
-Measures*, *6*(2), 77-98. <https://doi.org/10.1080/19312458.2012.679848>
 
 ## Documentation
 
 See [GitHub Pages](https://jeksterslab.github.io/betaMC/index.html) for
 package documentation.
+
+## Citation
+
+To cite `betaMC` in publications, please cite Pesigan & Cheung (2023).
+
+## References
+
+<div id="refs" class="references csl-bib-body hanging-indent"
+line-spacing="2">
+
+<div id="ref-Dudgeon-2017" class="csl-entry">
+
+Dudgeon, P. (2017). Some improvements in confidence intervals for
+standardized regression coefficients. *Psychometrika*, *82*(4), 928–951.
+<https://doi.org/10.1007/s11336-017-9563-z>
+
+</div>
+
+<div id="ref-NationalResearchCouncil-1982" class="csl-entry">
+
+National Research Council. (1982). *An assessment of research-doctorate
+programs in the United States: Social and behavioral sciences*. National
+Academies Press. <https://doi.org/10.17226/9781>
+
+</div>
+
+<div id="ref-Pesigan-Cheung-2023" class="csl-entry">
+
+Pesigan, I. J. A., & Cheung, S. F. (2023). Monte Carlo confidence
+intervals for the indirect effect with missing data. *Behavior Research
+Methods*. <https://doi.org/10.3758/s13428-023-02114-4>
+
+</div>
+
+</div>

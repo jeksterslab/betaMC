@@ -1,5 +1,5 @@
 year <- 2023
-author_text <- "Pesigan, I. J. A."
+author_text <- "Pesigan, I. J. A. & Cheung, S. F."
 pkg <- meta$Package
 title <- meta$Title
 version <- meta$Version
@@ -10,50 +10,39 @@ author <- c(
     role = c("aut", "cre", "cph"),
     email = "r.jeksterslab@gmail.com",
     comment = c(ORCID = "0000-0003-4818-8420")
+  ),
+  person(
+    given = "Shu Fai",
+    family = "Cheung",
+    role = "ctb",
+    email = "shufai.cheung@gmail.com",
+    comment = c(ORCID = "0000-0002-9871-9448")
   )
 )
 note <- sprintf(
   "R package version %s",
   meta$Version
 )
-url <- paste0(
-  "https://CRAN.R-project.org/package=",
-  pkg
-)
+url <- "https://github.com/jeksterslab/betaMC"
 
 bibentry(
-  bibtype = "PhdThesis",
+  bibtype = "Article",
   author = author,
-  title = "Confidence intervals for standardized coefficients: Applied to regression coefficients in primary studies and indirect effects in meta-analytic structural equation modeling",
-  year = 2022,
-  school = "University of Macau",
+  title = title,
+  year = year,
+  doi = "10.3758/s13428-023-02114-4",
+  journal = "Behavior Research Methods",
+  note = note,
   textVersion = paste0(
     author_text, " ",
-    "(2022)", ".", " ",
-    "Confidence intervals for standardized coefficients: Applied to regression coefficients in primary studies and indirect effects in meta-analytic structural equation modeling", " ",
-    "[Unpublished doctoral dissertation].",
-    " ",
-    "University of Macau.",
-    " "
+    "(", year, ")", ".", " ",
+    title, ".", " ",
+    "Behavior Research Methods", ".", " ",
+    "https://doi.org/10.3758/s13428-023-02114-4", " "
   ),
   header = paste(
     "To cite",
     pkg,
     "in publications, please use:"
-  )
-)
-
-bibentry(
-  bibtype = "Manual",
-  author = author,
-  title = paste0(pkg, ":", " ", title),
-  year = year,
-  note = note,
-  textVersion = paste0(
-    author_text, " ",
-    "(", year, ")", ".", " ",
-    pkg, ":", " ", title, ".", " ",
-    note, ".", " ",
-    url
   )
 )
