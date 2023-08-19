@@ -9,9 +9,9 @@
 <title>betaMC: Example Using the DeltaRSqMC Function • betaMC</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.6/font.css" rel="stylesheet">
-<link href="../deps/JetBrains_Mono-0.4.6/font.css" rel="stylesheet">
-<link href="../deps/Roboto_Slab-0.4.6/font.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.7/font.css" rel="stylesheet">
+<link href="../deps/JetBrains_Mono-0.4.7/font.css" rel="stylesheet">
+<link href="../deps/Roboto_Slab-0.4.7/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="betaMC: Example Using the DeltaRSqMC Function">
@@ -159,9 +159,9 @@ Function</a>.</p>
 <span><span class="co">#&gt; Improvement in R-squared</span></span>
 <span><span class="co">#&gt; type = "mvn"</span></span>
 <span><span class="co">#&gt;            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
-<span><span class="co">#&gt; NARTIC  0.1859 0.0661 20000 0.0312 0.0517 0.0746 0.3300 0.3979 0.4812</span></span>
-<span><span class="co">#&gt; PCTGRT  0.1177 0.0507 20000 0.0141 0.0238 0.0380 0.2341 0.2853 0.3524</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.0569 0.0338 20000 0.0004 0.0039 0.0100 0.1386 0.1792 0.2383</span></span>
+<span><span class="co">#&gt; NARTIC  0.1859 0.0655 20000 0.0324 0.0520 0.0736 0.3265 0.3861 0.4676</span></span>
+<span><span class="co">#&gt; PCTGRT  0.1177 0.0509 20000 0.0141 0.0250 0.0375 0.2324 0.2894 0.3535</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.0569 0.0338 20000 0.0009 0.0048 0.0106 0.1395 0.1834 0.2408</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; DeltaRSqMC(object = adf)</span></span>
@@ -169,9 +169,9 @@ Function</a>.</p>
 <span><span class="co">#&gt; Improvement in R-squared</span></span>
 <span><span class="co">#&gt; type = "adf"</span></span>
 <span><span class="co">#&gt;            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
-<span><span class="co">#&gt; NARTIC  0.1859 0.0585 20000 0.0127 0.0444 0.0748 0.3021 0.3549 0.4249</span></span>
-<span><span class="co">#&gt; PCTGRT  0.1177 0.0474 20000 0.0035 0.0218 0.0371 0.2200 0.2645 0.3236</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.0569 0.0332 20000 0.0001 0.0023 0.0092 0.1352 0.1775 0.2261</span></span>
+<span><span class="co">#&gt; NARTIC  0.1859 0.0585 20000 0.0128 0.0460 0.0735 0.3016 0.3513 0.4185</span></span>
+<span><span class="co">#&gt; PCTGRT  0.1177 0.0477 20000 0.0069 0.0206 0.0360 0.2214 0.2677 0.3224</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.0569 0.0334 20000 0.0001 0.0022 0.0088 0.1375 0.1761 0.2286</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; DeltaRSqMC(object = hc3)</span></span>
@@ -179,9 +179,9 @@ Function</a>.</p>
 <span><span class="co">#&gt; Improvement in R-squared</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
-<span><span class="co">#&gt; NARTIC  0.1859 0.0685 20000 0.0033 0.0192 0.0504 0.3183 0.3763 0.4771</span></span>
-<span><span class="co">#&gt; PCTGRT  0.1177 0.0540 20000 0.0024 0.0112 0.0259 0.2356 0.2878 0.3661</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.0569 0.0372 20000 0.0000 0.0011 0.0063 0.1474 0.1956 0.2440</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.1859 0.0691 20000 0.0029 0.0182 0.0507 0.3224 0.3807 0.4388</span></span>
+<span><span class="co">#&gt; PCTGRT  0.1177 0.0540 20000 0.0018 0.0099 0.0254 0.2335 0.2910 0.3601</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.0569 0.0374 20000 0.0000 0.0008 0.0057 0.1495 0.1976 0.2579</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="coef">coef<a class="anchor" aria-label="anchor" href="#coef"></a>
@@ -205,19 +205,19 @@ Function</a>.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">mvn</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                NARTIC        PCTGRT       PCTSUPP</span></span>
-<span><span class="co">#&gt; NARTIC   0.0043650233 -0.0006874497 -0.0003810188</span></span>
-<span><span class="co">#&gt; PCTGRT  -0.0006874497  0.0025723433 -0.0002527303</span></span>
-<span><span class="co">#&gt; PCTSUPP -0.0003810188 -0.0002527303  0.0011417015</span></span>
+<span><span class="co">#&gt; NARTIC   0.0042948192 -0.0007581646 -0.0003105367</span></span>
+<span><span class="co">#&gt; PCTGRT  -0.0007581646  0.0025866895 -0.0002217994</span></span>
+<span><span class="co">#&gt; PCTSUPP -0.0003105367 -0.0002217994  0.0011438479</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                NARTIC        PCTGRT       PCTSUPP</span></span>
-<span><span class="co">#&gt; NARTIC   3.423664e-03 -9.752525e-06 -0.0001467707</span></span>
-<span><span class="co">#&gt; PCTGRT  -9.752525e-06  2.249320e-03 -0.0001750629</span></span>
-<span><span class="co">#&gt; PCTSUPP -1.467707e-04 -1.750629e-04  0.0011002075</span></span>
+<span><span class="co">#&gt; NARTIC   3.419450e-03  2.758528e-05 -0.0001395269</span></span>
+<span><span class="co">#&gt; PCTGRT   2.758528e-05  2.270851e-03 -0.0001990245</span></span>
+<span><span class="co">#&gt; PCTSUPP -1.395269e-04 -1.990245e-04  0.0011175501</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                NARTIC        PCTGRT       PCTSUPP</span></span>
-<span><span class="co">#&gt; NARTIC   4.696582e-03  0.0002097216 -6.219795e-05</span></span>
-<span><span class="co">#&gt; PCTGRT   2.097216e-04  0.0029117477 -1.922958e-04</span></span>
-<span><span class="co">#&gt; PCTSUPP -6.219795e-05 -0.0001922958  1.387420e-03</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC   4.770478e-03  0.0001581532 -5.731418e-05</span></span>
+<span><span class="co">#&gt; PCTGRT   1.581532e-04  0.0029172636 -1.749575e-04</span></span>
+<span><span class="co">#&gt; PCTSUPP -5.731418e-05 -0.0001749575  1.400396e-03</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="confint">confint<a class="anchor" aria-label="anchor" href="#confint"></a>
@@ -225,30 +225,37 @@ Function</a>.</p>
 <p>Return confidence intervals.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">mvn</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
-<span><span class="co">#&gt;               2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; NARTIC  0.074552210 0.3300488</span></span>
-<span><span class="co">#&gt; PCTGRT  0.038004232 0.2340795</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.009963586 0.1385512</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">adf</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;              2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; NARTIC  0.07483492 0.3021118</span></span>
-<span><span class="co">#&gt; PCTGRT  0.03711180 0.2199738</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.00915918 0.1351637</span></span>
+<span><span class="co">#&gt; NARTIC  0.07358063 0.3265221</span></span>
+<span><span class="co">#&gt; PCTGRT  0.03752785 0.2323862</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.01062953 0.1394950</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">adf</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
+<span><span class="co">#&gt;               2.5 %    97.5 %</span></span>
+<span><span class="co">#&gt; NARTIC  0.073467887 0.3016368</span></span>
+<span><span class="co">#&gt; PCTGRT  0.036005559 0.2213713</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.008790519 0.1375282</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">hc3</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;               2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; NARTIC  0.050373295 0.3183217</span></span>
-<span><span class="co">#&gt; PCTGRT  0.025937261 0.2355982</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.006343445 0.1474211</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.050653616 0.3223637</span></span>
+<span><span class="co">#&gt; PCTGRT  0.025432051 0.2334527</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.005728778 0.1495209</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2">
-<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+<div class="section level2 unnumbered">
+<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<p>National Research Council. (1982). <em>An assessment of
-research-doctorate programs in the United States: Social and behavioral
-sciences</em>. <a href="https://doi.org/10.17226/9781" class="external-link uri">https://doi.org/10.17226/9781</a>. Reproduced with
-permission from the National Academy of Sciences, Courtesy of the
-National Academies Press, Washington, D.C.</p>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-Dudgeon-2017" class="csl-entry">
+Dudgeon, P. (2017). Some improvements in confidence intervals for
+standardized regression coefficients. <em>Psychometrika</em>,
+<em>82</em>(4), 928–951. <a href="https://doi.org/10.1007/s11336-017-9563-z" class="external-link">https://doi.org/10.1007/s11336-017-9563-z</a>
+</div>
+<div id="ref-Pesigan-Cheung-2023" class="csl-entry">
+Pesigan, I. J. A., &amp; Cheung, S. F. (2023). <span>Monte Carlo</span>
+confidence intervals for the indirect effect with missing data.
+<em>Behavior Research Methods</em>. <a href="https://doi.org/10.3758/s13428-023-02114-4" class="external-link">https://doi.org/10.3758/s13428-023-02114-4</a>
+</div>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
