@@ -17,6 +17,3 @@
 ^quarto$
 ^scripts$
 ^vignettes$
-^betaMC\.Rcheck$
-^betaMC.*\.tar\.gz$
-^betaMC.*\.tgz$
