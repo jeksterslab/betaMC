@@ -160,9 +160,20 @@ for standardized regression coefficients.
 \emph{Psychometrika}, \emph{82}(4), 928–951.
 \doi{10.1007/s11336-017-9563-z}
 
+MacKinnon, D. P., Lockwood, C. M., & Williams, J. (2004).
+Confidence limits for the indirect effect:
+Distribution of the product and resampling methods.
+\emph{Multivariate Behavioral Research}, \emph{39}(1), 99-128.
+\doi{10.1207/s15327906mbr3901_4}
+
+Pesigan, I. J. A., & Cheung, S. F. (2023).
+Monte Carlo confidence intervals for the indirect effect with missing data.
+\emph{Behavior Research Methods}.
+\doi{10.3758/s13428-023-02114-4}
+
 Preacher, K. J., & Selig, J. P. (2012).
 Advantages of Monte Carlo confidence intervals for indirect effects.
-\emph{Communication Methods and Measures}, \emph{6}(2), 77-98.
+\emph{Communication Methods and Measures}, \emph{6}(2), 77–98.
 \doi{10.1080/19312458.2012.679848}
 }
 \seealso{

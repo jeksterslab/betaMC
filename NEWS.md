@@ -1,3 +1,7 @@
+# betaMC 1.3.0.9000
+
+Latest development version.
+
 # betaMC 1.3.0
 
 ## Minor

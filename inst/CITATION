@@ -28,8 +28,8 @@ url <- "https://github.com/jeksterslab/betaMC"
 bibentry(
   bibtype = "Article",
   author = author,
-  title = title,
-  year = year,
+  title = "Monte Carlo confidence intervals for the indirect effect with missing data",
+  year = "2023",
   doi = "10.3758/s13428-023-02114-4",
   journal = "Behavior Research Methods",
   note = note,
