@@ -26,7 +26,7 @@ jobs:
       name: Install dependencies
       run: |
         R -q -e 'if (!require("pak")) install.packages("pak")'
-        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = NA)'
+        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = TRUE)'
 
     -
       name: R-CMD-check
@@ -51,7 +51,7 @@ jobs:
       name: Install dependencies
       run: |
         R -q -e 'if (!require("pak")) install.packages("pak")'
-        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = NA)'
+        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = TRUE)'
 
     -
       name: R-CMD-check
@@ -76,7 +76,7 @@ jobs:
       name: Install dependencies
       run: |
         R -q -e 'if (!require("pak")) install.packages("pak")'
-        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = NA)'
+        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = TRUE)'
 
     -
       name: R-CMD-check
@@ -101,7 +101,7 @@ jobs:
       name: Install dependencies
       run: |
         R -q -e 'if (!require("pak")) install.packages("pak")'
-        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = NA)'
+        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = TRUE)'
 
     -
       name: R-CMD-check
@@ -126,7 +126,7 @@ jobs:
       name: Install dependencies
       run: |
         R -q -e 'if (!require("pak")) install.packages("pak")'
-        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = NA)'
+        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = TRUE)'
 
     -
       name: R-CMD-check
@@ -151,7 +151,7 @@ jobs:
       name: Install dependencies
       run: |
         R -q -e 'if (!require("pak")) install.packages("pak")'
-        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = NA)'
+        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = TRUE)'
 
     -
       name: R-CMD-check
@@ -176,7 +176,7 @@ jobs:
       name: Install dependencies
       run: |
         R -q -e 'if (!require("pak")) install.packages("pak")'
-        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = NA)'
+        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = TRUE)'
 
     -
       name: R-CMD-check
@@ -201,7 +201,7 @@ jobs:
       name: Install dependencies
       run: |
         R -q -e 'if (!require("pak")) install.packages("pak")'
-        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = NA)'
+        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = TRUE)'
 
     -
       name: R-CMD-check
@@ -226,7 +226,7 @@ jobs:
       name: Install dependencies
       run: |
         R -q -e 'if (!require("pak")) install.packages("pak")'
-        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = NA)'
+        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = TRUE)'
 
     -
       name: R-CMD-check
@@ -251,7 +251,7 @@ jobs:
       name: Install dependencies
       run: |
         R -q -e 'if (!require("pak")) install.packages("pak")'
-        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = NA)'
+        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = TRUE)'
 
     -
       name: R-CMD-check
@@ -276,7 +276,7 @@ jobs:
       name: Install dependencies
       run: |
         R -q -e 'if (!require("pak")) install.packages("pak")'
-        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = NA)'
+        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = TRUE)'
 
     -
       name: R-CMD-check
@@ -301,7 +301,7 @@ jobs:
       name: Install dependencies
       run: |
         R -q -e 'if (!require("pak")) install.packages("pak")'
-        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = NA)'
+        R -q -e 'pak::pkg_install(c("deps::.", "any::rcmdcheck"), dependencies = TRUE)'
 
     -
       name: R-CMD-check
