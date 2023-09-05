@@ -89,18 +89,221 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9">
-Generates Monte Carlo confidence intervals
-    for standardized regression coefficients (beta) and other effect sizes,
-    including multiple correlation, semipartial correlations,
-    improvement in R-squared, squared partial correlations,
-    and differences in standardized regression coefficients,
-    for models fitted by lm().
-    'betaMC' combines ideas from Monte Carlo confidence intervals for the indirect effect
-    (Pesigan and Cheung, 2023 &lt;<a href="https://doi.org/10.3758/s13428-023-02114-4" class="external-link">doi:10.3758/s13428-023-02114-4</a>&gt;)
-    and the sampling covariance matrix of regression coefficients
-    (Dudgeon, 2017 &lt;<a href="https://doi.org/10.1007/s11336-017-9563-z" class="external-link">doi:10.1007/s11336-017-9563-z</a>&gt;)
-    to generate confidence intervals effect sizes in regression.
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="betamc">betaMC<a class="anchor" aria-label="anchor" href="#betamc"></a>
+</h1></div>
+<p>Ivan Jacob Agaloos Pesigan 2023-09-05</p>
+<!-- README.md is generated from .setup/readme/README.Rmd. Please edit that file -->
+<!-- badges: start -->
+
+<div class="section level2">
+<h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
+</h2>
+<p>Generates Monte Carlo confidence intervals for standardized regression coefficients (beta) and other effect sizes, including multiple correlation, semipartial correlations, improvement in R-squared, squared partial correlations, and differences in standardized regression coefficients, for models fitted by <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code>. <code>betaMC</code> combines ideas from Monte Carlo confidence intervals for the indirect effect (Pesigan and Cheung, 2023: <a href="http://doi.org/10.3758/s13428-023-02114-4" class="external-link uri">http://doi.org/10.3758/s13428-023-02114-4</a>) and the sampling covariance matrix of regression coefficients (Dudgeon, 2017: <a href="http://doi.org/10.1007/s11336-017-9563-z" class="external-link uri">http://doi.org/10.1007/s11336-017-9563-z</a>) to generate confidence intervals effect sizes in regression.</p>
+</div>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the CRAN release of <code>betaMC</code> with:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"betaMC"</span><span class="op">)</span></span></code></pre></div>
+<p>You can install the development version of <code>betaMC</code> from <a href="https://github.com/jeksterslab/betaMC">GitHub</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"jeksterslab/betaMC"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
+<p>In this example, a multiple regression model is fitted using program quality ratings (<code>QUALITY</code>) as the regressand/outcome variable and number of published articles attributed to the program faculty members (<code>NARTIC</code>), percent of faculty members holding research grants (<code>PCTGRT</code>), and percentage of program graduates who received support (<code>PCTSUPP</code>) as regressor/predictor variables using a data set from 1982 ratings of 46 doctoral programs in psychology in the USA (National Research Council, 1982). Confidence intervals for the standardized regression coefficients are generated using the <code><a href="reference/BetaMC.html">BetaMC()</a></code> function from the <code>betaMC</code> package.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/betaMC">betaMC</a></span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">betaMC</span><span class="fu">::</span><span class="va"><a href="reference/nas1982.html">nas1982</a></span></span></code></pre></div>
+<div class="section level3">
+<h3 id="regression">Regression<a class="anchor" aria-label="anchor" href="#regression"></a>
+</h3>
+<p>Fit the regression model using the <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code> function.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="monte-carlo-sampling-distribution-of-parameters">Monte Carlo Sampling Distribution of Parameters<a class="anchor" aria-label="anchor" href="#monte-carlo-sampling-distribution-of-parameters"></a>
+</h3>
+<div class="section level4">
+<h4 id="normal-theory-approach">Normal-Theory Approach<a class="anchor" aria-label="anchor" href="#normal-theory-approach"></a>
+</h4>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mvn</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/MC.html">MC</a></span><span class="op">(</span><span class="va">object</span>, type <span class="op">=</span> <span class="st">"mvn"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="asymptotic-distribution-free-approach">Asymptotic distribution-free Approach<a class="anchor" aria-label="anchor" href="#asymptotic-distribution-free-approach"></a>
+</h4>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">adf</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/MC.html">MC</a></span><span class="op">(</span><span class="va">object</span>, type <span class="op">=</span> <span class="st">"adf"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="heteroskedasticity-consistent-approach-hc3">Heteroskedasticity Consistent Approach (HC3)<a class="anchor" aria-label="anchor" href="#heteroskedasticity-consistent-approach-hc3"></a>
+</h4>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">hc3</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/MC.html">MC</a></span><span class="op">(</span><span class="va">object</span>, type <span class="op">=</span> <span class="st">"hc3"</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="standardized-regression-slopes">Standardized Regression Slopes<a class="anchor" aria-label="anchor" href="#standardized-regression-slopes"></a>
+</h3>
+<div class="section level4">
+<h4 id="normal-theory-approach-1">Normal-Theory Approach<a class="anchor" aria-label="anchor" href="#normal-theory-approach-1"></a>
+</h4>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/BetaMC.html">BetaMC</a></span><span class="op">(</span><span class="va">mvn</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; BetaMC(object = mvn, alpha = 0.05)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Standardized regression slopes</span></span>
+<span><span class="co">#&gt; type = "mvn"</span></span>
+<span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
+<span><span class="co">#&gt; NARTIC  0.4951 0.0759 20000 0.3384 0.6351</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3915 0.0769 20000 0.2379 0.5381</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2632 0.0749 20000 0.1182 0.4087</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="asymptotic-distribution-free-approach-1">Asymptotic distribution-free Approach<a class="anchor" aria-label="anchor" href="#asymptotic-distribution-free-approach-1"></a>
+</h4>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/BetaMC.html">BetaMC</a></span><span class="op">(</span><span class="va">adf</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; BetaMC(object = adf, alpha = 0.05)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Standardized regression slopes</span></span>
+<span><span class="co">#&gt; type = "adf"</span></span>
+<span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
+<span><span class="co">#&gt; NARTIC  0.4951 0.0684 20000 0.3498 0.6174</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3915 0.0706 20000 0.2438 0.5201</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2632 0.0766 20000 0.1047 0.4069</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="heteroskedasticity-consistent-approach-hc3-1">Heteroskedasticity Consistent Approach (HC3)<a class="anchor" aria-label="anchor" href="#heteroskedasticity-consistent-approach-hc3-1"></a>
+</h4>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/BetaMC.html">BetaMC</a></span><span class="op">(</span><span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; BetaMC(object = hc3, alpha = 0.05)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Standardized regression slopes</span></span>
+<span><span class="co">#&gt; type = "hc3"</span></span>
+<span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
+<span><span class="co">#&gt; NARTIC  0.4951 0.0795 20000 0.3251 0.6362</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3915 0.0818 20000 0.2195 0.5413</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2632 0.0851 20000 0.0880 0.4242</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="other-effect-sizes">Other Effect Sizes<a class="anchor" aria-label="anchor" href="#other-effect-sizes"></a>
+</h3>
+<p>The <code>betaMC</code> package also has functions to generate Monte Carlo confidence intervals for other effect sizes such as <code><a href="reference/RSqMC.html">RSqMC()</a></code> for multiple correlation coefficients (R-squared and adjusted R-squared), <code><a href="reference/DeltaRSqMC.html">DeltaRSqMC()</a></code> for improvement in R-squared, <code><a href="reference/SCorMC.html">SCorMC()</a></code> for semipartial correlation coefficients, <code><a href="reference/PCorMC.html">PCorMC()</a></code> for squared partial correlation coefficients, and <code><a href="reference/DiffBetaMC.html">DiffBetaMC()</a></code> for differences of standardized regression coefficients.</p>
+<div class="section level4">
+<h4 id="multiple-correlation-coefficients-r-squared-and-adjusted-r-squared">Multiple Correlation Coefficients (R-squared and adjusted R-squared)<a class="anchor" aria-label="anchor" href="#multiple-correlation-coefficients-r-squared-and-adjusted-r-squared"></a>
+</h4>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/RSqMC.html">RSqMC</a></span><span class="op">(</span><span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; RSqMC(object = hc3, alpha = 0.05)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; R-squared and adjusted R-squared</span></span>
+<span><span class="co">#&gt; type = "hc3"</span></span>
+<span><span class="co">#&gt;        est     se     R   2.5%  97.5%</span></span>
+<span><span class="co">#&gt; rsq 0.8045 0.0622 20000 0.6433 0.8879</span></span>
+<span><span class="co">#&gt; adj 0.7906 0.0667 20000 0.6178 0.8799</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="improvement-in-r-squared">Improvement in R-squared<a class="anchor" aria-label="anchor" href="#improvement-in-r-squared"></a>
+</h4>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/DeltaRSqMC.html">DeltaRSqMC</a></span><span class="op">(</span><span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; DeltaRSqMC(object = hc3, alpha = 0.05)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Improvement in R-squared</span></span>
+<span><span class="co">#&gt; type = "hc3"</span></span>
+<span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
+<span><span class="co">#&gt; NARTIC  0.1859 0.0690 20000 0.0514 0.3216</span></span>
+<span><span class="co">#&gt; PCTGRT  0.1177 0.0545 20000 0.0265 0.2360</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.0569 0.0374 20000 0.0060 0.1493</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="semipartial-correlation-coefficients">Semipartial Correlation Coefficients<a class="anchor" aria-label="anchor" href="#semipartial-correlation-coefficients"></a>
+</h4>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/SCorMC.html">SCorMC</a></span><span class="op">(</span><span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; SCorMC(object = hc3, alpha = 0.05)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Semipartial correlations</span></span>
+<span><span class="co">#&gt; type = "hc3"</span></span>
+<span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
+<span><span class="co">#&gt; NARTIC  0.4312 0.0863 20000 0.2267 0.5671</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3430 0.0826 20000 0.1627 0.4858</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2385 0.0780 20000 0.0776 0.3864</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="squared-partial-correlation-coefficients">Squared Partial Correlation Coefficients<a class="anchor" aria-label="anchor" href="#squared-partial-correlation-coefficients"></a>
+</h4>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/PCorMC.html">PCorMC</a></span><span class="op">(</span><span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; PCorMC(object = hc3, alpha = 0.05)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Squared partial correlations</span></span>
+<span><span class="co">#&gt; type = "hc3"</span></span>
+<span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
+<span><span class="co">#&gt; NARTIC  0.4874 0.1186 20000 0.1804 0.6503</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3757 0.1148 20000 0.1095 0.5537</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2254 0.1125 20000 0.0246 0.4551</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="differences-of-standardized-regression-coefficients">Differences of Standardized Regression Coefficients<a class="anchor" aria-label="anchor" href="#differences-of-standardized-regression-coefficients"></a>
+</h4>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/DiffBetaMC.html">DiffBetaMC</a></span><span class="op">(</span><span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; DiffBetaMC(object = hc3, alpha = 0.05)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Differences of standardized regression slopes</span></span>
+<span><span class="co">#&gt; type = "hc3"</span></span>
+<span><span class="co">#&gt;                   est     se     R    2.5%  97.5%</span></span>
+<span><span class="co">#&gt; NARTIC-PCTGRT  0.1037 0.1422 20000 -0.1754 0.3785</span></span>
+<span><span class="co">#&gt; NARTIC-PCTSUPP 0.2319 0.1319 20000 -0.0331 0.4789</span></span>
+<span><span class="co">#&gt; PCTGRT-PCTSUPP 0.1282 0.1361 20000 -0.1431 0.3883</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
+</h2>
+<p>See <a href="https://jeksterslab.github.io/betaMC/index.html" class="external-link">GitHub Pages</a> for package documentation.</p>
+</div>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
+<p>To cite <code>betaMC</code> in publications, please cite Pesigan &amp; Cheung (2023).</p>
+</div>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-Dudgeon-2017" class="csl-entry">
+Dudgeon, P. (2017). Some improvements in confidence intervals for standardized regression coefficients. <em>Psychometrika</em>, <em>82</em>(4), 928–951. <a href="https://doi.org/10.1007/s11336-017-9563-z" class="external-link uri">https://doi.org/10.1007/s11336-017-9563-z</a>
+</div>
+<div id="ref-NationalResearchCouncil-1982" class="csl-entry">
+National Research Council. (1982). <em>An assessment of research-doctorate programs in the United States: Social and behavioral sciences</em>. National Academies Press. <a href="https://doi.org/10.17226/9781" class="external-link uri">https://doi.org/10.17226/9781</a>
+</div>
+<div id="ref-Pesigan-Cheung-2023" class="csl-entry">
+Pesigan, I. J. A., &amp; Cheung, S. F. (2023). Monte Carlo confidence intervals for the indirect effect with missing data. <em>Behavior Research Methods</em>. <a href="https://doi.org/10.3758/s13428-023-02114-4" class="external-link uri">https://doi.org/10.3758/s13428-023-02114-4</a>
+</div>
+</div>
+</div>
+</div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
@@ -133,7 +336,23 @@ Generates Monte Carlo confidence intervals
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://cran.r-project.org/package=betaMC" class="external-link"><img src="https://www.r-pkg.org/badges/version/betaMC" alt="CRAN Status"></a></li>
+<li><a href="https://jeksterslab.r-universe.dev" class="external-link"><img src="https://jeksterslab.r-universe.dev/badges/betaMC" alt="R-Universe Status"></a></li>
+<li><a href="https://doi.org/10.3758/s13428-023-02114-4" class="external-link"><img src="https://zenodo.org/badge/DOI/10.3758/s13428-023-02114-4.svg" alt="DOI"></a></li>
+<li><a href="https://github.com/jeksterslab/betaMC/actions/workflows/make.yml"><img src="https://github.com/jeksterslab/betaMC/actions/workflows/make.yml/badge.svg" alt="Make Project"></a></li>
+<li><a href="https://github.com/jeksterslab/betaMC/actions/workflows/check-full.yml"><img src="https://github.com/jeksterslab/betaMC/actions/workflows/check-full.yml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/jeksterslab/betaMC/actions/workflows/test-coverage.yml"><img src="https://github.com/jeksterslab/betaMC/actions/workflows/test-coverage.yml/badge.svg" alt="R Package Test Coverage"></a></li>
+<li><a href="https://github.com/jeksterslab/betaMC/actions/workflows/lint.yml"><img src="https://github.com/jeksterslab/betaMC/actions/workflows/lint.yml/badge.svg" alt="Lint R Package"></a></li>
+<li><a href="https://github.com/jeksterslab/betaMC/actions/workflows/pkgdown-gh-pages.yml"><img src="https://github.com/jeksterslab/betaMC/actions/workflows/pkgdown-gh-pages.yml/badge.svg" alt="Package Website (GitHub Pages)"></a></li>
+<li><a href="https://github.com/jeksterslab/betaMC/actions/workflows/latex.yml"><img src="https://github.com/jeksterslab/betaMC/actions/workflows/latex.yml/badge.svg" alt="Compile LaTeX"></a></li>
+<li><a href="https://github.com/jeksterslab/betaMC/actions/workflows/shellcheck.yml"><img src="https://github.com/jeksterslab/betaMC/actions/workflows/shellcheck.yml/badge.svg" alt="Shell Check"></a></li>
+<li><a href="https://github.com/jeksterslab/betaMC/actions/workflows/pages/pages-build-deployment"><img src="https://github.com/jeksterslab/betaMC/actions/workflows/pages/pages-build-deployment/badge.svg" alt="pages-build-deployment"></a></li>
+<li><a href="https://codecov.io/gh/jeksterslab/betaMC" class="external-link"><img src="https://codecov.io/gh/jeksterslab/betaMC/branch/main/graph/badge.svg?token=KVLUET3DJ6" alt="codecov"></a></li>
+</ul>
+</div>
 
   </aside>
 </div>
