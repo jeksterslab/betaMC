@@ -38,7 +38,9 @@
                 pd = TRUE,
                 tol = 1e-06,
                 seed = NULL) {
-  set.seed(seed)
+  if (!is.null(seed)) {
+    set.seed(seed)
+  }
   thetahatstar <- .ThetaHatStar(
     R = R,
     scale = scale,
