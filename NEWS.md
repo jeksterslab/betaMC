@@ -1,6 +1,6 @@
 # betaMC 1.3.0.9000
 
-Latest development version.
+* Minor edits to setting seed.
 
 # betaMC 1.3.0
 
