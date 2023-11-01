@@ -1,5 +1,5 @@
 ---
-title: "betaMC: Example Using the PCorMC Function"
+title: "betaMC: Example Using the RSqMC Function"
 author: "Ivan Jacob Agaloos Pesigan"
 output: rmarkdown::html_vignette
 bibliography: "vignettes.bib"
@@ -8,7 +8,7 @@ nocite: |
   @Pesigan-Cheung-2023
   @Dudgeon-2017
 vignette: >
-  %\VignetteIndexEntry{betaMC: Example Using the PCorMC Function}
+  %\VignetteIndexEntry{betaMC: Example Using the RSqMC Function}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -21,12 +21,13 @@ knitr::opts_chunk$set(
 ```
 
 Confidence intervals for
-squared partial correlation coefficients
+multiple correlation coefficients
+(R-squared and adjusted R-squared)
 are generated using
-the `PCorMC()` function from the `betaMC` package.
+the `RSqMC()` function from the `betaMC` package.
 In this example,
 we use the data set and the model used in
-[betaMC: Example Using the BetaMC Function](example_beta_mc.html).
+[betaMC: Example Using the BetaMC Function](example-beta-mc.html).
 
 ```{r}
 #| message = FALSE
@@ -80,31 +81,31 @@ adf <- MC(object, type = "adf")
 hc3 <- MC(object, type = "hc3")
 ```
 
-### Squared Partial Correlation Coefficients
+### Multiple Correlation Coefficients
 
 #### Normal-Theory Approach
 
 ```{r}
-mvn <- PCorMC(mvn)
+mvn <- RSqMC(mvn)
 ```
 
 #### Asymptotic distribution-free Approach
 
 ```{r}
-adf <- PCorMC(adf)
+adf <- RSqMC(adf)
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 ```{r}
-hc3 <- PCorMC(hc3)
+hc3 <- RSqMC(hc3)
 ```
 
 ## Methods
 
 ### summary
 
-Summary of the results of `PCorMC()`.
+Summary of the results of `RSqMC()`.
 
 ```{r}
 summary(mvn)

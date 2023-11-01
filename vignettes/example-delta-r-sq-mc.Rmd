@@ -1,5 +1,5 @@
 ---
-title: "betaMC: Example Using the RSqMC Function"
+title: "betaMC: Example Using the DeltaRSqMC Function"
 author: "Ivan Jacob Agaloos Pesigan"
 output: rmarkdown::html_vignette
 bibliography: "vignettes.bib"
@@ -8,7 +8,7 @@ nocite: |
   @Pesigan-Cheung-2023
   @Dudgeon-2017
 vignette: >
-  %\VignetteIndexEntry{betaMC: Example Using the RSqMC Function}
+  %\VignetteIndexEntry{betaMC: Example Using the DeltaRSqMC Function}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -21,13 +21,12 @@ knitr::opts_chunk$set(
 ```
 
 Confidence intervals for
-multiple correlation coefficients
-(R-squared and adjusted R-squared)
+improvement in R-squared
 are generated using
-the `RSqMC()` function from the `betaMC` package.
+the `DeltaRSqMC()` function from the `betaMC` package.
 In this example,
 we use the data set and the model used in
-[betaMC: Example Using the BetaMC Function](example_beta_mc.html).
+[betaMC: Example Using the BetaMC Function](example-beta-mc.html).
 
 ```{r}
 #| message = FALSE
@@ -81,31 +80,31 @@ adf <- MC(object, type = "adf")
 hc3 <- MC(object, type = "hc3")
 ```
 
-### Multiple Correlation Coefficients
+### Improvement in R-squared
 
 #### Normal-Theory Approach
 
 ```{r}
-mvn <- RSqMC(mvn)
+mvn <- DeltaRSqMC(mvn)
 ```
 
 #### Asymptotic distribution-free Approach
 
 ```{r}
-adf <- RSqMC(adf)
+adf <- DeltaRSqMC(adf)
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 ```{r}
-hc3 <- RSqMC(hc3)
+hc3 <- DeltaRSqMC(hc3)
 ```
 
 ## Methods
 
 ### summary
 
-Summary of the results of `RSqMC()`.
+Summary of the results of `DeltaRSqMC()`.
 
 ```{r}
 summary(mvn)

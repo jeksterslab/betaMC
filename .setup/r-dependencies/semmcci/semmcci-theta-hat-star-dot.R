@@ -60,9 +60,7 @@
   if (decomposition == "chol") {
     dist <- .RandomGaussianChol(
       Z = z,
-      chol = chol(
-        x = scale
-      )
+      chol = chol(x = scale)
     )
   }
   if (decomposition == "eigen") {

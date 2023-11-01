@@ -46,7 +46,7 @@ regression effect sizes.
 
 In this example,
 we use the data set and the model used in
-[betaMC: Example Using the BetaMC Function](example_beta_mc.html).
+[betaMC: Example Using the BetaMC Function](example-beta-mc.html).
 We use the `mice::ampute()` function to generate a data set with missing values.
 
 ```{r}

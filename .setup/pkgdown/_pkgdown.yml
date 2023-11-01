@@ -40,13 +40,13 @@ reference:
 articles:
 - title: Examples
   contents:
-  - example_beta_mc
-  - example_r_sq_mc
-  - example_s_cor_mc
-  - example_delta_r_sq_mc
-  - example_p_cor_mc
-  - example_diff_beta_mc
-  - example_mc_mi
+  - example-beta-mc
+  - example-r-sq-mc
+  - example-s-cor-mc
+  - example-delta-r-sq-mc
+  - example-p-cor-mc
+  - example-diff-beta-mc
+  - example-mc-mi
 - title: Benchmark
   contents:
   - benchmark

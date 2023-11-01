@@ -26,7 +26,7 @@ are generated using
 the `DiffBetaMC()` function from the `betaMC` package.
 In this example,
 we use the data set and the model used in
-[betaMC: Example Using the BetaMC Function](example_beta_mc.html).
+[betaMC: Example Using the BetaMC Function](example-beta-mc.html).
 
 ```{r}
 #| message = FALSE

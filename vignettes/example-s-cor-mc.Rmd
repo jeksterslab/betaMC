@@ -1,5 +1,5 @@
 ---
-title: "betaMC: Example Using the DeltaRSqMC Function"
+title: "betaMC: Example Using the SCorMC Function"
 author: "Ivan Jacob Agaloos Pesigan"
 output: rmarkdown::html_vignette
 bibliography: "vignettes.bib"
@@ -8,7 +8,7 @@ nocite: |
   @Pesigan-Cheung-2023
   @Dudgeon-2017
 vignette: >
-  %\VignetteIndexEntry{betaMC: Example Using the DeltaRSqMC Function}
+  %\VignetteIndexEntry{betaMC: Example Using the SCorMC Function}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -21,12 +21,12 @@ knitr::opts_chunk$set(
 ```
 
 Confidence intervals for
-improvement in R-squared
+semipartial correlation coefficients
 are generated using
-the `DeltaRSqMC()` function from the `betaMC` package.
+the `SCorMC()` function from the `betaMC` package.
 In this example,
 we use the data set and the model used in
-[betaMC: Example Using the BetaMC Function](example_beta_mc.html).
+[betaMC: Example Using the BetaMC Function](example-beta-mc.html).
 
 ```{r}
 #| message = FALSE
@@ -80,31 +80,31 @@ adf <- MC(object, type = "adf")
 hc3 <- MC(object, type = "hc3")
 ```
 
-### Improvement in R-squared
+### Semipartial Correlation Coefficients
 
 #### Normal-Theory Approach
 
 ```{r}
-mvn <- DeltaRSqMC(mvn)
+mvn <- SCorMC(mvn)
 ```
 
 #### Asymptotic distribution-free Approach
 
 ```{r}
-adf <- DeltaRSqMC(adf)
+adf <- SCorMC(adf)
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 ```{r}
-hc3 <- DeltaRSqMC(hc3)
+hc3 <- SCorMC(hc3)
 ```
 
 ## Methods
 
 ### summary
 
-Summary of the results of `DeltaRSqMC()`.
+Summary of the results of `SCorMC()`.
 
 ```{r}
 summary(mvn)

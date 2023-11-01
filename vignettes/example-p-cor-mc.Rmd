@@ -1,5 +1,5 @@
 ---
-title: "betaMC: Example Using the SCorMC Function"
+title: "betaMC: Example Using the PCorMC Function"
 author: "Ivan Jacob Agaloos Pesigan"
 output: rmarkdown::html_vignette
 bibliography: "vignettes.bib"
@@ -8,7 +8,7 @@ nocite: |
   @Pesigan-Cheung-2023
   @Dudgeon-2017
 vignette: >
-  %\VignetteIndexEntry{betaMC: Example Using the SCorMC Function}
+  %\VignetteIndexEntry{betaMC: Example Using the PCorMC Function}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -21,12 +21,12 @@ knitr::opts_chunk$set(
 ```
 
 Confidence intervals for
-semipartial correlation coefficients
+squared partial correlation coefficients
 are generated using
-the `SCorMC()` function from the `betaMC` package.
+the `PCorMC()` function from the `betaMC` package.
 In this example,
 we use the data set and the model used in
-[betaMC: Example Using the BetaMC Function](example_beta_mc.html).
+[betaMC: Example Using the BetaMC Function](example-beta-mc.html).
 
 ```{r}
 #| message = FALSE
@@ -80,31 +80,31 @@ adf <- MC(object, type = "adf")
 hc3 <- MC(object, type = "hc3")
 ```
 
-### Semipartial Correlation Coefficients
+### Squared Partial Correlation Coefficients
 
 #### Normal-Theory Approach
 
 ```{r}
-mvn <- SCorMC(mvn)
+mvn <- PCorMC(mvn)
 ```
 
 #### Asymptotic distribution-free Approach
 
 ```{r}
-adf <- SCorMC(adf)
+adf <- PCorMC(adf)
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 ```{r}
-hc3 <- SCorMC(hc3)
+hc3 <- PCorMC(hc3)
 ```
 
 ## Methods
 
 ### summary
 
-Summary of the results of `SCorMC()`.
+Summary of the results of `PCorMC()`.
 
 ```{r}
 summary(mvn)
