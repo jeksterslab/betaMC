@@ -4,15 +4,15 @@ pkgdown_sha: ~
 articles:
   benchmark: benchmark.html
   betaMC: betaMC.html
-  example_beta_mc: example_beta_mc.html
-  example_delta_r_sq_mc: example_delta_r_sq_mc.html
-  example_diff_beta_mc: example_diff_beta_mc.html
-  example_mc_mi: example_mc_mi.html
-  example_p_cor_mc: example_p_cor_mc.html
-  example_r_sq_mc: example_r_sq_mc.html
-  example_s_cor_mc: example_s_cor_mc.html
+  example-beta-mc: example-beta-mc.html
+  example-delta-r-sq-mc: example-delta-r-sq-mc.html
+  example-diff-beta-mc: example-diff-beta-mc.html
+  example-mc-mi: example-mc-mi.html
+  example-p-cor-mc: example-p-cor-mc.html
+  example-r-sq-mc: example-r-sq-mc.html
+  example-s-cor-mc: example-s-cor-mc.html
   session: session/session.html
-last_built: 2023-10-16T23:35Z
+last_built: 2023-11-01T23:46Z
 urls:
   reference: https://github.com/jeksterslab/betaMC/reference
   article: https://github.com/jeksterslab/betaMC/articles
