@@ -2,8 +2,8 @@
 % Please edit documentation in R/betaMC-package.R
 \docType{package}
 \name{betaMC-package}
+\alias{betaMC}
 \alias{betaMC-package}
-\alias{_PACKAGE}
 \title{betaMC: Monte Carlo for Regression Effect Sizes}
 \description{
 Generates Monte Carlo confidence intervals for standardized regression coefficients (beta) and other effect sizes, including multiple correlation, semipartial correlations, improvement in R-squared, squared partial correlations, and differences in standardized regression coefficients, for models fitted by lm(). 'betaMC' combines ideas from Monte Carlo confidence intervals for the indirect effect (Pesigan and Cheung, 2023 \doi{10.3758/s13428-023-02114-4}) and the sampling covariance matrix of regression coefficients (Dudgeon, 2017 \doi{10.1007/s11336-017-9563-z}) to generate confidence intervals effect sizes in regression.
