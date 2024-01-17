@@ -160,9 +160,9 @@ the BetaMC Function</a>.</p>
 <span><span class="co">#&gt; Squared partial correlations</span></span>
 <span><span class="co">#&gt; type = "mvn"</span></span>
 <span><span class="co">#&gt;            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4874 0.1045 20000 0.1392 0.1893 0.2452 0.6534 0.7084 0.7623</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3757 0.1076 20000 0.0544 0.0970 0.1478 0.5624 0.6290 0.7144</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2254 0.0992 20000 0.0040 0.0202 0.0475 0.4279 0.5062 0.5831</span></span>
+<span><span class="co">#&gt; NARTIC  0.4874 0.1039 20000 0.1139 0.1838 0.2440 0.6514 0.7111 0.7579</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3757 0.1078 20000 0.0606 0.0992 0.1485 0.5649 0.6297 0.7202</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2254 0.0996 20000 0.0035 0.0213 0.0466 0.4282 0.5003 0.5872</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; PCorMC(object = adf)</span></span>
@@ -170,9 +170,9 @@ the BetaMC Function</a>.</p>
 <span><span class="co">#&gt; Squared partial correlations</span></span>
 <span><span class="co">#&gt; type = "adf"</span></span>
 <span><span class="co">#&gt;            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4874 0.0984 20000 0.0623 0.1628 0.2494 0.6315 0.6851 0.7415</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3757 0.1004 20000 0.0244 0.0974 0.1470 0.5378 0.5967 0.6549</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2254 0.1043 20000 0.0001 0.0086 0.0356 0.4362 0.5137 0.6178</span></span>
+<span><span class="co">#&gt; NARTIC  0.4874 0.0987 20000 0.0654 0.1618 0.2439 0.6320 0.6855 0.7394</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3757 0.0995 20000 0.0465 0.0943 0.1500 0.5365 0.5958 0.6608</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2254 0.1038 20000 0.0008 0.0096 0.0357 0.4367 0.5176 0.5995</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; PCorMC(object = hc3)</span></span>
@@ -180,9 +180,9 @@ the BetaMC Function</a>.</p>
 <span><span class="co">#&gt; Squared partial correlations</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4874 0.1194 20000 0.0051 0.0729 0.1784 0.6495 0.7110 0.7723</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3757 0.1154 20000 0.0048 0.0461 0.1050 0.5511 0.6197 0.6905</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2254 0.1130 20000 0.0000 0.0045 0.0240 0.4563 0.5350 0.6087</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.4874 0.1197 20000 0.0083 0.0714 0.1745 0.6479 0.7125 0.7903</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3757 0.1153 20000 0.0047 0.0446 0.1067 0.5517 0.6209 0.6942</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2254 0.1124 20000 0.0001 0.0044 0.0260 0.4506 0.5336 0.6381</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="coef">coef<a class="anchor" aria-label="anchor" href="#coef"></a>
@@ -206,19 +206,19 @@ the BetaMC Function</a>.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">mvn</span><span class="op">)</span></span>
 <span><span class="co">#&gt;               NARTIC       PCTGRT      PCTSUPP</span></span>
-<span><span class="co">#&gt; NARTIC  0.0109188220 0.0007116690 0.0005073313</span></span>
-<span><span class="co">#&gt; PCTGRT  0.0007116690 0.0115755794 0.0000650818</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.0005073313 0.0000650818 0.0098332168</span></span>
+<span><span class="co">#&gt; NARTIC  0.0108007056 0.0006503838 0.0001778778</span></span>
+<span><span class="co">#&gt; PCTGRT  0.0006503838 0.0116187010 0.0001518146</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.0001778778 0.0001518146 0.0099290188</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
 <span><span class="co">#&gt;              NARTIC       PCTGRT      PCTSUPP</span></span>
-<span><span class="co">#&gt; NARTIC  0.009681386 0.0024104934 0.0019548916</span></span>
-<span><span class="co">#&gt; PCTGRT  0.002410493 0.0100709669 0.0009120899</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.001954892 0.0009120899 0.0108704741</span></span>
+<span><span class="co">#&gt; NARTIC  0.009731850 0.0024883124 0.0019814882</span></span>
+<span><span class="co">#&gt; PCTGRT  0.002488312 0.0099071459 0.0009713398</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.001981488 0.0009713398 0.0107792395</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;              NARTIC      PCTGRT     PCTSUPP</span></span>
-<span><span class="co">#&gt; NARTIC  0.014246144 0.003935761 0.003020309</span></span>
-<span><span class="co">#&gt; PCTGRT  0.003935761 0.013313637 0.001185353</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.003020309 0.001185353 0.012775044</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.014327377 0.003831894 0.002948494</span></span>
+<span><span class="co">#&gt; PCTGRT  0.003831894 0.013286627 0.001166355</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.002948494 0.001166355 0.012639192</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="confint">confint<a class="anchor" aria-label="anchor" href="#confint"></a>
@@ -227,19 +227,19 @@ the BetaMC Function</a>.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">mvn</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;              2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; NARTIC  0.24521662 0.6533705</span></span>
-<span><span class="co">#&gt; PCTGRT  0.14778136 0.5624231</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.04751715 0.4279288</span></span>
+<span><span class="co">#&gt; NARTIC  0.24397776 0.6513741</span></span>
+<span><span class="co">#&gt; PCTGRT  0.14845908 0.5648580</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.04659834 0.4281647</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">adf</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;              2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; NARTIC  0.24938481 0.6315089</span></span>
-<span><span class="co">#&gt; PCTGRT  0.14695393 0.5377532</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.03556239 0.4361947</span></span>
+<span><span class="co">#&gt; NARTIC  0.24391492 0.6320019</span></span>
+<span><span class="co">#&gt; PCTGRT  0.14995267 0.5364528</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.03566665 0.4366928</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">hc3</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;              2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; NARTIC  0.17841942 0.6495289</span></span>
-<span><span class="co">#&gt; PCTGRT  0.10503651 0.5511301</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.02396653 0.4563301</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.17452803 0.6478737</span></span>
+<span><span class="co">#&gt; PCTGRT  0.10672143 0.5517324</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.02600801 0.4506113</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2 unnumbered">
