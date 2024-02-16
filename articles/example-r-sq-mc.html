@@ -159,9 +159,9 @@ Function</a>.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; R-squared and adjusted R-squared</span></span>
 <span><span class="co">#&gt; type = "mvn"</span></span>
-<span><span class="co">#&gt;        est     se     R  0.05%   0.5%  2.5%  97.5%  99.5% 99.95%</span></span>
-<span><span class="co">#&gt; rsq 0.8045 0.0551 20000 0.5253 0.6016 0.664 0.8796 0.9022 0.9253</span></span>
-<span><span class="co">#&gt; adj 0.7906 0.0591 20000 0.4914 0.5731 0.640 0.8710 0.8953 0.9199</span></span>
+<span><span class="co">#&gt;        est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
+<span><span class="co">#&gt; rsq 0.8045 0.0567 20000 0.4767 0.5979 0.6629 0.8814 0.9034 0.9253</span></span>
+<span><span class="co">#&gt; adj 0.7906 0.0607 20000 0.4393 0.5691 0.6388 0.8729 0.8965 0.9200</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; RSqMC(object = adf)</span></span>
@@ -169,8 +169,8 @@ Function</a>.</p>
 <span><span class="co">#&gt; R-squared and adjusted R-squared</span></span>
 <span><span class="co">#&gt; type = "adf"</span></span>
 <span><span class="co">#&gt;        est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
-<span><span class="co">#&gt; rsq 0.8045 0.0547 20000 0.5444 0.6168 0.6687 0.8815 0.9011 0.9229</span></span>
-<span><span class="co">#&gt; adj 0.7906 0.0586 20000 0.5118 0.5894 0.6450 0.8730 0.8941 0.9173</span></span>
+<span><span class="co">#&gt; rsq 0.8045 0.0551 20000 0.5346 0.6138 0.6652 0.8805 0.9016 0.9255</span></span>
+<span><span class="co">#&gt; adj 0.7906 0.0590 20000 0.5014 0.5862 0.6413 0.8720 0.8945 0.9202</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; RSqMC(object = hc3)</span></span>
@@ -178,8 +178,8 @@ Function</a>.</p>
 <span><span class="co">#&gt; R-squared and adjusted R-squared</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;        est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
-<span><span class="co">#&gt; rsq 0.8045 0.0620 20000 0.5189 0.5891 0.6442 0.8877 0.9086 0.9314</span></span>
-<span><span class="co">#&gt; adj 0.7906 0.0664 20000 0.4845 0.5597 0.6188 0.8797 0.9021 0.9265</span></span></code></pre></div>
+<span><span class="co">#&gt; rsq 0.8045 0.0620 20000 0.4629 0.5814 0.6477 0.8889 0.9125 0.9301</span></span>
+<span><span class="co">#&gt; adj 0.7906 0.0664 20000 0.4245 0.5515 0.6226 0.8809 0.9063 0.9251</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="coef">coef<a class="anchor" aria-label="anchor" href="#coef"></a>
@@ -203,16 +203,16 @@ Function</a>.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">mvn</span><span class="op">)</span></span>
 <span><span class="co">#&gt;             rsq         adj</span></span>
-<span><span class="co">#&gt; rsq 0.003039191 0.003256276</span></span>
-<span><span class="co">#&gt; adj 0.003256276 0.003488867</span></span>
+<span><span class="co">#&gt; rsq 0.003213388 0.003442915</span></span>
+<span><span class="co">#&gt; adj 0.003442915 0.003688838</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
 <span><span class="co">#&gt;             rsq         adj</span></span>
-<span><span class="co">#&gt; rsq 0.002987878 0.003201298</span></span>
-<span><span class="co">#&gt; adj 0.003201298 0.003429962</span></span>
+<span><span class="co">#&gt; rsq 0.003031009 0.003247509</span></span>
+<span><span class="co">#&gt; adj 0.003247509 0.003479474</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;             rsq         adj</span></span>
-<span><span class="co">#&gt; rsq 0.003846182 0.004120909</span></span>
-<span><span class="co">#&gt; adj 0.004120909 0.004415260</span></span></code></pre></div>
+<span><span class="co">#&gt; rsq 0.003839049 0.004113266</span></span>
+<span><span class="co">#&gt; adj 0.004113266 0.004407071</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="confint">confint<a class="anchor" aria-label="anchor" href="#confint"></a>
@@ -221,16 +221,16 @@ Function</a>.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">mvn</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; rsq 0.6640281 0.8795842</span></span>
-<span><span class="co">#&gt; adj 0.6400301 0.8709831</span></span>
+<span><span class="co">#&gt; rsq 0.6629064 0.8813622</span></span>
+<span><span class="co">#&gt; adj 0.6388283 0.8728881</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">adf</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; rsq 0.6686774 0.8814616</span></span>
-<span><span class="co">#&gt; adj 0.6450115 0.8729946</span></span>
+<span><span class="co">#&gt; rsq 0.6652143 0.8805458</span></span>
+<span><span class="co">#&gt; adj 0.6413010 0.8720133</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">hc3</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; rsq 0.6441746 0.8877201</span></span>
-<span><span class="co">#&gt; adj 0.6187585 0.8797001</span></span></code></pre></div>
+<span><span class="co">#&gt; rsq 0.6477298 0.8888590</span></span>
+<span><span class="co">#&gt; adj 0.6225677 0.8809204</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2 unnumbered">
