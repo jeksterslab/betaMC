@@ -29,7 +29,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">betaMC</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.2.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -158,18 +158,18 @@ confidence intervals.</p>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">benchmark</span>, unit <span class="op">=</span> <span class="st">"ms"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   expr      min        lq      mean    median        uq       max neval</span></span>
-<span><span class="co">#&gt; 1   MC  319.553  329.3138  357.4901  347.5836  362.4488  431.5062    10</span></span>
-<span><span class="co">#&gt; 2   NB 5129.417 5207.3428 5340.1680 5320.6024 5457.0135 5649.9100    10</span></span></code></pre></div>
+<span><span class="co">#&gt;   expr       min        lq      mean    median        uq       max neval</span></span>
+<span><span class="co">#&gt; 1   MC  262.4154  328.6991  335.3215  343.1367  356.0945  369.8192    10</span></span>
+<span><span class="co">#&gt; 2   NB 3915.8488 4155.9073 4557.1998 4598.3571 4873.7456 5454.9808    10</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="summary-of-benchmark-results-relative-to-the-faster-method">Summary of Benchmark Results Relative to the Faster Method<a class="anchor" aria-label="anchor" href="#summary-of-benchmark-results-relative-to-the-faster-method"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">benchmark</span>, unit <span class="op">=</span> <span class="st">"relative"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   expr      min       lq     mean  median       uq      max neval</span></span>
-<span><span class="co">#&gt; 1   MC  1.00000  1.00000  1.00000  1.0000  1.00000  1.00000    10</span></span>
-<span><span class="co">#&gt; 2   NB 16.05185 15.81271 14.93795 15.3074 15.05596 13.09346    10</span></span></code></pre></div>
+<span><span class="co">#&gt;   expr      min      lq     mean   median       uq     max neval</span></span>
+<span><span class="co">#&gt; 1   MC  1.00000  1.0000  1.00000  1.00000  1.00000  1.0000    10</span></span>
+<span><span class="co">#&gt; 2   NB 14.92233 12.6435 13.59054 13.40095 13.68666 14.7504    10</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
