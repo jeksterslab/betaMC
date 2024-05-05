@@ -144,7 +144,7 @@ mc
 Dudgeon, P. (2017).
 Some improvements in confidence intervals
 for standardized regression coefficients.
-\emph{Psychometrika}, \emph{82}(4), 928–951.
+\emph{Psychometrika}, \emph{82}(4), 928<U+2013>951.
 \doi{10.1007/s11336-017-9563-z}
 
 MacKinnon, D. P., Lockwood, C. M., & Williams, J. (2004).
@@ -160,7 +160,7 @@ Monte Carlo confidence intervals for the indirect effect with missing data.
 
 Preacher, K. J., & Selig, J. P. (2012).
 Advantages of Monte Carlo confidence intervals for indirect effects.
-\emph{Communication Methods and Measures}, \emph{6}(2), 77–98.
+\emph{Communication Methods and Measures}, \emph{6}(2), 77<U+2013>98.
 \doi{10.1080/19312458.2012.679848}
 }
 \seealso{
