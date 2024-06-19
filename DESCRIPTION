@@ -30,7 +30,7 @@ Imports: stats
 Suggests: knitr, rmarkdown, testthat, MASS, mice, Amelia
 RoxygenNote: 7.3.1
 NeedsCompilation: no
-Packaged: 2024-06-13 18:46:15 UTC; root
+Packaged: 2024-06-19 01:33:51 UTC; root
 Author: Ivan Jacob Agaloos Pesigan [aut, cre, cph]
     (<https://orcid.org/0000-0003-4818-8420>)
 Maintainer: Ivan Jacob Agaloos Pesigan <r.jeksterslab@gmail.com>
