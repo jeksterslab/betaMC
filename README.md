@@ -1,7 +1,7 @@
 betaMC
 ================
 Ivan Jacob Agaloos Pesigan
-2024-06-19
+2024-06-21
 
 <!-- README.md is generated from .setup/readme/README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -118,9 +118,9 @@ BetaMC(mvn, alpha = 0.05)
 #> Standardized regression slopes
 #> type = "mvn"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0759 20000 0.3387 0.6346
-#> PCTGRT  0.3915 0.0767 20000 0.2377 0.5381
-#> PCTSUPP 0.2632 0.0746 20000 0.1146 0.4082
+#> NARTIC  0.4951 0.0754 20000 0.3404 0.6335
+#> PCTGRT  0.3915 0.0763 20000 0.2380 0.5357
+#> PCTSUPP 0.2632 0.0749 20000 0.1175 0.4100
 ```
 
 #### Asymptotic distribution-free Approach
@@ -133,9 +133,9 @@ BetaMC(adf, alpha = 0.05)
 #> Standardized regression slopes
 #> type = "adf"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0676 20000 0.3511 0.6148
-#> PCTGRT  0.3915 0.0706 20000 0.2426 0.5195
-#> PCTSUPP 0.2632 0.0772 20000 0.1076 0.4105
+#> NARTIC  0.4951 0.0682 20000 0.3511 0.6184
+#> PCTGRT  0.3915 0.0710 20000 0.2439 0.5217
+#> PCTSUPP 0.2632 0.0764 20000 0.1094 0.4084
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
@@ -148,9 +148,9 @@ BetaMC(hc3, alpha = 0.05)
 #> Standardized regression slopes
 #> type = "hc3"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0798 20000 0.3245 0.6378
-#> PCTGRT  0.3915 0.0819 20000 0.2183 0.5397
-#> PCTSUPP 0.2632 0.0853 20000 0.0871 0.4232
+#> NARTIC  0.4951 0.0796 20000 0.3248 0.6368
+#> PCTGRT  0.3915 0.0825 20000 0.2180 0.5420
+#> PCTSUPP 0.2632 0.0851 20000 0.0872 0.4260
 ```
 
 ### Other Effect Sizes
@@ -173,8 +173,8 @@ RSqMC(hc3, alpha = 0.05)
 #> R-squared and adjusted R-squared
 #> type = "hc3"
 #>        est     se     R   2.5%  97.5%
-#> rsq 0.8045 0.0624 20000 0.6424 0.8875
-#> adj 0.7906 0.0668 20000 0.6169 0.8795
+#> rsq 0.8045 0.0616 20000 0.6469 0.8876
+#> adj 0.7906 0.0660 20000 0.6217 0.8796
 ```
 
 #### Improvement in R-squared
@@ -187,9 +187,9 @@ DeltaRSqMC(hc3, alpha = 0.05)
 #> Improvement in R-squared
 #> type = "hc3"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.1859 0.0691 20000 0.0503 0.3224
-#> PCTGRT  0.1177 0.0542 20000 0.0253 0.2351
-#> PCTSUPP 0.0569 0.0373 20000 0.0056 0.1473
+#> NARTIC  0.1859 0.0688 20000 0.0494 0.3218
+#> PCTGRT  0.1177 0.0549 20000 0.0255 0.2382
+#> PCTSUPP 0.0569 0.0373 20000 0.0060 0.1485
 ```
 
 #### Semipartial Correlation Coefficients
@@ -202,9 +202,9 @@ SCorMC(hc3, alpha = 0.05)
 #> Semipartial correlations
 #> type = "hc3"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4312 0.0867 20000 0.2243 0.5678
-#> PCTGRT  0.3430 0.0827 20000 0.1592 0.4849
-#> PCTSUPP 0.2385 0.0781 20000 0.0750 0.3838
+#> NARTIC  0.4312 0.0865 20000 0.2223 0.5673
+#> PCTGRT  0.3430 0.0833 20000 0.1596 0.4881
+#> PCTSUPP 0.2385 0.0779 20000 0.0774 0.3854
 ```
 
 #### Squared Partial Correlation Coefficients
@@ -217,9 +217,9 @@ PCorMC(hc3, alpha = 0.05)
 #> Squared partial correlations
 #> type = "hc3"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4874 0.1193 20000 0.1759 0.6515
-#> PCTGRT  0.3757 0.1148 20000 0.1060 0.5535
-#> PCTSUPP 0.2254 0.1119 20000 0.0240 0.4532
+#> NARTIC  0.4874 0.1190 20000 0.1836 0.6495
+#> PCTGRT  0.3757 0.1152 20000 0.1062 0.5532
+#> PCTSUPP 0.2254 0.1121 20000 0.0247 0.4552
 ```
 
 #### Differences of Standardized Regression Coefficients
@@ -232,9 +232,9 @@ DiffBetaMC(hc3, alpha = 0.05)
 #> Differences of standardized regression slopes
 #> type = "hc3"
 #>                   est     se     R    2.5%  97.5%
-#> NARTIC-PCTGRT  0.1037 0.1423 20000 -0.1733 0.3797
-#> NARTIC-PCTSUPP 0.2319 0.1330 20000 -0.0359 0.4867
-#> PCTGRT-PCTSUPP 0.1282 0.1361 20000 -0.1451 0.3873
+#> NARTIC-PCTGRT  0.1037 0.1427 20000 -0.1776 0.3816
+#> NARTIC-PCTSUPP 0.2319 0.1323 20000 -0.0386 0.4815
+#> PCTGRT-PCTSUPP 0.1282 0.1368 20000 -0.1450 0.3878
 ```
 
 ## Documentation
@@ -271,7 +271,8 @@ Academies Press. <https://doi.org/10.17226/9781>
 
 Pesigan, I. J. A., & Cheung, S. F. (2023). Monte Carlo confidence
 intervals for the indirect effect with missing data. *Behavior Research
-Methods*. <https://doi.org/10.3758/s13428-023-02114-4>
+Methods*, *56*(3), 1678–1696.
+<https://doi.org/10.3758/s13428-023-02114-4>
 
 </div>
 

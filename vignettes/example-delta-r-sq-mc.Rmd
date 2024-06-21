@@ -13,12 +13,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
+
 
 Confidence intervals for
 improvement in R-squared
@@ -28,27 +23,15 @@ In this example,
 we use the data set and the model used in
 [betaMC: Example Using the BetaMC Function](example-beta-mc.html).
 
-```{r}
-#| message = FALSE
+
+``` r
 library(betaMC)
 ```
 
-```{r}
-#| echo = FALSE
-if (!exists("nas1982")) {
-  try(
-    data(
-      "nas1982",
-      package = "betaMC"
-    ),
-    silent = TRUE
-  )
-}
-df <- nas1982
-```
 
-```{r}
-#| eval = FALSE
+
+
+``` r
 df <- betaMC::nas1982
 ```
 
@@ -56,7 +39,8 @@ df <- betaMC::nas1982
 
 Fit the regression model using the `lm()` function.
 
-```{r}
+
+``` r
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
@@ -64,19 +48,22 @@ object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 
 #### Normal-Theory Approach
 
-```{r}
+
+``` r
 mvn <- MC(object, type = "mvn")
 ```
 
 #### Asymptotic distribution-free Approach
 
-```{r}
+
+``` r
 adf <- MC(object, type = "adf")
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
-```{r}
+
+``` r
 hc3 <- MC(object, type = "hc3")
 ```
 
@@ -84,19 +71,22 @@ hc3 <- MC(object, type = "hc3")
 
 #### Normal-Theory Approach
 
-```{r}
+
+``` r
 mvn <- DeltaRSqMC(mvn)
 ```
 
 #### Asymptotic distribution-free Approach
 
-```{r}
+
+``` r
 adf <- DeltaRSqMC(adf)
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
-```{r}
+
+``` r
 hc3 <- DeltaRSqMC(hc3)
 ```
 
@@ -106,40 +96,125 @@ hc3 <- DeltaRSqMC(hc3)
 
 Summary of the results of `DeltaRSqMC()`.
 
-```{r}
+
+``` r
 summary(mvn)
+#> Call:
+#> DeltaRSqMC(object = mvn)
+#> 
+#> Improvement in R-squared
+#> type = "mvn"
+#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
+#> NARTIC  0.1859 0.0659 20000 0.0339 0.0529 0.0739 0.3298 0.3903 0.4734
+#> PCTGRT  0.1177 0.0502 20000 0.0146 0.0245 0.0375 0.2310 0.2839 0.3537
+#> PCTSUPP 0.0569 0.0338 20000 0.0005 0.0049 0.0105 0.1392 0.1838 0.2408
+```
+
+``` r
 summary(adf)
+#> Call:
+#> DeltaRSqMC(object = adf)
+#> 
+#> Improvement in R-squared
+#> type = "adf"
+#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
+#> NARTIC  0.1859 0.0581 20000 0.0097 0.0489 0.0752 0.3003 0.3580 0.4070
+#> PCTGRT  0.1177 0.0472 20000 0.0046 0.0221 0.0377 0.2201 0.2664 0.3187
+#> PCTSUPP 0.0569 0.0332 20000 0.0001 0.0027 0.0094 0.1358 0.1748 0.2280
+```
+
+``` r
 summary(hc3)
+#> Call:
+#> DeltaRSqMC(object = hc3)
+#> 
+#> Improvement in R-squared
+#> type = "hc3"
+#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
+#> NARTIC  0.1859 0.0692 20000 0.0023 0.0184 0.0515 0.3248 0.3809 0.4458
+#> PCTGRT  0.1177 0.0545 20000 0.0014 0.0106 0.0253 0.2335 0.2946 0.3699
+#> PCTSUPP 0.0569 0.0371 20000 0.0000 0.0009 0.0064 0.1481 0.1915 0.2512
 ```
 
 ### coef
 
 Return the vector of estimates.
 
-```{r}
+
+``` r
 coef(mvn)
+#>    NARTIC    PCTGRT   PCTSUPP 
+#> 0.1858925 0.1176542 0.0568722
+```
+
+``` r
 coef(adf)
+#>    NARTIC    PCTGRT   PCTSUPP 
+#> 0.1858925 0.1176542 0.0568722
+```
+
+``` r
 coef(hc3)
+#>    NARTIC    PCTGRT   PCTSUPP 
+#> 0.1858925 0.1176542 0.0568722
 ```
 
 ### vcov
 
 Return the sampling covariance matrix.
 
-```{r}
+
+``` r
 vcov(mvn)
+#>                NARTIC        PCTGRT       PCTSUPP
+#> NARTIC   0.0043455490 -0.0006801002 -0.0003696893
+#> PCTGRT  -0.0006801002  0.0025173803 -0.0002202842
+#> PCTSUPP -0.0003696893 -0.0002202842  0.0011451284
+```
+
+``` r
 vcov(adf)
+#>                NARTIC        PCTGRT       PCTSUPP
+#> NARTIC   3.379889e-03  5.092173e-05 -0.0001512333
+#> PCTGRT   5.092173e-05  2.225564e-03 -0.0002029492
+#> PCTSUPP -1.512333e-04 -2.029492e-04  0.0010998069
+```
+
+``` r
 vcov(hc3)
+#>                NARTIC        PCTGRT       PCTSUPP
+#> NARTIC   4.788222e-03  0.0001538195 -4.507066e-05
+#> PCTGRT   1.538195e-04  0.0029736750 -1.529763e-04
+#> PCTSUPP -4.507066e-05 -0.0001529763  1.379934e-03
 ```
 
 ### confint
 
 Return confidence intervals.
 
-```{r}
+
+``` r
 confint(mvn, level = 0.95)
+#>              2.5 %    97.5 %
+#> NARTIC  0.07386170 0.3297849
+#> PCTGRT  0.03749633 0.2309612
+#> PCTSUPP 0.01047138 0.1392182
+```
+
+``` r
 confint(adf, level = 0.95)
+#>               2.5 %    97.5 %
+#> NARTIC  0.075164259 0.3003049
+#> PCTGRT  0.037725234 0.2201009
+#> PCTSUPP 0.009441678 0.1358350
+```
+
+``` r
 confint(hc3, level = 0.95)
+#>               2.5 %    97.5 %
+#> NARTIC  0.051473692 0.3247711
+#> PCTGRT  0.025274144 0.2334934
+#> PCTSUPP 0.006361168 0.1481070
 ```
 
 ## References

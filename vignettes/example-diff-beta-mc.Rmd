@@ -13,12 +13,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
+
 
 Confidence intervals for
 differences of standardized regression slopes
@@ -28,27 +23,15 @@ In this example,
 we use the data set and the model used in
 [betaMC: Example Using the BetaMC Function](example-beta-mc.html).
 
-```{r}
-#| message = FALSE
+
+``` r
 library(betaMC)
 ```
 
-```{r}
-#| echo = FALSE
-if (!exists("nas1982")) {
-  try(
-    data(
-      "nas1982",
-      package = "betaMC"
-    ),
-    silent = TRUE
-  )
-}
-df <- nas1982
-```
 
-```{r}
-#| eval = FALSE
+
+
+``` r
 df <- betaMC::nas1982
 ```
 
@@ -56,7 +39,8 @@ df <- betaMC::nas1982
 
 Fit the regression model using the `lm()` function.
 
-```{r}
+
+``` r
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
@@ -64,19 +48,22 @@ object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 
 #### Normal-Theory Approach
 
-```{r}
+
+``` r
 mvn <- MC(object, type = "mvn")
 ```
 
 #### Asymptotic distribution-free Approach
 
-```{r}
+
+``` r
 adf <- MC(object, type = "adf")
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
-```{r}
+
+``` r
 hc3 <- MC(object, type = "hc3")
 ```
 
@@ -84,19 +71,22 @@ hc3 <- MC(object, type = "hc3")
 
 #### Normal-Theory Approach
 
-```{r}
+
+``` r
 mvn <- DiffBetaMC(mvn)
 ```
 
 #### Asymptotic distribution-free Approach
 
-```{r}
+
+``` r
 adf <- DiffBetaMC(adf)
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
-```{r}
+
+``` r
 hc3 <- DiffBetaMC(hc3)
 ```
 
@@ -106,40 +96,125 @@ hc3 <- DiffBetaMC(hc3)
 
 Summary of the results of `DiffBetaMC()`.
 
-```{r}
+
+``` r
 summary(mvn)
+#> Call:
+#> DiffBetaMC(object = mvn)
+#> 
+#> Differences of standardized regression slopes
+#> type = "mvn"
+#>                   est     se     R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%
+#> NARTIC-PCTGRT  0.1037 0.1361 20000 -0.3471 -0.2551 -0.1697 0.3643 0.4455 0.5263
+#> NARTIC-PCTSUPP 0.2319 0.1251 20000 -0.2087 -0.1026 -0.0210 0.4704 0.5340 0.6083
+#> PCTGRT-PCTSUPP 0.1282 0.1231 20000 -0.2893 -0.1978 -0.1178 0.3667 0.4445 0.5213
+```
+
+``` r
 summary(adf)
+#> Call:
+#> DiffBetaMC(object = adf)
+#> 
+#> Differences of standardized regression slopes
+#> type = "adf"
+#>                   est     se     R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%
+#> NARTIC-PCTGRT  0.1037 0.1211 20000 -0.3039 -0.2089 -0.1365 0.3385 0.4044 0.4865
+#> NARTIC-PCTSUPP 0.2319 0.1185 20000 -0.1493 -0.0722 -0.0038 0.4561 0.5372 0.6326
+#> PCTGRT-PCTSUPP 0.1282 0.1220 20000 -0.2671 -0.1939 -0.1157 0.3636 0.4389 0.5356
+```
+
+``` r
 summary(hc3)
+#> Call:
+#> DiffBetaMC(object = hc3)
+#> 
+#> Differences of standardized regression slopes
+#> type = "hc3"
+#>                   est     se     R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%
+#> NARTIC-PCTGRT  0.1037 0.1426 20000 -0.3745 -0.2614 -0.1776 0.3822 0.4744 0.5792
+#> NARTIC-PCTSUPP 0.2319 0.1327 20000 -0.2162 -0.1194 -0.0375 0.4802 0.5706 0.6508
+#> PCTGRT-PCTSUPP 0.1282 0.1375 20000 -0.3462 -0.2461 -0.1524 0.3927 0.4751 0.5525
 ```
 
 ### coef
 
 Return the vector of estimates.
 
-```{r}
+
+``` r
 coef(mvn)
+#>  NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP 
+#>      0.1036564      0.2318974      0.1282410
+```
+
+``` r
 coef(adf)
+#>  NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP 
+#>      0.1036564      0.2318974      0.1282410
+```
+
+``` r
 coef(hc3)
+#>  NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP 
+#>      0.1036564      0.2318974      0.1282410
 ```
 
 ### vcov
 
 Return the sampling covariance matrix.
 
-```{r}
+
+``` r
 vcov(mvn)
+#>                NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP
+#> NARTIC-PCTGRT    0.018515016    0.009505913   -0.009009102
+#> NARTIC-PCTSUPP   0.009505913    0.015641359    0.006135446
+#> PCTGRT-PCTSUPP  -0.009009102    0.006135446    0.015144548
+```
+
+``` r
 vcov(adf)
+#>                NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP
+#> NARTIC-PCTGRT    0.014655011    0.006898176   -0.007756835
+#> NARTIC-PCTSUPP   0.006898176    0.014034195    0.007136020
+#> PCTGRT-PCTSUPP  -0.007756835    0.007136020    0.014892855
+```
+
+``` r
 vcov(hc3)
+#>                NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP
+#> NARTIC-PCTGRT    0.020329109    0.009517481   -0.010811628
+#> NARTIC-PCTSUPP   0.009517481    0.017601995    0.008084514
+#> PCTGRT-PCTSUPP  -0.010811628    0.008084514    0.018896142
 ```
 
 ### confint
 
 Return confidence intervals.
 
-```{r}
+
+``` r
 confint(mvn, level = 0.95)
+#>                      2.5 %    97.5 %
+#> NARTIC-PCTGRT  -0.16970725 0.3643304
+#> NARTIC-PCTSUPP -0.02102608 0.4703601
+#> PCTGRT-PCTSUPP -0.11775485 0.3667414
+```
+
+``` r
 confint(adf, level = 0.95)
+#>                       2.5 %    97.5 %
+#> NARTIC-PCTGRT  -0.136506630 0.3385427
+#> NARTIC-PCTSUPP -0.003803225 0.4561149
+#> PCTGRT-PCTSUPP -0.115719656 0.3635715
+```
+
+``` r
 confint(hc3, level = 0.95)
+#>                     2.5 %    97.5 %
+#> NARTIC-PCTGRT  -0.1776168 0.3822032
+#> NARTIC-PCTSUPP -0.0374553 0.4802119
+#> PCTGRT-PCTSUPP -0.1523831 0.3927320
 ```
 
 ## References
