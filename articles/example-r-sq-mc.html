@@ -159,9 +159,9 @@ Function</a>.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; R-squared and adjusted R-squared</span></span>
 <span><span class="co">#&gt; type = "mvn"</span></span>
-<span><span class="co">#&gt;        est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
-<span><span class="co">#&gt; rsq 0.8045 0.0563 20000 0.5022 0.6078 0.6606 0.8813 0.9019 0.9298</span></span>
-<span><span class="co">#&gt; adj 0.7906 0.0603 20000 0.4666 0.5798 0.6363 0.8729 0.8948 0.9248</span></span></code></pre></div>
+<span><span class="co">#&gt;        est     se     R  0.05%   0.5%   2.5%  97.5% 99.5% 99.95%</span></span>
+<span><span class="co">#&gt; rsq 0.8045 0.0557 20000 0.5087 0.5978 0.6625 0.8806 0.901 0.9233</span></span>
+<span><span class="co">#&gt; adj 0.7906 0.0597 20000 0.4736 0.5691 0.6383 0.8721 0.894 0.9179</span></span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
@@ -169,9 +169,9 @@ Function</a>.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; R-squared and adjusted R-squared</span></span>
 <span><span class="co">#&gt; type = "adf"</span></span>
-<span><span class="co">#&gt;        est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
-<span><span class="co">#&gt; rsq 0.8045 0.0548 20000 0.5259 0.6117 0.6675 0.8811 0.9033 0.9292</span></span>
-<span><span class="co">#&gt; adj 0.7906 0.0587 20000 0.4920 0.5840 0.6437 0.8726 0.8964 0.9241</span></span></code></pre></div>
+<span><span class="co">#&gt;        est     se     R  0.05%   0.5%   2.5%  97.5% 99.5% 99.95%</span></span>
+<span><span class="co">#&gt; rsq 0.8045 0.0546 20000 0.5430 0.6171 0.6661 0.8797 0.902 0.9217</span></span>
+<span><span class="co">#&gt; adj 0.7906 0.0585 20000 0.5104 0.5897 0.6423 0.8711 0.895 0.9161</span></span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
@@ -180,8 +180,8 @@ Function</a>.</p>
 <span><span class="co">#&gt; R-squared and adjusted R-squared</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;        est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
-<span><span class="co">#&gt; rsq 0.8045 0.0620 20000 0.4704 0.5855 0.6466 0.8883 0.9114 0.9342</span></span>
-<span><span class="co">#&gt; adj 0.7906 0.0664 20000 0.4326 0.5559 0.6214 0.8803 0.9051 0.9295</span></span></code></pre></div>
+<span><span class="co">#&gt; rsq 0.8045 0.0617 20000 0.4685 0.5803 0.6479 0.8877 0.9110 0.9382</span></span>
+<span><span class="co">#&gt; adj 0.7906 0.0661 20000 0.4306 0.5503 0.6227 0.8797 0.9047 0.9338</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="coef">coef<a class="anchor" aria-label="anchor" href="#coef"></a>
@@ -207,18 +207,18 @@ Function</a>.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">mvn</span><span class="op">)</span></span>
 <span><span class="co">#&gt;             rsq         adj</span></span>
-<span><span class="co">#&gt; rsq 0.003168494 0.003394815</span></span>
-<span><span class="co">#&gt; adj 0.003394815 0.003637302</span></span></code></pre></div>
+<span><span class="co">#&gt; rsq 0.003106134 0.003328000</span></span>
+<span><span class="co">#&gt; adj 0.003328000 0.003565715</span></span></code></pre></div>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
 <span><span class="co">#&gt;             rsq         adj</span></span>
-<span><span class="co">#&gt; rsq 0.003003755 0.003218309</span></span>
-<span><span class="co">#&gt; adj 0.003218309 0.003448188</span></span></code></pre></div>
+<span><span class="co">#&gt; rsq 0.002981289 0.003194238</span></span>
+<span><span class="co">#&gt; adj 0.003194238 0.003422398</span></span></code></pre></div>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;             rsq         adj</span></span>
-<span><span class="co">#&gt; rsq 0.003846346 0.004121085</span></span>
-<span><span class="co">#&gt; adj 0.004121085 0.004415449</span></span></code></pre></div>
+<span><span class="co">#&gt; rsq 0.003810908 0.004083116</span></span>
+<span><span class="co">#&gt; adj 0.004083116 0.004374767</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="confint">confint<a class="anchor" aria-label="anchor" href="#confint"></a>
@@ -227,18 +227,18 @@ Function</a>.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">mvn</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; rsq 0.6605772 0.8813467</span></span>
-<span><span class="co">#&gt; adj 0.6363327 0.8728715</span></span></code></pre></div>
+<span><span class="co">#&gt; rsq 0.6624561 0.8806183</span></span>
+<span><span class="co">#&gt; adj 0.6383458 0.8720910</span></span></code></pre></div>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">adf</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; rsq 0.6674670 0.8811274</span></span>
-<span><span class="co">#&gt; adj 0.6437147 0.8726365</span></span></code></pre></div>
+<span><span class="co">#&gt; rsq 0.6661151 0.8796919</span></span>
+<span><span class="co">#&gt; adj 0.6422662 0.8710985</span></span></code></pre></div>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">hc3</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; rsq 0.6466252 0.8882599</span></span>
-<span><span class="co">#&gt; adj 0.6213841 0.8802784</span></span></code></pre></div>
+<span><span class="co">#&gt; rsq 0.6478883 0.8877497</span></span>
+<span><span class="co">#&gt; adj 0.6227375 0.8797318</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2 unnumbered">
@@ -253,7 +253,7 @@ standardized regression coefficients. <em>Psychometrika</em>,
 <div id="ref-Pesigan-Cheung-2023" class="csl-entry">
 Pesigan, I. J. A., &amp; Cheung, S. F. (2023). <span>Monte Carlo</span>
 confidence intervals for the indirect effect with missing data.
-<em>Behavior Research Methods</em>. <a href="https://doi.org/10.3758/s13428-023-02114-4" class="external-link">https://doi.org/10.3758/s13428-023-02114-4</a>
+<em>Behavior Research Methods</em>, <em>56</em>(3), 1678–1696. <a href="https://doi.org/10.3758/s13428-023-02114-4" class="external-link">https://doi.org/10.3758/s13428-023-02114-4</a>
 </div>
 </div>
 </div>
