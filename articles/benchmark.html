@@ -158,9 +158,9 @@ confidence intervals.</p>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">benchmark</span>, unit <span class="op">=</span> <span class="st">"ms"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   expr      min        lq      mean    median        uq      max neval</span></span>
-<span><span class="co">#&gt; 1   MC  461.140  468.1574  482.2028  477.4195  483.4992  537.311    10</span></span>
-<span><span class="co">#&gt; 2   NB 7492.903 7531.3784 7564.4909 7543.9411 7580.4311 7737.538    10</span></span></code></pre></div>
+<span><span class="co">#&gt;   expr       min       lq      mean    median        uq       max neval</span></span>
+<span><span class="co">#&gt; 1   MC  446.9324  448.042  470.2223  461.0185  484.9077  545.9962    10</span></span>
+<span><span class="co">#&gt; 2   NB 7492.3215 7551.600 7577.4885 7563.3065 7585.0034 7759.8515    10</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="summary-of-benchmark-results-relative-to-the-faster-method">Summary of Benchmark Results Relative to the Faster Method<a class="anchor" aria-label="anchor" href="#summary-of-benchmark-results-relative-to-the-faster-method"></a>
@@ -169,7 +169,7 @@ confidence intervals.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">benchmark</span>, unit <span class="op">=</span> <span class="st">"relative"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   expr      min       lq     mean   median       uq      max neval</span></span>
 <span><span class="co">#&gt; 1   MC  1.00000  1.00000  1.00000  1.00000  1.00000  1.00000    10</span></span>
-<span><span class="co">#&gt; 2   NB 16.24865 16.08728 15.68736 15.80149 15.67827 14.40048    10</span></span></code></pre></div>
+<span><span class="co">#&gt; 2   NB 16.76388 16.85467 16.11469 16.40565 15.64216 14.21228    10</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
