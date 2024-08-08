@@ -1,108 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/404.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/articles/benchmark.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/articles/betaMC.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/articles/example-beta-mc.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/articles/example-delta-r-sq-mc.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/articles/example-diff-beta-mc.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/articles/example-mc-mi.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/articles/example-p-cor-mc.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/articles/example-r-sq-mc.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/articles/example-s-cor-mc.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/articles/session.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/index.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/BetaMC.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/DeltaRSqMC.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/MC.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/MCMI.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/PCorMC.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/RSqMC.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/SCorMC.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/betaMC-package.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/coef.betamc.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/confint.betamc.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/nas1982.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/print.betamc.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/print.mc.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/summary.betamc.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/summary.mc.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/betaMC/reference/vcov.betamc.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://github.com/jeksterslab/betaMC/404.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/LICENSE-text.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/LICENSE.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/articles/benchmark.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/articles/betaMC.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/articles/example-beta-mc.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/articles/example-delta-r-sq-mc.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/articles/example-diff-beta-mc.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/articles/example-mc-mi.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/articles/example-p-cor-mc.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/articles/example-r-sq-mc.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/articles/example-s-cor-mc.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/articles/index.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/articles/session.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/authors.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/index.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/news/index.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/BetaMC.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/DeltaRSqMC.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/MC.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/MCMI.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/PCorMC.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/RSqMC.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/SCorMC.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/betaMC-package.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/coef.betamc.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/confint.betamc.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/index.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/nas1982.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/print.betamc.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/print.mc.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/summary.betamc.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/summary.mc.html</loc></url>
+<url><loc>https://github.com/jeksterslab/betaMC/reference/vcov.betamc.html</loc></url>
 </urlset>
+
