@@ -1,7 +1,7 @@
 ---
 title: "Benchmark: Comparing the Monte Carlo Method with Nonparametric Bootstrapping"
 author: "Ivan Jacob Agaloos Pesigan"
-date: "2024-08-08"
+date: "2024-08-20"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Benchmark: Comparing the Monte Carlo Method with Nonparametric Bootstrapping}
@@ -94,9 +94,9 @@ benchmark <- microbenchmark(
 
 ``` r
 summary(benchmark, unit = "ms")
-#>   expr       min       lq      mean   median        uq       max neval
-#> 1   MC  445.1342  450.653  470.7052  461.157  467.5259  543.6352    10
-#> 2   NB 7557.4993 7614.610 7652.8812 7627.805 7673.5412 7846.6917    10
+#>   expr       min        lq      mean    median        uq       max neval
+#> 1   MC  436.9702  458.2569  468.0345  464.6261  470.3659  536.3105    10
+#> 2   NB 7225.7673 7308.1043 7399.4103 7365.7541 7488.4115 7724.3963    10
 ```
 
 ### Summary of Benchmark Results Relative to the Faster Method
@@ -104,9 +104,9 @@ summary(benchmark, unit = "ms")
 
 ``` r
 summary(benchmark, unit = "relative")
-#>   expr      min       lq     mean   median       uq      max neval
-#> 1   MC  1.00000  1.00000  1.00000  1.00000  1.00000  1.00000    10
-#> 2   NB 16.97802 16.89684 16.25833 16.54058 16.41308 14.43374    10
+#>   expr      min       lq     mean   median      uq      max neval
+#> 1   MC  1.00000  1.00000  1.00000  1.00000  1.0000  1.00000    10
+#> 2   NB 16.53606 15.94761 15.80954 15.85308 15.9204 14.40284    10
 ```
 
 ## Plot
