@@ -108,10 +108,10 @@ Agaloos Pesigan</h4>
 <span><span class="co">#&gt; [17] pan_1.9          knitr_1.48       MASS_7.3-60.2    iterators_1.0.14</span></span>
 <span><span class="co">#&gt; [21] backports_1.5.0  tibble_3.2.1     nloptr_2.1.1     nnet_7.3-19     </span></span>
 <span><span class="co">#&gt; [25] rprojroot_2.0.4  minqa_1.2.8      pillar_1.9.0     rlang_1.1.4     </span></span>
-<span><span class="co">#&gt; [29] utf8_1.2.4       broom_1.0.6      xfun_0.47        cli_3.6.3.9000  </span></span>
+<span><span class="co">#&gt; [29] utf8_1.2.4       broom_1.0.6      xfun_0.48        cli_3.6.3.9000  </span></span>
 <span><span class="co">#&gt; [33] magrittr_2.0.3   jomo_2.7-6       foreach_1.5.2    grid_4.4.1      </span></span>
 <span><span class="co">#&gt; [37] rProject_0.0.14  lme4_1.1-35.5    nlme_3.1-164     lifecycle_1.0.4 </span></span>
-<span><span class="co">#&gt; [41] vctrs_0.6.5      evaluate_0.24.0  glue_1.7.0       codetools_0.2-20</span></span>
+<span><span class="co">#&gt; [41] vctrs_0.6.5      evaluate_1.0.0   glue_1.8.0       codetools_0.2-20</span></span>
 <span><span class="co">#&gt; [45] survival_3.6-4   fansi_1.0.6      purrr_1.0.2      tools_4.4.1     </span></span>
 <span><span class="co">#&gt; [49] pkgconfig_2.0.3</span></span></code></pre></div>
 </div>
@@ -122,7 +122,27 @@ Agaloos Pesigan</h4>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html" class="external-link">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Package"</span>, <span class="st">"Version"</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt;                   Package             Version      </span></span>
 <span><span class="co">#&gt; Amelia            "Amelia"            "1.8.2"      </span></span>
+<span><span class="co">#&gt; askpass           "askpass"           "1.2.1"      </span></span>
 <span><span class="co">#&gt; betaMC            "betaMC"            "1.3.2.9000" </span></span>
+<span><span class="co">#&gt; cli               "cli"               "3.6.3.9000" </span></span>
+<span><span class="co">#&gt; commonmark        "commonmark"        "1.9.2"      </span></span>
+<span><span class="co">#&gt; credentials       "credentials"       "2.0.2"      </span></span>
+<span><span class="co">#&gt; curl              "curl"              "5.2.3"      </span></span>
+<span><span class="co">#&gt; devtools          "devtools"          "2.4.5.9000" </span></span>
+<span><span class="co">#&gt; evaluate          "evaluate"          "1.0.0"      </span></span>
+<span><span class="co">#&gt; gert              "gert"              "2.1.2"      </span></span>
+<span><span class="co">#&gt; glue              "glue"              "1.8.0"      </span></span>
+<span><span class="co">#&gt; httr2             "httr2"             "1.0.5"      </span></span>
+<span><span class="co">#&gt; jsonlite          "jsonlite"          "1.8.9"      </span></span>
+<span><span class="co">#&gt; openssl           "openssl"           "2.2.2"      </span></span>
+<span><span class="co">#&gt; pkgdown           "pkgdown"           "2.1.1"      </span></span>
+<span><span class="co">#&gt; profvis           "profvis"           "0.4.0"      </span></span>
+<span><span class="co">#&gt; ps                "ps"                "1.8.0"      </span></span>
+<span><span class="co">#&gt; rProject          "rProject"          "0.0.14"     </span></span>
+<span><span class="co">#&gt; sys               "sys"               "3.4.3"      </span></span>
+<span><span class="co">#&gt; tinytex           "tinytex"           "0.53.1"     </span></span>
+<span><span class="co">#&gt; V8                "V8"                "5.0.1"      </span></span>
+<span><span class="co">#&gt; xfun              "xfun"              "0.48"       </span></span>
 <span><span class="co">#&gt; abind             "abind"             "1.4-5"      </span></span>
 <span><span class="co">#&gt; arm               "arm"               "1.14-4"     </span></span>
 <span><span class="co">#&gt; arrow             "arrow"             "17.0.0.1"   </span></span>
@@ -512,50 +532,50 @@ Agaloos Pesigan</h4>
 </h2>
 <pre><code><span><span class="co">#&gt; Architecture:                       x86_64</span></span>
 <span><span class="co">#&gt; CPU op-mode(s):                     32-bit, 64-bit</span></span>
-<span><span class="co">#&gt; Address sizes:                      39 bits physical, 48 bits virtual</span></span>
+<span><span class="co">#&gt; Address sizes:                      46 bits physical, 48 bits virtual</span></span>
 <span><span class="co">#&gt; Byte Order:                         Little Endian</span></span>
 <span><span class="co">#&gt; CPU(s):                             8</span></span>
 <span><span class="co">#&gt; On-line CPU(s) list:                0-7</span></span>
 <span><span class="co">#&gt; Vendor ID:                          GenuineIntel</span></span>
-<span><span class="co">#&gt; Model name:                         Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz</span></span>
+<span><span class="co">#&gt; Model name:                         Intel(R) Xeon(R) CPU E5-1620 v2 @ 3.70GHz</span></span>
 <span><span class="co">#&gt; CPU family:                         6</span></span>
-<span><span class="co">#&gt; Model:                              142</span></span>
+<span><span class="co">#&gt; Model:                              62</span></span>
 <span><span class="co">#&gt; Thread(s) per core:                 2</span></span>
 <span><span class="co">#&gt; Core(s) per socket:                 4</span></span>
 <span><span class="co">#&gt; Socket(s):                          1</span></span>
-<span><span class="co">#&gt; Stepping:                           12</span></span>
-<span><span class="co">#&gt; CPU max MHz:                        4100.0000</span></span>
-<span><span class="co">#&gt; CPU min MHz:                        400.0000</span></span>
-<span><span class="co">#&gt; BogoMIPS:                           3799.90</span></span>
-<span><span class="co">#&gt; Flags:                              fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp vnmi md_clear flush_l1d arch_capabilities</span></span>
+<span><span class="co">#&gt; Stepping:                           4</span></span>
+<span><span class="co">#&gt; CPU max MHz:                        3900.0000</span></span>
+<span><span class="co">#&gt; CPU min MHz:                        1200.0000</span></span>
+<span><span class="co">#&gt; BogoMIPS:                           7382.98</span></span>
+<span><span class="co">#&gt; Flags:                              fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts vnmi md_clear flush_l1d</span></span>
 <span><span class="co">#&gt; Virtualization:                     VT-x</span></span>
 <span><span class="co">#&gt; L1d cache:                          128 KiB (4 instances)</span></span>
 <span><span class="co">#&gt; L1i cache:                          128 KiB (4 instances)</span></span>
 <span><span class="co">#&gt; L2 cache:                           1 MiB (4 instances)</span></span>
-<span><span class="co">#&gt; L3 cache:                           6 MiB (1 instance)</span></span>
+<span><span class="co">#&gt; L3 cache:                           10 MiB (1 instance)</span></span>
 <span><span class="co">#&gt; NUMA node(s):                       1</span></span>
 <span><span class="co">#&gt; NUMA node0 CPU(s):                  0-7</span></span>
-<span><span class="co">#&gt; Vulnerability Gather data sampling: Mitigation; Microcode</span></span>
+<span><span class="co">#&gt; Vulnerability Gather data sampling: Not affected</span></span>
 <span><span class="co">#&gt; Vulnerability Itlb multihit:        KVM: Mitigation: VMX disabled</span></span>
-<span><span class="co">#&gt; Vulnerability L1tf:                 Not affected</span></span>
-<span><span class="co">#&gt; Vulnerability Mds:                  Not affected</span></span>
-<span><span class="co">#&gt; Vulnerability Meltdown:             Not affected</span></span>
-<span><span class="co">#&gt; Vulnerability Mmio stale data:      Mitigation; Clear CPU buffers; SMT vulnerable</span></span>
-<span><span class="co">#&gt; Vulnerability Retbleed:             Mitigation; Enhanced IBRS</span></span>
+<span><span class="co">#&gt; Vulnerability L1tf:                 Mitigation; PTE Inversion; VMX conditional cache flushes, SMT vulnerable</span></span>
+<span><span class="co">#&gt; Vulnerability Mds:                  Mitigation; Clear CPU buffers; SMT vulnerable</span></span>
+<span><span class="co">#&gt; Vulnerability Meltdown:             Mitigation; PTI</span></span>
+<span><span class="co">#&gt; Vulnerability Mmio stale data:      Unknown: No mitigations</span></span>
+<span><span class="co">#&gt; Vulnerability Retbleed:             Not affected</span></span>
 <span><span class="co">#&gt; Vulnerability Spec rstack overflow: Not affected</span></span>
 <span><span class="co">#&gt; Vulnerability Spec store bypass:    Mitigation; Speculative Store Bypass disabled via prctl</span></span>
 <span><span class="co">#&gt; Vulnerability Spectre v1:           Mitigation; usercopy/swapgs barriers and __user pointer sanitization</span></span>
-<span><span class="co">#&gt; Vulnerability Spectre v2:           Mitigation; Enhanced / Automatic IBRS, IBPB conditional, RSB filling, PBRSB-eIBRS SW sequence</span></span>
-<span><span class="co">#&gt; Vulnerability Srbds:                Mitigation; Microcode</span></span>
-<span><span class="co">#&gt; Vulnerability Tsx async abort:      Mitigation; TSX disabled</span></span></code></pre>
+<span><span class="co">#&gt; Vulnerability Spectre v2:           Mitigation; Retpolines, IBPB conditional, IBRS_FW, STIBP conditional, RSB filling, PBRSB-eIBRS Not affected</span></span>
+<span><span class="co">#&gt; Vulnerability Srbds:                Not affected</span></span>
+<span><span class="co">#&gt; Vulnerability Tsx async abort:      Not affected</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="memory">Memory<a class="anchor" aria-label="anchor" href="#memory"></a>
 </h2>
 <pre><code><span><span class="co">#&gt;                total        used        free      shared  buff/cache   available</span></span>
-<span><span class="co">#&gt; Mem:            23Gi       2.0Gi        18Gi       451Mi       2.3Gi        20Gi</span></span>
-<span><span class="co">#&gt; Swap:           11Gi          0B        11Gi</span></span>
-<span><span class="co">#&gt; Total:          34Gi       2.0Gi        30Gi</span></span></code></pre>
+<span><span class="co">#&gt; Mem:            15Gi       2.2Gi        10Gi       133Mi       2.2Gi        12Gi</span></span>
+<span><span class="co">#&gt; Swap:          7.8Gi          0B       7.8Gi</span></span>
+<span><span class="co">#&gt; Total:          23Gi       2.2Gi        18Gi</span></span></code></pre>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
