@@ -61,8 +61,8 @@ RSqMC <- function(object,
                   alpha = c(0.05, 0.01, 0.001)) {
   stopifnot(
     inherits(
-      object,
-      "mc"
+      x = object,
+      what = "mc"
     )
   )
   if (object$fun == "MCMI") {
