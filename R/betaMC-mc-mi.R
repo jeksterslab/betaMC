@@ -100,6 +100,12 @@ MCMI <- function(object,
                  tol = 1e-06,
                  fixed_x = FALSE,
                  seed = NULL) {
+  stopifnot(
+    inherits(
+      x = object,
+      what = "lm"
+    )
+  )
   lm_process <- .ProcessLM(object)
   stopifnot(
     type %in% c(
@@ -152,8 +158,8 @@ MCMI <- function(object,
   }
   if (
     inherits(
-      mi,
-      "mids"
+      x = mi,
+      what = "mids"
     )
   ) {
     imp <- mice::complete(
@@ -162,15 +168,15 @@ MCMI <- function(object,
     )
   } else if (
     inherits(
-      mi,
-      "amelia"
+      x = mi,
+      what = "amelia"
     )
   ) {
     imp <- mi$imputations
   } else if (
     inherits(
-      mi,
-      "list"
+      x = mi,
+      what = "list"
     )
   ) {
     imp <- mi

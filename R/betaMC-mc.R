@@ -156,6 +156,12 @@ MC <- function(object,
                tol = 1e-06,
                fixed_x = FALSE,
                seed = NULL) {
+  stopifnot(
+    inherits(
+      x = object,
+      what = "lm"
+    )
+  )
   lm_process <- .ProcessLM(object)
   stopifnot(
     type %in% c(

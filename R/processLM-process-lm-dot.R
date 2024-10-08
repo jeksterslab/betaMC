@@ -55,12 +55,6 @@
 #' @keywords processLM lm internal
 #' @noRd
 .ProcessLM <- function(object) {
-  stopifnot(
-    inherits(
-      object,
-      "lm"
-    )
-  )
   # call
   call0 <- stats::getCall(object)
   # data set used by lm
