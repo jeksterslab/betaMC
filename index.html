@@ -11,8 +11,8 @@
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.9/font.css" rel="stylesheet">
 <link href="deps/JetBrains_Mono-0.4.9/font.css" rel="stylesheet">
 <link href="deps/Roboto_Slab-0.4.9/font.css" rel="stylesheet">
-<link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Monte Carlo for Regression Effect Sizes">
 <meta name="description" content="Generates Monte Carlo confidence intervals for standardized regression coefficients (beta) and other effect sizes, including multiple correlation, semipartial correlations, improvement in R-squared, squared partial correlations, and differences in standardized regression coefficients, for models fitted by lm(). betaMC combines ideas from Monte Carlo confidence intervals for the indirect effect (Pesigan and Cheung, 2023 &lt;doi:10.3758/s13428-023-02114-4&gt;) and the sampling covariance matrix of regression coefficients (Dudgeon, 2017 &lt;doi:10.1007/s11336-017-9563-z&gt;) to generate confidence intervals effect sizes in regression.">
 <meta property="og:description" content="Generates Monte Carlo confidence intervals for standardized regression coefficients (beta) and other effect sizes, including multiple correlation, semipartial correlations, improvement in R-squared, squared partial correlations, and differences in standardized regression coefficients, for models fitted by lm(). betaMC combines ideas from Monte Carlo confidence intervals for the indirect effect (Pesigan and Cheung, 2023 &lt;doi:10.3758/s13428-023-02114-4&gt;) and the sampling covariance matrix of regression coefficients (Dudgeon, 2017 &lt;doi:10.1007/s11336-017-9563-z&gt;) to generate confidence intervals effect sizes in regression.">
@@ -56,7 +56,7 @@
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="betamc">betaMC<a class="anchor" aria-label="anchor" href="#betamc"></a>
 </h1></div>
-<p>Ivan Jacob Agaloos Pesigan 2024-10-22</p>
+<p>Ivan Jacob Agaloos Pesigan 2024-12-29</p>
 <!-- README.md is generated from .setup/readme/README.Rmd. Please edit that file -->
 <!-- badges: start -->
 
@@ -127,9 +127,9 @@
 <span><span class="co">#&gt; Standardized regression slopes</span></span>
 <span><span class="co">#&gt; type = "mvn"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4951 0.0758 20000 0.3402 0.6361</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3915 0.0767 20000 0.2368 0.5383</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2632 0.0746 20000 0.1177 0.4094</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.4951 0.0755 20000 0.3402 0.6372</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3915 0.0771 20000 0.2366 0.5372</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2632 0.0748 20000 0.1180 0.4104</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="asymptotic-distribution-free-approach-1">Asymptotic distribution-free Approach<a class="anchor" aria-label="anchor" href="#asymptotic-distribution-free-approach-1"></a>
@@ -142,9 +142,9 @@
 <span><span class="co">#&gt; Standardized regression slopes</span></span>
 <span><span class="co">#&gt; type = "adf"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4951 0.0679 20000 0.3513 0.6170</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3915 0.0712 20000 0.2418 0.5228</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2632 0.0769 20000 0.1071 0.4090</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.4951 0.0677 20000 0.3527 0.6162</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3915 0.0717 20000 0.2395 0.5200</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2632 0.0768 20000 0.1080 0.4091</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="heteroskedasticity-consistent-approach-hc3-1">Heteroskedasticity Consistent Approach (HC3)<a class="anchor" aria-label="anchor" href="#heteroskedasticity-consistent-approach-hc3-1"></a>
@@ -157,9 +157,9 @@
 <span><span class="co">#&gt; Standardized regression slopes</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4951 0.0800 20000 0.3227 0.6348</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3915 0.0826 20000 0.2192 0.5439</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2632 0.0862 20000 0.0867 0.4267</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.4951 0.0794 20000 0.3243 0.6341</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3915 0.0818 20000 0.2200 0.5410</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2632 0.0855 20000 0.0878 0.4256</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
@@ -177,8 +177,8 @@
 <span><span class="co">#&gt; R-squared and adjusted R-squared</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;        est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; rsq 0.8045 0.0622 20000 0.6430 0.8876</span></span>
-<span><span class="co">#&gt; adj 0.7906 0.0667 20000 0.6175 0.8796</span></span></code></pre></div>
+<span><span class="co">#&gt; rsq 0.8045 0.0623 20000 0.6433 0.8875</span></span>
+<span><span class="co">#&gt; adj 0.7906 0.0667 20000 0.6178 0.8794</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="improvement-in-r-squared">Improvement in R-squared<a class="anchor" aria-label="anchor" href="#improvement-in-r-squared"></a>
@@ -191,9 +191,9 @@
 <span><span class="co">#&gt; Improvement in R-squared</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.1859 0.0691 20000 0.0498 0.3231</span></span>
-<span><span class="co">#&gt; PCTGRT  0.1177 0.0549 20000 0.0250 0.2392</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.0569 0.0378 20000 0.0056 0.1514</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.1859 0.0684 20000 0.0511 0.3200</span></span>
+<span><span class="co">#&gt; PCTGRT  0.1177 0.0547 20000 0.0261 0.2386</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.0569 0.0374 20000 0.0059 0.1502</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="semipartial-correlation-coefficients">Semipartial Correlation Coefficients<a class="anchor" aria-label="anchor" href="#semipartial-correlation-coefficients"></a>
@@ -206,9 +206,9 @@
 <span><span class="co">#&gt; Semipartial correlations</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4312 0.0871 20000 0.2231 0.5684</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3430 0.0834 20000 0.1581 0.4890</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2385 0.0788 20000 0.0751 0.3891</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.4312 0.0859 20000 0.2261 0.5657</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3430 0.0828 20000 0.1615 0.4884</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2385 0.0781 20000 0.0766 0.3875</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="squared-partial-correlation-coefficients">Squared Partial Correlation Coefficients<a class="anchor" aria-label="anchor" href="#squared-partial-correlation-coefficients"></a>
@@ -221,9 +221,9 @@
 <span><span class="co">#&gt; Squared partial correlations</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4874 0.1197 20000 0.1754 0.6491</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3757 0.1154 20000 0.1058 0.5558</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2254 0.1134 20000 0.0234 0.4611</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.4874 0.1181 20000 0.1822 0.6477</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3757 0.1150 20000 0.1074 0.5544</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2254 0.1131 20000 0.0243 0.4540</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="differences-of-standardized-regression-coefficients">Differences of Standardized Regression Coefficients<a class="anchor" aria-label="anchor" href="#differences-of-standardized-regression-coefficients"></a>
@@ -236,9 +236,9 @@
 <span><span class="co">#&gt; Differences of standardized regression slopes</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;                   est     se     R    2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC-PCTGRT  0.1037 0.1428 20000 -0.1856 0.3771</span></span>
-<span><span class="co">#&gt; NARTIC-PCTSUPP 0.2319 0.1336 20000 -0.0382 0.4868</span></span>
-<span><span class="co">#&gt; PCTGRT-PCTSUPP 0.1282 0.1383 20000 -0.1483 0.3938</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC-PCTGRT  0.1037 0.1417 20000 -0.1820 0.3777</span></span>
+<span><span class="co">#&gt; NARTIC-PCTSUPP 0.2319 0.1330 20000 -0.0407 0.4819</span></span>
+<span><span class="co">#&gt; PCTGRT-PCTSUPP 0.1282 0.1361 20000 -0.1438 0.3880</span></span></code></pre></div>
 </div>
 </div>
 </div>
