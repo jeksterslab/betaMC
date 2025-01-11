@@ -1,6 +1,8 @@
-# betaMC 1.3.2.9000
+# betaMC 1.3.3
 
-* Latest development version.
+## Patch
+
+* Minor edits to tests.
 
 # betaMC 1.3.2
 
