@@ -141,18 +141,18 @@ confidence intervals.</p>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">benchmark</span>, unit <span class="op">=</span> <span class="st">"ms"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   expr       min        lq      mean    median        uq       max neval</span></span>
-<span><span class="co">#&gt; 1   MC  461.2174  474.6056  482.7784  480.6504  486.4882  531.7274    10</span></span>
-<span><span class="co">#&gt; 2   NB 7545.4022 7552.5272 7608.0304 7605.9449 7616.4617 7790.6162    10</span></span></code></pre></div>
+<span><span class="co">#&gt;   expr      min        lq      mean    median       uq       max neval</span></span>
+<span><span class="co">#&gt; 1   MC  475.865  478.0393  489.4269  482.5406  492.815  544.6405    10</span></span>
+<span><span class="co">#&gt; 2   NB 7543.938 7589.4111 7619.5845 7595.3672 7632.097 7832.8759    10</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="summary-of-benchmark-results-relative-to-the-faster-method">Summary of Benchmark Results Relative to the Faster Method<a class="anchor" aria-label="anchor" href="#summary-of-benchmark-results-relative-to-the-faster-method"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">benchmark</span>, unit <span class="op">=</span> <span class="st">"relative"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   expr      min       lq     mean   median     uq      max neval</span></span>
-<span><span class="co">#&gt; 1   MC  1.00000  1.00000  1.00000  1.00000  1.000  1.00000    10</span></span>
-<span><span class="co">#&gt; 2   NB 16.35975 15.91327 15.75885 15.82428 15.656 14.65152    10</span></span></code></pre></div>
+<span><span class="co">#&gt;   expr      min       lq     mean   median       uq      max neval</span></span>
+<span><span class="co">#&gt; 1   MC  1.00000  1.00000  1.00000  1.00000  1.00000  1.00000    10</span></span>
+<span><span class="co">#&gt; 2   NB 15.85311 15.87612 15.56838 15.74037 15.48674 14.38174    10</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
