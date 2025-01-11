@@ -141,9 +141,9 @@ confidence intervals.</p>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">benchmark</span>, unit <span class="op">=</span> <span class="st">"ms"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   expr      min        lq      mean    median       uq       max neval</span></span>
-<span><span class="co">#&gt; 1   MC  475.865  478.0393  489.4269  482.5406  492.815  544.6405    10</span></span>
-<span><span class="co">#&gt; 2   NB 7543.938 7589.4111 7619.5845 7595.3672 7632.097 7832.8759    10</span></span></code></pre></div>
+<span><span class="co">#&gt;   expr      min        lq      mean    median        uq       max neval</span></span>
+<span><span class="co">#&gt; 1   MC  474.329  476.7939  487.3697  479.5814  490.5008  538.6608    10</span></span>
+<span><span class="co">#&gt; 2   NB 7557.450 7607.4716 7642.0855 7631.8784 7647.7390 7837.5642    10</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="summary-of-benchmark-results-relative-to-the-faster-method">Summary of Benchmark Results Relative to the Faster Method<a class="anchor" aria-label="anchor" href="#summary-of-benchmark-results-relative-to-the-faster-method"></a>
@@ -152,7 +152,7 @@ confidence intervals.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">benchmark</span>, unit <span class="op">=</span> <span class="st">"relative"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   expr      min       lq     mean   median       uq      max neval</span></span>
 <span><span class="co">#&gt; 1   MC  1.00000  1.00000  1.00000  1.00000  1.00000  1.00000    10</span></span>
-<span><span class="co">#&gt; 2   NB 15.85311 15.87612 15.56838 15.74037 15.48674 14.38174    10</span></span></code></pre></div>
+<span><span class="co">#&gt; 2   NB 15.93293 15.95547 15.68026 15.91363 15.59169 14.55009    10</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
