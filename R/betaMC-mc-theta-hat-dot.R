@@ -65,16 +65,14 @@
       pd <- .TestPositiveDefinite2(sigmacap)
     }
   }
-  return(
-    list(
-      coef = beta,
-      sigmasq = sigmasq,
-      vechsigmacapx = vechsigmacapx,
-      sigmacapx = sigmacapx,
-      sigmaysq = sigmaysq,
-      sigmayx = sigmayx,
-      sigmacap = sigmacap,
-      pd = pd
-    )
+  list(
+    coef = beta,
+    sigmasq = sigmasq,
+    vechsigmacapx = vechsigmacapx,
+    sigmacapx = sigmacapx,
+    sigmaysq = sigmaysq,
+    sigmayx = sigmayx,
+    sigmacap = sigmacap,
+    pd = pd
   )
 }

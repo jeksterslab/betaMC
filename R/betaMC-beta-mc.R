@@ -74,9 +74,7 @@ BetaMC <- function(object,
         args = lapply(
           X = object$args$mi_output$lm_process,
           FUN = function(x) {
-            return(
-              x$betastar
-            )
+            x$betastar
           }
         )
       )
@@ -93,15 +91,13 @@ BetaMC <- function(object,
     thetahatstar = lapply(
       X = object$thetahatstar,
       FUN = function(x) {
-        return(
-          .BetaStar(
-            beta = x$coef,
-            sigmay = sqrt(
-              x$sigmaysq
-            ),
-            sigmax = sqrt(
-              diag(x$sigmacapx)
-            )
+        .BetaStar(
+          beta = x$coef,
+          sigmay = sqrt(
+            x$sigmaysq
+          ),
+          sigmax = sqrt(
+            diag(x$sigmacapx)
           )
         )
       }
@@ -113,7 +109,5 @@ BetaMC <- function(object,
     "betamc",
     class(out)
   )
-  return(
-    out
-  )
+  out
 }

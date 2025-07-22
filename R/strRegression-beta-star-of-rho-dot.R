@@ -45,20 +45,18 @@
 #' @noRd
 .BetaStarofRho <- function(rhocap,
                            k) {
-  return(
-    .Vec(
-      solve(
-        rhocap[
-          2:k,
-          2:k,
-          drop = FALSE
-        ],
-        rhocap[
-          2:k,
-          1,
-          drop = FALSE
-        ]
-      )
+  .Vec(
+    solve(
+      rhocap[
+        2:k,
+        2:k,
+        drop = FALSE
+      ],
+      rhocap[
+        2:k,
+        1,
+        drop = FALSE
+      ]
     )
   )
 }

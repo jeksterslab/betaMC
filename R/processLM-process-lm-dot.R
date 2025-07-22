@@ -157,53 +157,51 @@
     p = p,
     xnames = xnames
   )
-  return(
-    list(
-      # lm
-      call = call0,
-      object = object,
-      # data
-      ## data used by lm
-      X = X, # {1, X} model matrix
-      x = x, # {y, X}
-      # names
-      varnames = varnames,
-      xnames = xnames,
-      # dimensions
-      dims = dims,
-      n = n,
-      p = p,
-      k = k,
-      q = q,
-      df = df,
-      # moments
-      ## means
-      mu = mu,
-      ## covariances
-      sigmacap = sigmacap,
-      vechsigmacap = vechsigmacap,
-      sigmacapx = sigmacapx,
-      vechsigmacapx = vechsigmacapx,
-      sigma = sigma, # standard deviations
-      sigmacap_consistent = sigmacap_consistent,
-      vechsigmacap_consistent = vechsigmacap_consistent,
-      pinv_of_dcap = pinv_of_dcap,
-      ## correlations
-      rhocap = rhocap,
-      # parameter estimates
-      coef = coef,
-      beta0 = beta0,
-      beta = beta,
-      sigmasq = sigmasq,
-      theta = theta,
-      # effect sizes
-      betastar = betastar,
-      scor = scor,
-      pcor = pcor,
-      rsq = rsq,
-      dif_beta = dif$dif_beta,
-      dif_betastar = dif$dif_betastar,
-      dif_idx = dif$dif_idx
-    )
+  list(
+    # lm
+    call = call0,
+    object = object,
+    # data
+    ## data used by lm
+    X = X, # {1, X} model matrix
+    x = x, # {y, X}
+    # names
+    varnames = varnames,
+    xnames = xnames,
+    # dimensions
+    dims = dims,
+    n = n,
+    p = p,
+    k = k,
+    q = q,
+    df = df,
+    # moments
+    ## means
+    mu = mu,
+    ## covariances
+    sigmacap = sigmacap,
+    vechsigmacap = vechsigmacap,
+    sigmacapx = sigmacapx,
+    vechsigmacapx = vechsigmacapx,
+    sigma = sigma, # standard deviations
+    sigmacap_consistent = sigmacap_consistent,
+    vechsigmacap_consistent = vechsigmacap_consistent,
+    pinv_of_dcap = pinv_of_dcap,
+    ## correlations
+    rhocap = rhocap,
+    # parameter estimates
+    coef = coef,
+    beta0 = beta0,
+    beta = beta,
+    sigmasq = sigmasq,
+    theta = theta,
+    # effect sizes
+    betastar = betastar,
+    scor = scor,
+    pcor = pcor,
+    rsq = rsq,
+    dif_beta = dif$dif_beta,
+    dif_betastar = dif$dif_betastar,
+    dif_idx = dif$dif_idx
   )
 }

@@ -42,11 +42,9 @@
     dif_beta <- NA
     dif_idx <- NA
   }
-  return(
-    list(
-      dif_beta = dif_beta,
-      dif_betastar = dif_betastar,
-      dif_idx = dif_idx
-    )
+  list(
+    dif_beta = dif_beta,
+    dif_betastar = dif_betastar,
+    dif_idx = dif_idx
   )
 }

@@ -21,18 +21,16 @@
 .J <- function(lm_process,
                rsq = NULL,
                fixed_x) {
-  return(
-    .JacobianVechSigmaWRTTheta(
-      beta = lm_process$beta,
-      sigmacapx = lm_process$sigmacap[
-        2:lm_process$k,
-        2:lm_process$k,
-        drop = FALSE
-      ],
-      q = lm_process$q,
-      p = lm_process$p,
-      rsq = rsq,
-      fixed_x = fixed_x
-    )
+  .JacobianVechSigmaWRTTheta(
+    beta = lm_process$beta,
+    sigmacapx = lm_process$sigmacap[
+      2:lm_process$k,
+      2:lm_process$k,
+      drop = FALSE
+    ],
+    q = lm_process$q,
+    p = lm_process$p,
+    rsq = rsq,
+    fixed_x = fixed_x
   )
 }

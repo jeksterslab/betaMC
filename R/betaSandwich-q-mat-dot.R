@@ -35,43 +35,33 @@
                   constant = 0.7) {
   n <- length(h)
   if (type %in% c("hc0", "hc1")) {
-    return(
-      rep(
-        x = 1,
-        times = n
-      )
+    out <- rep(
+      x = 1,
+      times = n
     )
   }
   if (type == "hc2") {
-    return(
-      1 / (
-        (1 - h)^1
-      )
+    out <- 1 / (
+      (1 - h)^1
     )
   }
   if (type == "hc3") {
-    return(
-      1 / (
-        (1 - h)^2
-      )
+    out <- 1 / (
+      (1 - h)^2
     )
   }
   if (type == "hc4") {
     delta <- sapply(
       X = h,
       FUN = function(i) {
-        return(
-          min(
-            4,
-            (n * i / k)
-          )
+        min(
+          4,
+          (n * i / k)
         )
       }
     )
-    return(
-      1 / (
-        (1 - h)^delta
-      )
+    out <- 1 / (
+      (1 - h)^delta
     )
   }
   if (type == "hc4m") {
@@ -79,21 +69,17 @@
       X = h,
       FUN = function(i) {
         tmp <- n * i / k
-        return(
-          min(
-            g1,
-            tmp
-          ) + min(
-            g2,
-            tmp
-          )
+        min(
+          g1,
+          tmp
+        ) + min(
+          g2,
+          tmp
         )
       }
     )
-    return(
-      1 / (
-        (1 - h)^lambda
-      )
+    out <- 1 / (
+      (1 - h)^lambda
     )
   }
   if (type == "hc5") {
@@ -101,21 +87,18 @@
     gamma <- sapply(
       X = h,
       FUN = function(i) {
-        return(
-          min(
-            (n * i / k),
-            max(
-              4,
-              tmp
-            )
+        min(
+          (n * i / k),
+          max(
+            4,
+            tmp
           )
         )
       }
     )
-    return(
-      1 / sqrt(
-        (1 - h)^gamma
-      )
+    out <- 1 / sqrt(
+      (1 - h)^gamma
     )
   }
+  out
 }

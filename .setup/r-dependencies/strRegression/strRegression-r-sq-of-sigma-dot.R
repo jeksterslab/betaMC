@@ -14,15 +14,13 @@
 #' @noRd
 .RSqofSigma <- function(sigmacap,
                         k) {
-  return(
-    1 - (
-      det(sigmacap) / det(
-        sigmacap[
-          2:k,
-          2:k,
-          drop = FALSE
-        ]
-      )
-    ) / sigmacap[1, 1]
-  )
+  1 - (
+    det(sigmacap) / det(
+      sigmacap[
+        2:k,
+        2:k,
+        drop = FALSE
+      ]
+    )
+  ) / sigmacap[1, 1]
 }

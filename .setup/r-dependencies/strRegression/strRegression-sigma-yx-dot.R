@@ -15,12 +15,10 @@
 #' @noRd
 .SigmaYX <- function(beta,
                      sigmacapx) {
-  return(
-    .Vec(
-      crossprod(
-        beta,
-        sigmacapx
-      )
+  .Vec(
+    crossprod(
+      beta,
+      sigmacapx
     )
   )
 }

@@ -32,11 +32,9 @@
 .BetaStar <- function(beta,
                       sigmay,
                       sigmax) {
-  return(
-    .Vec(
-      (
-        sigmax / sigmay
-      ) * beta
-    )
+  .Vec(
+    (
+      sigmax / sigmay
+    ) * beta
   )
 }

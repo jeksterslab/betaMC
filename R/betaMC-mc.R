@@ -236,7 +236,5 @@ MC <- function(object,
     "mc",
     class(out)
   )
-  return(
-    out
-  )
+  out
 }

@@ -27,7 +27,5 @@
       )
     }
   )
-  return(
-    .Vech(out)
-  )
+  .Vech(out)
 }

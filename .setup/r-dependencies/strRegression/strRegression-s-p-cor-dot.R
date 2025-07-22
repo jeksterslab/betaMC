@@ -13,15 +13,13 @@
 #' @noRd
 .SPCor <- function(betastar,
                    sigmacapx) {
-  return(
-    betastar * sqrt(
-      1 / diag(
-        chol2inv(
-          chol(
-            .RhoofSigma(
-              x = sigmacapx,
-              q = 1 / sqrt(diag(sigmacapx))
-            )
+  betastar * sqrt(
+    1 / diag(
+      chol2inv(
+        chol(
+          .RhoofSigma(
+            x = sigmacapx,
+            q = 1 / sqrt(diag(sigmacapx))
           )
         )
       )

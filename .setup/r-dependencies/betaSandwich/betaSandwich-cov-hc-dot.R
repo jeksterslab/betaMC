@@ -31,7 +31,5 @@
   if (type == "hc1") {
     out <- (n / df) * out
   }
-  return(
-    out
-  )
+  out
 }

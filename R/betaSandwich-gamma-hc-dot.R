@@ -18,23 +18,21 @@
                      sigmacap,
                      qcap,
                      n) {
-  return(
-    (
-      1 / n
-    ) * Reduce(
-      f = "+",
-      x = lapply(
-        X = seq_len(n),
-        FUN = function(i) {
-          qcap[i] * tcrossprod(
-            .Vech(
-              tcrossprod(
-                d[i, ]
-              ) - sigmacap
-            )
+  (
+    1 / n
+  ) * Reduce(
+    f = "+",
+    x = lapply(
+      X = seq_len(n),
+      FUN = function(i) {
+        qcap[i] * tcrossprod(
+          .Vech(
+            tcrossprod(
+              d[i, ]
+            ) - sigmacap
           )
-        }
-      )
+        )
+      }
     )
   )
 }

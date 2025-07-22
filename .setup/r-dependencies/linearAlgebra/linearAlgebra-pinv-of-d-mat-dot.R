@@ -11,14 +11,12 @@
 #' @keywords linearAlgebra symmetric internal
 #' @noRd
 .PInvDmat <- function(d) {
-  return(
-    tcrossprod(
-      chol2inv(
-        chol(
-          crossprod(d)
-        )
-      ),
-      d
-    )
+  tcrossprod(
+    chol2inv(
+      chol(
+        crossprod(d)
+      )
+    ),
+    d
   )
 }

@@ -72,9 +72,7 @@ RSqMC <- function(object,
         args = lapply(
           X = object$args$mi_output$lm_process,
           FUN = function(x) {
-            return(
-              x$rsq
-            )
+            x$rsq
           }
         )
       )
@@ -98,7 +96,7 @@ RSqMC <- function(object,
           ) / object$lm_process$df
         )
       )
-      return(c(rsq = rsq, adj = adj))
+      c(rsq = rsq, adj = adj)
     }
   )
   out <- list(
@@ -115,7 +113,5 @@ RSqMC <- function(object,
     "betamc",
     class(out)
   )
-  return(
-    out
-  )
+  out
 }

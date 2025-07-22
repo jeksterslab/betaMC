@@ -110,5 +110,5 @@
       df = lm_process$df
     )
   }
-  return(vcov)
+  vcov
 }
