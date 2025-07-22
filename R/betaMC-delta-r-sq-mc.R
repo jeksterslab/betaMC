@@ -78,7 +78,5 @@ DeltaRSqMC <- function(object,
     "betamc",
     class(out)
   )
-  return(
-    out
-  )
+  out
 }

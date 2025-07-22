@@ -33,23 +33,22 @@
                                    pivot = FALSE,
                                    tol = -1,
                                    ...) {
-  return(
-    tryCatch(
-      {
-        chol(
-          x = x,
-          pivot = pivot,
-          tol = tol,
-          ...
-        )
-        return(TRUE)
-      },
-      warning = function(w) {
-        return(FALSE)
-      },
-      error = function(e) {
-        return(FALSE)
-      }
-    )
+  out <- tryCatch(
+    {
+      chol(
+        x = x,
+        pivot = pivot,
+        tol = tol,
+        ...
+      )
+      TRUE
+    },
+    warning = function(w) {
+      FALSE
+    },
+    error = function(e) {
+      FALSE
+    }
   )
+  out
 }

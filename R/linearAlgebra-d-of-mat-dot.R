@@ -20,13 +20,11 @@
                     center,
                     n,
                     k) {
-  return(
-    x - rep(
-      x = center,
-      times = rep(
-        x = n,
-        times = k
-      )
+  x - rep(
+    x = center,
+    times = rep(
+      x = n,
+      times = k
     )
   )
 }

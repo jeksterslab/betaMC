@@ -187,9 +187,7 @@ MCMI <- function(object,
     X = imp,
     FUN = function(x) {
       call1$data <- x
-      return(
-        eval(expr = call1)
-      )
+      eval(expr = call1)
     }
   )
   lm_processes <- lapply(
@@ -285,7 +283,5 @@ MCMI <- function(object,
     "mc",
     class(out)
   )
-  return(
-    out
-  )
+  out
 }

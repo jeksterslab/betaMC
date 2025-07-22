@@ -100,14 +100,20 @@ summary.mc <- function(object,
     base::print(object$call)
     # nocov end
   }
-  return(
-    list(
-      mean = round(mean, digits = digits),
-      var = round(var, digits = digits),
-      bias = round(bias, digits = digits),
-      rmse = round(rmse, digits = digits),
-      location = round(location, digits = digits),
-      scale = round(scale, digits = digits)
-    )
+  if (!is.null(digits)) {
+    mean <- round(x = mean, digits = digits)
+    var <- round(x = var, digits = digits)
+    bias <- round(x = bias, digits = digits)
+    rmse <- round(x = rmse, digits = digits)
+    location <- round(x = location, digits = digits)
+    scale <- round(x = scale, digits = digits)
+  }
+  list(
+    mean = mean,
+    var = var,
+    bias = bias,
+    rmse = rmse,
+    location = location,
+    scale = scale
   )
 }

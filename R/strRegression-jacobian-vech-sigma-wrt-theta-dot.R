@@ -129,7 +129,5 @@
       theta$vechsigmacapx
     ] <- diag(u)
   }
-  return(
-    jcap
-  )
+  jcap
 }

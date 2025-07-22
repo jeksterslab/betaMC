@@ -19,27 +19,23 @@
 #' @keywords eval internal
 #' @noRd
 .MCBias <- function(object) {
-  return(
-    colMeans(
-      do.call(
-        what = "rbind",
-        args = lapply(
-          X = object$thetahatstar,
-          FUN = function(i) {
-            return(
-              c(
-                i$coef,
-                i$sigmasq,
-                i$vechsigmacapx
-              )
-            )
-          }
-        )
+  colMeans(
+    do.call(
+      what = "rbind",
+      args = lapply(
+        X = object$thetahatstar,
+        FUN = function(i) {
+          c(
+            i$coef,
+            i$sigmasq,
+            i$vechsigmacapx
+          )
+        }
       )
-    ) - c(
-      object$lm_process$beta,
-      object$lm_process$sigmasq,
-      object$lm_process$vechsigmacapx
     )
+  ) - c(
+    object$lm_process$beta,
+    object$lm_process$sigmasq,
+    object$lm_process$vechsigmacapx
   )
 }

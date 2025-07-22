@@ -97,10 +97,10 @@
       pd <- params$pd
       count <- count + 1
       if (count >= iter) {
-        return(NA)
+        params <- NA
       }
     }
-    return(params)
+    params
   }
   thetahatstar <- lapply(
     X = as.data.frame(
@@ -118,5 +118,5 @@
   thetahatstar <- unname(
     thetahatstar[!is.na(thetahatstar)]
   )
-  return(thetahatstar)
+  thetahatstar
 }

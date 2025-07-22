@@ -34,12 +34,10 @@
 .SigmaYSq <- function(beta,
                       sigmasq,
                       sigmacapx) {
-  return(
-    .Vec(
-      sigmasq + crossprod(
-        beta,
-        sigmacapx
-      ) %*% beta
-    )
+  .Vec(
+    sigmasq + crossprod(
+      beta,
+      sigmacapx
+    ) %*% beta
   )
 }

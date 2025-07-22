@@ -75,9 +75,7 @@ SCorMC <- function(object,
         args = lapply(
           X = object$args$mi_output$lm_process,
           FUN = function(x) {
-            return(
-              x$scor
-            )
+            x$scor
           }
         )
       )
@@ -93,11 +91,9 @@ SCorMC <- function(object,
     SIMPLIFY = FALSE,
     FUN = function(theta,
                    std) {
-      return(
-        .SPCor(
-          betastar = std,
-          sigmacapx = theta$sigmacapx
-        )
+      .SPCor(
+        betastar = std,
+        sigmacapx = theta$sigmacapx
       )
     }
   )
@@ -115,7 +111,5 @@ SCorMC <- function(object,
     "betamc",
     class(out)
   )
-  return(
-    out
-  )
+  out
 }

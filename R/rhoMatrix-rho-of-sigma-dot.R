@@ -13,10 +13,8 @@
 #' @noRd
 .RhoofSigma <- function(x,
                         q) {
-  return(
-    q * x * rep(
-      x = q,
-      each = dim(x)[1]
-    )
+  q * x * rep(
+    x = q,
+    each = dim(x)[1]
   )
 }

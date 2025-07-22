@@ -148,15 +148,17 @@ summary.betamc <- function(object,
     )
     # nocov end
   }
-  return(
-    round(
-      .CI(
-        object = object,
-        alpha = alpha
-      ),
+  ci <- .CI(
+    object = object,
+    alpha = alpha
+  )
+  if (!is.null(digits)) {
+    ci <- round(
+      x = ci,
       digits = digits
     )
-  )
+  }
+  ci
 }
 
 #' Sampling Variance-Covariance Matrix Method for an Object of Class
@@ -178,9 +180,7 @@ vcov.betamc <- function(object,
   )
   thetahatstar <- unname(thetahatstar)
   colnames(thetahatstar) <- names(object$est)
-  return(
-    stats::var(thetahatstar)
-  )
+  stats::var(thetahatstar)
 }
 
 #' Estimated Parameter Method for an Object of Class
@@ -196,9 +196,7 @@ vcov.betamc <- function(object,
 #' @export
 coef.betamc <- function(object,
                         ...) {
-  return(
-    object$est
-  )
+  object$est
 }
 
 #' Confidence Intervals Method for an Object of Class
@@ -239,7 +237,5 @@ confint.betamc <- function(object,
     x = varnames
   )
   colnames(ci) <- varnames
-  return(
-    ci
-  )
+  ci
 }

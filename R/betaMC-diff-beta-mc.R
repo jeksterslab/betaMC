@@ -73,9 +73,7 @@ DiffBetaMC <- function(object,
         args = lapply(
           X = object$args$mi_output$lm_process,
           FUN = function(x) {
-            return(
-              x$dif_betastar
-            )
+            x$dif_betastar
           }
         )
       )
@@ -124,7 +122,5 @@ DiffBetaMC <- function(object,
     "betamc",
     class(out)
   )
-  return(
-    out
-  )
+  out
 }

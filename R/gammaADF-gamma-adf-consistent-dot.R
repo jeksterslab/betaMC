@@ -16,27 +16,25 @@
 .GammaADFConsistent <- function(d,
                                 vechsigmacap_consistent,
                                 n) {
-  return(
-    (
-      (1 / n) * (
-        Reduce(
-          f = `+`,
-          x = lapply(
-            X = 1:n,
-            FUN = function(i,
-                           d) {
-              tcrossprod(
-                .Vech(
-                  tcrossprod(d[i, ])
-                )
+  (
+    (1 / n) * (
+      Reduce(
+        f = `+`,
+        x = lapply(
+          X = 1:n,
+          FUN = function(i,
+                         d) {
+            tcrossprod(
+              .Vech(
+                tcrossprod(d[i, ])
               )
-            },
-            d = d
-          )
+            )
+          },
+          d = d
         )
       )
-    ) - tcrossprod(
-      vechsigmacap_consistent
     )
+  ) - tcrossprod(
+    vechsigmacap_consistent
   )
 }

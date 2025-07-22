@@ -27,7 +27,5 @@
     chol(tjcapinversemvn %*% jcap)
   )
   meat <- tjcapinversemvn %*% gammacap %*% inversemvn %*% jcap
-  return(
-    bread %*% meat %*% bread
-  )
+  bread %*% meat %*% bread
 }
