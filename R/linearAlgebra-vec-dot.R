@@ -11,5 +11,5 @@
 #' @noRd
 .Vec <- function(x) {
   dim(x) <- NULL
-  return(x)
+  x
 }

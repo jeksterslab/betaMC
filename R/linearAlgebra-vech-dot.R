@@ -10,12 +10,10 @@
 #' @keywords linearAlgebra vectorization internal
 #' @noRd
 .Vech <- function(x) {
-  return(
-    x[
-      lower.tri(
-        x = x,
-        diag = TRUE
-      )
-    ]
-  )
+  x[
+    lower.tri(
+      x = x,
+      diag = TRUE
+    )
+  ]
 }
