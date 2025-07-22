@@ -99,31 +99,16 @@ Summary of the results of `DiffBetaMC()`.
 
 ``` r
 summary(mvn)
-#> Call:
-#> DiffBetaMC(object = mvn)
-#> 
-#> Differences of standardized regression slopes
-#> type = "mvn"
 #>                   est     se     R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%
 #> NARTIC-PCTGRT  0.1037 0.1361 20000 -0.3471 -0.2551 -0.1697 0.3643 0.4454 0.5263
 #> NARTIC-PCTSUPP 0.2319 0.1250 20000 -0.2087 -0.1023 -0.0209 0.4704 0.5335 0.6083
 #> PCTGRT-PCTSUPP 0.1282 0.1232 20000 -0.2893 -0.1978 -0.1176 0.3669 0.4445 0.5213
 summary(adf)
-#> Call:
-#> DiffBetaMC(object = adf)
-#> 
-#> Differences of standardized regression slopes
-#> type = "adf"
 #>                   est     se     R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%
 #> NARTIC-PCTGRT  0.1037 0.1210 20000 -0.3039 -0.2089 -0.1364 0.3384 0.4029 0.4843
 #> NARTIC-PCTSUPP 0.2319 0.1185 20000 -0.1493 -0.0722 -0.0039 0.4561 0.5372 0.6326
 #> PCTGRT-PCTSUPP 0.1282 0.1220 20000 -0.2650 -0.1937 -0.1153 0.3636 0.4389 0.5356
 summary(hc3)
-#> Call:
-#> DiffBetaMC(object = hc3)
-#> 
-#> Differences of standardized regression slopes
-#> type = "hc3"
 #>                   est     se     R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%
 #> NARTIC-PCTGRT  0.1037 0.1424 20000 -0.3560 -0.2571 -0.1764 0.3828 0.4762 0.5724
 #> NARTIC-PCTSUPP 0.2319 0.1330 20000 -0.2191 -0.1250 -0.0381 0.4808 0.5710 0.6497

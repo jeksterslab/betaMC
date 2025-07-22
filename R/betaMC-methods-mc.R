@@ -95,7 +95,11 @@ summary.mc <- function(object,
     names(location) <- varnames
     rownames(scale) <- colnames(scale) <- varnames
   }
-  base::print(object$call)
+  if (interactive()) {
+    # nocov start
+    base::print(object$call)
+    # nocov end
+  }
   return(
     list(
       mean = round(mean, digits = digits),
