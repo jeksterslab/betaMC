@@ -95,20 +95,7 @@ summary.mc <- function(object,
     names(location) <- varnames
     rownames(scale) <- colnames(scale) <- varnames
   }
-  if (interactive()) {
-    # nocov start
-    base::print(object$call)
-    # nocov end
-  }
-  if (!is.null(digits)) {
-    mean <- round(x = mean, digits = digits)
-    var <- round(x = var, digits = digits)
-    bias <- round(x = bias, digits = digits)
-    rmse <- round(x = rmse, digits = digits)
-    location <- round(x = location, digits = digits)
-    scale <- round(x = scale, digits = digits)
-  }
-  list(
+  out <- list(
     mean = mean,
     var = var,
     bias = bias,
@@ -116,4 +103,44 @@ summary.mc <- function(object,
     location = location,
     scale = scale
   )
+  print_summary <- list(
+    mean = round(x = mean, digits = digits),
+    var = round(x = var, digits = digits),
+    bias = round(x = bias, digits = digits),
+    rmse = round(x = rmse, digits = digits),
+    location = round(x = location, digits = digits),
+    scale = round(x = scale, digits = digits)
+  )
+  attr(
+    x = out,
+    which = "mc"
+  ) <- object
+  attr(
+    x = out,
+    which = "print_summary"
+  ) <- print_summary
+  attr(
+    x = out,
+    which = "digits"
+  ) <- digits
+  class(out) <- "summary.mc"
+  out
+}
+
+#' @noRd
+#' @keywords internal
+#' @exportS3Method print summary.mc
+print.summary.mc <- function(x,
+                             ...) {
+  print_summary <- attr(
+    x = x,
+    which = "print_summary"
+  )
+  object <- attr(
+    x = x,
+    which = "mc"
+  )
+  base::print(object$call)
+  print(print_summary)
+  invisible(x)
 }

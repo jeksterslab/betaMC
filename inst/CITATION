@@ -1,4 +1,4 @@
-year <- 2023
+year <- 2024
 author_text <- "Pesigan, I. J. A. & Cheung, S. F."
 pkg <- meta$Package
 title <- meta$Title
@@ -29,7 +29,7 @@ bibentry(
   bibtype = "Article",
   author = author,
   title = "Monte Carlo confidence intervals for the indirect effect with missing data",
-  year = "2023",
+  year = "2024",
   doi = "10.3758/s13428-023-02114-4",
   journal = "Behavior Research Methods",
   textVersion = paste0(

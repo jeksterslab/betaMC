@@ -14,7 +14,7 @@ Description: Generates Monte Carlo confidence intervals
     and differences in standardized regression coefficients,
     for models fitted by lm().
     'betaMC' combines ideas from Monte Carlo confidence intervals for the indirect effect
-    (Pesigan and Cheung, 2023 <doi:10.3758/s13428-023-02114-4>)
+    (Pesigan and Cheung, 2024 <doi:10.3758/s13428-023-02114-4>)
     and the sampling covariance matrix of regression coefficients
     (Dudgeon, 2017 <doi:10.1007/s11336-017-9563-z>)
     to generate confidence intervals effect sizes in regression.
@@ -28,9 +28,9 @@ Roxygen: list(markdown = TRUE)
 Depends: R (>= 3.5.0)
 Imports: stats
 Suggests: knitr, rmarkdown, testthat, MASS, mice, Amelia
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3.9000
 NeedsCompilation: no
-Packaged: 2025-07-22 20:49:27 UTC; root
+Packaged: 2025-10-18 08:12:28 UTC; root
 Author: Ivan Jacob Agaloos Pesigan [aut, cre, cph] (ORCID:
     <https://orcid.org/0000-0003-4818-8420>)
 Maintainer: Ivan Jacob Agaloos Pesigan <r.jeksterslab@gmail.com>
