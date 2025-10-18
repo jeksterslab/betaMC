@@ -14,8 +14,7 @@
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="betaMC: Example Using the RSqMC Function">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -137,14 +136,29 @@ Function</a>.</p>
 <p>Summary of the results of <code><a href="../reference/RSqMC.html">RSqMC()</a></code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mvn</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; RSqMC(object = mvn)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; R-squared and adjusted R-squared</span></span>
+<span><span class="co">#&gt; type = "mvn"</span></span>
 <span><span class="co">#&gt;        est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
 <span><span class="co">#&gt; rsq 0.8045 0.0557 20000 0.5087 0.5987 0.6625 0.8806 0.9012 0.9233</span></span>
 <span><span class="co">#&gt; adj 0.7906 0.0597 20000 0.4736 0.5700 0.6384 0.8721 0.8941 0.9179</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; RSqMC(object = adf)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; R-squared and adjusted R-squared</span></span>
+<span><span class="co">#&gt; type = "adf"</span></span>
 <span><span class="co">#&gt;        est     se     R  0.05%   0.5%   2.5%  97.5% 99.5% 99.95%</span></span>
 <span><span class="co">#&gt; rsq 0.8045 0.0546 20000 0.5430 0.6174 0.6661 0.8797 0.902 0.9217</span></span>
 <span><span class="co">#&gt; adj 0.7906 0.0585 20000 0.5104 0.5901 0.6423 0.8711 0.895 0.9161</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; RSqMC(object = hc3)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; R-squared and adjusted R-squared</span></span>
+<span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;        est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
 <span><span class="co">#&gt; rsq 0.8045 0.0616 20000 0.4742 0.5806 0.6477 0.8872 0.9111 0.9384</span></span>
 <span><span class="co">#&gt; adj 0.7906 0.0660 20000 0.4367 0.5506 0.6226 0.8792 0.9048 0.9339</span></span></code></pre></div>
@@ -209,11 +223,6 @@ Function</a>.</p>
 Dudgeon, P. (2017). Some improvements in confidence intervals for
 standardized regression coefficients. <em>Psychometrika</em>,
 <em>82</em>(4), 928–951. <a href="https://doi.org/10.1007/s11336-017-9563-z" class="external-link">https://doi.org/10.1007/s11336-017-9563-z</a>
-</div>
-<div id="ref-Pesigan-Cheung-2023" class="csl-entry">
-Pesigan, I. J. A., &amp; Cheung, S. F. (2023). <span>Monte Carlo</span>
-confidence intervals for the indirect effect with missing data.
-<em>Behavior Research Methods</em>, <em>56</em>(3), 1678–1696. <a href="https://doi.org/10.3758/s13428-023-02114-4" class="external-link">https://doi.org/10.3758/s13428-023-02114-4</a>
 </div>
 </div>
 </div>

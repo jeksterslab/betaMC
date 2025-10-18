@@ -14,8 +14,7 @@
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="betaMC: Example Using the DeltaRSqMC Function">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -136,16 +135,31 @@ Function</a>.</p>
 <p>Summary of the results of <code><a href="../reference/DeltaRSqMC.html">DeltaRSqMC()</a></code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mvn</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; DeltaRSqMC(object = mvn)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Improvement in R-squared</span></span>
+<span><span class="co">#&gt; type = "mvn"</span></span>
 <span><span class="co">#&gt;            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
 <span><span class="co">#&gt; NARTIC  0.1859 0.0659 20000 0.0339 0.0529 0.0739 0.3297 0.3903 0.4734</span></span>
 <span><span class="co">#&gt; PCTGRT  0.1177 0.0502 20000 0.0146 0.0245 0.0376 0.2311 0.2838 0.3537</span></span>
 <span><span class="co">#&gt; PCTSUPP 0.0569 0.0338 20000 0.0005 0.0048 0.0105 0.1392 0.1838 0.2408</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; DeltaRSqMC(object = adf)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Improvement in R-squared</span></span>
+<span><span class="co">#&gt; type = "adf"</span></span>
 <span><span class="co">#&gt;            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
 <span><span class="co">#&gt; NARTIC  0.1859 0.0581 20000 0.0097 0.0489 0.0752 0.3002 0.3580 0.4070</span></span>
 <span><span class="co">#&gt; PCTGRT  0.1177 0.0472 20000 0.0046 0.0221 0.0377 0.2200 0.2664 0.3187</span></span>
 <span><span class="co">#&gt; PCTSUPP 0.0569 0.0332 20000 0.0001 0.0027 0.0094 0.1359 0.1750 0.2280</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; DeltaRSqMC(object = hc3)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Improvement in R-squared</span></span>
+<span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
 <span><span class="co">#&gt; NARTIC  0.1859 0.0691 20000 0.0024 0.0173 0.0503 0.3238 0.3799 0.4504</span></span>
 <span><span class="co">#&gt; PCTGRT  0.1177 0.0546 20000 0.0014 0.0100 0.0261 0.2375 0.2924 0.3875</span></span>
@@ -217,11 +231,6 @@ Function</a>.</p>
 Dudgeon, P. (2017). Some improvements in confidence intervals for
 standardized regression coefficients. <em>Psychometrika</em>,
 <em>82</em>(4), 928–951. <a href="https://doi.org/10.1007/s11336-017-9563-z" class="external-link">https://doi.org/10.1007/s11336-017-9563-z</a>
-</div>
-<div id="ref-Pesigan-Cheung-2023" class="csl-entry">
-Pesigan, I. J. A., &amp; Cheung, S. F. (2023). <span>Monte Carlo</span>
-confidence intervals for the indirect effect with missing data.
-<em>Behavior Research Methods</em>, <em>56</em>(3), 1678–1696. <a href="https://doi.org/10.3758/s13428-023-02114-4" class="external-link">https://doi.org/10.3758/s13428-023-02114-4</a>
 </div>
 </div>
 </div>
