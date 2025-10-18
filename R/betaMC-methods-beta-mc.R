@@ -32,10 +32,12 @@ print.betamc <- function(x,
                          alpha = NULL,
                          digits = 4,
                          ...) {
-  summary.betamc(
-    object = x,
-    alpha = alpha,
-    digits = digits
+  print.summary.betamc(
+    summary.betamc(
+      object = x,
+      alpha = alpha,
+      digits = digits
+    )
   )
 }
 
