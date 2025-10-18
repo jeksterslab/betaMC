@@ -71,6 +71,7 @@ lapply(
         hc4 <- summary.mc(MCMI(object, mi = mi, R = R, type = "hc4"))
         hc4m <- summary.mc(MCMI(object, mi = mi, R = R, type = "hc4m"))
         hc5 <- summary.mc(MCMI(object, mi = mi, R = R, type = "hc5"))
+        print.summary.mc(mvn)
         mvn_cov <- as.vector(mvn$var)
         testthat::expect_true(
           all(

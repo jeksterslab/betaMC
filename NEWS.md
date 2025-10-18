@@ -2,7 +2,7 @@
 
 ## Patch
 
-* Minor edits to tests.
+* Minor edits to methods.
 
 # betaMC 1.3.2
 

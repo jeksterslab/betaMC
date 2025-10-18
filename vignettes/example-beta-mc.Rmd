@@ -100,16 +100,31 @@ Summary of the results of `BetaMC()`.
 
 ``` r
 summary(mvn)
+#> Call:
+#> BetaMC(object = mvn)
+#> 
+#> Standardized regression slopes
+#> type = "mvn"
 #>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
 #> NARTIC  0.4951 0.0757 20000 0.2505 0.2922 0.3388 0.6335 0.6806 0.7295
 #> PCTGRT  0.3915 0.0769 20000 0.1443 0.1934 0.2379 0.5399 0.5906 0.6539
 #> PCTSUPP 0.2632 0.0749 20000 0.0296 0.0791 0.1171 0.4125 0.4593 0.5091
 summary(adf)
+#> Call:
+#> BetaMC(object = adf)
+#> 
+#> Standardized regression slopes
+#> type = "adf"
 #>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
 #> NARTIC  0.4951 0.0676 20000 0.2581 0.3091 0.3518 0.6158 0.6558 0.6931
 #> PCTGRT  0.3915 0.0711 20000 0.1283 0.1942 0.2411 0.5188 0.5575 0.6031
 #> PCTSUPP 0.2632 0.0768 20000 0.0136 0.0596 0.1084 0.4085 0.4548 0.5068
 summary(hc3)
+#> Call:
+#> BetaMC(object = hc3)
+#> 
+#> Standardized regression slopes
+#> type = "hc3"
 #>            est     se     R   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
 #> NARTIC  0.4951 0.0794 20000  0.2111 0.2706 0.3227 0.6340 0.6743 0.7262
 #> PCTGRT  0.3915 0.0825 20000  0.0956 0.1568 0.2149 0.5386 0.5834 0.6322

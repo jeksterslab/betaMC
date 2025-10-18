@@ -26,6 +26,7 @@ lapply(
         out <- PCorMC(mc)
         print.betamc(out)
         summary.betamc(out)
+        print.summary.betamc(summary.betamc(out))
         coef.betamc(out)
         vcov.betamc(out)
         confint.betamc(out)
