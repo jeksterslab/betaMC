@@ -213,10 +213,8 @@ confint.betamc <- function(object,
                            level = 0.95,
                            ...) {
   if (is.null(parm)) {
-    parm <- seq_len(
-      length(
-        object$est
-      )
+    parm <- seq_along(
+      object$est
     )
   }
   ci <- .CI(
