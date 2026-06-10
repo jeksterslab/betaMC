@@ -177,14 +177,14 @@ Advantages of Monte Carlo confidence intervals for indirect effects.
 \doi{10.1080/19312458.2012.679848}
 }
 \seealso{
-Other Beta Monte Carlo Functions: 
-\code{\link{BetaMC}()},
-\code{\link{DeltaRSqMC}()},
-\code{\link{DiffBetaMC}()},
-\code{\link{MCMI}()},
-\code{\link{PCorMC}()},
-\code{\link{RSqMC}()},
-\code{\link{SCorMC}()}
+Other Beta Monte Carlo Functions:
+\code{\link[=BetaMC]{BetaMC()}},
+\code{\link[=DeltaRSqMC]{DeltaRSqMC()}},
+\code{\link[=DiffBetaMC]{DiffBetaMC()}},
+\code{\link[=MCMI]{MCMI()}},
+\code{\link[=PCorMC]{PCorMC()}},
+\code{\link[=RSqMC]{RSqMC()}},
+\code{\link[=SCorMC]{SCorMC()}}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

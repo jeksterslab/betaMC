@@ -70,14 +70,14 @@ confint(out, level = 0.95)
 
 }
 \seealso{
-Other Beta Monte Carlo Functions: 
-\code{\link{BetaMC}()},
-\code{\link{DeltaRSqMC}()},
-\code{\link{MC}()},
-\code{\link{MCMI}()},
-\code{\link{PCorMC}()},
-\code{\link{RSqMC}()},
-\code{\link{SCorMC}()}
+Other Beta Monte Carlo Functions:
+\code{\link[=BetaMC]{BetaMC()}},
+\code{\link[=DeltaRSqMC]{DeltaRSqMC()}},
+\code{\link[=MC]{MC()}},
+\code{\link[=MCMI]{MCMI()}},
+\code{\link[=PCorMC]{PCorMC()}},
+\code{\link[=RSqMC]{RSqMC()}},
+\code{\link[=SCorMC]{SCorMC()}}
 }
 \author{
 Ivan Jacob Agaloos Pesigan
