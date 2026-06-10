@@ -240,9 +240,7 @@
 % confint(out)
 %% end.rcode
 
-\nocite{RCoreTeam-2025}
-
-\nocite{Pesigan-Cheung-2023}
+\nocite{RCoreTeam-2026}
 
 \printbibliography
 

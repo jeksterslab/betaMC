@@ -34,6 +34,8 @@ pkg_ver <- c()
 
 ver <- c()
 
+pkg_bioconductor <- c()
+
 ignore <- "^vignettes$"
 
 license <- "mit"

@@ -102,8 +102,8 @@ with:
 
 %% begin.rcode
 % #| eval = FALSE
-% if (!require("remotes")) install.packages("remotes")
-% remotes::install_github("jeksterslab/betaMC")
+% if (!require("pak")) install.packages("pak")
+% pak::pkg_install("jeksterslab/betaMC")
 %% end.rcode
 
 \section*{More Information}
@@ -112,7 +112,7 @@ See
 \href{https://jeksterslab.github.io/betaMC/index.html}{GitHub Pages}
 for package documentation.
 
-\nocite{RCoreTeam-2025}
+\nocite{RCoreTeam-2026}
 
 \printbibliography
 
