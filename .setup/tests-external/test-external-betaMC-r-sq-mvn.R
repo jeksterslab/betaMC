@@ -46,6 +46,7 @@ lapply(
     testthat::test_that(
       paste(text, "coef"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -58,6 +59,7 @@ lapply(
     testthat::test_that(
       paste(text, "se"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -70,6 +72,7 @@ lapply(
     testthat::test_that(
       paste(text, "ci.lower"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -82,6 +85,7 @@ lapply(
     testthat::test_that(
       paste(text, "ci.upper"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(

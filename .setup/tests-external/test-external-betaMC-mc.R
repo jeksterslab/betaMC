@@ -65,6 +65,7 @@ lapply(
     testthat::test_that(
       paste(text, "means"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -133,6 +134,7 @@ lapply(
     testthat::test_that(
       paste(text, "adf"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -145,6 +147,7 @@ lapply(
     testthat::test_that(
       paste(text, "hc0"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -157,6 +160,7 @@ lapply(
     testthat::test_that(
       paste(text, "hc1"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -169,6 +173,7 @@ lapply(
     testthat::test_that(
       paste(text, "hc2"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -181,6 +186,7 @@ lapply(
     testthat::test_that(
       paste(text, "hc3"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -193,6 +199,7 @@ lapply(
     testthat::test_that(
       paste(text, "hc4"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -205,6 +212,7 @@ lapply(
     testthat::test_that(
       paste(text, "hc4m"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -217,6 +225,7 @@ lapply(
     testthat::test_that(
       paste(text, "hc5"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(

@@ -61,6 +61,7 @@ lapply(
     testthat::test_that(
       paste(text, "means"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -129,6 +130,7 @@ lapply(
     testthat::test_that(
       paste(text, "adf"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -142,6 +144,7 @@ lapply(
     testthat::test_that(
       paste(text, "adf"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -155,6 +158,7 @@ lapply(
     testthat::test_that(
       paste(text, "adf"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -168,6 +172,7 @@ lapply(
     testthat::test_that(
       paste(text, "adf"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -181,6 +186,7 @@ lapply(
     testthat::test_that(
       paste(text, "adf"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -194,6 +200,7 @@ lapply(
     testthat::test_that(
       paste(text, "adf"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -207,6 +214,7 @@ lapply(
     testthat::test_that(
       paste(text, "adf"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
@@ -220,6 +228,7 @@ lapply(
     testthat::test_that(
       paste(text, "adf"),
       {
+        testthat::skip_on_cran()
         testthat::expect_true(
           all(
             abs(
