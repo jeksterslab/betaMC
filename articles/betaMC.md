@@ -124,9 +124,9 @@ BetaMC(mvn, alpha = 0.05)
 #> Standardized regression slopes
 #> type = "mvn"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0758 20000 0.3404 0.6341
-#> PCTGRT  0.3915 0.0766 20000 0.2366 0.5365
-#> PCTSUPP 0.2632 0.0749 20000 0.1188 0.4103
+#> NARTIC  0.4951 0.0759 20000 0.3381 0.6340
+#> PCTGRT  0.3915 0.0772 20000 0.2390 0.5411
+#> PCTSUPP 0.2632 0.0743 20000 0.1174 0.4099
 ```
 
 #### Asymptotic distribution-free Approach

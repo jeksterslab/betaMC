@@ -1,6 +1,14 @@
 # Changelog
 
+## betaMC 1.3.4.9000
+
+### Patch
+
+- Latest development version.
+
 ## betaMC 1.3.4
+
+CRAN release: 2026-06-11
 
 ### Patch
 
