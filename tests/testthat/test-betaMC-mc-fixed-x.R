@@ -14,6 +14,16 @@ lapply(
     # when the regressors are multivariate normal
     # and the error term is homoskedastic and normally distributed.
     message(text)
+
+    set.seed(42)
+
+    if (!identical(Sys.getenv("NOT_CRAN"), "true") && !interactive()) {
+      message("CRAN: tests skipped.")
+      # nolint start
+      return(invisible(NULL))
+      # nolint end
+    }
+
     testthat::test_that(
       paste(text, "means"),
       {
