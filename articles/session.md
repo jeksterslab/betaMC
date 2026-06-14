@@ -68,10 +68,10 @@ installed.packages()[, c("Package", "Version")]
 #> assertthat        "assertthat"        "0.2.1"     
 #> backports         "backports"         "1.5.1"     
 #> base64enc         "base64enc"         "0.1-6"     
-#> betaDelta         "betaDelta"         "1.0.7"     
-#> betaMC            "betaMC"            "1.3.4"     
-#> betaNB            "betaNB"            "1.0.7"     
-#> betaSandwich      "betaSandwich"      "1.0.9"     
+#> betaDelta         "betaDelta"         "1.0.7.9000"
+#> betaMC            "betaMC"            "1.3.4.9000"
+#> betaNB            "betaNB"            "1.0.7.9000"
+#> betaSandwich      "betaSandwich"      "1.0.9.9000"
 #> BH                "BH"                "1.90.0-1"  
 #> bibtex            "bibtex"            "0.5.2"     
 #> biocmake          "biocmake"          "1.4.0"     
@@ -127,7 +127,7 @@ installed.packages()[, c("Package", "Version")]
 #> diffobj           "diffobj"           "0.3.6"     
 #> digest            "digest"            "0.6.39"    
 #> dir.expiry        "dir.expiry"        "1.20.0"    
-#> distributional    "distributional"    "0.7.0"     
+#> distributional    "distributional"    "0.7.1"     
 #> distro            "distro"            "0.1.1"     
 #> doBy              "doBy"              "4.7.1"     
 #> docopt            "docopt"            "0.7.2"     
@@ -364,7 +364,7 @@ installed.packages()[, c("Package", "Version")]
 #> RSQLite           "RSQLite"           "3.53.1"    
 #> rstan             "rstan"             "2.32.7"    
 #> rstantools        "rstantools"        "2.6.0"     
-#> rstudioapi        "rstudioapi"        "0.18.0"    
+#> rstudioapi        "rstudioapi"        "0.19.0"    
 #> RUnit             "RUnit"             "0.4.33.1"  
 #> rversions         "rversions"         "3.0.0"     
 #> rvest             "rvest"             "1.0.5"     
@@ -375,7 +375,7 @@ installed.packages()[, c("Package", "Version")]
 #> selectr           "selectr"           "0.5-1"     
 #> sem               "sem"               "3.1-16"    
 #> semlbci           "semlbci"           "0.11.6"    
-#> semmcci           "semmcci"           "1.1.6"     
+#> semmcci           "semmcci"           "1.1.6.9000"
 #> semPlot           "semPlot"           "1.1.8"     
 #> sessioninfo       "sessioninfo"       "1.2.4"     
 #> sfd               "sfd"               "0.1.0"     
@@ -480,21 +480,21 @@ installed.packages()[, c("Package", "Version")]
     #> CPU(s):                                  4
     #> On-line CPU(s) list:                     0-3
     #> Vendor ID:                               AuthenticAMD
-    #> Model name:                              AMD EPYC 9V74 80-Core Processor
+    #> Model name:                              AMD EPYC 7763 64-Core Processor
     #> CPU family:                              25
-    #> Model:                                   17
+    #> Model:                                   1
     #> Thread(s) per core:                      2
     #> Core(s) per socket:                      2
     #> Socket(s):                               1
     #> Stepping:                                1
-    #> BogoMIPS:                                5192.28
+    #> BogoMIPS:                                4890.86
     #> Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl tsc_reliable nonstop_tsc cpuid extd_apicid aperfmperf tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves user_shstk clzero xsaveerptr rdpru arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload umip vaes vpclmulqdq rdpid fsrm
     #> Virtualization:                          AMD-V
     #> Hypervisor vendor:                       Microsoft
     #> Virtualization type:                     full
     #> L1d cache:                               64 KiB (2 instances)
     #> L1i cache:                               64 KiB (2 instances)
-    #> L2 cache:                                2 MiB (2 instances)
+    #> L2 cache:                                1 MiB (2 instances)
     #> L3 cache:                                32 MiB (1 instance)
     #> NUMA node(s):                            1
     #> NUMA node0 CPU(s):                       0-3
@@ -521,6 +521,6 @@ installed.packages()[, c("Package", "Version")]
 ## Memory
 
     #>                total        used        free      shared  buff/cache   available
-    #> Mem:            15Gi       1.6Gi       1.7Gi        47Mi        12Gi        14Gi
-    #> Swap:          3.0Gi        44Ki       3.0Gi
-    #> Total:          18Gi       1.6Gi       4.7Gi
+    #> Mem:            15Gi       1.6Gi       1.9Gi        47Mi        12Gi        14Gi
+    #> Swap:          3.0Gi          0B       3.0Gi
+    #> Total:          18Gi       1.6Gi       4.9Gi
