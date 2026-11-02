@@ -38,7 +38,7 @@
 `#>  [9] grid_4.6.2       iterators_1.0.14 mice_3.19.0      foreach_1.5.2   `\
 `#> [13] jomo_2.7-6       rprojroot_2.1.1  glmnet_5.2       Matrix_1.7-6    `\
 `#> [17] nnet_7.3-21      backports_1.5.1  survival_3.8-12  purrr_1.2.2     `\
-`#> [21] rProject_0.0.60  codetools_0.2-20 reformulas_0.4.4 Rdpack_2.6.6    `\
+`#> [21] rProject_0.0.61  codetools_0.2-20 reformulas_0.4.4 Rdpack_2.6.6    `\
 `#> [25] cli_3.6.6.9000   rlang_1.3.0      rbibutils_2.4.1  splines_4.6.2   `\
 `#> [29] otel_0.2.0       pan_2.0          tools_4.6.2      nloptr_2.2.1    `\
 `#> [33] minqa_1.2.8      dplyr_1.2.1      broom_1.0.13     rpart_4.1.27    `\
@@ -53,7 +53,7 @@
 [`installed.packages`](https://rdrr.io/r/utils/installed.packages.html)`(``)``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"Package"``, ``"Version"``)``]`\
 `#>                   Package             Version     `\
 `#> betaMC            "betaMC"            "1.3.4.9000"`\
-`#> rProject          "rProject"          "0.0.60"    `\
+`#> rProject          "rProject"          "0.0.61"    `\
 `#> abind             "abind"             "1.4-8"     `\
 `#> Amelia            "Amelia"            "1.8.3"     `\
 `#> arm               "arm"               "1.15-3"    `\
@@ -473,7 +473,7 @@
     #> Socket(s):                               1
     #> Stepping:                                0
     #> Frequency boost:                         enabled
-    #> CPU(s) scaling MHz:                      45%
+    #> CPU(s) scaling MHz:                      57%
     #> CPU max MHz:                             5060.9761
     #> CPU min MHz:                             1219.5129
     #> BogoMIPS:                                4990.83
@@ -507,6 +507,6 @@
 ## Memory
 
     #>                total        used        free      shared  buff/cache   available
-    #> Mem:            44Gi       4.4Gi        14Gi        23Mi        26Gi        40Gi
+    #> Mem:            44Gi       3.8Gi        14Gi        14Mi        26Gi        40Gi
     #> Swap:           22Gi          0B        22Gi
-    #> Total:          66Gi       4.4Gi        36Gi
+    #> Total:          66Gi       3.8Gi        36Gi
