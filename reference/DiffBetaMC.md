@@ -66,6 +66,7 @@ significance level.
 Other Beta Monte Carlo Functions:
 [`BetaMC()`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md),
 [`DeltaRSqMC()`](https://github.com/jeksterslab/betaMC/reference/DeltaRSqMC.md),
+[`FSqMC()`](https://github.com/jeksterslab/betaMC/reference/FSqMC.md),
 [`MC()`](https://github.com/jeksterslab/betaMC/reference/MC.md),
 [`MCMI()`](https://github.com/jeksterslab/betaMC/reference/MCMI.md),
 [`PCorMC()`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md),

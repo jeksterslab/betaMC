@@ -106,7 +106,17 @@ elements:
 
 - thetahatstar:
 
-  Sampling distribution of parameter estimates.
+  Sampling distribution of parameter estimates (a matrix, one draw per
+  row).
+
+- vechsigmacap:
+
+  Sampling distribution of the half-vectorization of the model-implied
+  covariance matrix (a matrix, one draw per row).
+
+- es:
+
+  Sampling distribution of the effect sizes (a list of matrices).
 
 - fun:
 
@@ -157,6 +167,7 @@ Other Beta Monte Carlo Functions:
 [`BetaMC()`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md),
 [`DeltaRSqMC()`](https://github.com/jeksterslab/betaMC/reference/DeltaRSqMC.md),
 [`DiffBetaMC()`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md),
+[`FSqMC()`](https://github.com/jeksterslab/betaMC/reference/FSqMC.md),
 [`MCMI()`](https://github.com/jeksterslab/betaMC/reference/MCMI.md),
 [`PCorMC()`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md),
 [`RSqMC()`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md),
@@ -187,26 +198,9 @@ mc
 #> The first set of simulated parameter estimates
 #> and model-implied covariance matrix.
 #> 
-#> $coef
-#> [1] 0.08131373 0.18654776 0.15899393
-#> 
-#> $sigmasq
-#> [1] 19.0325
-#> 
-#> $vechsigmacapx
-#> [1] 3796.5610  605.8221  607.1206  306.2053  191.5167  529.1519
-#> 
-#> $sigmacapx
-#>           [,1]     [,2]     [,3]
-#> [1,] 3796.5610 605.8221 607.1206
-#> [2,]  605.8221 306.2053 191.5167
-#> [3,]  607.1206 191.5167 529.1519
-#> 
-#> $sigmaysq
-#> [1] 113.6057
-#> 
-#> $sigmayx
-#> [1] 518.2558 136.8336 169.2262
+#> $thetahatstar
+#>  [1] 8.131373e-02 1.865478e-01 1.589939e-01 1.903250e+01 3.796561e+03
+#>  [6] 6.058221e+02 6.071206e+02 3.062053e+02 1.915167e+02 5.291519e+02
 #> 
 #> $sigmacap
 #>          [,1]      [,2]     [,3]     [,4]
@@ -214,9 +208,6 @@ mc
 #> [2,] 518.2558 3796.5610 605.8221 607.1206
 #> [3,] 136.8336  605.8221 306.2053 191.5167
 #> [4,] 169.2262  607.1206 191.5167 529.1519
-#> 
-#> $pd
-#> [1] TRUE
 #> 
 # The `mc` object can be passed as the first argument
 # to the following functions

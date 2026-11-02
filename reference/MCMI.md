@@ -115,7 +115,17 @@ elements:
 
 - thetahatstar:
 
-  Sampling distribution of parameter estimates.
+  Sampling distribution of parameter estimates (a matrix, one draw per
+  row).
+
+- vechsigmacap:
+
+  Sampling distribution of the half-vectorization of the model-implied
+  covariance matrix (a matrix, one draw per row).
+
+- es:
+
+  Sampling distribution of the effect sizes (a list of matrices).
 
 - fun:
 
@@ -160,6 +170,7 @@ Other Beta Monte Carlo Functions:
 [`BetaMC()`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md),
 [`DeltaRSqMC()`](https://github.com/jeksterslab/betaMC/reference/DeltaRSqMC.md),
 [`DiffBetaMC()`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md),
+[`FSqMC()`](https://github.com/jeksterslab/betaMC/reference/FSqMC.md),
 [`MC()`](https://github.com/jeksterslab/betaMC/reference/MC.md),
 [`PCorMC()`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md),
 [`RSqMC()`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md),
@@ -198,26 +209,9 @@ mc
 #> The first set of simulated parameter estimates
 #> and model-implied covariance matrix.
 #> 
-#> $coef
-#> [1] 0.08360573 0.18269795 0.15525579
-#> 
-#> $sigmasq
-#> [1] 20.30319
-#> 
-#> $vechsigmacapx
-#> [1] 3712.8505  609.1971  635.5153  332.2336  201.1010  549.9604
-#> 
-#> $sigmacapx
-#>           [,1]     [,2]     [,3]
-#> [1,] 3712.8505 609.1971 635.5153
-#> [2,]  609.1971 332.2336 201.1010
-#> [3,]  635.5153 201.1010 549.9604
-#> 
-#> $sigmaysq
-#> [1] 117.1189
-#> 
-#> $sigmayx
-#> [1] 520.3821 142.8529 175.2580
+#> $thetahatstar
+#>  [1] 8.360573e-02 1.826980e-01 1.552558e-01 2.030319e+01 3.712851e+03
+#>  [6] 6.091971e+02 6.355153e+02 3.322336e+02 2.011010e+02 5.499604e+02
 #> 
 #> $sigmacap
 #>          [,1]      [,2]     [,3]     [,4]
@@ -225,9 +219,6 @@ mc
 #> [2,] 520.3821 3712.8505 609.1971 635.5153
 #> [3,] 142.8529  609.1971 332.2336 201.1010
 #> [4,] 175.2580  635.5153 201.1010 549.9604
-#> 
-#> $pd
-#> [1] TRUE
 #> 
 # The `mc` object can be passed as the first argument
 # to the following functions

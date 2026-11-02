@@ -171,7 +171,16 @@ of class <code>mc</code> which is a list with the following elements:</p><dl><dt
 <dd><p>Parameter estimates.</p></dd>
 
 <dt>thetahatstar</dt>
-<dd><p>Sampling distribution of parameter estimates.</p></dd>
+<dd><p>Sampling distribution of parameter estimates
+(a matrix, one draw per row).</p></dd>
+
+<dt>vechsigmacap</dt>
+<dd><p>Sampling distribution of the half-vectorization
+of the model-implied covariance matrix (a matrix, one draw per row).</p></dd>
+
+<dt>es</dt>
+<dd><p>Sampling distribution of the effect sizes
+(a list of matrices).</p></dd>
 
 <dt>fun</dt>
 <dd><p>Function used ("MCMI").</p></dd>
@@ -218,6 +227,7 @@ Advantages of Monte Carlo confidence intervals for indirect effects.
 <code><a href="BetaMC.html">BetaMC()</a></code>,
 <code><a href="DeltaRSqMC.html">DeltaRSqMC()</a></code>,
 <code><a href="DiffBetaMC.html">DiffBetaMC()</a></code>,
+<code><a href="FSqMC.html">FSqMC()</a></code>,
 <code><a href="MC.html">MC()</a></code>,
 <code><a href="PCorMC.html">PCorMC()</a></code>,
 <code><a href="RSqMC.html">RSqMC()</a></code>,
@@ -256,26 +266,9 @@ Advantages of Monte Carlo confidence intervals for indirect effects.
 <span class="r-out co"><span class="r-pr">#&gt;</span> The first set of simulated parameter estimates</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> and model-implied covariance matrix.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $coef</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.08360573 0.18269795 0.15525579</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sigmasq</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20.30319</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $vechsigmacapx</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3712.8505  609.1971  635.5153  332.2336  201.1010  549.9604</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sigmacapx</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]     [,2]     [,3]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 3712.8505 609.1971 635.5153</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]  609.1971 332.2336 201.1010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]  635.5153 201.1010 549.9604</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sigmaysq</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 117.1189</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $sigmayx</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 520.3821 142.8529 175.2580</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $thetahatstar</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 8.360573e-02 1.826980e-01 1.552558e-01 2.030319e+01 3.712851e+03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] 6.091971e+02 6.355153e+02 3.322336e+02 2.011010e+02 5.499604e+02</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sigmacap</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          [,1]      [,2]     [,3]     [,4]</span>
@@ -283,9 +276,6 @@ Advantages of Monte Carlo confidence intervals for indirect effects.
 <span class="r-out co"><span class="r-pr">#&gt;</span> [2,] 520.3821 3712.8505 609.1971 635.5153</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [3,] 142.8529  609.1971 332.2336 201.1010</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4,] 175.2580  635.5153 201.1010 549.9604</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $pd</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="co"># The `mc` object can be passed as the first argument</span></span></span>
 <span class="r-in"><span><span class="co"># to the following functions</span></span></span>

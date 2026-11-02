@@ -46,6 +46,12 @@
   : Estimate Differences of Standardized Slopes and Generate the
   Corresponding Sampling Distribution Using the Monte Carlo Method
 
+## Cohen’s f-Squared
+
+- [`FSqMC()`](https://github.com/jeksterslab/betaMC/reference/FSqMC.md)
+  : Estimate Cohen's f-Squared and Generate the Corresponding Sampling
+  Distribution Using the Monte Carlo Method
+
 ## Methods
 
 - [`coef(`*`<betamc>`*`)`](https://github.com/jeksterslab/betaMC/reference/coef.betamc.md)
