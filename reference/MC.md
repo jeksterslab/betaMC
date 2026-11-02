@@ -115,19 +115,20 @@ elements:
 ## Details
 
 Let the parameter vector of the unstandardized regression model be given
-by \$\$ \boldsymbol{\theta} = \left\\ \mathbf{b}, \sigma^{2},
+by \$\$ \boldsymbol{\theta} = \left\\{ \mathbf{b}, \sigma^{2},
 \mathrm{vech} \left( \boldsymbol{\Sigma}\_{\mathbf{X}\mathbf{X}} \right)
-\right\\ \$\$ where \\\mathbf{b}\\ is the vector of regression slopes,
-\\\sigma^{2}\\ is the error variance, and \\ \mathrm{vech} \left(
-\boldsymbol{\Sigma}\_{\mathbf{X}\mathbf{X}} \right) \\ is the vector of
-unique elements of the covariance matrix of the regressor variables. The
-empirical sampling distribution of \\\boldsymbol{\theta}\\ is generated
-using the Monte Carlo method, that is, random values of parameter
-estimates are sampled from the multivariate normal distribution using
-the estimated parameter vector as the mean vector and the specified
-sampling covariance matrix using the `type` argument as the covariance
-matrix. A replacement sampling approach is implemented to ensure that
-the model-implied covariance matrix is positive definite.
+\right\\} \$\$ where \\(\mathbf{b}\\) is the vector of regression
+slopes, \\(\sigma^{2}\\) is the error variance, and \\( \mathrm{vech}
+\left( \boldsymbol{\Sigma}\_{\mathbf{X}\mathbf{X}} \right) \\) is the
+vector of unique elements of the covariance matrix of the regressor
+variables. The empirical sampling distribution of
+\\(\boldsymbol{\theta}\\) is generated using the Monte Carlo method,
+that is, random values of parameter estimates are sampled from the
+multivariate normal distribution using the estimated parameter vector as
+the mean vector and the specified sampling covariance matrix using the
+`type` argument as the covariance matrix. A replacement sampling
+approach is implemented to ensure that the model-implied covariance
+matrix is positive definite.
 
 ## References
 

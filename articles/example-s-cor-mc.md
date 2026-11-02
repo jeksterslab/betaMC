@@ -7,71 +7,53 @@ function from the `betaMC` package. In this example, we use the data set
 and the model used in [betaMC: Example Using the BetaMC
 Function](https://github.com/jeksterslab/betaMC/articles/example-beta-mc.md).
 
-``` r
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`
 
-library(betaMC)
-```
-
-``` r
-
-df <- betaMC::nas1982
-```
+\
+`df`` ``<-`` ``betaMC``::`[`nas1982`](https://github.com/jeksterslab/betaMC/reference/nas1982.md)
 
 ### Regression
 
 Fit the regression model using the
 [`lm()`](https://rdrr.io/r/stats/lm.html) function.
 
-``` r
-
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-```
+\
+`object`` ``<-`` `[`lm`](https://rdrr.io/r/stats/lm.html)`(``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
 
 ### Monte Carlo Sampling Distribution of Parameters
 
 #### Normal-Theory Approach
 
-``` r
-
-mvn <- MC(object, type = "mvn")
-```
+\
+`mvn`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
 
 #### Asymptotic distribution-free Approach
 
-``` r
-
-adf <- MC(object, type = "adf")
-```
+\
+`adf`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
-``` r
-
-hc3 <- MC(object, type = "hc3")
-```
+\
+`hc3`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
 
 ### Semipartial Correlation Coefficients
 
 #### Normal-Theory Approach
 
-``` r
-
-mvn <- SCorMC(mvn)
-```
+\
+`mvn`` ``<-`` `[`SCorMC`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md)`(``mvn``)`
 
 #### Asymptotic distribution-free Approach
 
-``` r
-
-adf <- SCorMC(adf)
-```
+\
+`adf`` ``<-`` `[`SCorMC`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md)`(``adf``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
-``` r
-
-hc3 <- SCorMC(hc3)
-```
+\
+`hc3`` ``<-`` `[`SCorMC`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md)`(``hc3``)`
 
 ## Methods
 
@@ -80,102 +62,94 @@ hc3 <- SCorMC(hc3)
 Summary of the results of
 [`SCorMC()`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md).
 
-``` r
-
-summary(mvn)
-#> Call:
-#> SCorMC(object = mvn)
-#> 
-#> Semipartial correlations
-#> type = "mvn"
-#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4312 0.0770 20000 0.1705 0.2285 0.2707 0.5723 0.6244 0.6898
-#> PCTGRT  0.3430 0.0744 20000 0.1191 0.1573 0.1947 0.4857 0.5435 0.6031
-#> PCTSUPP 0.2385 0.0701 20000 0.0265 0.0644 0.1013 0.3770 0.4287 0.4858
-summary(adf)
-#> Call:
-#> SCorMC(object = adf)
-#> 
-#> Semipartial correlations
-#> type = "adf"
-#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4312 0.0707 20000 0.0893 0.2103 0.2706 0.5477 0.5924 0.6456
-#> PCTGRT  0.3430 0.0709 20000 0.0766 0.1453 0.1916 0.4688 0.5152 0.5804
-#> PCTSUPP 0.2385 0.0697 20000 0.0013 0.0502 0.0951 0.3689 0.4170 0.4716
-summary(hc3)
-#> Call:
-#> SCorMC(object = hc3)
-#> 
-#> Semipartial correlations
-#> type = "hc3"
-#>            est     se     R   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4312 0.0860 20000  0.0553 0.1454 0.2258 0.5654 0.6173 0.6797
-#> PCTGRT  0.3430 0.0832 20000  0.0490 0.1077 0.1609 0.4885 0.5421 0.6048
-#> PCTSUPP 0.2385 0.0789 20000 -0.0352 0.0247 0.0772 0.3897 0.4495 0.5207
-```
+\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``mvn``)`\
+`#> Call:`\
+`#> SCorMC(object = mvn)`\
+`#> `\
+`#> Semipartial correlations`\
+`#> type = "mvn"`\
+`#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
+`#> NARTIC  0.4312 0.0771 20000 0.1828 0.2286 0.2718 0.5720 0.6255 0.6888`\
+`#> PCTGRT  0.3430 0.0733 20000 0.1112 0.1551 0.1947 0.4823 0.5328 0.5784`\
+`#> PCTSUPP 0.2385 0.0700 20000 0.0262 0.0674 0.1030 0.3786 0.4365 0.4887`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``adf``)`\
+`#> Call:`\
+`#> SCorMC(object = adf)`\
+`#> `\
+`#> Semipartial correlations`\
+`#> type = "adf"`\
+`#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
+`#> NARTIC  0.4312 0.0708 20000 0.1157 0.2112 0.2720 0.5496 0.5935 0.6477`\
+`#> PCTGRT  0.3430 0.0708 20000 0.0882 0.1499 0.1919 0.4673 0.5159 0.5807`\
+`#> PCTSUPP 0.2385 0.0696 20000 0.0032 0.0511 0.0955 0.3690 0.4160 0.4732`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``hc3``)`\
+`#> Call:`\
+`#> SCorMC(object = hc3)`\
+`#> `\
+`#> Semipartial correlations`\
+`#> type = "hc3"`\
+`#>            est     se     R   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
+`#> NARTIC  0.4312 0.0865 20000  0.0487 0.1407 0.2215 0.5667 0.6168 0.6788`\
+`#> PCTGRT  0.3430 0.0831 20000  0.0483 0.1056 0.1604 0.4879 0.5407 0.6078`\
+`#> PCTSUPP 0.2385 0.0789 20000 -0.0346 0.0248 0.0775 0.3889 0.4467 0.5182`
 
 ### coef
 
 Return the vector of estimates.
 
-``` r
-
-coef(mvn)
-#>    NARTIC    PCTGRT   PCTSUPP 
-#> 0.4311525 0.3430075 0.2384789
-coef(adf)
-#>    NARTIC    PCTGRT   PCTSUPP 
-#> 0.4311525 0.3430075 0.2384789
-coef(hc3)
-#>    NARTIC    PCTGRT   PCTSUPP 
-#> 0.4311525 0.3430075 0.2384789
-```
+\
+[`coef`](https://rdrr.io/r/stats/coef.html)`(``mvn``)`\
+`#>    NARTIC    PCTGRT   PCTSUPP `\
+`#> 0.4311525 0.3430075 0.2384789`\
+[`coef`](https://rdrr.io/r/stats/coef.html)`(``adf``)`\
+`#>    NARTIC    PCTGRT   PCTSUPP `\
+`#> 0.4311525 0.3430075 0.2384789`\
+[`coef`](https://rdrr.io/r/stats/coef.html)`(``hc3``)`\
+`#>    NARTIC    PCTGRT   PCTSUPP `\
+`#> 0.4311525 0.3430075 0.2384789`
 
 ### vcov
 
 Return the sampling covariance matrix.
 
-``` r
-
-vcov(mvn)
-#>                NARTIC        PCTGRT       PCTSUPP
-#> NARTIC   0.0059272821 -0.0012167694 -0.0008616098
-#> PCTGRT  -0.0012167694  0.0055337929 -0.0008326223
-#> PCTSUPP -0.0008616098 -0.0008326223  0.0049179926
-vcov(adf)
-#>                NARTIC        PCTGRT       PCTSUPP
-#> NARTIC   0.0049971396  0.0002631899 -0.0003698228
-#> PCTGRT   0.0002631899  0.0050250993 -0.0005940763
-#> PCTSUPP -0.0003698228 -0.0005940763  0.0048536905
-vcov(hc3)
-#>                NARTIC        PCTGRT       PCTSUPP
-#> NARTIC   0.0073916866  0.0007281651 -0.0002022310
-#> PCTGRT   0.0007281651  0.0069252053 -0.0005981009
-#> PCTSUPP -0.0002022310 -0.0005981009  0.0062233130
-```
+\
+[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``mvn``)`\
+`#>                NARTIC        PCTGRT       PCTSUPP`\
+`#> NARTIC   0.0059390404 -0.0012721726 -0.0008609524`\
+`#> PCTGRT  -0.0012721726  0.0053658116 -0.0006949645`\
+`#> PCTSUPP -0.0008609524 -0.0006949645  0.0048964555`\
+[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``adf``)`\
+`#>                NARTIC        PCTGRT       PCTSUPP`\
+`#> NARTIC   0.0050107401  0.0002460707 -0.0004010920`\
+`#> PCTGRT   0.0002460707  0.0050101465 -0.0006346065`\
+`#> PCTSUPP -0.0004010920 -0.0006346065  0.0048373115`\
+[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``hc3``)`\
+`#>                NARTIC        PCTGRT       PCTSUPP`\
+`#> NARTIC   0.0074841276  0.0008331550 -0.0001594435`\
+`#> PCTGRT   0.0008331550  0.0069004908 -0.0006089837`\
+`#> PCTSUPP -0.0001594435 -0.0006089837  0.0062239417`
 
 ### confint
 
 Return confidence intervals.
 
-``` r
-
-confint(mvn, level = 0.95)
-#>             2.5 %    97.5 %
-#> NARTIC  0.2706736 0.5723131
-#> PCTGRT  0.1947400 0.4857045
-#> PCTSUPP 0.1012615 0.3770397
-confint(adf, level = 0.95)
-#>              2.5 %    97.5 %
-#> NARTIC  0.27063965 0.5476799
-#> PCTGRT  0.19156579 0.4687909
-#> PCTSUPP 0.09507792 0.3688795
-confint(hc3, level = 0.95)
-#>              2.5 %    97.5 %
-#> NARTIC  0.22582761 0.5653624
-#> PCTGRT  0.16092780 0.4884945
-#> PCTSUPP 0.07723053 0.3896925
-```
+\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(``mvn``, level ``=`` ``0.95``)`\
+`#>             2.5 %    97.5 %`\
+`#> NARTIC  0.2718302 0.5719749`\
+`#> PCTGRT  0.1946928 0.4822687`\
+`#> PCTSUPP 0.1029988 0.3785698`\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(``adf``, level ``=`` ``0.95``)`\
+`#>              2.5 %    97.5 %`\
+`#> NARTIC  0.27204612 0.5495748`\
+`#> PCTGRT  0.19192682 0.4672548`\
+`#> PCTSUPP 0.09553564 0.3690101`\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(``hc3``, level ``=`` ``0.95``)`\
+`#>              2.5 %    97.5 %`\
+`#> NARTIC  0.22151770 0.5666839`\
+`#> PCTGRT  0.16039190 0.4879101`\
+`#> PCTSUPP 0.07746136 0.3889084`
 
 ## References
 

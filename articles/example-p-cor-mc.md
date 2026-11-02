@@ -7,71 +7,53 @@ function from the `betaMC` package. In this example, we use the data set
 and the model used in [betaMC: Example Using the BetaMC
 Function](https://github.com/jeksterslab/betaMC/articles/example-beta-mc.md).
 
-``` r
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`
 
-library(betaMC)
-```
-
-``` r
-
-df <- betaMC::nas1982
-```
+\
+`df`` ``<-`` ``betaMC``::`[`nas1982`](https://github.com/jeksterslab/betaMC/reference/nas1982.md)
 
 ### Regression
 
 Fit the regression model using the
 [`lm()`](https://rdrr.io/r/stats/lm.html) function.
 
-``` r
-
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-```
+\
+`object`` ``<-`` `[`lm`](https://rdrr.io/r/stats/lm.html)`(``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
 
 ### Monte Carlo Sampling Distribution of Parameters
 
 #### Normal-Theory Approach
 
-``` r
-
-mvn <- MC(object, type = "mvn")
-```
+\
+`mvn`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
 
 #### Asymptotic distribution-free Approach
 
-``` r
-
-adf <- MC(object, type = "adf")
-```
+\
+`adf`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
-``` r
-
-hc3 <- MC(object, type = "hc3")
-```
+\
+`hc3`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
 
 ### Squared Partial Correlation Coefficients
 
 #### Normal-Theory Approach
 
-``` r
-
-mvn <- PCorMC(mvn)
-```
+\
+`mvn`` ``<-`` `[`PCorMC`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md)`(``mvn``)`
 
 #### Asymptotic distribution-free Approach
 
-``` r
-
-adf <- PCorMC(adf)
-```
+\
+`adf`` ``<-`` `[`PCorMC`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md)`(``adf``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
-``` r
-
-hc3 <- PCorMC(hc3)
-```
+\
+`hc3`` ``<-`` `[`PCorMC`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md)`(``hc3``)`
 
 ## Methods
 
@@ -80,102 +62,94 @@ hc3 <- PCorMC(hc3)
 Summary of the results of
 [`PCorMC()`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md).
 
-``` r
-
-summary(mvn)
-#> Call:
-#> PCorMC(object = mvn)
-#> 
-#> Squared partial correlations
-#> type = "mvn"
-#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4874 0.1053 20000 0.1127 0.1807 0.2430 0.6514 0.7086 0.7763
-#> PCTGRT  0.3757 0.1073 20000 0.0500 0.1001 0.1474 0.5618 0.6249 0.7069
-#> PCTSUPP 0.2254 0.0993 20000 0.0057 0.0198 0.0468 0.4281 0.5062 0.5782
-summary(adf)
-#> Call:
-#> PCorMC(object = adf)
-#> 
-#> Squared partial correlations
-#> type = "adf"
-#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4874 0.0997 20000 0.0381 0.1502 0.2411 0.6329 0.6893 0.7518
-#> PCTGRT  0.3757 0.1004 20000 0.0334 0.0880 0.1460 0.5378 0.5936 0.6666
-#> PCTSUPP 0.2254 0.1029 20000 0.0005 0.0094 0.0368 0.4335 0.5047 0.5897
-summary(hc3)
-#> Call:
-#> PCorMC(object = hc3)
-#> 
-#> Squared partial correlations
-#> type = "hc3"
-#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4874 0.1182 20000 0.0110 0.0704 0.1815 0.6488 0.7051 0.7723
-#> PCTGRT  0.3757 0.1155 20000 0.0108 0.0514 0.1052 0.5546 0.6194 0.6877
-#> PCTSUPP 0.2254 0.1135 20000 0.0001 0.0036 0.0253 0.4562 0.5471 0.6347
-```
+\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``mvn``)`\
+`#> Call:`\
+`#> PCorMC(object = mvn)`\
+`#> `\
+`#> Squared partial correlations`\
+`#> type = "mvn"`\
+`#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
+`#> NARTIC  0.4874 0.1056 20000 0.1215 0.1809 0.2439 0.6516 0.7070 0.7729`\
+`#> PCTGRT  0.3757 0.1069 20000 0.0502 0.0972 0.1474 0.5596 0.6227 0.6930`\
+`#> PCTSUPP 0.2254 0.0992 20000 0.0041 0.0208 0.0467 0.4290 0.5044 0.5855`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``adf``)`\
+`#> Call:`\
+`#> PCorMC(object = adf)`\
+`#> `\
+`#> Squared partial correlations`\
+`#> type = "adf"`\
+`#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
+`#> NARTIC  0.4874 0.1001 20000 0.0531 0.1551 0.2387 0.6328 0.6854 0.7525`\
+`#> PCTGRT  0.3757 0.1009 20000 0.0252 0.0899 0.1450 0.5357 0.5911 0.6601`\
+`#> PCTSUPP 0.2254 0.1033 20000 0.0004 0.0101 0.0364 0.4335 0.5023 0.5826`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``hc3``)`\
+`#> Call:`\
+`#> PCorMC(object = hc3)`\
+`#> `\
+`#> Squared partial correlations`\
+`#> type = "hc3"`\
+`#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
+`#> NARTIC  0.4874 0.1185 20000 0.0101 0.0747 0.1813 0.6485 0.7086 0.7726`\
+`#> PCTGRT  0.3757 0.1150 20000 0.0068 0.0479 0.1073 0.5532 0.6143 0.6846`\
+`#> PCTSUPP 0.2254 0.1139 20000 0.0001 0.0034 0.0250 0.4581 0.5461 0.6468`
 
 ### coef
 
 Return the vector of estimates.
 
-``` r
-
-coef(mvn)
-#>    NARTIC    PCTGRT   PCTSUPP 
-#> 0.4874382 0.3757383 0.2253739
-coef(adf)
-#>    NARTIC    PCTGRT   PCTSUPP 
-#> 0.4874382 0.3757383 0.2253739
-coef(hc3)
-#>    NARTIC    PCTGRT   PCTSUPP 
-#> 0.4874382 0.3757383 0.2253739
-```
+\
+[`coef`](https://rdrr.io/r/stats/coef.html)`(``mvn``)`\
+`#>    NARTIC    PCTGRT   PCTSUPP `\
+`#> 0.4874382 0.3757383 0.2253739`\
+[`coef`](https://rdrr.io/r/stats/coef.html)`(``adf``)`\
+`#>    NARTIC    PCTGRT   PCTSUPP `\
+`#> 0.4874382 0.3757383 0.2253739`\
+[`coef`](https://rdrr.io/r/stats/coef.html)`(``hc3``)`\
+`#>    NARTIC    PCTGRT   PCTSUPP `\
+`#> 0.4874382 0.3757383 0.2253739`
 
 ### vcov
 
 Return the sampling covariance matrix.
 
-``` r
-
-vcov(mvn)
-#>               NARTIC       PCTGRT      PCTSUPP
-#> NARTIC  0.0110932147 0.0006673043 0.0004004950
-#> PCTGRT  0.0006673043 0.0115040181 0.0001156673
-#> PCTSUPP 0.0004004950 0.0001156673 0.0098550210
-vcov(adf)
-#>              NARTIC       PCTGRT      PCTSUPP
-#> NARTIC  0.009937808 0.0024649569 0.0020029526
-#> PCTGRT  0.002464957 0.0100806855 0.0007876848
-#> PCTSUPP 0.002002953 0.0007876848 0.0105864957
-vcov(hc3)
-#>              NARTIC       PCTGRT      PCTSUPP
-#> NARTIC  0.013979885 0.0036328183 0.0028680953
-#> PCTGRT  0.003632818 0.0133445630 0.0009319819
-#> PCTSUPP 0.002868095 0.0009319819 0.0128842476
-```
+\
+[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``mvn``)`\
+`#>               NARTIC       PCTGRT      PCTSUPP`\
+`#> NARTIC  0.0111416715 0.0006771445 0.0004585966`\
+`#> PCTGRT  0.0006771445 0.0114229744 0.0001186545`\
+`#> PCTSUPP 0.0004585966 0.0001186545 0.0098435770`\
+[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``adf``)`\
+`#>              NARTIC       PCTGRT      PCTSUPP`\
+`#> NARTIC  0.010020154 0.0025967551 0.0021447945`\
+`#> PCTGRT  0.002596755 0.0101857725 0.0008667582`\
+`#> PCTSUPP 0.002144795 0.0008667582 0.0106690364`\
+[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``hc3``)`\
+`#>              NARTIC      PCTGRT     PCTSUPP`\
+`#> NARTIC  0.014034713 0.003686483 0.002925480`\
+`#> PCTGRT  0.003686483 0.013228458 0.001002455`\
+`#> PCTSUPP 0.002925480 0.001002455 0.012964028`
 
 ### confint
 
 Return confidence intervals.
 
-``` r
-
-confint(mvn, level = 0.95)
-#>              2.5 %    97.5 %
-#> NARTIC  0.24300742 0.6514329
-#> PCTGRT  0.14741339 0.5617781
-#> PCTSUPP 0.04678045 0.4280831
-confint(adf, level = 0.95)
-#>              2.5 %    97.5 %
-#> NARTIC  0.24105542 0.6329125
-#> PCTGRT  0.14596279 0.5377823
-#> PCTSUPP 0.03683088 0.4334947
-confint(hc3, level = 0.95)
-#>              2.5 %    97.5 %
-#> NARTIC  0.18147876 0.6487877
-#> PCTGRT  0.10524038 0.5546481
-#> PCTSUPP 0.02534816 0.4561597
-```
+\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(``mvn``, level ``=`` ``0.95``)`\
+`#>              2.5 %    97.5 %`\
+`#> NARTIC  0.24389871 0.6515824`\
+`#> PCTGRT  0.14737337 0.5596427`\
+`#> PCTSUPP 0.04672414 0.4290453`\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(``adf``, level ``=`` ``0.95``)`\
+`#>              2.5 %    97.5 %`\
+`#> NARTIC  0.23873119 0.6328010`\
+`#> PCTGRT  0.14495782 0.5356783`\
+`#> PCTSUPP 0.03640219 0.4334605`\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(``hc3``, level ``=`` ``0.95``)`\
+`#>              2.5 %    97.5 %`\
+`#> NARTIC  0.18130711 0.6485450`\
+`#> PCTGRT  0.10733295 0.5532402`\
+`#> PCTSUPP 0.02497765 0.4580861`
 
 ## References
 

@@ -1,6 +1,6 @@
 # betaMC
 
-Ivan Jacob Agaloos Pesigan 2026-06-13
+Ivan Jacob Agaloos Pesigan 2026-11-02
 
 ## Description
 
@@ -20,19 +20,15 @@ intervals effect sizes in regression.
 
 You can install the CRAN release of `betaMC` with:
 
-``` r
-
-install.packages("betaMC")
-```
+\
+[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"betaMC"``)`
 
 You can install the development version of `betaMC` from
 [GitHub](https://github.com/jeksterslab/betaMC) with:
 
-``` r
-
-if (!require("pak")) install.packages("pak")
-pak::pkg_install("jeksterslab/betaMC")
-```
+\
+`if`` ``(``!`[`require`](https://rdrr.io/r/base/library.html)`(`[`"pak"`](https://pak.r-lib.org/)`)``)`` `[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"pak"``)`\
+`pak``::`[`pkg_install`](https://pak.r-lib.org/reference/pkg_install.html)`(``"jeksterslab/betaMC"``)`
 
 ## Example
 
@@ -48,98 +44,80 @@ regression coefficients are generated using the
 [`BetaMC()`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)
 function from the `betaMC` package.
 
-``` r
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`
 
-library(betaMC)
-```
-
-``` r
-
-df <- betaMC::nas1982
-```
+\
+`df`` ``<-`` ``betaMC``::`[`nas1982`](https://github.com/jeksterslab/betaMC/reference/nas1982.md)
 
 ### Regression
 
 Fit the regression model using the
 [`lm()`](https://rdrr.io/r/stats/lm.html) function.
 
-``` r
-
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-```
+\
+`object`` ``<-`` `[`lm`](https://rdrr.io/r/stats/lm.html)`(``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
 
 ### Monte Carlo Sampling Distribution of Parameters
 
 #### Normal-Theory Approach
 
-``` r
-
-mvn <- MC(object, type = "mvn")
-```
+\
+`mvn`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
 
 #### Asymptotic distribution-free Approach
 
-``` r
-
-adf <- MC(object, type = "adf")
-```
+\
+`adf`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
-``` r
-
-hc3 <- MC(object, type = "hc3")
-```
+\
+`hc3`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
 
 ### Standardized Regression Slopes
 
 #### Normal-Theory Approach
 
-``` r
-
-BetaMC(mvn, alpha = 0.05)
-#> Call:
-#> BetaMC(object = mvn, alpha = 0.05)
-#> 
-#> Standardized regression slopes
-#> type = "mvn"
-#>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0757 20000 0.3386 0.6326
-#> PCTGRT  0.3915 0.0766 20000 0.2355 0.5362
-#> PCTSUPP 0.2632 0.0748 20000 0.1179 0.4085
-```
+\
+[`BetaMC`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)`(``mvn``, alpha ``=`` ``0.05``)`\
+`#> Call:`\
+`#> BetaMC(object = mvn, alpha = 0.05)`\
+`#> `\
+`#> Standardized regression slopes`\
+`#> type = "mvn"`\
+`#>            est     se     R   2.5%  97.5%`\
+`#> NARTIC  0.4951 0.0755 20000 0.3384 0.6332`\
+`#> PCTGRT  0.3915 0.0766 20000 0.2396 0.5361`\
+`#> PCTSUPP 0.2632 0.0746 20000 0.1198 0.4096`
 
 #### Asymptotic distribution-free Approach
 
-``` r
-
-BetaMC(adf, alpha = 0.05)
-#> Call:
-#> BetaMC(object = adf, alpha = 0.05)
-#> 
-#> Standardized regression slopes
-#> type = "adf"
-#>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0673 20000 0.3538 0.6153
-#> PCTGRT  0.3915 0.0705 20000 0.2468 0.5211
-#> PCTSUPP 0.2632 0.0763 20000 0.1065 0.4058
-```
+\
+[`BetaMC`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)`(``adf``, alpha ``=`` ``0.05``)`\
+`#> Call:`\
+`#> BetaMC(object = adf, alpha = 0.05)`\
+`#> `\
+`#> Standardized regression slopes`\
+`#> type = "adf"`\
+`#>            est     se     R   2.5%  97.5%`\
+`#> NARTIC  0.4951 0.0675 20000 0.3545 0.6170`\
+`#> PCTGRT  0.3915 0.0708 20000 0.2440 0.5218`\
+`#> PCTSUPP 0.2632 0.0766 20000 0.1056 0.4097`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
-``` r
-
-BetaMC(hc3, alpha = 0.05)
-#> Call:
-#> BetaMC(object = hc3, alpha = 0.05)
-#> 
-#> Standardized regression slopes
-#> type = "hc3"
-#>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0800 20000 0.3250 0.6373
-#> PCTGRT  0.3915 0.0815 20000 0.2165 0.5388
-#> PCTSUPP 0.2632 0.0853 20000 0.0887 0.4259
-```
+\
+[`BetaMC`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+`#> Call:`\
+`#> BetaMC(object = hc3, alpha = 0.05)`\
+`#> `\
+`#> Standardized regression slopes`\
+`#> type = "hc3"`\
+`#>            est     se     R   2.5%  97.5%`\
+`#> NARTIC  0.4951 0.0803 20000 0.3230 0.6362`\
+`#> PCTGRT  0.3915 0.0822 20000 0.2190 0.5412`\
+`#> PCTSUPP 0.2632 0.0848 20000 0.0887 0.4232`
 
 ### Other Effect Sizes
 
@@ -159,82 +137,72 @@ for differences of standardized regression coefficients.
 
 #### Multiple Correlation Coefficients (R-squared and adjusted R-squared)
 
-``` r
-
-RSqMC(hc3, alpha = 0.05)
-#> Call:
-#> RSqMC(object = hc3, alpha = 0.05)
-#> 
-#> R-squared and adjusted R-squared
-#> type = "hc3"
-#>        est     se     R   2.5%  97.5%
-#> rsq 0.8045 0.0620 20000 0.6470 0.8886
-#> adj 0.7906 0.0664 20000 0.6218 0.8806
-```
+\
+[`RSqMC`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+`#> Call:`\
+`#> RSqMC(object = hc3, alpha = 0.05)`\
+`#> `\
+`#> R-squared and adjusted R-squared`\
+`#> type = "hc3"`\
+`#>        est     se     R   2.5% 97.5%`\
+`#> rsq 0.8045 0.0622 20000 0.6440 0.888`\
+`#> adj 0.7906 0.0666 20000 0.6186 0.880`
 
 #### Improvement in R-squared
 
-``` r
-
-DeltaRSqMC(hc3, alpha = 0.05)
-#> Call:
-#> DeltaRSqMC(object = hc3, alpha = 0.05)
-#> 
-#> Improvement in R-squared
-#> type = "hc3"
-#>            est     se     R   2.5%  97.5%
-#> NARTIC  0.1859 0.0691 20000 0.0511 0.3217
-#> PCTGRT  0.1177 0.0538 20000 0.0250 0.2350
-#> PCTSUPP 0.0569 0.0373 20000 0.0061 0.1486
-```
+\
+[`DeltaRSqMC`](https://github.com/jeksterslab/betaMC/reference/DeltaRSqMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+`#> Call:`\
+`#> DeltaRSqMC(object = hc3, alpha = 0.05)`\
+`#> `\
+`#> Improvement in R-squared`\
+`#> type = "hc3"`\
+`#>            est     se     R   2.5%  97.5%`\
+`#> NARTIC  0.1859 0.0690 20000 0.0484 0.3196`\
+`#> PCTGRT  0.1177 0.0551 20000 0.0250 0.2396`\
+`#> PCTSUPP 0.0569 0.0365 20000 0.0059 0.1461`
 
 #### Semipartial Correlation Coefficients
 
-``` r
-
-SCorMC(hc3, alpha = 0.05)
-#> Call:
-#> SCorMC(object = hc3, alpha = 0.05)
-#> 
-#> Semipartial correlations
-#> type = "hc3"
-#>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4312 0.0867 20000 0.2260 0.5672
-#> PCTGRT  0.3430 0.0822 20000 0.1582 0.4848
-#> PCTSUPP 0.2385 0.0781 20000 0.0782 0.3855
-```
+\
+[`SCorMC`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+`#> Call:`\
+`#> SCorMC(object = hc3, alpha = 0.05)`\
+`#> `\
+`#> Semipartial correlations`\
+`#> type = "hc3"`\
+`#>            est     se     R   2.5%  97.5%`\
+`#> NARTIC  0.4312 0.0873 20000 0.2199 0.5653`\
+`#> PCTGRT  0.3430 0.0838 20000 0.1580 0.4895`\
+`#> PCTSUPP 0.2385 0.0773 20000 0.0766 0.3823`
 
 #### Squared Partial Correlation Coefficients
 
-``` r
-
-PCorMC(hc3, alpha = 0.05)
-#> Call:
-#> PCorMC(object = hc3, alpha = 0.05)
-#> 
-#> Squared partial correlations
-#> type = "hc3"
-#>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4874 0.1191 20000 0.1807 0.6518
-#> PCTGRT  0.3757 0.1150 20000 0.1046 0.5534
-#> PCTSUPP 0.2254 0.1126 20000 0.0252 0.4523
-```
+\
+[`PCorMC`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+`#> Call:`\
+`#> PCorMC(object = hc3, alpha = 0.05)`\
+`#> `\
+`#> Squared partial correlations`\
+`#> type = "hc3"`\
+`#>            est     se     R   2.5%  97.5%`\
+`#> NARTIC  0.4874 0.1204 20000 0.1752 0.6499`\
+`#> PCTGRT  0.3757 0.1161 20000 0.1054 0.5570`\
+`#> PCTSUPP 0.2254 0.1116 20000 0.0253 0.4492`
 
 #### Differences of Standardized Regression Coefficients
 
-``` r
-
-DiffBetaMC(hc3, alpha = 0.05)
-#> Call:
-#> DiffBetaMC(object = hc3, alpha = 0.05)
-#> 
-#> Differences of standardized regression slopes
-#> type = "hc3"
-#>                   est     se     R    2.5%  97.5%
-#> NARTIC-PCTGRT  0.1037 0.1422 20000 -0.1732 0.3831
-#> NARTIC-PCTSUPP 0.2319 0.1336 20000 -0.0397 0.4863
-#> PCTGRT-PCTSUPP 0.1282 0.1357 20000 -0.1440 0.3910
-```
+\
+[`DiffBetaMC`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+`#> Call:`\
+`#> DiffBetaMC(object = hc3, alpha = 0.05)`\
+`#> `\
+`#> Differences of standardized regression slopes`\
+`#> type = "hc3"`\
+`#>                   est     se     R    2.5%  97.5%`\
+`#> NARTIC-PCTGRT  0.1037 0.1429 20000 -0.1833 0.3810`\
+`#> NARTIC-PCTSUPP 0.2319 0.1330 20000 -0.0372 0.4820`\
+`#> PCTGRT-PCTSUPP 0.1282 0.1356 20000 -0.1419 0.3903`
 
 ## Documentation
 

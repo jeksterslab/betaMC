@@ -31,12 +31,12 @@ Returns a list with the following elements:
 
 - mean:
 
-  Mean of the sampling distribution of \\\boldsymbol{\hat{\theta}}\\.
+  Mean of the sampling distribution of \\(\boldsymbol{\hat{\theta}}\\).
 
 - var:
 
   Variance of the sampling distribution of
-  \\\boldsymbol{\hat{\theta}}\\.
+  \\(\boldsymbol{\hat{\theta}}\\).
 
 - bias:
 

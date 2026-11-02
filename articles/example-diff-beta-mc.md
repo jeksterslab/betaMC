@@ -7,71 +7,53 @@ function from the `betaMC` package. In this example, we use the data set
 and the model used in [betaMC: Example Using the BetaMC
 Function](https://github.com/jeksterslab/betaMC/articles/example-beta-mc.md).
 
-``` r
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`
 
-library(betaMC)
-```
-
-``` r
-
-df <- betaMC::nas1982
-```
+\
+`df`` ``<-`` ``betaMC``::`[`nas1982`](https://github.com/jeksterslab/betaMC/reference/nas1982.md)
 
 ### Regression
 
 Fit the regression model using the
 [`lm()`](https://rdrr.io/r/stats/lm.html) function.
 
-``` r
-
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-```
+\
+`object`` ``<-`` `[`lm`](https://rdrr.io/r/stats/lm.html)`(``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
 
 ### Monte Carlo Sampling Distribution of Parameters
 
 #### Normal-Theory Approach
 
-``` r
-
-mvn <- MC(object, type = "mvn")
-```
+\
+`mvn`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
 
 #### Asymptotic distribution-free Approach
 
-``` r
-
-adf <- MC(object, type = "adf")
-```
+\
+`adf`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
-``` r
-
-hc3 <- MC(object, type = "hc3")
-```
+\
+`hc3`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
 
 ### Differences of Standardized Regression Slopes
 
 #### Normal-Theory Approach
 
-``` r
-
-mvn <- DiffBetaMC(mvn)
-```
+\
+`mvn`` ``<-`` `[`DiffBetaMC`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md)`(``mvn``)`
 
 #### Asymptotic distribution-free Approach
 
-``` r
-
-adf <- DiffBetaMC(adf)
-```
+\
+`adf`` ``<-`` `[`DiffBetaMC`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md)`(``adf``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
-``` r
-
-hc3 <- DiffBetaMC(hc3)
-```
+\
+`hc3`` ``<-`` `[`DiffBetaMC`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md)`(``hc3``)`
 
 ## Methods
 
@@ -80,102 +62,94 @@ hc3 <- DiffBetaMC(hc3)
 Summary of the results of
 [`DiffBetaMC()`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md).
 
-``` r
-
-summary(mvn)
-#> Call:
-#> DiffBetaMC(object = mvn)
-#> 
-#> Differences of standardized regression slopes
-#> type = "mvn"
-#>                   est     se     R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%
-#> NARTIC-PCTGRT  0.1037 0.1361 20000 -0.3471 -0.2551 -0.1697 0.3643 0.4454 0.5263
-#> NARTIC-PCTSUPP 0.2319 0.1250 20000 -0.2087 -0.1023 -0.0209 0.4704 0.5335 0.6083
-#> PCTGRT-PCTSUPP 0.1282 0.1232 20000 -0.2893 -0.1978 -0.1176 0.3669 0.4445 0.5213
-summary(adf)
-#> Call:
-#> DiffBetaMC(object = adf)
-#> 
-#> Differences of standardized regression slopes
-#> type = "adf"
-#>                   est     se     R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%
-#> NARTIC-PCTGRT  0.1037 0.1210 20000 -0.3039 -0.2089 -0.1364 0.3384 0.4029 0.4843
-#> NARTIC-PCTSUPP 0.2319 0.1185 20000 -0.1493 -0.0722 -0.0039 0.4561 0.5372 0.6326
-#> PCTGRT-PCTSUPP 0.1282 0.1220 20000 -0.2650 -0.1937 -0.1153 0.3636 0.4389 0.5356
-summary(hc3)
-#> Call:
-#> DiffBetaMC(object = hc3)
-#> 
-#> Differences of standardized regression slopes
-#> type = "hc3"
-#>                   est     se     R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%
-#> NARTIC-PCTGRT  0.1037 0.1424 20000 -0.3560 -0.2571 -0.1764 0.3828 0.4762 0.5724
-#> NARTIC-PCTSUPP 0.2319 0.1330 20000 -0.2191 -0.1250 -0.0381 0.4808 0.5710 0.6497
-#> PCTGRT-PCTSUPP 0.1282 0.1373 20000 -0.3645 -0.2459 -0.1523 0.3902 0.4697 0.5624
-```
+\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``mvn``)`\
+`#> Call:`\
+`#> DiffBetaMC(object = mvn)`\
+`#> `\
+`#> Differences of standardized regression slopes`\
+`#> type = "mvn"`\
+`#>                   est     se     R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%`\
+`#> NARTIC-PCTGRT  0.1037 0.1357 20000 -0.3469 -0.2507 -0.1651 0.3647 0.4450 0.5439`\
+`#> NARTIC-PCTSUPP 0.2319 0.1251 20000 -0.2136 -0.0942 -0.0219 0.4701 0.5354 0.6025`\
+`#> PCTGRT-PCTSUPP 0.1282 0.1227 20000 -0.2852 -0.1901 -0.1155 0.3663 0.4363 0.5280`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``adf``)`\
+`#> Call:`\
+`#> DiffBetaMC(object = adf)`\
+`#> `\
+`#> Differences of standardized regression slopes`\
+`#> type = "adf"`\
+`#>                   est     se     R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%`\
+`#> NARTIC-PCTGRT  0.1037 0.1214 20000 -0.3196 -0.2124 -0.1349 0.3384 0.4081 0.5024`\
+`#> NARTIC-PCTSUPP 0.2319 0.1183 20000 -0.1530 -0.0676 -0.0039 0.4560 0.5355 0.6304`\
+`#> PCTGRT-PCTSUPP 0.1282 0.1223 20000 -0.2746 -0.1931 -0.1166 0.3633 0.4418 0.5174`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``hc3``)`\
+`#> Call:`\
+`#> DiffBetaMC(object = hc3)`\
+`#> `\
+`#> Differences of standardized regression slopes`\
+`#> type = "hc3"`\
+`#>                   est     se     R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%`\
+`#> NARTIC-PCTGRT  0.1037 0.1425 20000 -0.3745 -0.2619 -0.1781 0.3811 0.4737 0.5792`\
+`#> NARTIC-PCTSUPP 0.2319 0.1327 20000 -0.2316 -0.1198 -0.0370 0.4800 0.5717 0.6545`\
+`#> PCTGRT-PCTSUPP 0.1282 0.1374 20000 -0.3573 -0.2464 -0.1519 0.3928 0.4746 0.5486`
 
 ### coef
 
 Return the vector of estimates.
 
-``` r
-
-coef(mvn)
-#>  NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP 
-#>      0.1036564      0.2318974      0.1282410
-coef(adf)
-#>  NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP 
-#>      0.1036564      0.2318974      0.1282410
-coef(hc3)
-#>  NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP 
-#>      0.1036564      0.2318974      0.1282410
-```
+\
+[`coef`](https://rdrr.io/r/stats/coef.html)`(``mvn``)`\
+`#>  NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP `\
+`#>      0.1036564      0.2318974      0.1282410`\
+[`coef`](https://rdrr.io/r/stats/coef.html)`(``adf``)`\
+`#>  NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP `\
+`#>      0.1036564      0.2318974      0.1282410`\
+[`coef`](https://rdrr.io/r/stats/coef.html)`(``hc3``)`\
+`#>  NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP `\
+`#>      0.1036564      0.2318974      0.1282410`
 
 ### vcov
 
 Return the sampling covariance matrix.
 
-``` r
-
-vcov(mvn)
-#>                NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP
-#> NARTIC-PCTGRT    0.018519368    0.009487353   -0.009032015
-#> NARTIC-PCTSUPP   0.009487353    0.015631706    0.006144353
-#> PCTGRT-PCTSUPP  -0.009032015    0.006144353    0.015176369
-vcov(adf)
-#>                NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP
-#> NARTIC-PCTGRT    0.014645917    0.006907124   -0.007738793
-#> NARTIC-PCTSUPP   0.006907124    0.014040403    0.007133279
-#> PCTGRT-PCTSUPP  -0.007738793    0.007133279    0.014872072
-vcov(hc3)
-#>                NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP
-#> NARTIC-PCTGRT    0.020287327    0.009554342   -0.010732985
-#> NARTIC-PCTSUPP   0.009554342    0.017678664    0.008124322
-#> PCTGRT-PCTSUPP  -0.010732985    0.008124322    0.018857307
-```
+\
+[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``mvn``)`\
+`#>                NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP`\
+`#> NARTIC-PCTGRT    0.018415625    0.009501368   -0.008914258`\
+`#> NARTIC-PCTSUPP   0.009501368    0.015638911    0.006137543`\
+`#> PCTGRT-PCTSUPP  -0.008914258    0.006137543    0.015051801`\
+[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``adf``)`\
+`#>                NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP`\
+`#> NARTIC-PCTGRT    0.014738725    0.006896875   -0.007841851`\
+`#> NARTIC-PCTSUPP   0.006896875    0.014004385    0.007107510`\
+`#> PCTGRT-PCTSUPP  -0.007841851    0.007107510    0.014949361`\
+[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``hc3``)`\
+`#>                NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP`\
+`#> NARTIC-PCTGRT     0.02030562    0.009523790   -0.010781831`\
+`#> NARTIC-PCTSUPP    0.00952379    0.017609955    0.008086164`\
+`#> PCTGRT-PCTSUPP   -0.01078183    0.008086164    0.018867995`
 
 ### confint
 
 Return confidence intervals.
 
-``` r
-
-confint(mvn, level = 0.95)
-#>                      2.5 %    97.5 %
-#> NARTIC-PCTGRT  -0.16972827 0.3642998
-#> NARTIC-PCTSUPP -0.02091966 0.4704287
-#> PCTGRT-PCTSUPP -0.11764157 0.3668513
-confint(adf, level = 0.95)
-#>                       2.5 %    97.5 %
-#> NARTIC-PCTGRT  -0.136387568 0.3384211
-#> NARTIC-PCTSUPP -0.003906558 0.4561149
-#> PCTGRT-PCTSUPP -0.115258217 0.3635661
-confint(hc3, level = 0.95)
-#>                      2.5 %    97.5 %
-#> NARTIC-PCTGRT  -0.17643869 0.3827983
-#> NARTIC-PCTSUPP -0.03814171 0.4808161
-#> PCTGRT-PCTSUPP -0.15230472 0.3901834
-```
+\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(``mvn``, level ``=`` ``0.95``)`\
+`#>                      2.5 %    97.5 %`\
+`#> NARTIC-PCTGRT  -0.16512972 0.3647204`\
+`#> NARTIC-PCTSUPP -0.02193225 0.4701166`\
+`#> PCTGRT-PCTSUPP -0.11548008 0.3662706`\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(``adf``, level ``=`` ``0.95``)`\
+`#>                       2.5 %    97.5 %`\
+`#> NARTIC-PCTGRT  -0.134903338 0.3383689`\
+`#> NARTIC-PCTSUPP -0.003920906 0.4559979`\
+`#> PCTGRT-PCTSUPP -0.116565175 0.3632955`\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(``hc3``, level ``=`` ``0.95``)`\
+`#>                      2.5 %    97.5 %`\
+`#> NARTIC-PCTGRT  -0.17807592 0.3810693`\
+`#> NARTIC-PCTSUPP -0.03696402 0.4799981`\
+`#> PCTGRT-PCTSUPP -0.15191434 0.3928330`
 
 ## References
 

@@ -25,8 +25,8 @@ print(x, alpha = NULL, digits = 4, ...)
 
 - alpha:
 
-  Numeric vector. Significance level \\\alpha\\. If `alpha = NULL`, use
-  the argument `alpha` used in `x`.
+  Numeric vector. Significance level \\(\alpha\\). If `alpha = NULL`,
+  use the argument `alpha` used in `x`.
 
 - digits:
 

@@ -29,81 +29,73 @@ We use the
 [`mice::ampute()`](https://amices.org/mice/reference/ampute.html)
 function to generate a data set with missing values.
 
-``` r
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`
 
-library(betaMC)
-```
+\
+`df`` ``<-`` ``betaMC``::`[`nas1982`](https://github.com/jeksterslab/betaMC/reference/nas1982.md)
 
-``` r
-
-df <- betaMC::nas1982
-```
-
-``` r
-
-set.seed(42)
-df <- mice::ampute(df)$amp
-df
-#>    QUALITY NFACUL NGRADS PCTSUPP PCTGRT NARTIC PCTPUB
-#> 1       12     13     19      16      8     14     39
-#> 2       23     29     72      67      3     61     66
-#> 3       29     38    111      NA     13     68     68
-#> 4       36     16     28      52     63     49     75
-#> 5       44     40    104      64     53     NA     83
-#> 6       21     14     28      59     29     65     79
-#> 7       40     44     16      81     35     79     82
-#> 8       42     NA     57      65     40    187     82
-#> 9       24     16     18      87     19     NA     75
-#> 10      30     37     41      43      8     NA     54
-#> 11      20     20     45      26     25     49     50
-#> 12       8     11     27       7      0      9     27
-#> 13      NA     29    112      64     35     65     69
-#> 14      14     14     57      10      0     11     43
-#> 15      27     38    167      28     NA    196     84
-#> 16      46     27    113      62     52    173     85
-#> 17      NA     32    122      51     19     79     69
-#> 18      42     NA    116      56     32    208     73
-#> 19      33     32     54      49     19    120     69
-#> 20      31     42     79      41     NA    114     71
-#> 21      23     30     76      22     20     87     67
-#> 22      18     NA     62      39      6     10     39
-#> 23      29     41     98      41     12    101     66
-#> 24      21     23     52      33      4     59     78
-#> 25      45     NA    222      64     32    274     70
-#> 26      25     26     63      39     NA    160     89
-#> 27      18     16     24       4     31     39     63
-#> 28      NA     38    154      55     34     84     63
-#> 29      21     19     40       7      5     60     84
-#> 30      24     16     18      25     63     31     63
-#> 31      15     13     29      23     15     62     85
-#> 32      15     23     41      51      4     24     NA
-#> 33      36     32     69      65     16    122     75
-#> 34      38     21     38      28     48     92     91
-#> 35      32     28     90      70     36    117     61
-#> 36      27     22     52      10     27    114     86
-#> 37      16     20     80      46     10     19     40
-#> 38      26     32     41      13      6     64     56
-#> 39      NA     26     81      70     58    155    100
-#> 40      26     40     81      42     10     70     68
-#> 41      14     19     87      15      5     72     79
-#> 42      12     17     26       9      6     15     59
-#> 43      29     29     71      74     17     85     76
-#> 44      34     27     20       0     29     79     57
-#> 45      28     26     70      68     27     84     73
-#> 46      NA     36     59      57     67    172     83
-```
+\
+[`set.seed`](https://rdrr.io/r/base/Random.html)`(``42``)`\
+`df`` ``<-`` ``mice``::`[`ampute`](https://amices.org/mice/reference/ampute.html)`(``df``)``$``amp`\
+`df`\
+`#>    QUALITY NFACUL NGRADS PCTSUPP PCTGRT NARTIC PCTPUB`\
+`#> 1       12     13     19      16      8     14     39`\
+`#> 2       23     29     72      67      3     61     66`\
+`#> 3       29     38    111      NA     13     68     68`\
+`#> 4       36     16     28      52     63     49     75`\
+`#> 5       44     40    104      64     53     NA     83`\
+`#> 6       21     14     28      59     29     65     79`\
+`#> 7       40     44     16      81     35     79     82`\
+`#> 8       42     NA     57      65     40    187     82`\
+`#> 9       24     16     18      87     19     NA     75`\
+`#> 10      30     37     41      43      8     NA     54`\
+`#> 11      20     20     45      26     25     49     50`\
+`#> 12       8     11     27       7      0      9     27`\
+`#> 13      NA     29    112      64     35     65     69`\
+`#> 14      14     14     57      10      0     11     43`\
+`#> 15      27     38    167      28     NA    196     84`\
+`#> 16      46     27    113      62     52    173     85`\
+`#> 17      NA     32    122      51     19     79     69`\
+`#> 18      42     NA    116      56     32    208     73`\
+`#> 19      33     32     54      49     19    120     69`\
+`#> 20      31     42     79      41     NA    114     71`\
+`#> 21      23     30     76      22     20     87     67`\
+`#> 22      18     NA     62      39      6     10     39`\
+`#> 23      29     41     98      41     12    101     66`\
+`#> 24      21     23     52      33      4     59     78`\
+`#> 25      45     NA    222      64     32    274     70`\
+`#> 26      25     26     63      39     NA    160     89`\
+`#> 27      18     16     24       4     31     39     63`\
+`#> 28      NA     38    154      55     34     84     63`\
+`#> 29      21     19     40       7      5     60     84`\
+`#> 30      24     16     18      25     63     31     63`\
+`#> 31      15     13     29      23     15     62     85`\
+`#> 32      15     23     41      51      4     24     NA`\
+`#> 33      36     32     69      65     16    122     75`\
+`#> 34      38     21     38      28     48     92     91`\
+`#> 35      32     28     90      70     36    117     61`\
+`#> 36      27     22     52      10     27    114     86`\
+`#> 37      16     20     80      46     10     19     40`\
+`#> 38      26     32     41      13      6     64     56`\
+`#> 39      NA     26     81      70     58    155    100`\
+`#> 40      26     40     81      42     10     70     68`\
+`#> 41      14     19     87      15      5     72     79`\
+`#> 42      12     17     26       9      6     15     59`\
+`#> 43      29     29     71      74     17     85     76`\
+`#> 44      34     27     20       0     29     79     57`\
+`#> 45      28     26     70      68     27     84     73`\
+`#> 46      NA     36     59      57     67    172     83`
 
 ### Multiple Imputation
 
-``` r
-
-mi <- mice::mice(
-  df,
-  m = 100,
-  seed = 42,
-  print = FALSE
-)
-```
+\
+`mi`` ``<-`` ``mice``::`[`mice`](https://amices.org/mice/reference/mice.html)`(`\
+`  ``df``,`\
+`  m ``=`` ``100``,`\
+`  seed ``=`` ``42``,`\
+`  print ``=`` ``FALSE`\
+`)`
 
 ### Regression
 
@@ -114,112 +106,96 @@ with each imputed data within the
 [`MCMI()`](https://github.com/jeksterslab/betaMC/reference/MCMI.md)
 function.
 
-``` r
-
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-```
+\
+`object`` ``<-`` `[`lm`](https://rdrr.io/r/stats/lm.html)`(``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
 
 ### Monte Carlo Sampling Distribution of Parameters
 
-``` r
-
-hc3 <- MCMI(object, mi = mi, type = "hc3")
-```
+\
+`hc3`` ``<-`` `[`MCMI`](https://github.com/jeksterslab/betaMC/reference/MCMI.md)`(``object``, mi ``=`` ``mi``, type ``=`` ``"hc3"``)`
 
 ### Standardized Regression Slopes
 
-``` r
-
-BetaMC(hc3)
-#> Call:
-#> BetaMC(object = hc3)
-#> 
-#> Standardized regression slopes
-#> type = "hc3"
-#>            est     se     R   0.05%    0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.5197 0.0787 20000  0.2267  0.3008 0.3499 0.6579 0.7014 0.7456
-#> PCTGRT  0.4017 0.0859 20000  0.1058  0.1705 0.2270 0.5636 0.6125 0.6778
-#> PCTSUPP 0.2327 0.0905 20000 -0.0861 -0.0144 0.0484 0.4024 0.4546 0.5359
-```
+\
+[`BetaMC`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)`(``hc3``)`\
+`#> Call:`\
+`#> BetaMC(object = hc3)`\
+`#> `\
+`#> Standardized regression slopes`\
+`#> type = "hc3"`\
+`#>            est     se     R   0.05%    0.5%   2.5%  97.5%  99.5% 99.95%`\
+`#> NARTIC  0.5197 0.0787 20000  0.2380  0.3003 0.3513 0.6582 0.7024 0.7480`\
+`#> PCTGRT  0.4017 0.0858 20000  0.1035  0.1707 0.2277 0.5626 0.6112 0.6789`\
+`#> PCTSUPP 0.2327 0.0908 20000 -0.0872 -0.0165 0.0459 0.4020 0.4557 0.5277`
 
 ### Multiple Correlation Coefficients
 
-``` r
-
-RSqMC(hc3)
-#> Call:
-#> RSqMC(object = hc3)
-#> 
-#> R-squared and adjusted R-squared
-#> type = "hc3"
-#>        est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> rsq 0.8154 0.0610 20000 0.5097 0.5978 0.6583 0.8976 0.9217 0.9451
-#> adj 0.8022 0.0671 20000 0.4607 0.5575 0.6241 0.8873 0.9138 0.9396
-```
+\
+[`RSqMC`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md)`(``hc3``)`\
+`#> Call:`\
+`#> RSqMC(object = hc3)`\
+`#> `\
+`#> R-squared and adjusted R-squared`\
+`#> type = "hc3"`\
+`#>        est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
+`#> rsq 0.8154 0.0613 20000 0.4924 0.5924 0.6573 0.8983 0.9235 0.9469`\
+`#> adj 0.8022 0.0674 20000 0.4416 0.5517 0.6230 0.8881 0.9159 0.9416`
 
 ### Improvement in R-squared
 
-``` r
-
-DeltaRSqMC(hc3)
-#> Call:
-#> DeltaRSqMC(object = hc3)
-#> 
-#> Improvement in R-squared
-#> type = "hc3"
-#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.2070 0.0717 20000 0.0032 0.0243 0.0601 0.3448 0.4013 0.4730
-#> PCTGRT  0.1270 0.0614 20000 0.0016 0.0108 0.0275 0.2654 0.3265 0.4089
-#> PCTSUPP 0.0435 0.0346 20000 0.0000 0.0002 0.0019 0.1301 0.1736 0.2534
-```
+\
+[`DeltaRSqMC`](https://github.com/jeksterslab/betaMC/reference/DeltaRSqMC.md)`(``hc3``)`\
+`#> Call:`\
+`#> DeltaRSqMC(object = hc3)`\
+`#> `\
+`#> Improvement in R-squared`\
+`#> type = "hc3"`\
+`#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
+`#> NARTIC  0.2070 0.0717 20000 0.0029 0.0246 0.0622 0.3452 0.4051 0.4774`\
+`#> PCTGRT  0.1270 0.0612 20000 0.0014 0.0108 0.0273 0.2652 0.3209 0.4105`\
+`#> PCTSUPP 0.0435 0.0347 20000 0.0000 0.0001 0.0019 0.1307 0.1753 0.2537`
 
 ### Semipartial Correlation Coefficients
 
-``` r
-
-SCorMC(hc3)
-#> Call:
-#> SCorMC(object = hc3)
-#> 
-#> Semipartial correlations
-#> type = "hc3"
-#>            est     se     R   0.05%    0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.4549 0.0858 20000  0.0570  0.1559 0.2451 0.5872 0.6335 0.6878
-#> PCTGRT  0.3564 0.0890 20000  0.0396  0.1038 0.1657 0.5152 0.5714 0.6395
-#> PCTSUPP 0.2085 0.0816 20000 -0.0751 -0.0124 0.0420 0.3607 0.4167 0.5034
-```
+\
+[`SCorMC`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md)`(``hc3``)`\
+`#> Call:`\
+`#> SCorMC(object = hc3)`\
+`#> `\
+`#> Semipartial correlations`\
+`#> type = "hc3"`\
+`#>            est     se     R   0.05%    0.5%   2.5%  97.5%  99.5% 99.95%`\
+`#> NARTIC  0.4549 0.0856 20000  0.0538  0.1569 0.2494 0.5875 0.6365 0.6909`\
+`#> PCTGRT  0.3564 0.0887 20000  0.0379  0.1040 0.1652 0.5150 0.5665 0.6407`\
+`#> PCTSUPP 0.2085 0.0820 20000 -0.0818 -0.0146 0.0401 0.3615 0.4187 0.5037`
 
 ### Squared Partial Correlation Coefficients
 
-``` r
-
-PCorMC(hc3)
-#> Call:
-#> PCorMC(object = hc3)
-#> 
-#> Squared partial correlations
-#> type = "hc3"
-#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> NARTIC  0.5289 0.1169 20000 0.0159 0.0969 0.2207 0.6855 0.7432 0.7962
-#> PCTGRT  0.4082 0.1221 20000 0.0080 0.0551 0.1228 0.5953 0.6606 0.7452
-#> PCTSUPP 0.1917 0.1148 20000 0.0000 0.0007 0.0085 0.4390 0.5307 0.6277
-```
+\
+[`PCorMC`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md)`(``hc3``)`\
+`#> Call:`\
+`#> PCorMC(object = hc3)`\
+`#> `\
+`#> Squared partial correlations`\
+`#> type = "hc3"`\
+`#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
+`#> NARTIC  0.5289 0.1165 20000 0.0104 0.1010 0.2268 0.6859 0.7413 0.8014`\
+`#> PCTGRT  0.4082 0.1218 20000 0.0060 0.0523 0.1242 0.5944 0.6614 0.7348`\
+`#> PCTSUPP 0.1917 0.1150 20000 0.0000 0.0004 0.0083 0.4380 0.5289 0.6313`
 
 ### Differences of Standardized Regression Slopes
 
-``` r
-
-DiffBetaMC(hc3)
-#> Call:
-#> DiffBetaMC(object = hc3)
-#> 
-#> Differences of standardized regression slopes
-#> type = "hc3"
-#>                   est     se     R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%
-#> NARTIC-PCTGRT  0.1179 0.1441 20000 -0.3857 -0.2584 -0.1715 0.3922 0.4777 0.5928
-#> NARTIC-PCTSUPP 0.2869 0.1376 20000 -0.1701 -0.0728  0.0073 0.5486 0.6278 0.7173
-#> PCTGRT-PCTSUPP 0.1690 0.1430 20000 -0.3190 -0.2025 -0.1103 0.4459 0.5356 0.6320
-```
+\
+[`DiffBetaMC`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md)`(``hc3``)`\
+`#> Call:`\
+`#> DiffBetaMC(object = hc3)`\
+`#> `\
+`#> Differences of standardized regression slopes`\
+`#> type = "hc3"`\
+`#>                   est    se     R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%`\
+`#> NARTIC-PCTGRT  0.1179 0.144 20000 -0.3728 -0.2603 -0.1686 0.3908 0.4787 0.5991`\
+`#> NARTIC-PCTSUPP 0.2869 0.138 20000 -0.1638 -0.0734  0.0077 0.5514 0.6357 0.7383`\
+`#> PCTGRT-PCTSUPP 0.1690 0.143 20000 -0.3142 -0.2036 -0.1092 0.4455 0.5407 0.6334`
 
 ## References
 

@@ -7,71 +7,53 @@ function from the `betaMC` package. In this example, we use the data set
 and the model used in [betaMC: Example Using the BetaMC
 Function](https://github.com/jeksterslab/betaMC/articles/example-beta-mc.md).
 
-``` r
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`
 
-library(betaMC)
-```
-
-``` r
-
-df <- betaMC::nas1982
-```
+\
+`df`` ``<-`` ``betaMC``::`[`nas1982`](https://github.com/jeksterslab/betaMC/reference/nas1982.md)
 
 ### Regression
 
 Fit the regression model using the
 [`lm()`](https://rdrr.io/r/stats/lm.html) function.
 
-``` r
-
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-```
+\
+`object`` ``<-`` `[`lm`](https://rdrr.io/r/stats/lm.html)`(``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
 
 ### Monte Carlo Sampling Distribution of Parameters
 
 #### Normal-Theory Approach
 
-``` r
-
-mvn <- MC(object, type = "mvn")
-```
+\
+`mvn`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
 
 #### Asymptotic distribution-free Approach
 
-``` r
-
-adf <- MC(object, type = "adf")
-```
+\
+`adf`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
-``` r
-
-hc3 <- MC(object, type = "hc3")
-```
+\
+`hc3`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
 
 ### Multiple Correlation Coefficients
 
 #### Normal-Theory Approach
 
-``` r
-
-mvn <- RSqMC(mvn)
-```
+\
+`mvn`` ``<-`` `[`RSqMC`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md)`(``mvn``)`
 
 #### Asymptotic distribution-free Approach
 
-``` r
-
-adf <- RSqMC(adf)
-```
+\
+`adf`` ``<-`` `[`RSqMC`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md)`(``adf``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
-``` r
-
-hc3 <- RSqMC(hc3)
-```
+\
+`hc3`` ``<-`` `[`RSqMC`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md)`(``hc3``)`
 
 ## Methods
 
@@ -80,93 +62,85 @@ hc3 <- RSqMC(hc3)
 Summary of the results of
 [`RSqMC()`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md).
 
-``` r
-
-summary(mvn)
-#> Call:
-#> RSqMC(object = mvn)
-#> 
-#> R-squared and adjusted R-squared
-#> type = "mvn"
-#>        est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> rsq 0.8045 0.0557 20000 0.5087 0.5987 0.6625 0.8806 0.9012 0.9233
-#> adj 0.7906 0.0597 20000 0.4736 0.5700 0.6384 0.8721 0.8941 0.9179
-summary(adf)
-#> Call:
-#> RSqMC(object = adf)
-#> 
-#> R-squared and adjusted R-squared
-#> type = "adf"
-#>        est     se     R  0.05%   0.5%   2.5%  97.5% 99.5% 99.95%
-#> rsq 0.8045 0.0546 20000 0.5430 0.6174 0.6661 0.8797 0.902 0.9217
-#> adj 0.7906 0.0585 20000 0.5104 0.5901 0.6423 0.8711 0.895 0.9161
-summary(hc3)
-#> Call:
-#> RSqMC(object = hc3)
-#> 
-#> R-squared and adjusted R-squared
-#> type = "hc3"
-#>        est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
-#> rsq 0.8045 0.0616 20000 0.4742 0.5806 0.6477 0.8872 0.9111 0.9384
-#> adj 0.7906 0.0660 20000 0.4367 0.5506 0.6226 0.8792 0.9048 0.9339
-```
+\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``mvn``)`\
+`#> Call:`\
+`#> RSqMC(object = mvn)`\
+`#> `\
+`#> R-squared and adjusted R-squared`\
+`#> type = "mvn"`\
+`#>        est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
+`#> rsq 0.8045 0.0557 20000 0.5187 0.6003 0.6633 0.8803 0.9013 0.9258`\
+`#> adj 0.7906 0.0597 20000 0.4843 0.5717 0.6392 0.8718 0.8942 0.9205`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``adf``)`\
+`#> Call:`\
+`#> RSqMC(object = adf)`\
+`#> `\
+`#> R-squared and adjusted R-squared`\
+`#> type = "adf"`\
+`#>        est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
+`#> rsq 0.8045 0.0547 20000 0.5427 0.6122 0.6660 0.8797 0.9026 0.9212`\
+`#> adj 0.7906 0.0586 20000 0.5100 0.5845 0.6421 0.8711 0.8956 0.9156`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``hc3``)`\
+`#> Call:`\
+`#> RSqMC(object = hc3)`\
+`#> `\
+`#> R-squared and adjusted R-squared`\
+`#> type = "hc3"`\
+`#>        est     se     R  0.05% 0.5%   2.5% 97.5%  99.5% 99.95%`\
+`#> rsq 0.8045 0.0618 20000 0.4685 0.58 0.6481 0.888 0.9111 0.9382`\
+`#> adj 0.7906 0.0662 20000 0.4306 0.55 0.6230 0.880 0.9048 0.9338`
 
 ### coef
 
 Return the vector of estimates.
 
-``` r
-
-coef(mvn)
-#>       rsq       adj 
-#> 0.8045263 0.7905638
-coef(adf)
-#>       rsq       adj 
-#> 0.8045263 0.7905638
-coef(hc3)
-#>       rsq       adj 
-#> 0.8045263 0.7905638
-```
+\
+[`coef`](https://rdrr.io/r/stats/coef.html)`(``mvn``)`\
+`#>       rsq       adj `\
+`#> 0.8045263 0.7905638`\
+[`coef`](https://rdrr.io/r/stats/coef.html)`(``adf``)`\
+`#>       rsq       adj `\
+`#> 0.8045263 0.7905638`\
+[`coef`](https://rdrr.io/r/stats/coef.html)`(``hc3``)`\
+`#>       rsq       adj `\
+`#> 0.8045263 0.7905638`
 
 ### vcov
 
 Return the sampling covariance matrix.
 
-``` r
-
-vcov(mvn)
-#>             rsq         adj
-#> rsq 0.003102177 0.003323761
-#> adj 0.003323761 0.003561172
-vcov(adf)
-#>             rsq         adj
-#> rsq 0.002978179 0.003190906
-#> adj 0.003190906 0.003418828
-vcov(hc3)
-#>             rsq         adj
-#> rsq 0.003797717 0.004068983
-#> adj 0.004068983 0.004359624
-```
+\
+[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``mvn``)`\
+`#>             rsq         adj`\
+`#> rsq 0.003103084 0.003324733`\
+`#> adj 0.003324733 0.003562213`\
+[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``adf``)`\
+`#>             rsq         adj`\
+`#> rsq 0.002992561 0.003206315`\
+`#> adj 0.003206315 0.003435338`\
+[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``hc3``)`\
+`#>             rsq         adj`\
+`#> rsq 0.003815207 0.004087721`\
+`#> adj 0.004087721 0.004379701`
 
 ### confint
 
 Return confidence intervals.
 
-``` r
-
-confint(mvn, level = 0.95)
-#>         2.5 %    97.5 %
-#> rsq 0.6624855 0.8806143
-#> adj 0.6383773 0.8720868
-confint(adf, level = 0.95)
-#>         2.5 %    97.5 %
-#> rsq 0.6661151 0.8796947
-#> adj 0.6422662 0.8711015
-confint(hc3, level = 0.95)
-#>         2.5 %    97.5 %
-#> rsq 0.6477215 0.8872304
-#> adj 0.6225588 0.8791754
-```
+\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(``mvn``, level ``=`` ``0.95``)`\
+`#>         2.5 %    97.5 %`\
+`#> rsq 0.6632574 0.8803444`\
+`#> adj 0.6392043 0.8717976`\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(``adf``, level ``=`` ``0.95``)`\
+`#>         2.5 %    97.5 %`\
+`#> rsq 0.6659786 0.8796907`\
+`#> adj 0.6421200 0.8710972`\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(``hc3``, level ``=`` ``0.95``)`\
+`#>         2.5 %    97.5 %`\
+`#> rsq 0.6480992 0.8880097`\
+`#> adj 0.6229635 0.8800104`
 
 ## References
 

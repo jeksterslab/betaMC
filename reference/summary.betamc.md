@@ -25,8 +25,8 @@ summary(object, alpha = NULL, digits = 4, ...)
 
 - alpha:
 
-  Numeric vector. Significance level \\\alpha\\. If `alpha = NULL`, use
-  the argument `alpha` used in `object`.
+  Numeric vector. Significance level \\(\alpha\\). If `alpha = NULL`,
+  use the argument `alpha` used in `object`.
 
 - digits:
 
