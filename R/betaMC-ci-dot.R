@@ -21,11 +21,9 @@
     alpha <- object$args$alpha
   }
   probs <- .PCProbs(alpha = alpha)
-  thetahatstar <- do.call(
-    what = "rbind",
-    args = object$thetahatstar
+  thetahatstar <- unname(
+    as.matrix(object$thetahatstar)
   )
-  thetahatstar <- unname(thetahatstar)
   colnames(thetahatstar) <- names(object$est)
   thetahat <- object$est
   ci <- vector(

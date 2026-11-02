@@ -83,7 +83,12 @@ of class \code{mc} which is a list with the following elements:
 \item{lm_process}{Processed \code{lm} object.}
 \item{scale}{Sampling variance-covariance matrix of parameter estimates.}
 \item{location}{Parameter estimates.}
-\item{thetahatstar}{Sampling distribution of parameter estimates.}
+\item{thetahatstar}{Sampling distribution of parameter estimates
+(a matrix, one draw per row).}
+\item{vechsigmacap}{Sampling distribution of the half-vectorization
+of the model-implied covariance matrix (a matrix, one draw per row).}
+\item{es}{Sampling distribution of the effect sizes
+(a list of matrices).}
 \item{fun}{Function used ("MC").}
 }
 }
@@ -181,6 +186,7 @@ Other Beta Monte Carlo Functions:
 \code{\link[=BetaMC]{BetaMC()}},
 \code{\link[=DeltaRSqMC]{DeltaRSqMC()}},
 \code{\link[=DiffBetaMC]{DiffBetaMC()}},
+\code{\link[=FSqMC]{FSqMC()}},
 \code{\link[=MCMI]{MCMI()}},
 \code{\link[=PCorMC]{PCorMC()}},
 \code{\link[=RSqMC]{RSqMC()}},

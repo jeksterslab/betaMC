@@ -82,22 +82,7 @@ PCorMC <- function(object,
   } else {
     est <- object$lm_process$pcor
   }
-  sr <- SCorMC(object)
-  sr <- sr$thetahatstar
-  rsq <- RSqMC(object)
-  rsq <- rsq$thetahatstar
-  thetahatstar <- mapply(
-    sr = sr,
-    rsq = rsq,
-    SIMPLIFY = FALSE,
-    FUN = function(sr,
-                   rsq) {
-      .PCorSq(
-        srsq = sr^2,
-        rsq = rsq[1]
-      )
-    }
-  )
+  thetahatstar <- object$es$pcorsq
   out <- list(
     call = match.call(),
     args = list(

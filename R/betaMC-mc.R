@@ -48,7 +48,12 @@
 #'     \item{lm_process}{Processed `lm` object.}
 #'     \item{scale}{Sampling variance-covariance matrix of parameter estimates.}
 #'     \item{location}{Parameter estimates.}
-#'     \item{thetahatstar}{Sampling distribution of parameter estimates.}
+#'     \item{thetahatstar}{Sampling distribution of parameter estimates
+#'       (a matrix, one draw per row).}
+#'     \item{vechsigmacap}{Sampling distribution of the half-vectorization
+#'       of the model-implied covariance matrix (a matrix, one draw per row).}
+#'     \item{es}{Sampling distribution of the effect sizes
+#'       (a list of matrices).}
 #'     \item{fun}{Function used ("MC").}
 #' }
 #'
@@ -191,12 +196,23 @@ MC <- function(object,
   )
   location <- lm_process$theta
   theta <- location
-  vechsigmacapx <- lm_process$theta[
-    (lm_process$k + 1):lm_process$q
-  ]
   if (fixed_x) {
     location <- location[seq_len(lm_process$k)]
   }
+  draws <- .MCDraws(
+    scale = scale,
+    location = location,
+    lm_process = lm_process,
+    fixed_x = fixed_x,
+    vechsigmacapx = theta[
+      (lm_process$k + 1):lm_process$q
+    ],
+    R = R,
+    decomposition = decomposition,
+    pd = pd,
+    tol = tol,
+    seed = seed
+  )
   out <- list(
     call = match.call(),
     args = list(
@@ -216,20 +232,9 @@ MC <- function(object,
     scale = scale,
     location = location,
     theta = theta,
-    thetahatstar = .MC(
-      scale = scale,
-      location = location,
-      p = lm_process$p,
-      k = lm_process$k,
-      q = lm_process$q,
-      fixed_x = fixed_x,
-      vechsigmacapx = vechsigmacapx,
-      R = R,
-      decomposition = decomposition,
-      pd = pd,
-      tol = tol,
-      seed = seed
-    ),
+    thetahatstar = draws$thetahatstar,
+    vechsigmacap = draws$vechsigmacap,
+    es = draws$es,
     fun = "MC"
   )
   class(out) <- c(

@@ -136,6 +136,9 @@ print.summary.betamc <- function(x,
   if (object$fun == "DiffBetaMC") {
     label <- "Differences of standardized regression slopes"
   }
+  if (object$fun == "FSqMC") {
+    label <- "Cohen's f-squared (fsq) and local f-squared"
+  }
   cat("Call:\n")
   base::print(object$call)
   cat(
@@ -167,11 +170,9 @@ print.summary.betamc <- function(x,
 #' @export
 vcov.betamc <- function(object,
                         ...) {
-  thetahatstar <- do.call(
-    what = "rbind",
-    args = object$thetahatstar
+  thetahatstar <- unname(
+    as.matrix(object$thetahatstar)
   )
-  thetahatstar <- unname(thetahatstar)
   colnames(thetahatstar) <- names(object$est)
   stats::var(thetahatstar)
 }

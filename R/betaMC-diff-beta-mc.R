@@ -81,12 +81,7 @@ DiffBetaMC <- function(object,
   } else {
     est <- object$lm_process$dif_betastar
   }
-  std <- BetaMC(object)
-  std <- std$thetahatstar
-  std <- do.call(
-    what = "rbind",
-    args = std
-  )
+  std <- object$es$betastar
   p_dif <- dim(object$lm_process$dif_idx)[2]
   thetahatstar <- matrix(
     data = 0.0,
@@ -103,11 +98,6 @@ DiffBetaMC <- function(object,
     ]
   }
   colnames(thetahatstar) <- names(object$lm_process$dif_betastar)
-  thetahatstar <- as.data.frame(
-    t(
-      thetahatstar
-    )
-  )
   out <- list(
     call = match.call(),
     args = list(

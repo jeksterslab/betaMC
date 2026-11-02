@@ -75,6 +75,7 @@ Other Beta Monte Carlo Functions:
 \code{\link[=BetaMC]{BetaMC()}},
 \code{\link[=DeltaRSqMC]{DeltaRSqMC()}},
 \code{\link[=DiffBetaMC]{DiffBetaMC()}},
+\code{\link[=FSqMC]{FSqMC()}},
 \code{\link[=MC]{MC()}},
 \code{\link[=MCMI]{MCMI()}},
 \code{\link[=RSqMC]{RSqMC()}},
