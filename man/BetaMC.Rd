@@ -6,7 +6,7 @@
 and Generate the Corresponding Sampling Distribution
 Using the Monte Carlo Method}
 \usage{
-BetaMC(object, alpha = c(0.05, 0.01, 0.001))
+BetaMC(object, alpha = c(0.05, 0.01, 0.001), std_y = TRUE, std_x = NULL)
 }
 \arguments{
 \item{object}{Object of class \code{mc}, that is,
@@ -14,6 +14,14 @@ the output of the \code{MC()} function.}
 
 \item{alpha}{Numeric vector.
 Significance level \eqn{\alpha}.}
+
+\item{std_y}{Logical.
+Standardize \eqn{y}.}
+
+\item{std_x}{Character vector or \code{NULL}.
+Names of the regressors to standardize.
+\code{NULL} (default) standardizes all regressors;
+\code{character(0)} standardizes none.}
 }
 \value{
 Returns an object
@@ -36,6 +44,14 @@ and Generate the Corresponding Sampling Distribution
 Using the Monte Carlo Method
 }
 \details{
+By default, both \eqn{y} and the regressors are standardized.
+With \code{std_y = FALSE}, \eqn{y} is left in its original units
+(\eqn{b_j \sigma_{x_j}});
+with \code{std_x}, only the named regressors are standardized
+(for example, \code{std_x = character(0)} gives \eqn{b_j / \sigma_y},
+and leaving a dummy variable out of \code{std_x} keeps its 0-1 contrast).
+The standard deviations are taken from each draw.
+
 The vector of standardized regression coefficients
 (\eqn{\boldsymbol{\hat{\beta}}})
 is derived from each randomly generated vector of parameter estimates.
@@ -74,6 +90,7 @@ confint(out, level = 0.95)
 Other Beta Monte Carlo Functions:
 \code{\link[=DeltaRSqMC]{DeltaRSqMC()}},
 \code{\link[=DiffBetaMC]{DiffBetaMC()}},
+\code{\link[=FSqMC]{FSqMC()}},
 \code{\link[=MC]{MC()}},
 \code{\link[=MCMI]{MCMI()}},
 \code{\link[=PCorMC]{PCorMC()}},

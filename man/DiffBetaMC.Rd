@@ -73,6 +73,7 @@ confint(out, level = 0.95)
 Other Beta Monte Carlo Functions:
 \code{\link[=BetaMC]{BetaMC()}},
 \code{\link[=DeltaRSqMC]{DeltaRSqMC()}},
+\code{\link[=FSqMC]{FSqMC()}},
 \code{\link[=MC]{MC()}},
 \code{\link[=MCMI]{MCMI()}},
 \code{\link[=PCorMC]{PCorMC()}},

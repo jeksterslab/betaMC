@@ -84,10 +84,19 @@
       )
     }
   }
+  # with theta = (beta, rsq, vech(sigmacapx)),
+  # sigmaysq = beta' sigmacapx beta / rsq,
+  # so its derivatives with respect to beta and vech(sigmacapx)
+  # are divided by rsq
+  if (is.null(rsq)) {
+    scale <- 1
+  } else {
+    scale <- 1 / as.vector(rsq)[1]
+  }
   jcap[
     moments$sigmaysq,
     theta$beta
-  ] <- .Vec(
+  ] <- scale * .Vec(
     2 * crossprod(
       beta,
       sigmacapx
@@ -110,7 +119,7 @@
     jcap[
       moments$sigmaysq,
       theta$vechsigmacapx
-    ] <- .Vec(tcrossprod(beta)) %*% dp
+    ] <- scale * .Vec(tcrossprod(beta)) %*% dp
   }
   jcap[
     moments$sigmayx,

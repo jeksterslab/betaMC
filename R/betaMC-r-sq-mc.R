@@ -80,24 +80,16 @@ RSqMC <- function(object,
   } else {
     est <- object$lm_process$rsq
   }
-  thetahatstar <- lapply(
-    X = object$thetahatstar,
-    FUN = function(x) {
-      rsq <- .RSqofSigma(
-        sigmacap = x$sigmacap,
-        k = object$lm_process$k
-      )
-      adj <- (
-        1 - (
-          1 - rsq
-        ) * (
-          (
-            object$lm_process$n - 1
-          ) / object$lm_process$df
-        )
-      )
-      c(rsq = rsq, adj = adj)
-    }
+  rsq <- object$es$rsq[, 1]
+  thetahatstar <- cbind(
+    rsq = rsq,
+    adj = 1 - (
+      1 - rsq
+    ) * (
+      (
+        object$lm_process$n - 1
+      ) / object$lm_process$df
+    )
   )
   out <- list(
     call = match.call(),

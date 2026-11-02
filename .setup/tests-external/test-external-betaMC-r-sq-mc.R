@@ -78,63 +78,63 @@ lapply(
         testthat::expect_true(
           all(
             abs(
-              colMeans(do.call(what = "rbind", args = mvn$thetahatstar)) - theta
+              colMeans(as.matrix(mvn$thetahatstar)) - theta
             ) <= tol
           )
         )
         testthat::expect_true(
           all(
             abs(
-              colMeans(do.call(what = "rbind", args = adf$thetahatstar)) - theta
+              colMeans(as.matrix(adf$thetahatstar)) - theta
             ) <= tol
           )
         )
         testthat::expect_true(
           all(
             abs(
-              colMeans(do.call(what = "rbind", args = hc0$thetahatstar)) - theta
+              colMeans(as.matrix(hc0$thetahatstar)) - theta
             ) <= tol
           )
         )
         testthat::expect_true(
           all(
             abs(
-              colMeans(do.call(what = "rbind", args = hc1$thetahatstar)) - theta
+              colMeans(as.matrix(hc1$thetahatstar)) - theta
             ) <= tol
           )
         )
         testthat::expect_true(
           all(
             abs(
-              colMeans(do.call(what = "rbind", args = hc2$thetahatstar)) - theta
+              colMeans(as.matrix(hc2$thetahatstar)) - theta
             ) <= tol
           )
         )
         testthat::expect_true(
           all(
             abs(
-              colMeans(do.call(what = "rbind", args = hc3$thetahatstar)) - theta
+              colMeans(as.matrix(hc3$thetahatstar)) - theta
             ) <= tol
           )
         )
         testthat::expect_true(
           all(
             abs(
-              colMeans(do.call(what = "rbind", args = hc4$thetahatstar)) - theta
+              colMeans(as.matrix(hc4$thetahatstar)) - theta
             ) <= tol
           )
         )
         testthat::expect_true(
           all(
             abs(
-              colMeans(do.call(what = "rbind", args = hc4m$thetahatstar)) - theta
+              colMeans(as.matrix(hc4m$thetahatstar)) - theta
             ) <= tol
           )
         )
         testthat::expect_true(
           all(
             abs(
-              colMeans(do.call(what = "rbind", args = hc5$thetahatstar)) - theta
+              colMeans(as.matrix(hc5$thetahatstar)) - theta
             ) <= tol
           )
         )

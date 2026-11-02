@@ -18,19 +18,7 @@
 #' @noRd
 .MCVar <- function(object) {
   stats::var(
-    do.call(
-      what = "rbind",
-      args = lapply(
-        X = object$thetahatstar,
-        FUN = function(i) {
-          c(
-            i$coef,
-            i$sigmasq,
-            i$vechsigmacapx
-          )
-        }
-      )
-    )
+    unname(object$thetahatstar)
   )
 }
 
@@ -43,18 +31,6 @@
 #' @noRd
 .MCMean <- function(object) {
   colMeans(
-    do.call(
-      what = "rbind",
-      args = lapply(
-        X = object$thetahatstar,
-        FUN = function(i) {
-          c(
-            i$coef,
-            i$sigmasq,
-            i$vechsigmacapx
-          )
-        }
-      )
-    )
+    unname(object$thetahatstar)
   )
 }

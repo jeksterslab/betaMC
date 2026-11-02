@@ -21,31 +21,19 @@
 #' @keywords eval internal
 #' @noRd
 .MCRMSE <- function(object) {
+  est <- c(
+    object$lm_process$beta,
+    object$lm_process$sigmasq,
+    object$lm_process$vechsigmacapx
+  )
   sqrt(
     colMeans(
-      do.call(
-        what = "rbind",
-        args = lapply(
-          X = object$thetahatstar,
-          FUN = function(i,
-                         est) {
-            (
-              c(
-                i$coef,
-                i$sigmasq,
-                i$vechsigmacapx
-              )
-              -
-                est
-            )^2
-          },
-          est = c(
-            object$lm_process$beta,
-            object$lm_process$sigmasq,
-            object$lm_process$vechsigmacapx
-          )
+      (
+        unname(object$thetahatstar) - rep(
+          x = est,
+          each = nrow(object$thetahatstar)
         )
-      )
+      )^2
     )
   )
 }

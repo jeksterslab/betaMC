@@ -83,20 +83,7 @@ SCorMC <- function(object,
   } else {
     est <- object$lm_process$scor
   }
-  std <- BetaMC(object)
-  std <- std$thetahatstar
-  thetahatstar <- mapply(
-    theta = object$thetahatstar,
-    std = std,
-    SIMPLIFY = FALSE,
-    FUN = function(theta,
-                   std) {
-      .SPCor(
-        betastar = std,
-        sigmacapx = theta$sigmacapx
-      )
-    }
-  )
+  thetahatstar <- object$es$spcor
   out <- list(
     call = match.call(),
     args = list(

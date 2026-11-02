@@ -26,6 +26,9 @@ reference:
 - title: Differences of Standardized Regression Coefficients
   contents:
   - has_keyword("diff")
+- title: Cohen's f-Squared
+  contents:
+  - has_keyword("fsq")
 - title: Methods
   contents:
   - has_keyword("methods")

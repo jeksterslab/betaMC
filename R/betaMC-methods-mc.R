@@ -27,7 +27,13 @@ print.mc <- function(x,
     )
   )
   base::print(
-    x$thetahatstar[[1]]
+    list(
+      thetahatstar = x$thetahatstar[1, ],
+      sigmacap = .SymofVech(
+        x = x$vechsigmacap[1, ],
+        k = x$lm_process$k
+      )
+    )
   )
 }
 

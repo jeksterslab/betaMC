@@ -27,7 +27,11 @@ Roxygen: list(markdown = TRUE)
 Depends:
     R (>= 3.5.0)
 Imports:
+    Rcpp,
     stats
+LinkingTo:
+    Rcpp,
+    RcppArmadillo
 Suggests:
     knitr,
     rmarkdown,

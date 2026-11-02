@@ -65,12 +65,7 @@ DeltaRSqMC <- function(object,
       object = object,
       alpha = alpha
     ),
-    thetahatstar = lapply(
-      X = sr$thetahatstar,
-      FUN = function(x) {
-        x^2
-      }
-    ),
+    thetahatstar = (sr$thetahatstar)^2,
     est = (sr$est)^2,
     fun = "DeltaRSqMC"
   )
