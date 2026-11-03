@@ -21,7 +21,7 @@
 .J <- function(lm_process,
                rsq = NULL,
                fixed_x) {
-  .JacobianVechSigmaWRTTheta(
+  .JacVechSigmaWRTTheta(
     beta = lm_process$beta,
     sigmacapx = lm_process$sigmacap[
       2:lm_process$k,

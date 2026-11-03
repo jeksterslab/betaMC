@@ -630,7 +630,7 @@ lapply(
             decomposition = "svd"
           )
         )
-        .JacobianVechSigmaWRTTheta(
+        .JacVechSigmaWRTTheta(
           beta = beta,
           sigmacapx = sigmacapx,
           q = p + 1 + 0.5 * p * (p + 1),

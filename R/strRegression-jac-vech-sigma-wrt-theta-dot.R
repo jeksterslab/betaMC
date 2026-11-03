@@ -24,12 +24,12 @@
 #' @family Derivatives Functions
 #' @keywords strRegression derivatives internal
 #' @noRd
-.JacobianVechSigmaWRTTheta <- function(beta,
-                                       sigmacapx,
-                                       q,
-                                       p,
-                                       rsq = NULL,
-                                       fixed_x = FALSE) {
+.JacVechSigmaWRTTheta <- function(beta,
+                                  sigmacapx,
+                                  q,
+                                  p,
+                                  rsq = NULL,
+                                  fixed_x = FALSE) {
   theta <- .ThetaIndex(
     p = p
   )

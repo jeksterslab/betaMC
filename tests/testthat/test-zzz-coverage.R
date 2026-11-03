@@ -23,7 +23,7 @@ lapply(
         object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
         lm_process <- betaMC:::.ProcessLM(object)
         print(
-          betaMC:::.JacobianVechSigmaWRTTheta(
+          betaMC:::.JacVechSigmaWRTTheta(
             beta = lm_process$beta,
             sigmacapx = lm_process$sigmacapx,
             q = lm_process$q,
@@ -33,7 +33,7 @@ lapply(
           )
         )
         print(
-          betaMC:::.JacobianVechSigmaWRTTheta(
+          betaMC:::.JacVechSigmaWRTTheta(
             beta = lm_process$beta,
             sigmacapx = lm_process$sigmacapx,
             q = lm_process$q,
@@ -43,7 +43,7 @@ lapply(
           )
         )
         print(
-          betaMC:::.JacobianVechSigmaWRTTheta(
+          betaMC:::.JacVechSigmaWRTTheta(
             beta = lm_process$beta,
             sigmacapx = lm_process$sigmacapx,
             q = lm_process$q,
@@ -53,7 +53,7 @@ lapply(
           )
         )
         print(
-          betaMC:::.JacobianVechSigmaWRTTheta(
+          betaMC:::.JacVechSigmaWRTTheta(
             beta = lm_process$beta,
             sigmacapx = lm_process$sigmacapx,
             q = lm_process$q,
