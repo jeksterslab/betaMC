@@ -17,20 +17,20 @@
 #' @noRd
 .CI <- function(object,
                 alpha = NULL) {
-  if (is.null(alpha)) {
+  if (is.null(x = alpha)) {
     alpha <- object$args$alpha
   }
   probs <- .PCProbs(alpha = alpha)
   thetahatstar <- unname(
-    as.matrix(object$thetahatstar)
+    obj = as.matrix(x = object$thetahatstar)
   )
-  colnames(thetahatstar) <- names(object$est)
+  colnames(x = thetahatstar) <- names(x = object$est)
   thetahat <- object$est
   ci <- vector(
     mode = "list",
-    length = dim(thetahatstar)[2]
+    length = dim(x = thetahatstar)[2]
   )
-  for (i in seq_len(dim(thetahatstar)[2])) {
+  for (i in seq_len(length.out = dim(x = thetahatstar)[2])) {
     ci[[i]] <- .PCCI(
       thetahatstar = thetahatstar[, i],
       thetahat = thetahat[[i]],
@@ -41,6 +41,6 @@
     what = "rbind",
     args = ci
   )
-  rownames(ci) <- names(thetahat)
+  rownames(x = ci) <- names(x = thetahat)
   ci
 }

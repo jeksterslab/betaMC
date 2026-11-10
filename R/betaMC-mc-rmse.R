@@ -27,11 +27,11 @@
     object$lm_process$vechsigmacapx
   )
   sqrt(
-    colMeans(
-      (
-        unname(object$thetahatstar) - rep(
+    x = colMeans(
+      x = (
+        unname(obj = object$thetahatstar) - rep(
           x = est,
-          each = nrow(object$thetahatstar)
+          each = nrow(x = object$thetahatstar)
         )
       )^2
     )

@@ -19,7 +19,7 @@
                  k,
                  jcap = NULL,
                  fixed_x) {
-  if (is.null(jcap)) {
+  if (is.null(x = jcap)) {
     jcap <- .J(
       lm_process = lm_process,
       rsq = NULL,
@@ -34,8 +34,8 @@
     gammacap <- .GammaADFUnbiased(
       gammacapadf_consistent = .GammaADFConsistent(
         d = .DofMat(
-          lm_process$x,
-          center = colMeans(lm_process$x),
+          x = lm_process$x,
+          center = colMeans(x = lm_process$x),
           n = lm_process$n,
           k = lm_process$k
         ),
@@ -56,8 +56,8 @@
   if (type %in% c("adf", "mvn")) {
     # the procedure from here is the same for adf and mvn
     acov <- chol2inv(
-      chol(
-        .ACovSEMInverse(
+      x = chol(
+        x = .ACovSEMInverse(
           jcap = jcap,
           acov = gammacap
         )
@@ -82,14 +82,14 @@
     )
     gammacap_hc <- .GammaHC(
       d = .DofMat(
-        lm_process$x,
-        center = colMeans(lm_process$x),
+        x = lm_process$x,
+        center = colMeans(x = lm_process$x),
         n = lm_process$n,
         k = lm_process$k
       ),
       sigmacap = lm_process$sigmacap,
       qcap = .QMat(
-        h = stats::hatvalues(lm_process$object),
+        h = stats::hatvalues(model = lm_process$object),
         k = lm_process$k,
         type = type,
         g1 = g1,

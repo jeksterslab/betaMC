@@ -18,7 +18,7 @@
 print.mc <- function(x,
                      ...) {
   cat("Call:\n")
-  base::print(x$call)
+  base::print(x = x$call)
   cat(
     paste0(
       "The first set of simulated parameter estimates\n",
@@ -27,7 +27,7 @@ print.mc <- function(x,
     )
   )
   base::print(
-    list(
+    x = list(
       thetahatstar = x$thetahatstar[1, ],
       sigmacap = .SymofVech(
         x = x$vechsigmacap[1, ],
@@ -74,32 +74,36 @@ summary.mc <- function(object,
                        digits = 4,
                        ...) {
   varnames <- c(
-    paste0("b", seq_len(object$lm_process$p)),
+    paste0("b", seq_len(length.out = object$lm_process$p)),
     "sigmasq",
     paste0(
       "sigma",
       .VechNames(
-        x = paste0("x", seq_len(object$lm_process$p)),
+        x = paste0("x", seq_len(length.out = object$lm_process$p)),
         sep = ""
       )
     )
   )
-  bias <- .MCBias(object)
-  var <- .MCVar(object)
-  mean <- .MCMean(object)
-  rmse <- .MCRMSE(object)
+  bias <- .MCBias(object = object)
+  var <- .MCVar(object = object)
+  mean <- .MCMean(object = object)
+  rmse <- .MCRMSE(object = object)
   location <- object$location
   scale <- object$scale
-  names(mean) <- varnames
-  names(bias) <- varnames
-  names(rmse) <- varnames
-  rownames(var) <- colnames(var) <- varnames
+  names(x = mean) <- varnames
+  names(x = bias) <- varnames
+  names(x = rmse) <- varnames
+  rownames(x = var) <- colnames(x = var) <- varnames
   if (object$args$fixed_x) {
-    names(location) <- varnames[seq_len(object$lm_process$k)]
-    rownames(scale) <- colnames(scale) <- varnames[seq_len(object$lm_process$k)]
+    names(x = location) <- varnames[seq_len(length.out = object$lm_process$k)]
+    rownames(
+      x = scale
+    ) <- colnames(x = scale) <- varnames[
+      seq_len(length.out = object$lm_process$k)
+    ]
   } else {
-    names(location) <- varnames
-    rownames(scale) <- colnames(scale) <- varnames
+    names(x = location) <- varnames
+    rownames(x = scale) <- colnames(x = scale) <- varnames
   }
   out <- list(
     mean = mean,
@@ -129,7 +133,7 @@ summary.mc <- function(object,
     x = out,
     which = "digits"
   ) <- digits
-  class(out) <- "summary.mc"
+  class(x = out) <- "summary.mc"
   out
 }
 
@@ -146,7 +150,7 @@ print.summary.mc <- function(x,
     x = x,
     which = "mc"
   )
-  base::print(object$call)
-  print(print_summary)
-  invisible(x)
+  base::print(x = object$call)
+  print(x = print_summary)
+  invisible(x = x)
 }

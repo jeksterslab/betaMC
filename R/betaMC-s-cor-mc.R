@@ -70,7 +70,7 @@ SCorMC <- function(object,
   }
   if (object$fun == "MCMI") {
     est <- colMeans(
-      do.call(
+      x = do.call(
         what = "rbind",
         args = lapply(
           X = object$args$mi_output$lm_process,
@@ -94,9 +94,9 @@ SCorMC <- function(object,
     est = est,
     fun = "SCorMC"
   )
-  class(out) <- c(
+  class(x = out) <- c(
     "betamc",
-    class(out)
+    class(x = out)
   )
   out
 }

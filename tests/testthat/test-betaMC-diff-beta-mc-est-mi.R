@@ -5,25 +5,18 @@ lapply(
                  text,
                  R,
                  tol) {
+    testthat::skip_on_cran()
     message(text)
 
-    set.seed(42)
-
-    if (!identical(Sys.getenv("NOT_CRAN"), "true") && !interactive()) {
-      message("CRAN: tests skipped.")
-      # nolint start
-      return(invisible(NULL))
-      # nolint end
-    }
+    set.seed(seed = 42)
 
     testthat::test_that(
-      paste(text, "differences of standardized slopes"),
-      {
-        testthat::skip_on_cran()
-        set.seed(42)
-        if (!exists("nas1982")) {
+      desc = paste(text, "differences of standardized slopes"),
+      code = {
+        set.seed(seed = 42)
+        if (!exists(x = "nas1982")) {
           try(
-            data(
+            expr = utils::data(
               "nas1982",
               package = "betaMC"
             ),
@@ -31,25 +24,28 @@ lapply(
           )
         }
         df <- nas1982
-        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        object <- stats::lm(
+          formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+          data = df
+        )
         mi <- mice::mice(
-          df,
+          data = df,
           m = 10,
           seed = 42,
           print = FALSE
         )
-        mc <- MCMI(object, mi = mi, R = R, type = "mvn")
-        out <- DiffBetaMC(mc)
-        print.betamc(out)
-        summary.betamc(out)
-        print.summary.betamc(summary.betamc(out))
-        coef.betamc(out)
-        vcov.betamc(out)
-        confint.betamc(out)
+        mc <- MCMI(object = object, mi = mi, R = R, type = "mvn")
+        out <- DiffBetaMC(object = mc)
+        print.betamc(x = out)
+        summary.betamc(object = out)
+        print.summary.betamc(x = summary.betamc(object = out))
+        coef.betamc(object = out)
+        vcov.betamc(object = out)
+        confint.betamc(object = out)
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              coef.betamc(out) - c(
+              x = coef.betamc(object = out) - c(
                 .4951 - .3915,
                 .4951 - .2632,
                 .3915 - .2632
@@ -60,13 +56,12 @@ lapply(
       }
     )
     testthat::test_that(
-      paste(text, "error"),
-      {
-        testthat::skip_on_cran()
-        set.seed(42)
-        if (!exists("nas1982")) {
+      desc = paste(text, "error"),
+      code = {
+        set.seed(seed = 42)
+        if (!exists(x = "nas1982")) {
           try(
-            data(
+            expr = utils::data(
               "nas1982",
               package = "betaMC"
             ),
@@ -74,16 +69,16 @@ lapply(
           )
         }
         df <- nas1982
-        object <- lm(QUALITY ~ NARTIC, data = df)
+        object <- stats::lm(formula = QUALITY ~ NARTIC, data = df)
         mi <- mice::mice(
-          df,
+          data = df,
           m = 10,
           seed = 42,
           print = FALSE
         )
-        mc <- MCMI(object, mi = mi, R = R, type = "mvn")
+        mc <- MCMI(object = object, mi = mi, R = R, type = "mvn")
         testthat::expect_error(
-          DiffBetaMC(mc)
+          object = DiffBetaMC(object = mc)
         )
       }
     )

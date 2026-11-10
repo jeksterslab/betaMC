@@ -20,7 +20,7 @@
 #' @noRd
 .MCBias <- function(object) {
   colMeans(
-    unname(object$thetahatstar)
+    x = unname(obj = object$thetahatstar)
   ) - c(
     object$lm_process$beta,
     object$lm_process$sigmasq,
