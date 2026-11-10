@@ -82,7 +82,7 @@ jobs:
           git reset --hard HEAD
       - 
         name: Push to the src branch
-        uses: s0/git-publish-subdir-action@develop
+        uses: s0/git-publish-subdir-action@v2.6.0
         env:
           REPO: self
           BRANCH: src

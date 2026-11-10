@@ -1,32 +1,32 @@
 betaMC
 ================
 Ivan Jacob Agaloos Pesigan
-2026-11-05
+2026-11-10
 
 <!-- README.md is generated from .setup/readme/README.Rmd. Please edit that file -->
 
 <!-- badges: start -->
-
 [![DOI](https://zenodo.org/badge/DOI/10.3758/s13428-023-02114-4.svg)](https://doi.org/10.3758/s13428-023-02114-4)
-[![CRAN
-Status](https://www.r-pkg.org/badges/version/betaMC)](https://cran.r-project.org/package=betaMC)
-[![R-Universe
-Status](https://jeksterslab.r-universe.dev/badges/betaMC)](https://jeksterslab.r-universe.dev/betaMC)
-[![Make
-Project](https://github.com/jeksterslab/betaMC/actions/workflows/make.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/make.yml)
-[![R-CMD-check](https://github.com/jeksterslab/betaMC/actions/workflows/check-full.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/check-full.yml)
-[![R Package Test
-Coverage](https://github.com/jeksterslab/betaMC/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/test-coverage.yml)
-[![Lint R
-Package](https://github.com/jeksterslab/betaMC/actions/workflows/lint.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/lint.yml)
-[![Package Website (GitHub
-Pages)](https://github.com/jeksterslab/betaMC/actions/workflows/pkgdown-gh-pages.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/pkgdown-gh-pages.yml)
-[![Compile
-LaTeX](https://github.com/jeksterslab/betaMC/actions/workflows/latex.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/latex.yml)
-[![Shell
-Check](https://github.com/jeksterslab/betaMC/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/shellcheck.yml)
+[![CRAN Status](https://www.r-pkg.org/badges/version/betaMC)](https://cran.r-project.org/package=betaMC)
+[![R-Universe Status](https://jeksterslab.r-universe.dev/badges/betaMC)](https://jeksterslab.r-universe.dev/betaMC)
 [![pages-build-deployment](https://github.com/jeksterslab/betaMC/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/pages/pages-build-deployment)
 [![codecov](https://codecov.io/gh/jeksterslab/betaMC/branch/main/graph/badge.svg?token=KVLUET3DJ6)](https://codecov.io/gh/jeksterslab/betaMC)
+[![Make Project (make all)](https://github.com/jeksterslab/betaMC/actions/workflows/make-all.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/make-all.yml)
+[![Make Project](https://github.com/jeksterslab/betaMC/actions/workflows/make.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/make.yml)
+[![R-CMD-check-full](https://github.com/jeksterslab/betaMC/actions/workflows/check-full.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/check-full.yml)
+[![R-CMD-check-oldrel](https://github.com/jeksterslab/betaMC/actions/workflows/check-oldrel.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/check-oldrel.yml)
+[![R-CMD-check-standard](https://github.com/jeksterslab/betaMC/actions/workflows/check-standard.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/check-standard.yml)
+[![Compile LaTeX](https://github.com/jeksterslab/betaMC/actions/workflows/latex.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/latex.yml)
+[![Lint R Package](https://github.com/jeksterslab/betaMC/actions/workflows/lint.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/lint.yml)
+[![Non-ASCII Check](https://github.com/jeksterslab/betaMC/actions/workflows/non-ascii-check.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/non-ascii-check.yml)
+[![Package Website (GitHub Pages)](https://github.com/jeksterslab/betaMC/actions/workflows/pkgdown-gh-pages.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/pkgdown-gh-pages.yml)
+[![rhub 1 (essential)](https://github.com/jeksterslab/betaMC/actions/workflows/rhub-1-essential.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/rhub-1-essential.yml)
+[![rhub 2 (memory)](https://github.com/jeksterslab/betaMC/actions/workflows/rhub-2-memory.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/rhub-2-memory.yml)
+[![rhub 3 (numerics), review only](https://github.com/jeksterslab/betaMC/actions/workflows/rhub-3-numerics.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/rhub-3-numerics.yml)
+[![rhub 4 (compilers), review only](https://github.com/jeksterslab/betaMC/actions/workflows/rhub-4-compilers.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/rhub-4-compilers.yml)
+[![Shell Check](https://github.com/jeksterslab/betaMC/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/shellcheck.yml)
+[![Source Code](https://github.com/jeksterslab/betaMC/actions/workflows/source.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/source.yml)
+[![R Package Test Coverage](https://github.com/jeksterslab/betaMC/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/test-coverage.yml)
 <!-- badges: end -->
 
 ## Description
@@ -119,9 +119,9 @@ BetaMC(mvn, alpha = 0.05)
 #> Standardized regression slopes
 #> type = "mvn"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0754 20000 0.3411 0.6346
-#> PCTGRT  0.3915 0.0764 20000 0.2388 0.5371
-#> PCTSUPP 0.2632 0.0747 20000 0.1185 0.4091
+#> NARTIC  0.4951 0.0753 20000 0.3394 0.6336
+#> PCTGRT  0.3915 0.0769 20000 0.2389 0.5394
+#> PCTSUPP 0.2632 0.0744 20000 0.1209 0.4109
 ```
 
 #### Asymptotic distribution-free Approach
@@ -134,9 +134,9 @@ BetaMC(adf, alpha = 0.05)
 #> Standardized regression slopes
 #> type = "adf"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0680 20000 0.3490 0.6153
-#> PCTGRT  0.3915 0.0705 20000 0.2445 0.5215
-#> PCTSUPP 0.2632 0.0768 20000 0.1075 0.4089
+#> NARTIC  0.4951 0.0681 20000 0.3512 0.6171
+#> PCTGRT  0.3915 0.0711 20000 0.2418 0.5198
+#> PCTSUPP 0.2632 0.0771 20000 0.1053 0.4082
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
@@ -149,9 +149,9 @@ BetaMC(hc3, alpha = 0.05)
 #> Standardized regression slopes
 #> type = "hc3"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0795 20000 0.3226 0.6334
-#> PCTGRT  0.3915 0.0825 20000 0.2182 0.5402
-#> PCTSUPP 0.2632 0.0852 20000 0.0898 0.4224
+#> NARTIC  0.4951 0.0796 20000 0.3217 0.6349
+#> PCTGRT  0.3915 0.0827 20000 0.2203 0.5421
+#> PCTSUPP 0.2632 0.0853 20000 0.0913 0.4258
 ```
 
 ### Other Effect Sizes
@@ -174,8 +174,8 @@ RSqMC(hc3, alpha = 0.05)
 #> R-squared and adjusted R-squared
 #> type = "hc3"
 #>        est     se     R   2.5%  97.5%
-#> rsq 0.8045 0.0625 20000 0.6431 0.8867
-#> adj 0.7906 0.0669 20000 0.6177 0.8786
+#> rsq 0.8045 0.0618 20000 0.6451 0.8881
+#> adj 0.7906 0.0662 20000 0.6197 0.8801
 ```
 
 #### Improvement in R-squared
@@ -188,9 +188,9 @@ DeltaRSqMC(hc3, alpha = 0.05)
 #> Improvement in R-squared
 #> type = "hc3"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.1859 0.0688 20000 0.0494 0.3201
-#> PCTGRT  0.1177 0.0549 20000 0.0252 0.2371
-#> PCTSUPP 0.0569 0.0374 20000 0.0061 0.1490
+#> NARTIC  0.1859 0.0687 20000 0.0494 0.3218
+#> PCTGRT  0.1177 0.0553 20000 0.0257 0.2380
+#> PCTSUPP 0.0569 0.0375 20000 0.0063 0.1511
 ```
 
 #### Semipartial Correlation Coefficients
@@ -203,9 +203,9 @@ SCorMC(hc3, alpha = 0.05)
 #> Semipartial correlations
 #> type = "hc3"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4312 0.0868 20000 0.2222 0.5658
-#> PCTGRT  0.3430 0.0835 20000 0.1588 0.4869
-#> PCTSUPP 0.2385 0.0779 20000 0.0779 0.3860
+#> NARTIC  0.4312 0.0866 20000 0.2222 0.5673
+#> PCTGRT  0.3430 0.0838 20000 0.1604 0.4879
+#> PCTSUPP 0.2385 0.0781 20000 0.0792 0.3887
 ```
 
 #### Squared Partial Correlation Coefficients
@@ -218,9 +218,9 @@ PCorMC(hc3, alpha = 0.05)
 #> Squared partial correlations
 #> type = "hc3"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4874 0.1190 20000 0.1810 0.6497
-#> PCTGRT  0.3757 0.1153 20000 0.1067 0.5545
-#> PCTSUPP 0.2254 0.1124 20000 0.0251 0.4558
+#> NARTIC  0.4874 0.1192 20000 0.1802 0.6500
+#> PCTGRT  0.3757 0.1157 20000 0.1085 0.5552
+#> PCTSUPP 0.2254 0.1130 20000 0.0255 0.4579
 ```
 
 #### Differences of Standardized Regression Coefficients
@@ -233,9 +233,9 @@ DiffBetaMC(hc3, alpha = 0.05)
 #> Differences of standardized regression slopes
 #> type = "hc3"
 #>                   est     se     R    2.5%  97.5%
-#> NARTIC-PCTGRT  0.1037 0.1424 20000 -0.1793 0.3760
-#> NARTIC-PCTSUPP 0.2319 0.1323 20000 -0.0356 0.4818
-#> PCTGRT-PCTSUPP 0.1282 0.1373 20000 -0.1502 0.3880
+#> NARTIC-PCTGRT  0.1037 0.1430 20000 -0.1792 0.3745
+#> NARTIC-PCTSUPP 0.2319 0.1319 20000 -0.0411 0.4798
+#> PCTGRT-PCTSUPP 0.1282 0.1374 20000 -0.1475 0.3883
 ```
 
 ## Documentation

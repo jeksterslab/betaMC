@@ -47,6 +47,7 @@ jobs:
     container:
       image: ${{ needs.image.outputs.image }}
     env:
+      NOT_CRAN: "true"
       RPROJECT_SNAPSHOT: ${{ needs.image.outputs.snapshot }}
       GITHUB_PAT: ${{ secrets.PAT }}
       GITHUB_ACTIONS: "true"
@@ -71,7 +72,7 @@ jobs:
           make push
       - 
         name: Commit and push changes
-        uses: devops-infra/action-commit-push@master
+        uses: devops-infra/action-commit-push@v1.5.0
         with:
           github_token: ${{ secrets.PAT }}
           commit_message: "Automated build [skip ci]."

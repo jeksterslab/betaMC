@@ -75,7 +75,7 @@ FSqMC <- function(object,
   xnames <- object$lm_process$xnames
   if (object$fun == "MCMI") {
     est <- colMeans(
-      do.call(
+      x = do.call(
         what = "rbind",
         args = lapply(
           X = object$args$mi_output$lm_process,
@@ -84,10 +84,10 @@ FSqMC <- function(object,
       )
     )
   } else {
-    est <- .FSqLM(object$lm_process)
+    est <- .FSqLM(lm_process = object$lm_process)
   }
   spcor <- object$es$spcor
-  colnames(spcor) <- xnames
+  colnames(x = spcor) <- xnames
   out <- list(
     call = match.call(),
     args = list(
@@ -101,9 +101,9 @@ FSqMC <- function(object,
     est = est,
     fun = "FSqMC"
   )
-  class(out) <- c(
+  class(x = out) <- c(
     "betamc",
-    class(out)
+    class(x = out)
   )
   out
 }

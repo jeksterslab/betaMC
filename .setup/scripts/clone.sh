@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# stop at the first error: a failed clone must not go on to remove .git
+set -Eeuo pipefail
+
 # the SSH host: github-<owner> when ~/.ssh/config defines that alias (for
 # example on Roar), else github.com
 host="github.com"

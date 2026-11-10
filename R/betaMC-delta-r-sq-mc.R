@@ -58,7 +58,7 @@
 #' @export
 DeltaRSqMC <- function(object,
                        alpha = c(0.05, 0.01, 0.001)) {
-  sr <- SCorMC(object)
+  sr <- SCorMC(object = object)
   out <- list(
     call = match.call(),
     args = list(
@@ -69,9 +69,9 @@ DeltaRSqMC <- function(object,
     est = (sr$est)^2,
     fun = "DeltaRSqMC"
   )
-  class(out) <- c(
+  class(x = out) <- c(
     "betamc",
-    class(out)
+    class(x = out)
   )
   out
 }

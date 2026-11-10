@@ -19,7 +19,7 @@ Detritus <- function(path) {
       "tex-fig-",
       paste0(
         sample(
-          letters,
+          x = letters,
           size = 8,
           replace = TRUE
         ),
@@ -28,7 +28,7 @@ Detritus <- function(path) {
     )
   )
   dir.create(
-    tex_figures_folder,
+    path = tex_figures_folder,
     showWarnings = FALSE,
     recursive = TRUE
   )
@@ -41,13 +41,13 @@ Detritus <- function(path) {
       "*",
       "*/"
     )
-    con <- file(dot_gitignore_file)
+    con <- file(description = dot_gitignore_file)
     writeLines(
       text = dot_gitignore,
       con = con,
       sep = "\n"
     )
-    close(con)
+    close(con = con)
   }
   list(
     detritus_folder = detritus_folder,

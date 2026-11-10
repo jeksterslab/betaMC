@@ -8,6 +8,7 @@ lapply(
                  p,
                  beta,
                  R) {
+    testthat::skip_on_cran()
     # This test is based on the assumption
     # that the sampling covariance matrix
     # for all the methods are asymptotically equivalent
@@ -15,34 +16,26 @@ lapply(
     # and the error term is homoskedastic and normally distributed.
     message(text)
 
-    set.seed(42)
-
-    if (!identical(Sys.getenv("NOT_CRAN"), "true") && !interactive()) {
-      message("CRAN: tests skipped.")
-      # nolint start
-      return(invisible(NULL))
-      # nolint end
-    }
+    set.seed(seed = 42)
 
     testthat::test_that(
-      paste(text, "means"),
-      {
-        testthat::skip_on_cran()
-        set.seed(42)
-        sigmacapx <- diag(p)
+      desc = paste(text, "means"),
+      code = {
+        set.seed(seed = 42)
+        sigmacapx <- diag(x = p)
         beta <- rep(x = beta, times = p)
         sigmasq <- (
           1 - (
-            tcrossprod(beta, sigmacapx) %*% beta
+            tcrossprod(x = beta, y = sigmacapx) %*% beta
           )
         )
         theta <- c(
           beta,
           sigmasq,
-          .Vech(sigmacapx)
+          .Vech(x = sigmacapx)
         )
         x <- scale(
-          MASS::mvrnorm(
+          x = MASS::mvrnorm(
             n = n,
             mu = rep(x = 0.0, times = p),
             Sigma = sigmacapx,
@@ -51,137 +44,190 @@ lapply(
         )
         y <- (
           x %*% beta
-        ) + rnorm(
+        ) + stats::rnorm(
           n = n,
-          sd = sqrt(sigmasq)
+          sd = sqrt(x = sigmasq)
         )
         df <- cbind(
           y,
           x
         )
-        colnames(df) <- c(
+        colnames(x = df) <- c(
           "y",
-          paste0("x", seq_len(p))
+          paste0("x", seq_len(length.out = p))
         )
-        df <- as.data.frame(df)
-        object <- lm(y ~ ., data = df)
+        df <- as.data.frame(x = df)
+        object <- stats::lm(formula = y ~ ., data = df)
         mi <- mice::mice(
-          df,
+          data = df,
           m = 10,
           seed = 42,
           print = FALSE
         )
         mvn <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "mvn", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "mvn",
+            fixed_x = TRUE
+          )
         )
         adf <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "adf", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "adf",
+            fixed_x = TRUE
+          )
         )
         hc0 <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "hc0", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "hc0",
+            fixed_x = TRUE
+          )
         )
         hc1 <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "hc1", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "hc1",
+            fixed_x = TRUE
+          )
         )
         hc2 <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "hc2", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "hc2",
+            fixed_x = TRUE
+          )
         )
         hc3 <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "hc3", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "hc3",
+            fixed_x = TRUE
+          )
         )
         hc4 <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "hc4", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "hc4",
+            fixed_x = TRUE
+          )
         )
         hc4m <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "hc4m", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "hc4m",
+            fixed_x = TRUE
+          )
         )
         hc5 <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "hc5", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "hc5",
+            fixed_x = TRUE
+          )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn$mean - theta
+              x = mvn$mean - theta
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              adf$mean - theta
+              x = adf$mean - theta
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              hc0$mean - theta
+              x = hc0$mean - theta
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              hc1$mean - theta
+              x = hc1$mean - theta
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              hc2$mean - theta
+              x = hc2$mean - theta
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              hc3$mean - theta
+              x = hc3$mean - theta
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              hc4$mean - theta
+              x = hc4$mean - theta
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              hc4m$mean - theta
+              x = hc4m$mean - theta
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              hc5$mean - theta
+              x = hc5$mean - theta
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "adf"),
-      {
-        testthat::skip_on_cran()
-        set.seed(42)
-        sigmacapx <- diag(p)
+      desc = paste(text, "adf"),
+      code = {
+        set.seed(seed = 42)
+        sigmacapx <- diag(x = p)
         beta <- rep(x = beta, times = p)
         sigmasq <- (
           1 - (
-            tcrossprod(beta, sigmacapx) %*% beta
+            tcrossprod(x = beta, y = sigmacapx) %*% beta
           )
         )
         theta <- c(
           beta,
           sigmasq,
-          .Vech(sigmacapx)
+          .Vech(x = sigmacapx)
         )
         x <- scale(
-          MASS::mvrnorm(
+          x = MASS::mvrnorm(
             n = n,
             mu = rep(x = 0.0, times = p),
             Sigma = sigmacapx,
@@ -190,61 +236,72 @@ lapply(
         )
         y <- (
           x %*% beta
-        ) + rnorm(
+        ) + stats::rnorm(
           n = n,
-          sd = sqrt(sigmasq)
+          sd = sqrt(x = sigmasq)
         )
         df <- cbind(
           y,
           x
         )
-        colnames(df) <- c(
+        colnames(x = df) <- c(
           "y",
-          paste0("x", seq_len(p))
+          paste0("x", seq_len(length.out = p))
         )
-        df <- as.data.frame(df)
-        object <- lm(y ~ ., data = df)
+        df <- as.data.frame(x = df)
+        object <- stats::lm(formula = y ~ ., data = df)
         mi <- mice::mice(
-          df,
+          data = df,
           m = 10,
           seed = 42,
           print = FALSE
         )
         mvn <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "mvn", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "mvn",
+            fixed_x = TRUE
+          )
         )
         adf <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "adf", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "adf",
+            fixed_x = TRUE
+          )
         )
-        mvn_cov <- as.vector(mvn$var)
+        mvn_cov <- as.vector(x = mvn$var)
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn_cov - as.vector(adf$var)
+              x = mvn_cov - as.vector(x = adf$var)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "hc0"),
-      {
-        testthat::skip_on_cran()
-        set.seed(42)
-        sigmacapx <- diag(p)
+      desc = paste(text, "hc0"),
+      code = {
+        set.seed(seed = 42)
+        sigmacapx <- diag(x = p)
         beta <- rep(x = beta, times = p)
         sigmasq <- (
           1 - (
-            tcrossprod(beta, sigmacapx) %*% beta
+            tcrossprod(x = beta, y = sigmacapx) %*% beta
           )
         )
         theta <- c(
           beta,
           sigmasq,
-          .Vech(sigmacapx)
+          .Vech(x = sigmacapx)
         )
         x <- scale(
-          MASS::mvrnorm(
+          x = MASS::mvrnorm(
             n = n,
             mu = rep(x = 0.0, times = p),
             Sigma = sigmacapx,
@@ -253,61 +310,72 @@ lapply(
         )
         y <- (
           x %*% beta
-        ) + rnorm(
+        ) + stats::rnorm(
           n = n,
-          sd = sqrt(sigmasq)
+          sd = sqrt(x = sigmasq)
         )
         df <- cbind(
           y,
           x
         )
-        colnames(df) <- c(
+        colnames(x = df) <- c(
           "y",
-          paste0("x", seq_len(p))
+          paste0("x", seq_len(length.out = p))
         )
-        df <- as.data.frame(df)
-        object <- lm(y ~ ., data = df)
+        df <- as.data.frame(x = df)
+        object <- stats::lm(formula = y ~ ., data = df)
         mi <- mice::mice(
-          df,
+          data = df,
           m = 10,
           seed = 42,
           print = FALSE
         )
         mvn <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "mvn", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "mvn",
+            fixed_x = TRUE
+          )
         )
         hc0 <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "hc0", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "hc0",
+            fixed_x = TRUE
+          )
         )
-        mvn_cov <- as.vector(mvn$var)
+        mvn_cov <- as.vector(x = mvn$var)
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn_cov - as.vector(hc0$var)
+              x = mvn_cov - as.vector(x = hc0$var)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "hc1"),
-      {
-        testthat::skip_on_cran()
-        set.seed(42)
-        sigmacapx <- diag(p)
+      desc = paste(text, "hc1"),
+      code = {
+        set.seed(seed = 42)
+        sigmacapx <- diag(x = p)
         beta <- rep(x = beta, times = p)
         sigmasq <- (
           1 - (
-            tcrossprod(beta, sigmacapx) %*% beta
+            tcrossprod(x = beta, y = sigmacapx) %*% beta
           )
         )
         theta <- c(
           beta,
           sigmasq,
-          .Vech(sigmacapx)
+          .Vech(x = sigmacapx)
         )
         x <- scale(
-          MASS::mvrnorm(
+          x = MASS::mvrnorm(
             n = n,
             mu = rep(x = 0.0, times = p),
             Sigma = sigmacapx,
@@ -316,61 +384,72 @@ lapply(
         )
         y <- (
           x %*% beta
-        ) + rnorm(
+        ) + stats::rnorm(
           n = n,
-          sd = sqrt(sigmasq)
+          sd = sqrt(x = sigmasq)
         )
         df <- cbind(
           y,
           x
         )
-        colnames(df) <- c(
+        colnames(x = df) <- c(
           "y",
-          paste0("x", seq_len(p))
+          paste0("x", seq_len(length.out = p))
         )
-        df <- as.data.frame(df)
-        object <- lm(y ~ ., data = df)
+        df <- as.data.frame(x = df)
+        object <- stats::lm(formula = y ~ ., data = df)
         mi <- mice::mice(
-          df,
+          data = df,
           m = 10,
           seed = 42,
           print = FALSE
         )
         mvn <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "mvn", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "mvn",
+            fixed_x = TRUE
+          )
         )
         hc1 <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "hc1", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "hc1",
+            fixed_x = TRUE
+          )
         )
-        mvn_cov <- as.vector(mvn$var)
+        mvn_cov <- as.vector(x = mvn$var)
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn_cov - as.vector(hc1$var)
+              x = mvn_cov - as.vector(x = hc1$var)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "hc2"),
-      {
-        testthat::skip_on_cran()
-        set.seed(42)
-        sigmacapx <- diag(p)
+      desc = paste(text, "hc2"),
+      code = {
+        set.seed(seed = 42)
+        sigmacapx <- diag(x = p)
         beta <- rep(x = beta, times = p)
         sigmasq <- (
           1 - (
-            tcrossprod(beta, sigmacapx) %*% beta
+            tcrossprod(x = beta, y = sigmacapx) %*% beta
           )
         )
         theta <- c(
           beta,
           sigmasq,
-          .Vech(sigmacapx)
+          .Vech(x = sigmacapx)
         )
         x <- scale(
-          MASS::mvrnorm(
+          x = MASS::mvrnorm(
             n = n,
             mu = rep(x = 0.0, times = p),
             Sigma = sigmacapx,
@@ -379,61 +458,72 @@ lapply(
         )
         y <- (
           x %*% beta
-        ) + rnorm(
+        ) + stats::rnorm(
           n = n,
-          sd = sqrt(sigmasq)
+          sd = sqrt(x = sigmasq)
         )
         df <- cbind(
           y,
           x
         )
-        colnames(df) <- c(
+        colnames(x = df) <- c(
           "y",
-          paste0("x", seq_len(p))
+          paste0("x", seq_len(length.out = p))
         )
-        df <- as.data.frame(df)
-        object <- lm(y ~ ., data = df)
+        df <- as.data.frame(x = df)
+        object <- stats::lm(formula = y ~ ., data = df)
         mi <- mice::mice(
-          df,
+          data = df,
           m = 10,
           seed = 42,
           print = FALSE
         )
         mvn <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "mvn", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "mvn",
+            fixed_x = TRUE
+          )
         )
         hc2 <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "hc2", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "hc2",
+            fixed_x = TRUE
+          )
         )
-        mvn_cov <- as.vector(mvn$var)
+        mvn_cov <- as.vector(x = mvn$var)
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn_cov - as.vector(hc2$var)
+              x = mvn_cov - as.vector(x = hc2$var)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "hc3"),
-      {
-        testthat::skip_on_cran()
-        set.seed(42)
-        sigmacapx <- diag(p)
+      desc = paste(text, "hc3"),
+      code = {
+        set.seed(seed = 42)
+        sigmacapx <- diag(x = p)
         beta <- rep(x = beta, times = p)
         sigmasq <- (
           1 - (
-            tcrossprod(beta, sigmacapx) %*% beta
+            tcrossprod(x = beta, y = sigmacapx) %*% beta
           )
         )
         theta <- c(
           beta,
           sigmasq,
-          .Vech(sigmacapx)
+          .Vech(x = sigmacapx)
         )
         x <- scale(
-          MASS::mvrnorm(
+          x = MASS::mvrnorm(
             n = n,
             mu = rep(x = 0.0, times = p),
             Sigma = sigmacapx,
@@ -442,61 +532,72 @@ lapply(
         )
         y <- (
           x %*% beta
-        ) + rnorm(
+        ) + stats::rnorm(
           n = n,
-          sd = sqrt(sigmasq)
+          sd = sqrt(x = sigmasq)
         )
         df <- cbind(
           y,
           x
         )
-        colnames(df) <- c(
+        colnames(x = df) <- c(
           "y",
-          paste0("x", seq_len(p))
+          paste0("x", seq_len(length.out = p))
         )
-        df <- as.data.frame(df)
-        object <- lm(y ~ ., data = df)
+        df <- as.data.frame(x = df)
+        object <- stats::lm(formula = y ~ ., data = df)
         mi <- mice::mice(
-          df,
+          data = df,
           m = 10,
           seed = 42,
           print = FALSE
         )
         mvn <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "mvn", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "mvn",
+            fixed_x = TRUE
+          )
         )
         hc3 <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "hc3", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "hc3",
+            fixed_x = TRUE
+          )
         )
-        mvn_cov <- as.vector(mvn$var)
+        mvn_cov <- as.vector(x = mvn$var)
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn_cov - as.vector(hc3$var)
+              x = mvn_cov - as.vector(x = hc3$var)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "hc4"),
-      {
-        testthat::skip_on_cran()
-        set.seed(42)
-        sigmacapx <- diag(p)
+      desc = paste(text, "hc4"),
+      code = {
+        set.seed(seed = 42)
+        sigmacapx <- diag(x = p)
         beta <- rep(x = beta, times = p)
         sigmasq <- (
           1 - (
-            tcrossprod(beta, sigmacapx) %*% beta
+            tcrossprod(x = beta, y = sigmacapx) %*% beta
           )
         )
         theta <- c(
           beta,
           sigmasq,
-          .Vech(sigmacapx)
+          .Vech(x = sigmacapx)
         )
         x <- scale(
-          MASS::mvrnorm(
+          x = MASS::mvrnorm(
             n = n,
             mu = rep(x = 0.0, times = p),
             Sigma = sigmacapx,
@@ -505,61 +606,72 @@ lapply(
         )
         y <- (
           x %*% beta
-        ) + rnorm(
+        ) + stats::rnorm(
           n = n,
-          sd = sqrt(sigmasq)
+          sd = sqrt(x = sigmasq)
         )
         df <- cbind(
           y,
           x
         )
-        colnames(df) <- c(
+        colnames(x = df) <- c(
           "y",
-          paste0("x", seq_len(p))
+          paste0("x", seq_len(length.out = p))
         )
-        df <- as.data.frame(df)
-        object <- lm(y ~ ., data = df)
+        df <- as.data.frame(x = df)
+        object <- stats::lm(formula = y ~ ., data = df)
         mi <- mice::mice(
-          df,
+          data = df,
           m = 10,
           seed = 42,
           print = FALSE
         )
         mvn <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "mvn", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "mvn",
+            fixed_x = TRUE
+          )
         )
         hc4 <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "hc4", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "hc4",
+            fixed_x = TRUE
+          )
         )
-        mvn_cov <- as.vector(mvn$var)
+        mvn_cov <- as.vector(x = mvn$var)
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn_cov - as.vector(hc4$var)
+              x = mvn_cov - as.vector(x = hc4$var)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "hc4m"),
-      {
-        testthat::skip_on_cran()
-        set.seed(42)
-        sigmacapx <- diag(p)
+      desc = paste(text, "hc4m"),
+      code = {
+        set.seed(seed = 42)
+        sigmacapx <- diag(x = p)
         beta <- rep(x = beta, times = p)
         sigmasq <- (
           1 - (
-            tcrossprod(beta, sigmacapx) %*% beta
+            tcrossprod(x = beta, y = sigmacapx) %*% beta
           )
         )
         theta <- c(
           beta,
           sigmasq,
-          .Vech(sigmacapx)
+          .Vech(x = sigmacapx)
         )
         x <- scale(
-          MASS::mvrnorm(
+          x = MASS::mvrnorm(
             n = n,
             mu = rep(x = 0.0, times = p),
             Sigma = sigmacapx,
@@ -568,61 +680,72 @@ lapply(
         )
         y <- (
           x %*% beta
-        ) + rnorm(
+        ) + stats::rnorm(
           n = n,
-          sd = sqrt(sigmasq)
+          sd = sqrt(x = sigmasq)
         )
         df <- cbind(
           y,
           x
         )
-        colnames(df) <- c(
+        colnames(x = df) <- c(
           "y",
-          paste0("x", seq_len(p))
+          paste0("x", seq_len(length.out = p))
         )
-        df <- as.data.frame(df)
-        object <- lm(y ~ ., data = df)
+        df <- as.data.frame(x = df)
+        object <- stats::lm(formula = y ~ ., data = df)
         mi <- mice::mice(
-          df,
+          data = df,
           m = 10,
           seed = 42,
           print = FALSE
         )
         mvn <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "mvn", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "mvn",
+            fixed_x = TRUE
+          )
         )
         hc4m <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "hc4m", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "hc4m",
+            fixed_x = TRUE
+          )
         )
-        mvn_cov <- as.vector(mvn$var)
+        mvn_cov <- as.vector(x = mvn$var)
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn_cov - as.vector(hc4m$var)
+              x = mvn_cov - as.vector(x = hc4m$var)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "hc5"),
-      {
-        testthat::skip_on_cran()
-        set.seed(42)
-        sigmacapx <- diag(p)
+      desc = paste(text, "hc5"),
+      code = {
+        set.seed(seed = 42)
+        sigmacapx <- diag(x = p)
         beta <- rep(x = beta, times = p)
         sigmasq <- (
           1 - (
-            tcrossprod(beta, sigmacapx) %*% beta
+            tcrossprod(x = beta, y = sigmacapx) %*% beta
           )
         )
         theta <- c(
           beta,
           sigmasq,
-          .Vech(sigmacapx)
+          .Vech(x = sigmacapx)
         )
         x <- scale(
-          MASS::mvrnorm(
+          x = MASS::mvrnorm(
             n = n,
             mu = rep(x = 0.0, times = p),
             Sigma = sigmacapx,
@@ -631,61 +754,72 @@ lapply(
         )
         y <- (
           x %*% beta
-        ) + rnorm(
+        ) + stats::rnorm(
           n = n,
-          sd = sqrt(sigmasq)
+          sd = sqrt(x = sigmasq)
         )
         df <- cbind(
           y,
           x
         )
-        colnames(df) <- c(
+        colnames(x = df) <- c(
           "y",
-          paste0("x", seq_len(p))
+          paste0("x", seq_len(length.out = p))
         )
-        df <- as.data.frame(df)
-        object <- lm(y ~ ., data = df)
+        df <- as.data.frame(x = df)
+        object <- stats::lm(formula = y ~ ., data = df)
         mi <- mice::mice(
-          df,
+          data = df,
           m = 10,
           seed = 42,
           print = FALSE
         )
         mvn <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "mvn", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "mvn",
+            fixed_x = TRUE
+          )
         )
         hc5 <- summary.mc(
-          MCMI(object, mi = mi, R = R, type = "hc5", fixed_x = TRUE)
+          object = MCMI(
+            object = object,
+            mi = mi,
+            R = R,
+            type = "hc5",
+            fixed_x = TRUE
+          )
         )
-        mvn_cov <- as.vector(mvn$var)
+        mvn_cov <- as.vector(x = mvn$var)
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn_cov - as.vector(hc5$var)
+              x = mvn_cov - as.vector(x = hc5$var)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "error"),
-      {
-        testthat::skip_on_cran()
-        set.seed(42)
-        sigmacapx <- diag(p)
+      desc = paste(text, "error"),
+      code = {
+        set.seed(seed = 42)
+        sigmacapx <- diag(x = p)
         beta <- rep(x = beta, times = p)
         sigmasq <- (
           1 - (
-            tcrossprod(beta, sigmacapx) %*% beta
+            tcrossprod(x = beta, y = sigmacapx) %*% beta
           )
         )
         theta <- c(
           beta,
           sigmasq,
-          .Vech(sigmacapx)
+          .Vech(x = sigmacapx)
         )
         x <- scale(
-          MASS::mvrnorm(
+          x = MASS::mvrnorm(
             n = n,
             mu = rep(x = 0.0, times = p),
             Sigma = sigmacapx,
@@ -694,30 +828,30 @@ lapply(
         )
         y <- (
           x %*% beta
-        ) + rnorm(
+        ) + stats::rnorm(
           n = n,
-          sd = sqrt(sigmasq)
+          sd = sqrt(x = sigmasq)
         )
         df <- cbind(
           y,
           x
         )
-        colnames(df) <- c(
+        colnames(x = df) <- c(
           "y",
-          paste0("x", seq_len(p))
+          paste0("x", seq_len(length.out = p))
         )
-        df <- as.data.frame(df)
+        df <- as.data.frame(x = df)
         df[1, 1 + 1] <- NA
         df[2, 1 + p] <- NA
-        object <- lm(y ~ ., data = df)
+        object <- stats::lm(formula = y ~ ., data = df)
         mi <- mice::mice(
-          df,
+          data = df,
           m = 10,
           seed = 42,
           print = FALSE
         )
         testthat::expect_error(
-          MCMI(object, mi = mi, fixed_x = TRUE)
+          object = MCMI(object = object, mi = mi, fixed_x = TRUE)
         )
       }
     )

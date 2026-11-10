@@ -12,6 +12,9 @@ on:
         type: boolean
         default: false
 
+permissions:
+  contents: read
+
 jobs:
   # the image and packages of the release (.setup/scripts/rproject.lock);
   # a scheduled run, or a manual run with latest, uses the latest
@@ -39,6 +42,7 @@ jobs:
     needs: image
     runs-on: ubuntu-latest
     env:
+      NOT_CRAN: "true"
       RPROJECT_SNAPSHOT: ${{ needs.image.outputs.snapshot }}
       GITHUB_PAT: ${{ secrets.PAT }}
       GITHUB_ACTIONS: "true"
@@ -105,7 +109,7 @@ jobs:
 
       - name: Upload test results
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: coverage-test-failures
           path: ${{ runner.temp }}/package

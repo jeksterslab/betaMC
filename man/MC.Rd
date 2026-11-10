@@ -81,7 +81,8 @@ of class \code{mc} which is a list with the following elements:
 \item{call}{Function call.}
 \item{args}{Function arguments.}
 \item{lm_process}{Processed \code{lm} object.}
-\item{scale}{Sampling variance-covariance matrix of parameter estimates.}
+\item{scale}{Sampling variance-covariance matrix of parameter
+estimates.}
 \item{location}{Parameter estimates.}
 \item{thetahatstar}{Sampling distribution of parameter estimates
 (a matrix, one draw per row).}

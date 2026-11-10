@@ -40,9 +40,9 @@ Load <- function(rproj) {
       recursive = TRUE
     )
   )
-  if (length(x) > 0) {
+  if (length(x = x) > 0) {
     invisible(
-      lapply(
+      x = lapply(
         X = x,
         FUN = source
       )

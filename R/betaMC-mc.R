@@ -46,7 +46,8 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{lm_process}{Processed `lm` object.}
-#'     \item{scale}{Sampling variance-covariance matrix of parameter estimates.}
+#'     \item{scale}{Sampling variance-covariance matrix of parameter
+#'       estimates.}
 #'     \item{location}{Parameter estimates.}
 #'     \item{thetahatstar}{Sampling distribution of parameter estimates
 #'       (a matrix, one draw per row).}
@@ -167,7 +168,7 @@ MC <- function(object,
       what = "lm"
     )
   )
-  lm_process <- .ProcessLM(object)
+  lm_process <- .ProcessLM(object = object)
   stopifnot(
     type %in% c(
       "adf",
@@ -197,7 +198,7 @@ MC <- function(object,
   location <- lm_process$theta
   theta <- location
   if (fixed_x) {
-    location <- location[seq_len(lm_process$k)]
+    location <- location[seq_len(length.out = lm_process$k)]
   }
   draws <- .MCDraws(
     scale = scale,
@@ -237,9 +238,9 @@ MC <- function(object,
     es = draws$es,
     fun = "MC"
   )
-  class(out) <- c(
+  class(x = out) <- c(
     "mc",
-    class(out)
+    class(x = out)
   )
   out
 }

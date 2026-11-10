@@ -18,7 +18,7 @@
 #' @noRd
 .MCVar <- function(object) {
   stats::var(
-    unname(object$thetahatstar)
+    x = unname(obj = object$thetahatstar)
   )
 }
 
@@ -31,6 +31,6 @@
 #' @noRd
 .MCMean <- function(object) {
   colMeans(
-    unname(object$thetahatstar)
+    x = unname(obj = object$thetahatstar)
   )
 }

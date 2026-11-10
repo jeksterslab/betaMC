@@ -4,7 +4,7 @@
 # uploaded), so that Verify() can compare it with this project.
 #
 # Git only: no R and no Apptainer. Usually called by
-#   apptainer exec ~/work/sif/docs.sif make verify RECORD=TRUE
+#   apptainer exec -B ~/work:$(readlink -f ~/work) -B /scratch/ibp5092 ~/work/sif/docs.sif make verify RECORD=TRUE
 # Where SSH keys are not visible in the container (e.g., Roar), run it on the
 # host first:
 #   bash .setup/scripts/verify.sh

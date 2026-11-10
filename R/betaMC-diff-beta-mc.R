@@ -68,7 +68,7 @@ DiffBetaMC <- function(object,
   }
   if (object$fun == "MCMI") {
     est <- colMeans(
-      do.call(
+      x = do.call(
         what = "rbind",
         args = lapply(
           X = object$args$mi_output$lm_process,
@@ -82,13 +82,13 @@ DiffBetaMC <- function(object,
     est <- object$lm_process$dif_betastar
   }
   std <- object$es$betastar
-  p_dif <- dim(object$lm_process$dif_idx)[2]
+  p_dif <- dim(x = object$lm_process$dif_idx)[2]
   thetahatstar <- matrix(
     data = 0.0,
     ncol = p_dif,
-    nrow = dim(std)[1]
+    nrow = dim(x = std)[1]
   )
-  for (i in seq_len(p_dif)) {
+  for (i in seq_len(length.out = p_dif)) {
     thetahatstar[, i] <- std[
       ,
       object$lm_process$dif_idx[1, i]
@@ -97,7 +97,7 @@ DiffBetaMC <- function(object,
       object$lm_process$dif_idx[2, i]
     ]
   }
-  colnames(thetahatstar) <- names(object$lm_process$dif_betastar)
+  colnames(x = thetahatstar) <- names(x = object$lm_process$dif_betastar)
   out <- list(
     call = match.call(),
     args = list(
@@ -108,9 +108,9 @@ DiffBetaMC <- function(object,
     est = est,
     fun = "DiffBetaMC"
   )
-  class(out) <- c(
+  class(x = out) <- c(
     "betamc",
-    class(out)
+    class(x = out)
   )
   out
 }

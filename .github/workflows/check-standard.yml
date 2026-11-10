@@ -55,6 +55,7 @@ jobs:
           - {os: ubuntu-latest,   r: 'release'}
 
     env:
+      NOT_CRAN: "true"
       RPROJECT_SNAPSHOT: ${{ needs.image.outputs.snapshot }}
       GITHUB_PAT: ${{ secrets.PAT }}
       GITHUB_ACTIONS: "true"

@@ -5,25 +5,18 @@ lapply(
                  text,
                  R,
                  tol) {
+    testthat::skip_on_cran()
     message(text)
 
-    set.seed(42)
-
-    if (!identical(Sys.getenv("NOT_CRAN"), "true") && !interactive()) {
-      message("CRAN: tests skipped.")
-      # nolint start
-      return(invisible(NULL))
-      # nolint end
-    }
+    set.seed(seed = 42)
 
     testthat::test_that(
-      paste(text, "improvement in R-squared"),
-      {
-        testthat::skip_on_cran()
-        set.seed(42)
-        if (!exists("nas1982")) {
+      desc = paste(text, "improvement in R-squared"),
+      code = {
+        set.seed(seed = 42)
+        if (!exists(x = "nas1982")) {
           try(
-            data(
+            expr = utils::data(
               "nas1982",
               package = "betaMC"
             ),
@@ -31,19 +24,22 @@ lapply(
           )
         }
         df <- nas1982
-        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-        mc <- MC(object, R = R, type = "mvn")
-        out <- DeltaRSqMC(mc)
-        print.betamc(out)
-        summary.betamc(out)
-        print.summary.betamc(summary.betamc(out))
-        coef.betamc(out)
-        vcov.betamc(out)
-        confint.betamc(out)
+        object <- stats::lm(
+          formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+          data = df
+        )
+        mc <- MC(object = object, R = R, type = "mvn")
+        out <- DeltaRSqMC(object = mc)
+        print.betamc(x = out)
+        summary.betamc(object = out)
+        print.summary.betamc(x = summary.betamc(object = out))
+        coef.betamc(object = out)
+        vcov.betamc(object = out)
+        confint.betamc(object = out)
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              coef.betamc(out) - c(
+              x = coef.betamc(object = out) - c(
                 .1859,
                 .1177,
                 .0569
@@ -54,13 +50,12 @@ lapply(
       }
     )
     testthat::test_that(
-      paste(text, "error"),
-      {
-        testthat::skip_on_cran()
-        set.seed(42)
-        if (!exists("nas1982")) {
+      desc = paste(text, "error"),
+      code = {
+        set.seed(seed = 42)
+        if (!exists(x = "nas1982")) {
           try(
-            data(
+            expr = utils::data(
               "nas1982",
               package = "betaMC"
             ),
@@ -68,10 +63,10 @@ lapply(
           )
         }
         df <- nas1982
-        object <- lm(QUALITY ~ NARTIC, data = df)
-        mc <- MC(object, R = R, type = "mvn")
+        object <- stats::lm(formula = QUALITY ~ NARTIC, data = df)
+        mc <- MC(object = object, R = R, type = "mvn")
         testthat::expect_error(
-          DeltaRSqMC(mc)
+          object = DeltaRSqMC(object = mc)
         )
       }
     )

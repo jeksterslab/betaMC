@@ -43,7 +43,7 @@ jobs:
       image: ${{ needs.image.outputs.image }}
     # Only restrict concurrency for non-PR jobs
     concurrency:
-      group: pkgdown-gh-pages-${{ github.event_name != 'pull_request' || github.run_id }}
+      group: pages-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       RPROJECT_SNAPSHOT: ${{ needs.image.outputs.snapshot }}
       GITHUB_PAT: ${{ secrets.PAT }}
@@ -66,8 +66,10 @@ jobs:
         run: touch pkgdown/.nojekyll
       -
         name: Deploy to GitHub pages
-        uses: JamesIves/github-pages-deploy-action@v4.5.0
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           clean: true
+          # Quarto's site, from quarto-gh-pages.yml
+          clean-exclude: quarto/
           branch: pkgdown
           folder: pkgdown

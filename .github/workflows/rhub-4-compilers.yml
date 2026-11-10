@@ -1,5 +1,7 @@
-name: rhub (etc)
+name: rhub 4 (compilers)
 
+# Current compilers and build options, and help-page HTML (vnu). Runs at every
+# PUB, for review: a failure does not fail the run.
 on:
   workflow_run:
     workflows: [ "Source Code" ]
@@ -11,6 +13,9 @@ on:
         description: "Run in the latest image and packages, not the lock's"
         type: boolean
         default: false
+
+permissions:
+  contents: read
 
 jobs:
   # the image and packages of the release (.setup/scripts/rproject.lock);
@@ -37,6 +42,7 @@ jobs:
 
   check:
     needs: image
+    continue-on-error: true
     runs-on: ubuntu-latest
     env:
       RPROJECT_SNAPSHOT: ${{ needs.image.outputs.snapshot }}
@@ -46,16 +52,18 @@ jobs:
       fail-fast: false
       matrix:
         container:
-          - name: rhel7
-            image: ghcr.io/r-hub/containers/rhel7:latest
-          - name: rhel8
-            image: ghcr.io/r-hub/containers/rhel8:latest
-          - name: rhel9
-            image: ghcr.io/r-hub/containers/rhel9:latest
-          - name: s390x
-            image: ghcr.io/r-hub/containers/s390x:latest
-          - name: centos7
-            image: ghcr.io/r-hub/containers/centos7:latest
+          - name: gcc16
+            image: ghcr.io/r-hub/containers/gcc16:latest
+          - name: clang23
+            image: ghcr.io/r-hub/containers/clang23:latest
+          - name: debian-clang
+            image: ghcr.io/r-hub/containers/debian-clang:latest
+          - name: lto
+            image: ghcr.io/r-hub/containers/lto:latest
+          - name: nold
+            image: ghcr.io/r-hub/containers/nold:latest
+          - name: vnu
+            image: ghcr.io/r-hub/containers/vnu:latest
     name: ${{ matrix.container.name }}
     container:
       image: ${{ matrix.container.image }}

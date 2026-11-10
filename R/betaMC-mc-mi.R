@@ -20,7 +20,8 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{lm_process}{Processed `lm` object.}
-#'     \item{scale}{Sampling variance-covariance matrix of parameter estimates.}
+#'     \item{scale}{Sampling variance-covariance matrix of parameter
+#'       estimates.}
 #'     \item{location}{Parameter estimates.}
 #'     \item{thetahatstar}{Sampling distribution of parameter estimates
 #'       (a matrix, one draw per row).}
@@ -111,7 +112,7 @@ MCMI <- function(object,
       what = "lm"
     )
   )
-  lm_process <- .ProcessLM(object)
+  lm_process <- .ProcessLM(object = object)
   stopifnot(
     type %in% c(
       "adf",
@@ -127,13 +128,13 @@ MCMI <- function(object,
   )
   stopifnot(0 < k & k < 1)
   constant <- k
-  call0 <- stats::getCall(object)
+  call0 <- stats::getCall(x = object)
   call1 <- call0
   data0 <- eval(
-    call0$data,
+    expr = call0$data,
     envir = parent.frame()
   )
-  for (i in seq_along(call0)) {
+  for (i in seq_along(along.with = call0)) {
     call1[[i]] <- eval(
       expr = call0[[i]],
       envir = parent.frame()
@@ -141,10 +142,10 @@ MCMI <- function(object,
   }
   if (fixed_x) {
     # check if the X matrix has complete data
-    n_data <- dim(data0)[1]
+    n_data <- dim(x = data0)[1]
     n_x <- lm_process$x[, -1]
     n_x <- dim(
-      n_x[
+      x = n_x[
         stats::complete.cases(n_x), ,
         drop = FALSE
       ]
@@ -168,7 +169,7 @@ MCMI <- function(object,
     )
   ) {
     imp <- mice::complete(
-      mi,
+      data = mi,
       action = "all"
     )
   } else if (
@@ -206,7 +207,7 @@ MCMI <- function(object,
     }
   )
   theta <- colMeans(
-    do.call(
+    x = do.call(
       what = "rbind",
       args = coefs
     )
@@ -218,7 +219,7 @@ MCMI <- function(object,
     coefs <- lapply(
       X = coefs,
       FUN = function(x) {
-        x[seq_len(lm_process$k)]
+        x[seq_len(length.out = lm_process$k)]
       }
     )
   }
@@ -235,8 +236,8 @@ MCMI <- function(object,
   pooled <- .MICombine(
     coefs = coefs,
     vcovs = vcovs,
-    M = length(coefs),
-    k = length(coefs[[1]]),
+    M = length(x = coefs),
+    k = length(x = coefs[[1]]),
     adj = TRUE
   )
   # use default total covariance
@@ -285,9 +286,9 @@ MCMI <- function(object,
     es = draws$es,
     fun = "MCMI"
   )
-  class(out) <- c(
+  class(x = out) <- c(
     "mc",
-    class(out)
+    class(x = out)
   )
   out
 }

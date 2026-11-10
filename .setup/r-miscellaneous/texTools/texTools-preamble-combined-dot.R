@@ -31,22 +31,22 @@
 #' @family Bibliography Functions
 #' @keywords texTools biblatex internal
 #' @noRd
-.PreambleBiblatexCombined <- function(path,
-                                      output_path,
-                                      style = "apa",
-                                      sortcites = TRUE,
-                                      sorting = "nyt",
-                                      map = TRUE,
-                                      maxcitenames = FALSE,
-                                      fn_bib = "bib.bib") {
-  if (dir.exists(path)) {
+.PreambleCombined <- function(path,
+                              output_path,
+                              style = "apa",
+                              sortcites = TRUE,
+                              sorting = "nyt",
+                              map = TRUE,
+                              maxcitenames = FALSE,
+                              fn_bib = "bib.bib") {
+  if (dir.exists(paths = path)) {
     bibs <- list.files(
       path = path,
       pattern = "\\.bib$",
       full.names = TRUE,
       all.files = TRUE
     )
-    if (length(bibs) > 0) {
+    if (length(x = bibs) > 0) {
       if (sortcites) {
         sortcites <- "true"
       } else {
@@ -60,7 +60,7 @@
         maxcitenames <- ""
       }
       bibs <- unlist(
-        lapply(
+        x = lapply(
           X = bibs,
           FUN = readLines
         )
@@ -73,12 +73,12 @@
         output_path,
         fn_bib
       )
-      con <- file(output_file)
+      con <- file(description = output_file)
       writeLines(
         text = bibs,
         con = con
       )
-      close(con)
+      close(con = con)
       biblatex <- paste0(
         "\n",
         "\\usepackage[",
@@ -147,3 +147,6 @@
   }
   out
 }
+
+# the old name: documents in other projects call it until they move
+.PreambleBiblatexCombined <- .PreambleCombined

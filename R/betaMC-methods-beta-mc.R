@@ -33,7 +33,7 @@ print.betamc <- function(x,
                          digits = 4,
                          ...) {
   print.summary.betamc(
-    summary.betamc(
+    x = summary.betamc(
       object = x,
       alpha = alpha,
       digits = digits
@@ -100,7 +100,7 @@ summary.betamc <- function(object,
     x = ci,
     which = "digits"
   ) <- digits
-  class(ci) <- "summary.betamc"
+  class(x = ci) <- "summary.betamc"
   ci
 }
 
@@ -140,7 +140,7 @@ print.summary.betamc <- function(x,
     label <- "Cohen's f-squared (fsq) and local f-squared"
   }
   cat("Call:\n")
-  base::print(object$call)
+  base::print(x = object$call)
   cat(
     paste0(
       "\n",
@@ -153,8 +153,8 @@ print.summary.betamc <- function(x,
       "\n"
     )
   )
-  print(print_summary)
-  invisible(x)
+  print(x = print_summary)
+  invisible(x = x)
 }
 
 #' Sampling Variance-Covariance Matrix Method for an Object of Class
@@ -171,10 +171,10 @@ print.summary.betamc <- function(x,
 vcov.betamc <- function(object,
                         ...) {
   thetahatstar <- unname(
-    as.matrix(object$thetahatstar)
+    obj = as.matrix(x = object$thetahatstar)
   )
-  colnames(thetahatstar) <- names(object$est)
-  stats::var(thetahatstar)
+  colnames(x = thetahatstar) <- names(x = object$est)
+  stats::var(x = thetahatstar)
 }
 
 #' Estimated Parameter Method for an Object of Class
@@ -213,21 +213,21 @@ confint.betamc <- function(object,
                            parm = NULL,
                            level = 0.95,
                            ...) {
-  if (is.null(parm)) {
+  if (is.null(x = parm)) {
     parm <- seq_along(
-      object$est
+      along.with = object$est
     )
   }
   ci <- .CI(
     object = object,
     alpha = 1 - level[1]
   )[parm, 4:5, drop = FALSE]
-  varnames <- colnames(ci)
+  varnames <- colnames(x = ci)
   varnames <- gsub(
     pattern = "%",
     replacement = " %",
     x = varnames
   )
-  colnames(ci) <- varnames
+  colnames(x = ci) <- varnames
   ci
 }

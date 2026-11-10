@@ -3,27 +3,23 @@ lapply(
   X = 1,
   FUN = function(i,
                  text) {
+    testthat::skip_on_cran()
     message(text)
 
-    set.seed(42)
-
-    if (!identical(Sys.getenv("NOT_CRAN"), "true") && !interactive()) {
-      message("CRAN: tests skipped.")
-      # nolint start
-      return(invisible(NULL))
-      # nolint end
-    }
+    set.seed(seed = 42)
 
     testthat::test_that(
-      paste(text, "methods"),
-      {
-        testthat::skip_on_cran()
-        set.seed(42)
+      desc = paste(text, "methods"),
+      code = {
+        set.seed(seed = 42)
         df <- nas1982
-        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-        lm_process <- betaMC:::.ProcessLM(object)
+        object <- stats::lm(
+          formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+          data = df
+        )
+        lm_process <- betaMC:::.ProcessLM(object = object)
         print(
-          betaMC:::.JacVechSigmaWRTTheta(
+          x = betaMC:::.JacVechSigmaWRTTheta(
             beta = lm_process$beta,
             sigmacapx = lm_process$sigmacapx,
             q = lm_process$q,
@@ -33,7 +29,7 @@ lapply(
           )
         )
         print(
-          betaMC:::.JacVechSigmaWRTTheta(
+          x = betaMC:::.JacVechSigmaWRTTheta(
             beta = lm_process$beta,
             sigmacapx = lm_process$sigmacapx,
             q = lm_process$q,
@@ -43,7 +39,7 @@ lapply(
           )
         )
         print(
-          betaMC:::.JacVechSigmaWRTTheta(
+          x = betaMC:::.JacVechSigmaWRTTheta(
             beta = lm_process$beta,
             sigmacapx = lm_process$sigmacapx,
             q = lm_process$q,
@@ -53,7 +49,7 @@ lapply(
           )
         )
         print(
-          betaMC:::.JacVechSigmaWRTTheta(
+          x = betaMC:::.JacVechSigmaWRTTheta(
             beta = lm_process$beta,
             sigmacapx = lm_process$sigmacapx,
             q = lm_process$q,
@@ -63,7 +59,7 @@ lapply(
           )
         )
         betaMC:::.ThetaHatStar(
-          scale = diag(2),
+          scale = diag(x = 2),
           location = c(0, 0),
           pd = FALSE
         )
@@ -82,7 +78,7 @@ lapply(
           )
         )
         testthat::expect_true(
-          TRUE
+          object = TRUE
         )
       }
     )

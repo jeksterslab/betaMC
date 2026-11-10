@@ -33,7 +33,7 @@
                               sorting = "nyt",
                               map = TRUE,
                               maxcitenames = FALSE) {
-  if (dir.exists(path)) {
+  if (dir.exists(paths = path)) {
     bibs <- file.path(path, "bib.bib")
     if (file.exists(bibs)) {
       if (sortcites) {
