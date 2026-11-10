@@ -140,7 +140,7 @@ Results are combined to arrive at the pooled vector of parameter
 estimates and the corresponding sampling covariance matrix. The pooled
 estimates are then used to generate the sampling distribution of
 regression parameters. See
-[`MC()`](https://github.com/jeksterslab/betaMC/reference/MC.md) for more
+[`MC()`](https://jeksterslab.github.io/betaMC/reference/MC.md) for more
 details on the Monte Carlo method.
 
 ## References
@@ -167,14 +167,14 @@ Measures*, *6*(2), 77–98.
 ## See also
 
 Other Beta Monte Carlo Functions:
-[`BetaMC()`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md),
-[`DeltaRSqMC()`](https://github.com/jeksterslab/betaMC/reference/DeltaRSqMC.md),
-[`DiffBetaMC()`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md),
-[`FSqMC()`](https://github.com/jeksterslab/betaMC/reference/FSqMC.md),
-[`MC()`](https://github.com/jeksterslab/betaMC/reference/MC.md),
-[`PCorMC()`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md),
-[`RSqMC()`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md),
-[`SCorMC()`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md)
+[`BetaMC()`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md),
+[`DeltaRSqMC()`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md),
+[`DiffBetaMC()`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md),
+[`FSqMC()`](https://jeksterslab.github.io/betaMC/reference/FSqMC.md),
+[`MC()`](https://jeksterslab.github.io/betaMC/reference/MC.md),
+[`PCorMC()`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md),
+[`RSqMC()`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md),
+[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)
 
 ## Author
 

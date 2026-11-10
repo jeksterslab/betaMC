@@ -14,7 +14,7 @@ summary(object, digits = 4, ...)
 - object:
 
   Object of Class `mc`, that is, the output of the
-  [`MC()`](https://github.com/jeksterslab/betaMC/reference/MC.md)
+  [`MC()`](https://jeksterslab.github.io/betaMC/reference/MC.md)
   function.
 
 - digits:

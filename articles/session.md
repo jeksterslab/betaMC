@@ -38,9 +38,9 @@
 `#>  [9] grid_4.6.2       iterators_1.0.14 mice_3.19.0      foreach_1.5.2   `\
 `#> [13] jomo_2.7-6       rprojroot_2.1.1  glmnet_5.2       Matrix_1.7-6    `\
 `#> [17] nnet_7.3-21      backports_1.5.1  survival_3.8-12  purrr_1.2.2     `\
-`#> [21] rProject_0.0.62  codetools_0.2-20 reformulas_0.4.4 Rdpack_2.6.6    `\
+`#> [21] rProject_0.0.67  codetools_0.2-20 reformulas_0.4.4 Rdpack_2.6.6    `\
 `#> [25] cli_3.6.6.9000   rlang_1.3.0      rbibutils_2.4.1  splines_4.6.2   `\
-`#> [29] otel_0.2.0       pan_2.0          tools_4.6.2      nloptr_2.2.1    `\
+`#> [29] otel_0.3.0       pan_2.0          tools_4.6.2      nloptr_2.2.1    `\
 `#> [33] minqa_1.2.8      dplyr_1.2.1      broom_1.0.13     rpart_4.1.27    `\
 `#> [37] vctrs_0.7.3      R6_2.6.1         lifecycle_1.0.5  MASS_7.3-66     `\
 `#> [41] pkgconfig_2.0.3  pillar_1.11.1    glue_1.8.1       Rcpp_1.1.2      `\
@@ -53,7 +53,7 @@
 [`installed.packages`](https://rdrr.io/r/utils/installed.packages.html)`(``)``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"Package"``, ``"Version"``)``]`\
 `#>                   Package             Version     `\
 `#> betaMC            "betaMC"            "1.3.4.9000"`\
-`#> rProject          "rProject"          "0.0.62"    `\
+`#> rProject          "rProject"          "0.0.67"    `\
 `#> abind             "abind"             "1.4-8"     `\
 `#> Amelia            "Amelia"            "1.8.3"     `\
 `#> arm               "arm"               "1.15-3"    `\
@@ -62,8 +62,10 @@
 `#> AsioHeaders       "AsioHeaders"       "1.30.2-1"  `\
 `#> askpass           "askpass"           "1.2.1"     `\
 `#> assertthat        "assertthat"        "0.2.1"     `\
+`#> av                "av"                "0.9.6"     `\
 `#> backports         "backports"         "1.5.1"     `\
 `#> base64enc         "base64enc"         "0.1-6"     `\
+`#> bench             "bench"             "1.1.4"     `\
 `#> betaDelta         "betaDelta"         "1.0.7.9000"`\
 `#> betaMC            "betaMC"            "1.3.4.9000"`\
 `#> betaNB            "betaNB"            "1.0.7.9000"`\
@@ -167,6 +169,7 @@
 `#> ggplot2           "ggplot2"           "4.0.3"     `\
 `#> ggrepel           "ggrepel"           "0.9.8"     `\
 `#> gh                "gh"                "1.6.1"     `\
+`#> gifski            "gifski"            "1.32.0-2"  `\
 `#> gitcreds          "gitcreds"          "0.1.2"     `\
 `#> glasso            "glasso"            "1.11"      `\
 `#> glmnet            "glmnet"            "5.2"       `\
@@ -264,8 +267,8 @@
 `#> OpenMx            "OpenMx"            "2.22.11"   `\
 `#> openssl           "openssl"           "2.5.0"     `\
 `#> ordinal           "ordinal"           "2026.7-26" `\
-`#> otel              "otel"              "0.2.0"     `\
-`#> pak               "pak"               "0.11.1"    `\
+`#> otel              "otel"              "0.3.0"     `\
+`#> pak               "pak"               "0.11.2"    `\
 `#> pan               "pan"               "2.0"       `\
 `#> pander            "pander"            "0.6.6"     `\
 `#> parallelly        "parallelly"        "1.50.0"    `\
@@ -290,6 +293,7 @@
 `#> printr            "printr"            "0.3"       `\
 `#> processx          "processx"          "3.9.0"     `\
 `#> prodlim           "prodlim"           "2026.03.11"`\
+`#> profmem           "profmem"           "0.7.0"     `\
 `#> profvis           "profvis"           "0.4.0"     `\
 `#> progress          "progress"          "1.2.3"     `\
 `#> progressr         "progressr"         "1.1.0"     `\
@@ -347,7 +351,7 @@
 `#> roxygen2          "roxygen2"          "8.1.1.9000"`\
 `#> rpf               "rpf"               "1.0.15"    `\
 `#> RPostgres         "RPostgres"         "1.4.10"    `\
-`#> rProject          "rProject"          "0.0.62"    `\
+`#> rProject          "rProject"          "0.0.67"    `\
 `#> rprojroot         "rprojroot"         "2.1.1"     `\
 `#> rsample           "rsample"           "1.3.2"     `\
 `#> RSQLite           "RSQLite"           "3.53.3"    `\
@@ -375,7 +379,7 @@
 `#> sparsevctrs       "sparsevctrs"       "0.4.0"     `\
 `#> splitfngr         "splitfngr"         "0.1.2"     `\
 `#> SQUAREM           "SQUAREM"           "2026.1"    `\
-`#> StanHeaders       "StanHeaders"       "2.39.1"    `\
+`#> StanHeaders       "StanHeaders"       "2.39.1.1"  `\
 `#> stringi           "stringi"           "1.8.9"     `\
 `#> stringr           "stringr"           "1.6.0"     `\
 `#> strucchange       "strucchange"       "1.6-0"     `\
@@ -395,7 +399,7 @@
 `#> tidyverse         "tidyverse"         "2.0.0"     `\
 `#> timechange        "timechange"        "0.4.0"     `\
 `#> timeDate          "timeDate"          "4052.112"  `\
-`#> tinytex           "tinytex"           "0.61.4"    `\
+`#> tinytex           "tinytex"           "0.61.5"    `\
 `#> tune              "tune"              "2.1.0"     `\
 `#> tzdb              "tzdb"              "0.5.0"     `\
 `#> ucminf            "ucminf"            "1.2.3"     `\
@@ -473,10 +477,10 @@
     #> Socket(s):                               1
     #> Stepping:                                0
     #> Frequency boost:                         enabled
-    #> CPU(s) scaling MHz:                      71%
+    #> CPU(s) scaling MHz:                      65%
     #> CPU max MHz:                             5060.9761
     #> CPU min MHz:                             1219.5129
-    #> BogoMIPS:                                4990.56
+    #> BogoMIPS:                                4990.88
     #> Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good amd_lbr_v2 nopl xtopology nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate ssbd mba perfmon_v2 ibrs ibpb stibp ibrs_enhanced vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local user_shstk avx_vnni avx512_bf16 clzero irperf xsaveerptr rdpru wbnoinvd cppc arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload vgif x2avic v_spec_ctrl vnmi avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid bus_lock_detect movdiri movdir64b overflow_recov succor smca fsrm avx512_vp2intersect flush_l1d amd_lbr_pmc_freeze
     #> Virtualization:                          AMD-V
     #> L1d cache:                               768 KiB (16 instances)
@@ -507,6 +511,6 @@
 ## Memory
 
     #>                total        used        free      shared  buff/cache   available
-    #> Mem:            44Gi       4.2Gi        36Gi        40Mi       4.5Gi        40Gi
+    #> Mem:            44Gi       4.6Gi        34Gi        66Mi       5.7Gi        39Gi
     #> Swap:           22Gi          0B        22Gi
-    #> Total:          66Gi       4.2Gi        58Gi
+    #> Total:          66Gi       4.6Gi        57Gi

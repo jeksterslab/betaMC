@@ -9,14 +9,14 @@ number of published articles attributed to the program faculty members
 ratings of 46 doctoral programs in psychology in the USA (National
 Research Council, 1982). Confidence intervals for the standardized
 regression coefficients are generated using the
-[`BetaMC()`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)
+[`BetaMC()`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)
 function from the `betaMC` package.
 
 \
 [`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`
 
 \
-`df`` ``<-`` ``betaMC``::`[`nas1982`](https://github.com/jeksterslab/betaMC/reference/nas1982.md)
+`df`` ``<-`` ``betaMC``::`[`nas1982`](https://jeksterslab.github.io/betaMC/reference/nas1982.md)
 
 ### Regression
 
@@ -31,41 +31,41 @@ Fit the regression model using the
 #### Normal-Theory Approach
 
 \
-`mvn`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
+`mvn`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
 
 #### Asymptotic distribution-free Approach
 
 \
-`adf`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
+`adf`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 \
-`hc3`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
+`hc3`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
 
 ### Standardized Regression Slopes
 
 #### Normal-Theory Approach
 
 \
-`mvn`` ``<-`` `[`BetaMC`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)`(``mvn``)`
+`mvn`` ``<-`` `[`BetaMC`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)`(``mvn``)`
 
 #### Asymptotic distribution-free Approach
 
 \
-`adf`` ``<-`` `[`BetaMC`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)`(``adf``)`
+`adf`` ``<-`` `[`BetaMC`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)`(``adf``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 \
-`hc3`` ``<-`` `[`BetaMC`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)`(``hc3``)`
+`hc3`` ``<-`` `[`BetaMC`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)`(``hc3``)`
 
 ## Methods
 
 ### summary
 
 Summary of the results of
-[`BetaMC()`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md).
+[`BetaMC()`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md).
 
 \
 [`summary`](https://rdrr.io/r/base/summary.html)`(``mvn``)`\

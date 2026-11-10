@@ -2,16 +2,16 @@
 
 Confidence intervals for differences of standardized regression slopes
 are generated using the
-[`DiffBetaMC()`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md)
+[`DiffBetaMC()`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)
 function from the `betaMC` package. In this example, we use the data set
 and the model used in [betaMC: Example Using the BetaMC
-Function](https://github.com/jeksterslab/betaMC/articles/example-beta-mc.md).
+Function](https://jeksterslab.github.io/betaMC/articles/example-beta-mc.md).
 
 \
 [`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`
 
 \
-`df`` ``<-`` ``betaMC``::`[`nas1982`](https://github.com/jeksterslab/betaMC/reference/nas1982.md)
+`df`` ``<-`` ``betaMC``::`[`nas1982`](https://jeksterslab.github.io/betaMC/reference/nas1982.md)
 
 ### Regression
 
@@ -26,41 +26,41 @@ Fit the regression model using the
 #### Normal-Theory Approach
 
 \
-`mvn`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
+`mvn`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
 
 #### Asymptotic distribution-free Approach
 
 \
-`adf`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
+`adf`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 \
-`hc3`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
+`hc3`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
 
 ### Differences of Standardized Regression Slopes
 
 #### Normal-Theory Approach
 
 \
-`mvn`` ``<-`` `[`DiffBetaMC`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md)`(``mvn``)`
+`mvn`` ``<-`` `[`DiffBetaMC`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)`(``mvn``)`
 
 #### Asymptotic distribution-free Approach
 
 \
-`adf`` ``<-`` `[`DiffBetaMC`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md)`(``adf``)`
+`adf`` ``<-`` `[`DiffBetaMC`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)`(``adf``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 \
-`hc3`` ``<-`` `[`DiffBetaMC`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md)`(``hc3``)`
+`hc3`` ``<-`` `[`DiffBetaMC`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)`(``hc3``)`
 
 ## Methods
 
 ### summary
 
 Summary of the results of
-[`DiffBetaMC()`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md).
+[`DiffBetaMC()`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md).
 
 \
 [`summary`](https://rdrr.io/r/base/summary.html)`(``mvn``)`\

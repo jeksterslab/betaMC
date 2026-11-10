@@ -14,13 +14,13 @@ print(x, alpha = NULL, digits = 4, ...)
 - x:
 
   Object of Class `betamc`, that is, the output of the
-  [`BetaMC()`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md),
-  [`RSqMC()`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md),
-  [`SCorMC()`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md),
-  [`DeltaRSqMC()`](https://github.com/jeksterslab/betaMC/reference/DeltaRSqMC.md),
-  [`PCorMC()`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md),
+  [`BetaMC()`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md),
+  [`RSqMC()`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md),
+  [`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md),
+  [`DeltaRSqMC()`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md),
+  [`PCorMC()`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md),
   or
-  [`DiffBetaMC()`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md)
+  [`DiffBetaMC()`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)
   functions.
 
 - alpha:

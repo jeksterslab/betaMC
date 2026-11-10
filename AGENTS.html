@@ -21,7 +21,7 @@
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json"></form></li>
-<li class="nav-item"><a class="nav-link" href="https://github.com/jeksterslab/betaMC/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/jeksterslab/betaMC/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
 
 
@@ -31,7 +31,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>betaMC</h1>
-      <small class="dont-index">Source: <a href="https://github.com/jeksterslab/betaMC/blob/main/AGENTS.md"><code>AGENTS.md</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/jeksterslab/betaMC/blob/main/AGENTS.md" class="external-link"><code>AGENTS.md</code></a></small>
     </div>
 
 <div id="betamc" class="section level1">
@@ -47,7 +47,8 @@
 <li>Overleaf project: not recorded (<code>.setup/repo/private-overleaf.md</code>)</li>
 <li>Public repository: not recorded (<code>.setup/repo/public-github.md</code>) (<code>make auto</code> pushes here)</li>
 <li>These come from <code>.setup/repo/</code> (private). O2G checks the private repository; PUB checks the public one.</li>
-<li>Image: <strong>the user chooses it</strong> and runs <code>apptainer exec &lt;image&gt; make &lt;target&gt;</code>; R is not installed on the host. Do not pick an image. When a command needs one, ask, or give the command with <code>&lt;image&gt;</code> for the user to fill in. <code>.setup/ai/project.md</code> may note the image the project usually uses.</li>
+<li>The standards are rProject as pushed, in <code>$RPROJECT/.verify</code> (where <code>RPROJECT</code> is set). Read its <code>vignettes/structure.Rmd</code>, <code>NEWS.md</code>, and <code>.setup/ai/specs/</code> only when a task touches structure. Where they differ from this project’s installed rProject (<code>make tree</code>, the lock), the installed version wins.</li>
+<li>Image: <strong>the user chooses it</strong> and runs <code>apptainer exec -B ~/work:$(readlink -f ~/work) &lt;image&gt; make &lt;target&gt;</code> (on Roar, add <code>-B /scratch/ibp5092</code>); R is not installed on the host. Do not pick an image. When a command needs one, ask, or give the command with <code>&lt;image&gt;</code> for the user to fill in. <code>.setup/ai/project.md</code> may note the image the project usually uses.</li>
 </ul></div>
 <div class="section level2">
 <h2 id="folder-map">Folder map<a class="anchor" aria-label="anchor" href="#folder-map"></a></h2>
@@ -150,8 +151,15 @@
 <td>write the change-set log and its file list (<code>UPDATE=TRUE</code> refreshes the list)</td>
 </tr><tr><td><code>make verify RECORD=TRUE</code></td>
 <td>after the user pushes from Overleaf (O2G): verify and record the push. On Roar, run <code>bash .setup/scripts/verify.sh</code> on the host first to pull.</td>
+</tr><tr><td><code>make linked</code></td>
+<td>compare <code>.setup/r-dependencies/</code> with the functions clone</td>
 </tr><tr><td><code>make auto</code></td>
-<td>publish to the public repository (checks the export first)</td>
+<td>publish to the public repository (checks the remote and the export first)</td>
+</tr><tr><td><code>make release</code></td>
+<td>
+<code>make all</code>, the secret scan, then <code>make auto</code>; stops at the first failure</td>
+</tr><tr><td><code>make dotfiles</code></td>
+<td>install the shell, tmux, Vim, and xterm files from rProject (<code>make all</code> does not)</td>
 </tr><tr><td><code>make tree</code></td>
 <td>the project’s folders and what each is for; flags missing and non-standard folders</td>
 </tr><tr><td><code>make project</code></td>
@@ -163,6 +171,21 @@
 <h2 id="generated-files-never-edit-by-hand">Generated files: never edit by hand<a class="anchor" aria-label="anchor" href="#generated-files-never-edit-by-hand"></a></h2>
 <p><code>NAMESPACE</code>, <code>man/</code>, <code>README.md</code>, <code>CITATION.cff</code>, <code>LICENSE*</code>, <code>.Rbuildignore</code>, <code>project.Rproj</code>, <code>R/RcppExports.R</code>, <code>src/RcppExports.cpp</code>, <code>*/bib.bib</code>, <code>vignettes/*.Rmd</code> built from <code>.setup/vignettes/</code>, <code>.setup/latex/pdf/</code>, <code>.setup/latex/figures/</code>, <code>data/*.rda</code>. Change their sources and run <code>make</code>.</p>
 </div>
+<div class="section level2">
+<h2 id="overleaf-and-generated-files">Overleaf and generated files<a class="anchor" aria-label="anchor" href="#overleaf-and-generated-files"></a></h2>
+<ul><li>Generated files may stay in Overleaf as regular files, never as links; a template change reaches Overleaf with the project’s next upload (<code>Verify()</code> skips them).</li>
+<li>Keep the <code>Makefile</code>, <code>project.Rproj</code>, the <code>.gitignore</code> files, and the scripts the project’s own build uses. Remove only <code>.setup/scripts/*</code> except <code>project.R</code>.</li>
+<li>A copy without the <code>Makefile</code>: <code>Rscript -e 'rProject::Template(getwd())'</code> once, then <code>make</code>.</li>
+</ul></div>
+<div class="section level2">
+<h2 id="linked-from-functions">Linked from functions<a class="anchor" aria-label="anchor" href="#linked-from-functions"></a></h2>
+<p>Files in <code>.setup/r-dependencies/</code> are Overleaf links to the private functions repository (<code>&lt;lib&gt;/&lt;file&gt;</code> there), shared with other projects.</p>
+<ul><li>Never edit them in a project or put them in its upload folder.</li>
+<li>To change one, edit the local functions clone (next to the projects; agents never push) and write an upload folder for functions; for a test, copy the files into a scratch build of the project, not into the project.</li>
+<li>Order: functions first; then refresh the links in each project that has them and push. The reply and the log name the links to refresh.</li>
+<li>
+<code>make linked</code> compares the files with the functions clone (<code>FUNCTIONS=&lt;path&gt;</code>).</li>
+</ul></div>
 <div class="section level2">
 <h2 id="size">Size<a class="anchor" aria-label="anchor" href="#size"></a></h2>
 <p>Overleaf’s GitHub sync stops above 7 MB of editable text and caps text files at 2 MB. Keep large data compressed (binary, e.g. <code>.Rds</code> or <code>.xz</code>) and never store the same file twice. <code>make sizecheck</code> reports problems.</p>
@@ -191,7 +214,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Ivan Jacob Agaloos Pesigan.</p>
+  <p>Ivan Jacob Agaloos Pesigan, <a href="https://hhd.psu.edu/hdfs" class="external-link">Department of Human Development and Family Studies</a>, The Pennsylvania State University</p>
 </div>
 
 <div class="pkgdown-footer-right">

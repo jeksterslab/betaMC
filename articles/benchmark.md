@@ -3,7 +3,7 @@
 We compare the Monte Carlo (MC) method with nonparametric bootstrapping
 (NB) for standardized regression coefficients. In this example, we use
 the data set and the model used in [betaMC: Example Using the BetaMC
-Function](https://github.com/jeksterslab/betaMC/articles/example-beta-mc.md).
+Function](https://jeksterslab.github.io/betaMC/articles/example-beta-mc.md).
 
 \
 [`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`\
@@ -11,7 +11,7 @@ Function](https://github.com/jeksterslab/betaMC/articles/example-beta-mc.md).
 [`library`](https://rdrr.io/r/base/library.html)`(`[`microbenchmark`](https://github.com/joshuaulrich/microbenchmark/)`)`
 
 The
-[`BetaMC()`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)
+[`BetaMC()`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)
 function is used to generate MC confidence intervals. The `BetaNB()`
 function is used to generate NB confidence intervals.
 
@@ -28,7 +28,7 @@ function is used to generate NB confidence intervals.
 ## Data and Model
 
 \
-`df`` ``<-`` ``betaMC``::`[`nas1982`](https://github.com/jeksterslab/betaMC/reference/nas1982.md)
+`df`` ``<-`` ``betaMC``::`[`nas1982`](https://jeksterslab.github.io/betaMC/reference/nas1982.md)
 
 ## Benchmark
 
@@ -44,8 +44,8 @@ function is used to generate NB confidence intervals.
 `  MC ``=`` ``{`\
 `    ``formula`` ``<-`` ``"QUALITY ~ NARTIC + PCTGRT + PCTSUPP"`\
 `    ``object`` ``<-`` `[`lm`](https://rdrr.io/r/stats/lm.html)`(``formula ``=`` ``formula``, data ``=`` ``df``)`\
-`    ``mc`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object ``=`` ``object``, R ``=`` ``R``, type ``=`` ``"mvn"``)`\
-`    `[`BetaMC`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)`(``object ``=`` ``mc``)`\
+`    ``mc`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object ``=`` ``object``, R ``=`` ``R``, type ``=`` ``"mvn"``)`\
+`    `[`BetaMC`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)`(``object ``=`` ``mc``)`\
 `  ``}``,`\
 `  NB ``=`` ``{`\
 `    ``formula`` ``<-`` ``"QUALITY ~ NARTIC + PCTGRT + PCTSUPP"`\
@@ -59,17 +59,17 @@ function is used to generate NB confidence intervals.
 
 \
 [`summary`](https://rdrr.io/r/base/summary.html)`(``benchmark``, unit ``=`` ``"ms"``)`\
-`#>   expr        min         lq       mean     median       uq        max neval`\
-`#> 1   MC   10.76533   11.02513   11.73928   11.17096   11.401   17.10782    10`\
-`#> 2   NB 1934.13308 1951.13237 1971.06786 1961.22100 2002.657 2008.81859    10`
+`#>   expr        min         lq       mean     median        uq        max neval`\
+`#> 1   MC   10.78102   11.11858   11.42242   11.16522   11.2795   14.15159    10`\
+`#> 2   NB 1987.19440 1992.66365 2016.26751 2009.64220 2049.1217 2050.15870    10`
 
 ### Summary of Benchmark Results Relative to the Faster Method
 
 \
 [`summary`](https://rdrr.io/r/base/summary.html)`(``benchmark``, unit ``=`` ``"relative"``)`\
-`#>   expr      min       lq     mean   median       uq     max neval`\
-`#> 1   MC   1.0000   1.0000   1.0000   1.0000   1.0000   1.000    10`\
-`#> 2   NB 179.6631 176.9714 167.9037 175.5642 175.6564 117.421    10`
+`#>   expr      min       lq     mean   median       uq      max neval`\
+`#> 1   MC   1.0000   1.0000   1.0000   1.0000   1.0000   1.0000    10`\
+`#> 2   NB 184.3234 179.2192 176.5184 179.9913 181.6678 144.8713    10`
 
 ## Plot
 

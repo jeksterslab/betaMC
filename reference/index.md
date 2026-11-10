@@ -2,89 +2,89 @@
 
 ## Monte Carlo
 
-- [`MC()`](https://github.com/jeksterslab/betaMC/reference/MC.md) :
+- [`MC()`](https://jeksterslab.github.io/betaMC/reference/MC.md) :
   Generate the Sampling Distribution of Regression Parameters Using the
   Monte Carlo Method
-- [`MCMI()`](https://github.com/jeksterslab/betaMC/reference/MCMI.md) :
+- [`MCMI()`](https://jeksterslab.github.io/betaMC/reference/MCMI.md) :
   Generate the Sampling Distribution of Regression Parameters Using the
   Monte Carlo Method for Data with Missing Values
 
 ## Standardized Regression Coefficients
 
-- [`BetaMC()`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)
+- [`BetaMC()`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)
   : Estimate Standardized Regression Coefficients and Generate the
   Corresponding Sampling Distribution Using the Monte Carlo Method
 
 ## Multiple Correlation
 
-- [`RSqMC()`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md)
-  : Estimate Multiple Correlation Coefficients (R-Squared and Adjusted
+- [`RSqMC()`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md) :
+  Estimate Multiple Correlation Coefficients (R-Squared and Adjusted
   R-Squared) and Generate the Corresponding Sampling Distribution Using
   the Monte Carlo Method
 
 ## Semipartial Correlation
 
-- [`SCorMC()`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md)
+- [`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)
   : Estimate Semipartial Correlation Coefficients and Generate the
   Corresponding Sampling Distribution Using the Monte Carlo Method
 
 ## Improvement in R-Squared
 
-- [`DeltaRSqMC()`](https://github.com/jeksterslab/betaMC/reference/DeltaRSqMC.md)
+- [`DeltaRSqMC()`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md)
   : Estimate Improvement in R-Squared and Generate the Corresponding
   Sampling Distribution Using the Monte Carlo Method
 
 ## Squared Partial Correlation
 
-- [`PCorMC()`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md)
+- [`PCorMC()`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md)
   : Estimate Squared Partial Correlation Coefficients and Generate the
   Corresponding Sampling Distribution Using the Monte Carlo Method
 
 ## Differences of Standardized Regression Coefficients
 
-- [`DiffBetaMC()`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md)
+- [`DiffBetaMC()`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)
   : Estimate Differences of Standardized Slopes and Generate the
   Corresponding Sampling Distribution Using the Monte Carlo Method
 
 ## Cohen’s f-Squared
 
-- [`FSqMC()`](https://github.com/jeksterslab/betaMC/reference/FSqMC.md)
-  : Estimate Cohen's f-Squared and Generate the Corresponding Sampling
+- [`FSqMC()`](https://jeksterslab.github.io/betaMC/reference/FSqMC.md) :
+  Estimate Cohen's f-Squared and Generate the Corresponding Sampling
   Distribution Using the Monte Carlo Method
 
 ## Methods
 
-- [`coef(`*`<betamc>`*`)`](https://github.com/jeksterslab/betaMC/reference/coef.betamc.md)
+- [`coef(`*`<betamc>`*`)`](https://jeksterslab.github.io/betaMC/reference/coef.betamc.md)
   :
 
   Estimated Parameter Method for an Object of Class `betamc`
 
-- [`confint(`*`<betamc>`*`)`](https://github.com/jeksterslab/betaMC/reference/confint.betamc.md)
+- [`confint(`*`<betamc>`*`)`](https://jeksterslab.github.io/betaMC/reference/confint.betamc.md)
   :
 
   Confidence Intervals Method for an Object of Class `betamc`
 
-- [`print(`*`<betamc>`*`)`](https://github.com/jeksterslab/betaMC/reference/print.betamc.md)
+- [`print(`*`<betamc>`*`)`](https://jeksterslab.github.io/betaMC/reference/print.betamc.md)
   :
 
   Print Method for an Object of Class `betamc`
 
-- [`print(`*`<mc>`*`)`](https://github.com/jeksterslab/betaMC/reference/print.mc.md)
+- [`print(`*`<mc>`*`)`](https://jeksterslab.github.io/betaMC/reference/print.mc.md)
   :
 
   Print Method for an Object of Class `mc`
 
-- [`summary(`*`<betamc>`*`)`](https://github.com/jeksterslab/betaMC/reference/summary.betamc.md)
+- [`summary(`*`<betamc>`*`)`](https://jeksterslab.github.io/betaMC/reference/summary.betamc.md)
   :
 
   Summary Method for an Object of Class `betamc`
 
-- [`summary(`*`<mc>`*`)`](https://github.com/jeksterslab/betaMC/reference/summary.mc.md)
+- [`summary(`*`<mc>`*`)`](https://jeksterslab.github.io/betaMC/reference/summary.mc.md)
   :
 
   Summary Method for an Object of Class `mc`
 
-- [`vcov(`*`<betamc>`*`)`](https://github.com/jeksterslab/betaMC/reference/vcov.betamc.md)
+- [`vcov(`*`<betamc>`*`)`](https://jeksterslab.github.io/betaMC/reference/vcov.betamc.md)
   :
 
   Sampling Variance-Covariance Matrix Method for an Object of Class
@@ -92,5 +92,5 @@
 
 ## Data
 
-- [`nas1982`](https://github.com/jeksterslab/betaMC/reference/nas1982.md)
+- [`nas1982`](https://jeksterslab.github.io/betaMC/reference/nas1982.md)
   : 1982 National Academy of Sciences Doctoral Programs Data

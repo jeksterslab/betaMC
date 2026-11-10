@@ -61,14 +61,14 @@ number of published articles attributed to the program faculty members
 ratings of 46 doctoral programs in psychology in the USA (National
 Research Council, 1982). Confidence intervals for the standardized
 regression coefficients are generated using the
-[`BetaMC()`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)
+[`BetaMC()`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)
 function from the `betaMC` package.
 
 \
 [`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`
 
 \
-`df`` ``<-`` ``betaMC``::`[`nas1982`](https://github.com/jeksterslab/betaMC/reference/nas1982.md)
+`df`` ``<-`` ``betaMC``::`[`nas1982`](https://jeksterslab.github.io/betaMC/reference/nas1982.md)
 
 ### Regression
 
@@ -83,24 +83,24 @@ Fit the regression model using the
 #### Normal-Theory Approach
 
 \
-`mvn`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
+`mvn`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
 
 #### Asymptotic distribution-free Approach
 
 \
-`adf`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
+`adf`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 \
-`hc3`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
+`hc3`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
 
 ### Standardized Regression Slopes
 
 #### Normal-Theory Approach
 
 \
-[`BetaMC`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)`(``mvn``, alpha ``=`` ``0.05``)`\
+[`BetaMC`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)`(``mvn``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> BetaMC(object = mvn, alpha = 0.05)`\
 `#> `\
@@ -114,7 +114,7 @@ Fit the regression model using the
 #### Asymptotic distribution-free Approach
 
 \
-[`BetaMC`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)`(``adf``, alpha ``=`` ``0.05``)`\
+[`BetaMC`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)`(``adf``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> BetaMC(object = adf, alpha = 0.05)`\
 `#> `\
@@ -128,7 +128,7 @@ Fit the regression model using the
 #### Heteroskedasticity Consistent Approach (HC3)
 
 \
-[`BetaMC`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+[`BetaMC`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> BetaMC(object = hc3, alpha = 0.05)`\
 `#> `\
@@ -143,22 +143,21 @@ Fit the regression model using the
 
 The `betaMC` package also has functions to generate Monte Carlo
 confidence intervals for other effect sizes such as
-[`RSqMC()`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md)
-for multiple correlation coefficients (R-squared and adjusted
-R-squared),
-[`DeltaRSqMC()`](https://github.com/jeksterslab/betaMC/reference/DeltaRSqMC.md)
+[`RSqMC()`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md) for
+multiple correlation coefficients (R-squared and adjusted R-squared),
+[`DeltaRSqMC()`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md)
 for improvement in R-squared,
-[`SCorMC()`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md)
+[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)
 for semipartial correlation coefficients,
-[`PCorMC()`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md)
+[`PCorMC()`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md)
 for squared partial correlation coefficients, and
-[`DiffBetaMC()`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md)
+[`DiffBetaMC()`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)
 for differences of standardized regression coefficients.
 
 #### Multiple Correlation Coefficients (R-squared and adjusted R-squared)
 
 \
-[`RSqMC`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+[`RSqMC`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> RSqMC(object = hc3, alpha = 0.05)`\
 `#> `\
@@ -171,7 +170,7 @@ for differences of standardized regression coefficients.
 #### Improvement in R-squared
 
 \
-[`DeltaRSqMC`](https://github.com/jeksterslab/betaMC/reference/DeltaRSqMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+[`DeltaRSqMC`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> DeltaRSqMC(object = hc3, alpha = 0.05)`\
 `#> `\
@@ -185,7 +184,7 @@ for differences of standardized regression coefficients.
 #### Semipartial Correlation Coefficients
 
 \
-[`SCorMC`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+[`SCorMC`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> SCorMC(object = hc3, alpha = 0.05)`\
 `#> `\
@@ -199,7 +198,7 @@ for differences of standardized regression coefficients.
 #### Squared Partial Correlation Coefficients
 
 \
-[`PCorMC`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+[`PCorMC`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> PCorMC(object = hc3, alpha = 0.05)`\
 `#> `\
@@ -213,7 +212,7 @@ for differences of standardized regression coefficients.
 #### Differences of Standardized Regression Coefficients
 
 \
-[`DiffBetaMC`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+[`DiffBetaMC`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> DiffBetaMC(object = hc3, alpha = 0.05)`\
 `#> `\

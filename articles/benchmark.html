@@ -41,7 +41,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="nav-link" href="https://github.com/jeksterslab/betaMC/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/jeksterslab/betaMC/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -59,9 +59,9 @@
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
-            <h4 data-toc-skip class="date">2026-11-05</h4>
+            <h4 data-toc-skip class="date">2026-11-10</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/jeksterslab/betaMC/blob/main/vignettes/benchmark.Rmd"><code>vignettes/benchmark.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/jeksterslab/betaMC/blob/main/vignettes/benchmark.Rmd" class="external-link"><code>vignettes/benchmark.Rmd</code></a></small>
       <div class="d-none name"><code>benchmark.Rmd</code></div>
     </div>
 
@@ -72,7 +72,7 @@ bootstrapping (NB) for standardized regression coefficients. In this
 example, we use the data set and the model used in <a href="example-beta-mc.html">betaMC: Example Using the BetaMC
 Function</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/betaMC">betaMC</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/betaMC" class="external-link">betaMC</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/joshuaulrich/microbenchmark/" class="external-link">microbenchmark</a></span><span class="op">)</span></span></code></pre></div>
 <p>The <code><a href="../reference/BetaMC.html">BetaMC()</a></code> function is used to generate MC confidence
@@ -139,18 +139,18 @@ confidence intervals.</p>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">benchmark</span>, unit <span class="op">=</span> <span class="st">"ms"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   expr        min         lq       mean     median       uq        max neval</span></span>
-<span><span class="co">#&gt; 1   MC   10.76533   11.02513   11.73928   11.17096   11.401   17.10782    10</span></span>
-<span><span class="co">#&gt; 2   NB 1934.13308 1951.13237 1971.06786 1961.22100 2002.657 2008.81859    10</span></span></code></pre></div>
+<span><span class="co">#&gt;   expr        min         lq       mean     median        uq        max neval</span></span>
+<span><span class="co">#&gt; 1   MC   10.78102   11.11858   11.42242   11.16522   11.2795   14.15159    10</span></span>
+<span><span class="co">#&gt; 2   NB 1987.19440 1992.66365 2016.26751 2009.64220 2049.1217 2050.15870    10</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="summary-of-benchmark-results-relative-to-the-faster-method">Summary of Benchmark Results Relative to the Faster Method<a class="anchor" aria-label="anchor" href="#summary-of-benchmark-results-relative-to-the-faster-method"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">benchmark</span>, unit <span class="op">=</span> <span class="st">"relative"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   expr      min       lq     mean   median       uq     max neval</span></span>
-<span><span class="co">#&gt; 1   MC   1.0000   1.0000   1.0000   1.0000   1.0000   1.000    10</span></span>
-<span><span class="co">#&gt; 2   NB 179.6631 176.9714 167.9037 175.5642 175.6564 117.421    10</span></span></code></pre></div>
+<span><span class="co">#&gt;   expr      min       lq     mean   median       uq      max neval</span></span>
+<span><span class="co">#&gt; 1   MC   1.0000   1.0000   1.0000   1.0000   1.0000   1.0000    10</span></span>
+<span><span class="co">#&gt; 2   NB 184.3234 179.2192 176.5184 179.9913 181.6678 144.8713    10</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -165,7 +165,7 @@ confidence intervals.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Ivan Jacob Agaloos Pesigan.</p>
+  <p>Ivan Jacob Agaloos Pesigan, <a href="https://hhd.psu.edu/hdfs" class="external-link">Department of Human Development and Family Studies</a>, The Pennsylvania State University</p>
 </div>
 
 <div class="pkgdown-footer-right">

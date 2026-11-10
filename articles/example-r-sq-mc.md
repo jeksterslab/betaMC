@@ -2,16 +2,16 @@
 
 Confidence intervals for multiple correlation coefficients (R-squared
 and adjusted R-squared) are generated using the
-[`RSqMC()`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md)
+[`RSqMC()`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md)
 function from the `betaMC` package. In this example, we use the data set
 and the model used in [betaMC: Example Using the BetaMC
-Function](https://github.com/jeksterslab/betaMC/articles/example-beta-mc.md).
+Function](https://jeksterslab.github.io/betaMC/articles/example-beta-mc.md).
 
 \
 [`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`
 
 \
-`df`` ``<-`` ``betaMC``::`[`nas1982`](https://github.com/jeksterslab/betaMC/reference/nas1982.md)
+`df`` ``<-`` ``betaMC``::`[`nas1982`](https://jeksterslab.github.io/betaMC/reference/nas1982.md)
 
 ### Regression
 
@@ -26,41 +26,41 @@ Fit the regression model using the
 #### Normal-Theory Approach
 
 \
-`mvn`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
+`mvn`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
 
 #### Asymptotic distribution-free Approach
 
 \
-`adf`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
+`adf`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 \
-`hc3`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
+`hc3`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
 
 ### Multiple Correlation Coefficients
 
 #### Normal-Theory Approach
 
 \
-`mvn`` ``<-`` `[`RSqMC`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md)`(``mvn``)`
+`mvn`` ``<-`` `[`RSqMC`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md)`(``mvn``)`
 
 #### Asymptotic distribution-free Approach
 
 \
-`adf`` ``<-`` `[`RSqMC`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md)`(``adf``)`
+`adf`` ``<-`` `[`RSqMC`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md)`(``adf``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 \
-`hc3`` ``<-`` `[`RSqMC`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md)`(``hc3``)`
+`hc3`` ``<-`` `[`RSqMC`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md)`(``hc3``)`
 
 ## Methods
 
 ### summary
 
 Summary of the results of
-[`RSqMC()`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md).
+[`RSqMC()`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md).
 
 \
 [`summary`](https://rdrr.io/r/base/summary.html)`(``mvn``)`\

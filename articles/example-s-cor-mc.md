@@ -2,16 +2,16 @@
 
 Confidence intervals for semipartial correlation coefficients are
 generated using the
-[`SCorMC()`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md)
+[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)
 function from the `betaMC` package. In this example, we use the data set
 and the model used in [betaMC: Example Using the BetaMC
-Function](https://github.com/jeksterslab/betaMC/articles/example-beta-mc.md).
+Function](https://jeksterslab.github.io/betaMC/articles/example-beta-mc.md).
 
 \
 [`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`
 
 \
-`df`` ``<-`` ``betaMC``::`[`nas1982`](https://github.com/jeksterslab/betaMC/reference/nas1982.md)
+`df`` ``<-`` ``betaMC``::`[`nas1982`](https://jeksterslab.github.io/betaMC/reference/nas1982.md)
 
 ### Regression
 
@@ -26,41 +26,41 @@ Fit the regression model using the
 #### Normal-Theory Approach
 
 \
-`mvn`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
+`mvn`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
 
 #### Asymptotic distribution-free Approach
 
 \
-`adf`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
+`adf`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 \
-`hc3`` ``<-`` `[`MC`](https://github.com/jeksterslab/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
+`hc3`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
 
 ### Semipartial Correlation Coefficients
 
 #### Normal-Theory Approach
 
 \
-`mvn`` ``<-`` `[`SCorMC`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md)`(``mvn``)`
+`mvn`` ``<-`` `[`SCorMC`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)`(``mvn``)`
 
 #### Asymptotic distribution-free Approach
 
 \
-`adf`` ``<-`` `[`SCorMC`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md)`(``adf``)`
+`adf`` ``<-`` `[`SCorMC`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)`(``adf``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 \
-`hc3`` ``<-`` `[`SCorMC`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md)`(``hc3``)`
+`hc3`` ``<-`` `[`SCorMC`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)`(``hc3``)`
 
 ## Methods
 
 ### summary
 
 Summary of the results of
-[`SCorMC()`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md).
+[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md).
 
 \
 [`summary`](https://rdrr.io/r/base/summary.html)`(``mvn``)`\

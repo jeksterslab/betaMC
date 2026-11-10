@@ -10,4 +10,5 @@ cran).
 - Never edit generated files (`NAMESPACE`, `man/`, `README.md`,
   `.setup/latex/pdf/`).
 - Run code only inside the image the user chooses:
-  `apptainer exec <image> make <target>`.
+  `apptainer exec -B ~/work:$(readlink -f ~/work) <image> make <target>`
+  (on Roar, add `-B /scratch/ibp5092`).

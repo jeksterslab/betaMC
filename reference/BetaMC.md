@@ -14,7 +14,7 @@ BetaMC(object, alpha = c(0.05, 0.01, 0.001), std_y = TRUE, std_x = NULL)
 - object:
 
   Object of class `mc`, that is, the output of the
-  [`MC()`](https://github.com/jeksterslab/betaMC/reference/MC.md)
+  [`MC()`](https://jeksterslab.github.io/betaMC/reference/MC.md)
   function.
 
 - alpha:
@@ -79,14 +79,14 @@ generated sampling distribution of \\(\boldsymbol{\hat{\beta}}\\), where
 ## See also
 
 Other Beta Monte Carlo Functions:
-[`DeltaRSqMC()`](https://github.com/jeksterslab/betaMC/reference/DeltaRSqMC.md),
-[`DiffBetaMC()`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md),
-[`FSqMC()`](https://github.com/jeksterslab/betaMC/reference/FSqMC.md),
-[`MC()`](https://github.com/jeksterslab/betaMC/reference/MC.md),
-[`MCMI()`](https://github.com/jeksterslab/betaMC/reference/MCMI.md),
-[`PCorMC()`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md),
-[`RSqMC()`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md),
-[`SCorMC()`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md)
+[`DeltaRSqMC()`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md),
+[`DiffBetaMC()`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md),
+[`FSqMC()`](https://jeksterslab.github.io/betaMC/reference/FSqMC.md),
+[`MC()`](https://jeksterslab.github.io/betaMC/reference/MC.md),
+[`MCMI()`](https://jeksterslab.github.io/betaMC/reference/MCMI.md),
+[`PCorMC()`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md),
+[`RSqMC()`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md),
+[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)
 
 ## Author
 

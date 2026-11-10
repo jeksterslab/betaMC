@@ -2,7 +2,7 @@
 
 The Monte Carlo Method combined with multiple imputation described in
 (**Pesigan-Cheung-2023?**) is implemented using the
-[`MCMI()`](https://github.com/jeksterslab/betaMC/reference/MCMI.md)
+[`MCMI()`](https://jeksterslab.github.io/betaMC/reference/MCMI.md)
 function in the context of linear regression. Multiple imputation is
 used to deal with missing values in a data set. The vector of parameter
 estimates and the corresponding sampling covariance matrix are estimated
@@ -10,21 +10,21 @@ for each of the imputed data sets. Results are combined to arrive at the
 pooled vector of parameter estimates and the corresponding sampling
 covariance matrix. The pooled estimates are then used to generate the
 sampling distribution of regression parameters. The output of the
-[`MCMI()`](https://github.com/jeksterslab/betaMC/reference/MCMI.md)
+[`MCMI()`](https://jeksterslab.github.io/betaMC/reference/MCMI.md)
 function can be passed to the
-[`BetaMC()`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md),
-[`RSqMC()`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md),
-[`DeltaRSqMC()`](https://github.com/jeksterslab/betaMC/reference/DeltaRSqMC.md),
-[`SCorMC()`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md),
-[`PCorMC()`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md),
+[`BetaMC()`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md),
+[`RSqMC()`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md),
+[`DeltaRSqMC()`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md),
+[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md),
+[`PCorMC()`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md),
 and
-[`DiffBetaMC()`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md)
+[`DiffBetaMC()`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)
 functions to generate confidence intervals for various regression effect
 sizes.
 
 In this example, we use the data set and the model used in [betaMC:
 Example Using the BetaMC
-Function](https://github.com/jeksterslab/betaMC/articles/example-beta-mc.md).
+Function](https://jeksterslab.github.io/betaMC/articles/example-beta-mc.md).
 We use the
 [`mice::ampute()`](https://amices.org/mice/reference/ampute.html)
 function to generate a data set with missing values.
@@ -33,7 +33,7 @@ function to generate a data set with missing values.
 [`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`
 
 \
-`df`` ``<-`` ``betaMC``::`[`nas1982`](https://github.com/jeksterslab/betaMC/reference/nas1982.md)
+`df`` ``<-`` ``betaMC``::`[`nas1982`](https://jeksterslab.github.io/betaMC/reference/nas1982.md)
 
 \
 [`set.seed`](https://rdrr.io/r/base/Random.html)`(``42``)`\
@@ -103,7 +103,7 @@ Fit the regression model using the
 [`lm()`](https://rdrr.io/r/stats/lm.html) function. Note that this does
 not deal with missing values. The fitted model (`object`) is updated
 with each imputed data within the
-[`MCMI()`](https://github.com/jeksterslab/betaMC/reference/MCMI.md)
+[`MCMI()`](https://jeksterslab.github.io/betaMC/reference/MCMI.md)
 function.
 
 \
@@ -112,12 +112,12 @@ function.
 ### Monte Carlo Sampling Distribution of Parameters
 
 \
-`hc3`` ``<-`` `[`MCMI`](https://github.com/jeksterslab/betaMC/reference/MCMI.md)`(``object``, mi ``=`` ``mi``, type ``=`` ``"hc3"``)`
+`hc3`` ``<-`` `[`MCMI`](https://jeksterslab.github.io/betaMC/reference/MCMI.md)`(``object``, mi ``=`` ``mi``, type ``=`` ``"hc3"``)`
 
 ### Standardized Regression Slopes
 
 \
-[`BetaMC`](https://github.com/jeksterslab/betaMC/reference/BetaMC.md)`(``hc3``)`\
+[`BetaMC`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)`(``hc3``)`\
 `#> Call:`\
 `#> BetaMC(object = hc3)`\
 `#> `\
@@ -131,7 +131,7 @@ function.
 ### Multiple Correlation Coefficients
 
 \
-[`RSqMC`](https://github.com/jeksterslab/betaMC/reference/RSqMC.md)`(``hc3``)`\
+[`RSqMC`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md)`(``hc3``)`\
 `#> Call:`\
 `#> RSqMC(object = hc3)`\
 `#> `\
@@ -144,7 +144,7 @@ function.
 ### Improvement in R-squared
 
 \
-[`DeltaRSqMC`](https://github.com/jeksterslab/betaMC/reference/DeltaRSqMC.md)`(``hc3``)`\
+[`DeltaRSqMC`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md)`(``hc3``)`\
 `#> Call:`\
 `#> DeltaRSqMC(object = hc3)`\
 `#> `\
@@ -158,7 +158,7 @@ function.
 ### Semipartial Correlation Coefficients
 
 \
-[`SCorMC`](https://github.com/jeksterslab/betaMC/reference/SCorMC.md)`(``hc3``)`\
+[`SCorMC`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)`(``hc3``)`\
 `#> Call:`\
 `#> SCorMC(object = hc3)`\
 `#> `\
@@ -172,7 +172,7 @@ function.
 ### Squared Partial Correlation Coefficients
 
 \
-[`PCorMC`](https://github.com/jeksterslab/betaMC/reference/PCorMC.md)`(``hc3``)`\
+[`PCorMC`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md)`(``hc3``)`\
 `#> Call:`\
 `#> PCorMC(object = hc3)`\
 `#> `\
@@ -186,7 +186,7 @@ function.
 ### Differences of Standardized Regression Slopes
 
 \
-[`DiffBetaMC`](https://github.com/jeksterslab/betaMC/reference/DiffBetaMC.md)`(``hc3``)`\
+[`DiffBetaMC`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)`(``hc3``)`\
 `#> Call:`\
 `#> DiffBetaMC(object = hc3)`\
 `#> `\

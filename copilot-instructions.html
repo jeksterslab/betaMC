@@ -21,7 +21,7 @@
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json"></form></li>
-<li class="nav-item"><a class="nav-link" href="https://github.com/jeksterslab/betaMC/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/jeksterslab/betaMC/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
 
 
@@ -31,7 +31,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>betaMC</h1>
-      <small class="dont-index">Source: <a href="https://github.com/jeksterslab/betaMC/blob/main/.github/copilot-instructions.md"><code>.github/copilot-instructions.md</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/jeksterslab/betaMC/blob/main/.github/copilot-instructions.md" class="external-link"><code>.github/copilot-instructions.md</code></a></small>
     </div>
 
 <div id="betamc" class="section level1">
@@ -39,14 +39,14 @@
 <p>See <code>AGENTS.md</code> and <code>.setup/ai/project.md</code> for this project (package, cran).</p>
 <ul><li>R: BigCamelCase functions; snake_case objects; <code>pkg::fn()</code> with named arguments; no explicit <code><a href="https://rdrr.io/r/base/function.html" class="external-link">return()</a></code>; one function per file.</li>
 <li>Never edit generated files (<code>NAMESPACE</code>, <code>man/</code>, <code>README.md</code>, <code>.setup/latex/pdf/</code>).</li>
-<li>Run code only inside the image the user chooses: <code>apptainer exec &lt;image&gt; make &lt;target&gt;</code>.</li>
+<li>Run code only inside the image the user chooses: <code>apptainer exec -B ~/work:$(readlink -f ~/work) &lt;image&gt; make &lt;target&gt;</code> (on Roar, add <code>-B /scratch/ibp5092</code>).</li>
 </ul></div>
 
   </main></div>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Ivan Jacob Agaloos Pesigan.</p>
+  <p>Ivan Jacob Agaloos Pesigan, <a href="https://hhd.psu.edu/hdfs" class="external-link">Department of Human Development and Family Studies</a>, The Pennsylvania State University</p>
 </div>
 
 <div class="pkgdown-footer-right">

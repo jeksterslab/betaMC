@@ -41,7 +41,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="nav-link" href="https://github.com/jeksterslab/betaMC/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/jeksterslab/betaMC/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -60,14 +60,14 @@
 Agaloos Pesigan</h4>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/jeksterslab/betaMC/blob/main/vignettes/session.Rmd"><code>vignettes/session.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/jeksterslab/betaMC/blob/main/vignettes/session.Rmd" class="external-link"><code>vignettes/session.Rmd</code></a></small>
       <div class="d-none name"><code>session.Rmd</code></div>
     </div>
 
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/betaMC">betaMC</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/betaMC" class="external-link">betaMC</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="session">Session<a class="anchor" aria-label="anchor" href="#session"></a>
 </h2>
@@ -104,9 +104,9 @@ Agaloos Pesigan</h4>
 <span><span class="co">#&gt;  [9] grid_4.6.2       iterators_1.0.14 mice_3.19.0      foreach_1.5.2   </span></span>
 <span><span class="co">#&gt; [13] jomo_2.7-6       rprojroot_2.1.1  glmnet_5.2       Matrix_1.7-6    </span></span>
 <span><span class="co">#&gt; [17] nnet_7.3-21      backports_1.5.1  survival_3.8-12  purrr_1.2.2     </span></span>
-<span><span class="co">#&gt; [21] rProject_0.0.62  codetools_0.2-20 reformulas_0.4.4 Rdpack_2.6.6    </span></span>
+<span><span class="co">#&gt; [21] rProject_0.0.67  codetools_0.2-20 reformulas_0.4.4 Rdpack_2.6.6    </span></span>
 <span><span class="co">#&gt; [25] cli_3.6.6.9000   rlang_1.3.0      rbibutils_2.4.1  splines_4.6.2   </span></span>
-<span><span class="co">#&gt; [29] otel_0.2.0       pan_2.0          tools_4.6.2      nloptr_2.2.1    </span></span>
+<span><span class="co">#&gt; [29] otel_0.3.0       pan_2.0          tools_4.6.2      nloptr_2.2.1    </span></span>
 <span><span class="co">#&gt; [33] minqa_1.2.8      dplyr_1.2.1      broom_1.0.13     rpart_4.1.27    </span></span>
 <span><span class="co">#&gt; [37] vctrs_0.7.3      R6_2.6.1         lifecycle_1.0.5  MASS_7.3-66     </span></span>
 <span><span class="co">#&gt; [41] pkgconfig_2.0.3  pillar_1.11.1    glue_1.8.1       Rcpp_1.1.2      </span></span>
@@ -120,7 +120,7 @@ Agaloos Pesigan</h4>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html" class="external-link">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Package"</span>, <span class="st">"Version"</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt;                   Package             Version     </span></span>
 <span><span class="co">#&gt; betaMC            "betaMC"            "1.3.4.9000"</span></span>
-<span><span class="co">#&gt; rProject          "rProject"          "0.0.62"    </span></span>
+<span><span class="co">#&gt; rProject          "rProject"          "0.0.67"    </span></span>
 <span><span class="co">#&gt; abind             "abind"             "1.4-8"     </span></span>
 <span><span class="co">#&gt; Amelia            "Amelia"            "1.8.3"     </span></span>
 <span><span class="co">#&gt; arm               "arm"               "1.15-3"    </span></span>
@@ -129,8 +129,10 @@ Agaloos Pesigan</h4>
 <span><span class="co">#&gt; AsioHeaders       "AsioHeaders"       "1.30.2-1"  </span></span>
 <span><span class="co">#&gt; askpass           "askpass"           "1.2.1"     </span></span>
 <span><span class="co">#&gt; assertthat        "assertthat"        "0.2.1"     </span></span>
+<span><span class="co">#&gt; av                "av"                "0.9.6"     </span></span>
 <span><span class="co">#&gt; backports         "backports"         "1.5.1"     </span></span>
 <span><span class="co">#&gt; base64enc         "base64enc"         "0.1-6"     </span></span>
+<span><span class="co">#&gt; bench             "bench"             "1.1.4"     </span></span>
 <span><span class="co">#&gt; betaDelta         "betaDelta"         "1.0.7.9000"</span></span>
 <span><span class="co">#&gt; betaMC            "betaMC"            "1.3.4.9000"</span></span>
 <span><span class="co">#&gt; betaNB            "betaNB"            "1.0.7.9000"</span></span>
@@ -234,6 +236,7 @@ Agaloos Pesigan</h4>
 <span><span class="co">#&gt; ggplot2           "ggplot2"           "4.0.3"     </span></span>
 <span><span class="co">#&gt; ggrepel           "ggrepel"           "0.9.8"     </span></span>
 <span><span class="co">#&gt; gh                "gh"                "1.6.1"     </span></span>
+<span><span class="co">#&gt; gifski            "gifski"            "1.32.0-2"  </span></span>
 <span><span class="co">#&gt; gitcreds          "gitcreds"          "0.1.2"     </span></span>
 <span><span class="co">#&gt; glasso            "glasso"            "1.11"      </span></span>
 <span><span class="co">#&gt; glmnet            "glmnet"            "5.2"       </span></span>
@@ -331,8 +334,8 @@ Agaloos Pesigan</h4>
 <span><span class="co">#&gt; OpenMx            "OpenMx"            "2.22.11"   </span></span>
 <span><span class="co">#&gt; openssl           "openssl"           "2.5.0"     </span></span>
 <span><span class="co">#&gt; ordinal           "ordinal"           "2026.7-26" </span></span>
-<span><span class="co">#&gt; otel              "otel"              "0.2.0"     </span></span>
-<span><span class="co">#&gt; pak               "pak"               "0.11.1"    </span></span>
+<span><span class="co">#&gt; otel              "otel"              "0.3.0"     </span></span>
+<span><span class="co">#&gt; pak               "pak"               "0.11.2"    </span></span>
 <span><span class="co">#&gt; pan               "pan"               "2.0"       </span></span>
 <span><span class="co">#&gt; pander            "pander"            "0.6.6"     </span></span>
 <span><span class="co">#&gt; parallelly        "parallelly"        "1.50.0"    </span></span>
@@ -357,6 +360,7 @@ Agaloos Pesigan</h4>
 <span><span class="co">#&gt; printr            "printr"            "0.3"       </span></span>
 <span><span class="co">#&gt; processx          "processx"          "3.9.0"     </span></span>
 <span><span class="co">#&gt; prodlim           "prodlim"           "2026.03.11"</span></span>
+<span><span class="co">#&gt; profmem           "profmem"           "0.7.0"     </span></span>
 <span><span class="co">#&gt; profvis           "profvis"           "0.4.0"     </span></span>
 <span><span class="co">#&gt; progress          "progress"          "1.2.3"     </span></span>
 <span><span class="co">#&gt; progressr         "progressr"         "1.1.0"     </span></span>
@@ -414,7 +418,7 @@ Agaloos Pesigan</h4>
 <span><span class="co">#&gt; roxygen2          "roxygen2"          "8.1.1.9000"</span></span>
 <span><span class="co">#&gt; rpf               "rpf"               "1.0.15"    </span></span>
 <span><span class="co">#&gt; RPostgres         "RPostgres"         "1.4.10"    </span></span>
-<span><span class="co">#&gt; rProject          "rProject"          "0.0.62"    </span></span>
+<span><span class="co">#&gt; rProject          "rProject"          "0.0.67"    </span></span>
 <span><span class="co">#&gt; rprojroot         "rprojroot"         "2.1.1"     </span></span>
 <span><span class="co">#&gt; rsample           "rsample"           "1.3.2"     </span></span>
 <span><span class="co">#&gt; RSQLite           "RSQLite"           "3.53.3"    </span></span>
@@ -442,7 +446,7 @@ Agaloos Pesigan</h4>
 <span><span class="co">#&gt; sparsevctrs       "sparsevctrs"       "0.4.0"     </span></span>
 <span><span class="co">#&gt; splitfngr         "splitfngr"         "0.1.2"     </span></span>
 <span><span class="co">#&gt; SQUAREM           "SQUAREM"           "2026.1"    </span></span>
-<span><span class="co">#&gt; StanHeaders       "StanHeaders"       "2.39.1"    </span></span>
+<span><span class="co">#&gt; StanHeaders       "StanHeaders"       "2.39.1.1"  </span></span>
 <span><span class="co">#&gt; stringi           "stringi"           "1.8.9"     </span></span>
 <span><span class="co">#&gt; stringr           "stringr"           "1.6.0"     </span></span>
 <span><span class="co">#&gt; strucchange       "strucchange"       "1.6-0"     </span></span>
@@ -462,7 +466,7 @@ Agaloos Pesigan</h4>
 <span><span class="co">#&gt; tidyverse         "tidyverse"         "2.0.0"     </span></span>
 <span><span class="co">#&gt; timechange        "timechange"        "0.4.0"     </span></span>
 <span><span class="co">#&gt; timeDate          "timeDate"          "4052.112"  </span></span>
-<span><span class="co">#&gt; tinytex           "tinytex"           "0.61.4"    </span></span>
+<span><span class="co">#&gt; tinytex           "tinytex"           "0.61.5"    </span></span>
 <span><span class="co">#&gt; tune              "tune"              "2.1.0"     </span></span>
 <span><span class="co">#&gt; tzdb              "tzdb"              "0.5.0"     </span></span>
 <span><span class="co">#&gt; ucminf            "ucminf"            "1.2.3"     </span></span>
@@ -541,10 +545,10 @@ Agaloos Pesigan</h4>
 <span><span class="co">#&gt; Socket(s):                               1</span></span>
 <span><span class="co">#&gt; Stepping:                                0</span></span>
 <span><span class="co">#&gt; Frequency boost:                         enabled</span></span>
-<span><span class="co">#&gt; CPU(s) scaling MHz:                      71%</span></span>
+<span><span class="co">#&gt; CPU(s) scaling MHz:                      65%</span></span>
 <span><span class="co">#&gt; CPU max MHz:                             5060.9761</span></span>
 <span><span class="co">#&gt; CPU min MHz:                             1219.5129</span></span>
-<span><span class="co">#&gt; BogoMIPS:                                4990.56</span></span>
+<span><span class="co">#&gt; BogoMIPS:                                4990.88</span></span>
 <span><span class="co">#&gt; Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good amd_lbr_v2 nopl xtopology nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate ssbd mba perfmon_v2 ibrs ibpb stibp ibrs_enhanced vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local user_shstk avx_vnni avx512_bf16 clzero irperf xsaveerptr rdpru wbnoinvd cppc arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload vgif x2avic v_spec_ctrl vnmi avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid bus_lock_detect movdiri movdir64b overflow_recov succor smca fsrm avx512_vp2intersect flush_l1d amd_lbr_pmc_freeze</span></span>
 <span><span class="co">#&gt; Virtualization:                          AMD-V</span></span>
 <span><span class="co">#&gt; L1d cache:                               768 KiB (16 instances)</span></span>
@@ -576,9 +580,9 @@ Agaloos Pesigan</h4>
 <h2 id="memory">Memory<a class="anchor" aria-label="anchor" href="#memory"></a>
 </h2>
 <pre><code><span><span class="co">#&gt;                total        used        free      shared  buff/cache   available</span></span>
-<span><span class="co">#&gt; Mem:            44Gi       4.2Gi        36Gi        40Mi       4.5Gi        40Gi</span></span>
+<span><span class="co">#&gt; Mem:            44Gi       4.6Gi        34Gi        66Mi       5.7Gi        39Gi</span></span>
 <span><span class="co">#&gt; Swap:           22Gi          0B        22Gi</span></span>
-<span><span class="co">#&gt; Total:          66Gi       4.2Gi        58Gi</span></span></code></pre>
+<span><span class="co">#&gt; Total:          66Gi       4.6Gi        57Gi</span></span></code></pre>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
@@ -587,7 +591,7 @@ Agaloos Pesigan</h4>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Ivan Jacob Agaloos Pesigan.</p>
+  <p>Ivan Jacob Agaloos Pesigan, <a href="https://hhd.psu.edu/hdfs" class="external-link">Department of Human Development and Family Studies</a>, The Pennsylvania State University</p>
 </div>
 
 <div class="pkgdown-footer-right">
