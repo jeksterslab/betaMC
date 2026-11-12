@@ -1,5 +1,10 @@
 # Changelog
 
+## betaMC 1.3.4.9001
+
+- Add SCorSqMC() for the image of a signed-semipartial interval under
+  squaring.
+
 ## betaMC 1.3.4.9000
 
 ### Minor

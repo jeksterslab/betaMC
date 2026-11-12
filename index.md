@@ -1,6 +1,6 @@
 # betaMC
 
-Ivan Jacob Agaloos Pesigan 2026-11-10
+Ivan Jacob Agaloos Pesigan 2026-11-12
 
 ## Description
 
@@ -87,9 +87,9 @@ Fit the regression model using the
 `#> Standardized regression slopes`\
 `#> type = "mvn"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.4951 0.0753 20000 0.3404 0.6344`\
-`#> PCTGRT  0.3915 0.0762 20000 0.2373 0.5339`\
-`#> PCTSUPP 0.2632 0.0744 20000 0.1205 0.4109`
+`#> NARTIC  0.4951 0.0759 20000 0.3375 0.6353`\
+`#> PCTGRT  0.3915 0.0770 20000 0.2382 0.5397`\
+`#> PCTSUPP 0.2632 0.0747 20000 0.1175 0.4102`
 
 #### Asymptotic distribution-free Approach
 
@@ -101,9 +101,9 @@ Fit the regression model using the
 `#> Standardized regression slopes`\
 `#> type = "adf"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.4951 0.0678 20000 0.3519 0.6169`\
-`#> PCTGRT  0.3915 0.0709 20000 0.2438 0.5212`\
-`#> PCTSUPP 0.2632 0.0774 20000 0.1038 0.4096`
+`#> NARTIC  0.4951 0.0674 20000 0.3515 0.6157`\
+`#> PCTGRT  0.3915 0.0709 20000 0.2425 0.5205`\
+`#> PCTSUPP 0.2632 0.0769 20000 0.1041 0.4058`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
@@ -115,9 +115,9 @@ Fit the regression model using the
 `#> Standardized regression slopes`\
 `#> type = "hc3"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.4951 0.0797 20000 0.3240 0.6364`\
-`#> PCTGRT  0.3915 0.0830 20000 0.2133 0.5408`\
-`#> PCTSUPP 0.2632 0.0861 20000 0.0900 0.4277`
+`#> NARTIC  0.4951 0.0792 20000 0.3251 0.6350`\
+`#> PCTGRT  0.3915 0.0821 20000 0.2190 0.5405`\
+`#> PCTSUPP 0.2632 0.0860 20000 0.0891 0.4268`
 
 ### Other Effect Sizes
 
@@ -143,9 +143,9 @@ for differences of standardized regression coefficients.
 `#> `\
 `#> R-squared and adjusted R-squared`\
 `#> type = "hc3"`\
-`#>        est     se     R   2.5%  97.5%`\
-`#> rsq 0.8045 0.0629 20000 0.6418 0.8869`\
-`#> adj 0.7906 0.0674 20000 0.6163 0.8788`
+`#>        est     se     R   2.5% 97.5%`\
+`#> rsq 0.8045 0.0617 20000 0.6487 0.887`\
+`#> adj 0.7906 0.0661 20000 0.6236 0.879`
 
 #### Improvement in R-squared
 
@@ -157,9 +157,9 @@ for differences of standardized regression coefficients.
 `#> Improvement in R-squared`\
 `#> type = "hc3"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.1859 0.0691 20000 0.0504 0.3218`\
-`#> PCTGRT  0.1177 0.0549 20000 0.0254 0.2389`\
-`#> PCTSUPP 0.0569 0.0379 20000 0.0062 0.1509`
+`#> NARTIC  0.1859 0.0688 20000 0.0520 0.3232`\
+`#> PCTGRT  0.1177 0.0547 20000 0.0259 0.2380`\
+`#> PCTSUPP 0.0569 0.0377 20000 0.0063 0.1504`
 
 #### Semipartial Correlation Coefficients
 
@@ -171,9 +171,9 @@ for differences of standardized regression coefficients.
 `#> Semipartial correlations`\
 `#> type = "hc3"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.4312 0.0866 20000 0.2245 0.5673`\
-`#> PCTGRT  0.3430 0.0835 20000 0.1595 0.4888`\
-`#> PCTSUPP 0.2385 0.0788 20000 0.0786 0.3885`
+`#> NARTIC  0.4312 0.0861 20000 0.2280 0.5685`\
+`#> PCTGRT  0.3430 0.0832 20000 0.1611 0.4878`\
+`#> PCTSUPP 0.2385 0.0786 20000 0.0790 0.3878`
 
 #### Squared Partial Correlation Coefficients
 
@@ -185,9 +185,9 @@ for differences of standardized regression coefficients.
 `#> Squared partial correlations`\
 `#> type = "hc3"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.4874 0.1193 20000 0.1809 0.6539`\
-`#> PCTGRT  0.3757 0.1160 20000 0.1043 0.5551`\
-`#> PCTSUPP 0.2254 0.1135 20000 0.0266 0.4590`
+`#> NARTIC  0.4874 0.1176 20000 0.1840 0.6494`\
+`#> PCTGRT  0.3757 0.1149 20000 0.1075 0.5551`\
+`#> PCTSUPP 0.2254 0.1129 20000 0.0260 0.4547`
 
 #### Differences of Standardized Regression Coefficients
 
@@ -199,9 +199,9 @@ for differences of standardized regression coefficients.
 `#> Differences of standardized regression slopes`\
 `#> type = "hc3"`\
 `#>                   est     se     R    2.5%  97.5%`\
-`#> NARTIC-PCTGRT  0.1037 0.1429 20000 -0.1801 0.3807`\
-`#> NARTIC-PCTSUPP 0.2319 0.1332 20000 -0.0389 0.4823`\
-`#> PCTGRT-PCTSUPP 0.1282 0.1384 20000 -0.1542 0.3874`
+`#> NARTIC-PCTGRT  0.1037 0.1415 20000 -0.1751 0.3789`\
+`#> NARTIC-PCTSUPP 0.2319 0.1333 20000 -0.0402 0.4829`\
+`#> PCTGRT-PCTSUPP 0.1282 0.1376 20000 -0.1495 0.3890`
 
 ## Documentation
 

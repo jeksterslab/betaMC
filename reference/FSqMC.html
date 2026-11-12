@@ -11,7 +11,7 @@ Using the Monte Carlo Method"></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">betaMC</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.4.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.4.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -151,10 +151,10 @@ a measure of local effect size, from PROC MIXED.
 <span class="r-out co"><span class="r-pr">#&gt;</span> Cohen's f-squared (fsq) and local f-squared</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> type = "hc3"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            est     se   R   2.5%  97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fsq     4.1158 1.4375 100 1.8593 7.1580</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.9510 0.4182 100 0.1777 1.6831</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.6019 0.2624 100 0.1105 1.1149</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.2909 0.2019 100 0.0282 0.7851</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> fsq     4.1158 1.4324 100 1.8747 7.3100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.9510 0.4052 100 0.2035 1.5253</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.6019 0.2508 100 0.1242 1.0204</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.2909 0.1772 100 0.0282 0.7090</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FSqMC(object = mc, alpha = 0.05)</span>
@@ -162,25 +162,25 @@ a measure of local effect size, from PROC MIXED.
 <span class="r-out co"><span class="r-pr">#&gt;</span> Cohen's f-squared (fsq) and local f-squared</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> type = "hc3"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            est     se   R   2.5%  97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fsq     4.1158 1.4375 100 1.8593 7.1580</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.9510 0.4182 100 0.1777 1.6831</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.6019 0.2624 100 0.1105 1.1149</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.2909 0.2019 100 0.0282 0.7851</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> fsq     4.1158 1.4324 100 1.8747 7.3100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.9510 0.4052 100 0.2035 1.5253</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.6019 0.2508 100 0.1242 1.0204</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.2909 0.1772 100 0.0282 0.7090</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       fsq    NARTIC    PCTGRT   PCTSUPP </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4.1157764 0.9509843 0.6018924 0.2909455 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               fsq     NARTIC      PCTGRT     PCTSUPP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fsq     2.0662933 0.31087589 0.103890299 0.141807429</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.3108759 0.17490518 0.038134937 0.013930003</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.1038903 0.03813494 0.068876530 0.001811338</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.1418074 0.01393000 0.001811338 0.040765399</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> fsq     2.0517862 0.32640919 0.136049952 0.119430445</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.3264092 0.16421176 0.034707122 0.015311713</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.1360500 0.03470712 0.062907742 0.005858214</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.1194304 0.01531171 0.005858214 0.031412447</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">out</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              2.5 %   97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fsq     1.85929412 7.158033</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.17772569 1.683144</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.11048857 1.114859</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.02819256 0.785064</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> fsq     1.87473817 7.309982</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.20345951 1.525308</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.12419697 1.020441</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.02816799 0.708983</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

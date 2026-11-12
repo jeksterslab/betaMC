@@ -59,17 +59,17 @@ function is used to generate NB confidence intervals.
 
 \
 [`summary`](https://rdrr.io/r/base/summary.html)`(``benchmark``, unit ``=`` ``"ms"``)`\
-`#>   expr        min         lq       mean     median        uq        max neval`\
-`#> 1   MC   10.78102   11.11858   11.42242   11.16522   11.2795   14.15159    10`\
-`#> 2   NB 1987.19440 1992.66365 2016.26751 2009.64220 2049.1217 2050.15870    10`
+`#>   expr        min         lq       mean     median         uq       max neval`\
+`#> 1   MC   10.85263   11.15897   11.45081   11.19867   11.24845   14.1153    10`\
+`#> 2   NB 1939.29217 1944.13768 1964.96337 1958.44499 1979.65388 2006.0716    10`
 
 ### Summary of Benchmark Results Relative to the Faster Method
 
 \
 [`summary`](https://rdrr.io/r/base/summary.html)`(``benchmark``, unit ``=`` ``"relative"``)`\
-`#>   expr      min       lq     mean   median       uq      max neval`\
-`#> 1   MC   1.0000   1.0000   1.0000   1.0000   1.0000   1.0000    10`\
-`#> 2   NB 184.3234 179.2192 176.5184 179.9913 181.6678 144.8713    10`
+`#>   expr      min      lq     mean   median       uq      max neval`\
+`#> 1   MC   1.0000   1.000   1.0000   1.0000   1.0000   1.0000    10`\
+`#> 2   NB 178.6933 174.222 171.6005 174.8819 175.9934 142.1204    10`
 
 ## Plot
 

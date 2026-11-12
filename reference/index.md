@@ -27,6 +27,8 @@
 - [`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)
   : Estimate Semipartial Correlation Coefficients and Generate the
   Corresponding Sampling Distribution Using the Monte Carlo Method
+- [`SCorSqMC()`](https://jeksterslab.github.io/betaMC/reference/SCorSqMC.md)
+  : Squared Signed-Semipartial Confidence Intervals
 
 ## Improvement in R-Squared
 

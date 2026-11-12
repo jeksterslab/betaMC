@@ -107,9 +107,9 @@ Fit the regression model using the
 `#> Standardized regression slopes`\
 `#> type = "mvn"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.4951 0.0759 20000 0.3381 0.6340`\
-`#> PCTGRT  0.3915 0.0772 20000 0.2390 0.5411`\
-`#> PCTSUPP 0.2632 0.0743 20000 0.1174 0.4099`
+`#> NARTIC  0.4951 0.0758 20000 0.3404 0.6341`\
+`#> PCTGRT  0.3915 0.0766 20000 0.2366 0.5365`\
+`#> PCTSUPP 0.2632 0.0749 20000 0.1188 0.4103`
 
 #### Asymptotic distribution-free Approach
 
@@ -121,9 +121,9 @@ Fit the regression model using the
 `#> Standardized regression slopes`\
 `#> type = "adf"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.4951 0.0676 20000 0.3513 0.6142`\
-`#> PCTGRT  0.3915 0.0707 20000 0.2428 0.5208`\
-`#> PCTSUPP 0.2632 0.0772 20000 0.1041 0.4102`
+`#> NARTIC  0.4951 0.0676 20000 0.3501 0.6157`\
+`#> PCTGRT  0.3915 0.0707 20000 0.2438 0.5217`\
+`#> PCTSUPP 0.2632 0.0771 20000 0.1033 0.4086`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
@@ -135,9 +135,9 @@ Fit the regression model using the
 `#> Standardized regression slopes`\
 `#> type = "hc3"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.4951 0.0793 20000 0.3261 0.6363`\
-`#> PCTGRT  0.3915 0.0818 20000 0.2201 0.5367`\
-`#> PCTSUPP 0.2632 0.0857 20000 0.0900 0.4280`
+`#> NARTIC  0.4951 0.0796 20000 0.3252 0.6375`\
+`#> PCTGRT  0.3915 0.0820 20000 0.2192 0.5387`\
+`#> PCTSUPP 0.2632 0.0856 20000 0.0899 0.4277`
 
 ### Other Effect Sizes
 
@@ -163,9 +163,9 @@ for differences of standardized regression coefficients.
 `#> `\
 `#> R-squared and adjusted R-squared`\
 `#> type = "hc3"`\
-`#>        est     se     R   2.5% 97.5%`\
-`#> rsq 0.8045 0.0620 20000 0.6459 0.888`\
-`#> adj 0.7906 0.0665 20000 0.6206 0.880`
+`#>        est     se     R   2.5%  97.5%`\
+`#> rsq 0.8045 0.0620 20000 0.6465 0.8883`\
+`#> adj 0.7906 0.0665 20000 0.6213 0.8803`
 
 #### Improvement in R-squared
 
@@ -177,9 +177,9 @@ for differences of standardized regression coefficients.
 `#> Improvement in R-squared`\
 `#> type = "hc3"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.1859 0.0689 20000 0.0507 0.3217`\
-`#> PCTGRT  0.1177 0.0538 20000 0.0263 0.2346`\
-`#> PCTSUPP 0.0569 0.0378 20000 0.0062 0.1509`
+`#> NARTIC  0.1859 0.0694 20000 0.0499 0.3236`\
+`#> PCTGRT  0.1177 0.0543 20000 0.0251 0.2349`\
+`#> PCTSUPP 0.0569 0.0378 20000 0.0061 0.1508`
 
 #### Semipartial Correlation Coefficients
 
@@ -191,9 +191,9 @@ for differences of standardized regression coefficients.
 `#> Semipartial correlations`\
 `#> type = "hc3"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.4312 0.0862 20000 0.2251 0.5672`\
-`#> PCTGRT  0.3430 0.0821 20000 0.1623 0.4843`\
-`#> PCTSUPP 0.2385 0.0784 20000 0.0787 0.3885`
+`#> NARTIC  0.4312 0.0872 20000 0.2235 0.5689`\
+`#> PCTGRT  0.3430 0.0830 20000 0.1584 0.4846`\
+`#> PCTSUPP 0.2385 0.0784 20000 0.0784 0.3884`
 
 #### Squared Partial Correlation Coefficients
 
@@ -205,9 +205,9 @@ for differences of standardized regression coefficients.
 `#> Squared partial correlations`\
 `#> type = "hc3"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.4874 0.1187 20000 0.1805 0.6493`\
-`#> PCTGRT  0.3757 0.1150 20000 0.1088 0.5569`\
-`#> PCTSUPP 0.2254 0.1128 20000 0.0257 0.4549`
+`#> NARTIC  0.4874 0.1196 20000 0.1751 0.6492`\
+`#> PCTGRT  0.3757 0.1155 20000 0.1045 0.5530`\
+`#> PCTSUPP 0.2254 0.1126 20000 0.0254 0.4568`
 
 #### Differences of Standardized Regression Coefficients
 
@@ -219,9 +219,9 @@ for differences of standardized regression coefficients.
 `#> Differences of standardized regression slopes`\
 `#> type = "hc3"`\
 `#>                   est     se     R    2.5%  97.5%`\
-`#> NARTIC-PCTGRT  0.1037 0.1413 20000 -0.1713 0.3783`\
-`#> NARTIC-PCTSUPP 0.2319 0.1330 20000 -0.0365 0.4820`\
-`#> PCTGRT-PCTSUPP 0.1282 0.1372 20000 -0.1470 0.3864`
+`#> NARTIC-PCTGRT  0.1037 0.1417 20000 -0.1736 0.3789`\
+`#> NARTIC-PCTSUPP 0.2319 0.1331 20000 -0.0378 0.4826`\
+`#> PCTGRT-PCTSUPP 0.1282 0.1372 20000 -0.1464 0.3871`
 
 ## Documentation
 
