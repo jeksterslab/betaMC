@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">betaMC</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.4.9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,8 +77,8 @@ multiple correlation, semipartial correlations, improvement in
 R-squared, squared partial correlations, and differences in standardized
 regression coefficients, for models fitted by <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code>.
 <code>betaMC</code> combines ideas from Monte Carlo confidence intervals
-for the indirect effect (Pesigan and Cheung, 2024: <a href="http://doi.org/10.3758/s13428-023-02114-4" class="external-link uri">http://doi.org/10.3758/s13428-023-02114-4</a>) and the
-sampling covariance matrix of regression coefficients (Dudgeon, 2017: <a href="http://doi.org/10.1007/s11336-017-9563-z" class="external-link uri">http://doi.org/10.1007/s11336-017-9563-z</a>) to generate
+for the indirect effect (Pesigan and Cheung, 2024: <a href="https://doi.org/10.3758/s13428-023-02114-4" class="external-link uri">https://doi.org/10.3758/s13428-023-02114-4</a>) and the
+sampling covariance matrix of regression coefficients (Dudgeon, 2017: <a href="https://doi.org/10.1007/s11336-017-9563-z" class="external-link uri">https://doi.org/10.1007/s11336-017-9563-z</a>) to generate
 confidence intervals effect sizes in regression.</p>
 </div>
 <div class="section level2">
@@ -108,7 +108,7 @@ intervals for the standardized regression coefficients are generated
 using the <code><a href="../reference/BetaMC.html">BetaMC()</a></code> function from the <code>betaMC</code>
 package.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/betaMC" class="external-link">betaMC</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span>package <span class="op">=</span> <span class="va">betaMC</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">betaMC</span><span class="fu">::</span><span class="va"><a href="../reference/nas1982.html">nas1982</a></span></span></code></pre></div>
 <div class="section level3">
@@ -116,7 +116,7 @@ package.</p>
 </h3>
 <p>Fit the regression model using the <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code> function.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="monte-carlo-sampling-distribution-of-parameters">Monte Carlo Sampling Distribution of Parameters<a class="anchor" aria-label="anchor" href="#monte-carlo-sampling-distribution-of-parameters"></a>
@@ -125,19 +125,19 @@ package.</p>
 <h4 id="normal-theory-approach">Normal-Theory Approach<a class="anchor" aria-label="anchor" href="#normal-theory-approach"></a>
 </h4>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mvn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MC.html">MC</a></span><span class="op">(</span><span class="va">object</span>, type <span class="op">=</span> <span class="st">"mvn"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">mvn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MC.html">MC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span>, type <span class="op">=</span> <span class="st">"mvn"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="asymptotic-distribution-free-approach">Asymptotic distribution-free Approach<a class="anchor" aria-label="anchor" href="#asymptotic-distribution-free-approach"></a>
 </h4>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">adf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MC.html">MC</a></span><span class="op">(</span><span class="va">object</span>, type <span class="op">=</span> <span class="st">"adf"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">adf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MC.html">MC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span>, type <span class="op">=</span> <span class="st">"adf"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="heteroskedasticity-consistent-approach-hc3">Heteroskedasticity Consistent Approach (HC3)<a class="anchor" aria-label="anchor" href="#heteroskedasticity-consistent-approach-hc3"></a>
 </h4>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">hc3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MC.html">MC</a></span><span class="op">(</span><span class="va">object</span>, type <span class="op">=</span> <span class="st">"hc3"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">hc3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MC.html">MC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span>, type <span class="op">=</span> <span class="st">"hc3"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
@@ -147,22 +147,22 @@ package.</p>
 <h4 id="normal-theory-approach-1">Normal-Theory Approach<a class="anchor" aria-label="anchor" href="#normal-theory-approach-1"></a>
 </h4>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/BetaMC.html">BetaMC</a></span><span class="op">(</span><span class="va">mvn</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/BetaMC.html">BetaMC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">mvn</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; BetaMC(object = mvn, alpha = 0.05)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Standardized regression slopes</span></span>
 <span><span class="co">#&gt; type = "mvn"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4951 0.0758 20000 0.3404 0.6341</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3915 0.0766 20000 0.2366 0.5365</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2632 0.0749 20000 0.1188 0.4103</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.4951 0.0760 20000 0.3383 0.6353</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3915 0.0768 20000 0.2374 0.5377</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2632 0.0746 20000 0.1186 0.4099</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="asymptotic-distribution-free-approach-1">Asymptotic distribution-free Approach<a class="anchor" aria-label="anchor" href="#asymptotic-distribution-free-approach-1"></a>
 </h4>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/BetaMC.html">BetaMC</a></span><span class="op">(</span><span class="va">adf</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/BetaMC.html">BetaMC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">adf</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; BetaMC(object = adf, alpha = 0.05)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -170,23 +170,23 @@ package.</p>
 <span><span class="co">#&gt; type = "adf"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
 <span><span class="co">#&gt; NARTIC  0.4951 0.0676 20000 0.3501 0.6157</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3915 0.0707 20000 0.2438 0.5217</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3915 0.0707 20000 0.2439 0.5217</span></span>
 <span><span class="co">#&gt; PCTSUPP 0.2632 0.0771 20000 0.1033 0.4086</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="heteroskedasticity-consistent-approach-hc3-1">Heteroskedasticity Consistent Approach (HC3)<a class="anchor" aria-label="anchor" href="#heteroskedasticity-consistent-approach-hc3-1"></a>
 </h4>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/BetaMC.html">BetaMC</a></span><span class="op">(</span><span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/BetaMC.html">BetaMC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; BetaMC(object = hc3, alpha = 0.05)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Standardized regression slopes</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4951 0.0796 20000 0.3252 0.6375</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3915 0.0820 20000 0.2192 0.5387</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2632 0.0856 20000 0.0899 0.4277</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.4951 0.0797 20000 0.3250 0.6375</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3915 0.0819 20000 0.2192 0.5388</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2632 0.0856 20000 0.0899 0.4278</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
@@ -205,75 +205,75 @@ standardized regression coefficients.</p>
 R-squared)<a class="anchor" aria-label="anchor" href="#multiple-correlation-coefficients-r-squared-and-adjusted-r-squared"></a>
 </h4>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/RSqMC.html">RSqMC</a></span><span class="op">(</span><span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/RSqMC.html">RSqMC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; RSqMC(object = hc3, alpha = 0.05)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; R-squared and adjusted R-squared</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;        est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; rsq 0.8045 0.0620 20000 0.6465 0.8883</span></span>
-<span><span class="co">#&gt; adj 0.7906 0.0665 20000 0.6213 0.8803</span></span></code></pre></div>
+<span><span class="co">#&gt; rsq 0.8045 0.0621 20000 0.6461 0.8883</span></span>
+<span><span class="co">#&gt; adj 0.7906 0.0665 20000 0.6208 0.8803</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="improvement-in-r-squared">Improvement in R-squared<a class="anchor" aria-label="anchor" href="#improvement-in-r-squared"></a>
 </h4>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/DeltaRSqMC.html">DeltaRSqMC</a></span><span class="op">(</span><span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/DeltaRSqMC.html">DeltaRSqMC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; DeltaRSqMC(object = hc3, alpha = 0.05)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Improvement in R-squared</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.1859 0.0694 20000 0.0499 0.3236</span></span>
-<span><span class="co">#&gt; PCTGRT  0.1177 0.0543 20000 0.0251 0.2349</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.0569 0.0378 20000 0.0061 0.1508</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.1859 0.0695 20000 0.0499 0.3237</span></span>
+<span><span class="co">#&gt; PCTGRT  0.1177 0.0543 20000 0.0251 0.2348</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.0569 0.0378 20000 0.0061 0.1510</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="semipartial-correlation-coefficients">Semipartial Correlation Coefficients<a class="anchor" aria-label="anchor" href="#semipartial-correlation-coefficients"></a>
 </h4>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/SCorMC.html">SCorMC</a></span><span class="op">(</span><span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/SCorMC.html">SCorMC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; SCorMC(object = hc3, alpha = 0.05)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Semipartial correlations</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4312 0.0872 20000 0.2235 0.5689</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3430 0.0830 20000 0.1584 0.4846</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2385 0.0784 20000 0.0784 0.3884</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.4312 0.0873 20000 0.2234 0.5689</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3430 0.0829 20000 0.1584 0.4846</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2385 0.0784 20000 0.0784 0.3886</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="squared-partial-correlation-coefficients">Squared Partial Correlation Coefficients<a class="anchor" aria-label="anchor" href="#squared-partial-correlation-coefficients"></a>
 </h4>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/PCorMC.html">PCorMC</a></span><span class="op">(</span><span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/PCorMC.html">PCorMC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; PCorMC(object = hc3, alpha = 0.05)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Squared partial correlations</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;            est     se     R   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4874 0.1196 20000 0.1751 0.6492</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3757 0.1155 20000 0.1045 0.5530</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2254 0.1126 20000 0.0254 0.4568</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.4874 0.1197 20000 0.1750 0.6492</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3757 0.1154 20000 0.1046 0.5530</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2254 0.1126 20000 0.0254 0.4572</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="differences-of-standardized-regression-coefficients">Differences of Standardized Regression Coefficients<a class="anchor" aria-label="anchor" href="#differences-of-standardized-regression-coefficients"></a>
 </h4>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/DiffBetaMC.html">DiffBetaMC</a></span><span class="op">(</span><span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/DiffBetaMC.html">DiffBetaMC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; DiffBetaMC(object = hc3, alpha = 0.05)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Differences of standardized regression slopes</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;                   est     se     R    2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC-PCTGRT  0.1037 0.1417 20000 -0.1736 0.3789</span></span>
-<span><span class="co">#&gt; NARTIC-PCTSUPP 0.2319 0.1331 20000 -0.0378 0.4826</span></span>
-<span><span class="co">#&gt; PCTGRT-PCTSUPP 0.1282 0.1372 20000 -0.1464 0.3871</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC-PCTGRT  0.1037 0.1417 20000 -0.1736 0.3787</span></span>
+<span><span class="co">#&gt; NARTIC-PCTSUPP 0.2319 0.1331 20000 -0.0379 0.4826</span></span>
+<span><span class="co">#&gt; PCTGRT-PCTSUPP 0.1282 0.1372 20000 -0.1461 0.3871</span></span></code></pre></div>
 </div>
 </div>
 </div>

@@ -28,6 +28,19 @@ Data frame with est, lower and upper columns and predictor row names.
 The point estimate is the squared signed estimate. No standard error is
 implied by this interval transformation.
 
+## See also
+
+Other Beta Monte Carlo Functions:
+[`BetaMC()`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md),
+[`DeltaRSqMC()`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md),
+[`DiffBetaMC()`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md),
+[`FSqMC()`](https://jeksterslab.github.io/betaMC/reference/FSqMC.md),
+[`MC()`](https://jeksterslab.github.io/betaMC/reference/MC.md),
+[`MCMI()`](https://jeksterslab.github.io/betaMC/reference/MCMI.md),
+[`PCorMC()`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md),
+[`RSqMC()`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md),
+[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)
+
 ## Author
 
 Ivan Jacob Agaloos Pesigan

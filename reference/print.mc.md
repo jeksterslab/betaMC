@@ -31,9 +31,12 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-mc <- MC(object, R = 100)
-print(mc)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+mc <- MC(object = object, R = 100)
+print(x = mc)
 #> Call:
 #> MC(object = object, R = 100)
 #> The first set of simulated parameter estimates
@@ -45,9 +48,9 @@ print(mc)
 #> 
 #> $sigmacap
 #>           [,1]      [,2]      [,3]      [,4]
-#> [1,]  88.50831  385.0211 129.36788 113.35965
+#> [1,]  88.50831  385.0211 129.36788 113.35966
 #> [2,] 385.02111 4752.9465 361.90409 463.25378
 #> [3,] 129.36788  361.9041 401.58603  93.77988
-#> [4,] 113.35965  463.2538  93.77988 503.74253
+#> [4,] 113.35966  463.2538  93.77988 503.74253
 #> 
 ```

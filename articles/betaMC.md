@@ -31,9 +31,9 @@ partial correlations, and differences in standardized regression
 coefficients, for models fitted by
 [`lm()`](https://rdrr.io/r/stats/lm.html). `betaMC` combines ideas from
 Monte Carlo confidence intervals for the indirect effect (Pesigan and
-Cheung, 2024: <http://doi.org/10.3758/s13428-023-02114-4>) and the
+Cheung, 2024: <https://doi.org/10.3758/s13428-023-02114-4>) and the
 sampling covariance matrix of regression coefficients (Dudgeon, 2017:
-<http://doi.org/10.1007/s11336-017-9563-z>) to generate confidence
+<https://doi.org/10.1007/s11336-017-9563-z>) to generate confidence
 intervals effect sizes in regression.
 
 ## Installation
@@ -65,7 +65,7 @@ regression coefficients are generated using the
 function from the `betaMC` package.
 
 \
-[`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`
+[`library`](https://rdrr.io/r/base/library.html)`(``package ``=`` ``betaMC``)`
 
 \
 `df`` ``<-`` ``betaMC``::`[`nas1982`](https://jeksterslab.github.io/betaMC/reference/nas1982.md)
@@ -76,45 +76,45 @@ Fit the regression model using the
 [`lm()`](https://rdrr.io/r/stats/lm.html) function.
 
 \
-`object`` ``<-`` `[`lm`](https://rdrr.io/r/stats/lm.html)`(``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
+`object`` ``<-`` ``stats``::`[`lm`](https://rdrr.io/r/stats/lm.html)`(``formula ``=`` ``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
 
 ### Monte Carlo Sampling Distribution of Parameters
 
 #### Normal-Theory Approach
 
 \
-`mvn`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
+`mvn`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object ``=`` ``object``, type ``=`` ``"mvn"``)`
 
 #### Asymptotic distribution-free Approach
 
 \
-`adf`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
+`adf`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object ``=`` ``object``, type ``=`` ``"adf"``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 \
-`hc3`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
+`hc3`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object ``=`` ``object``, type ``=`` ``"hc3"``)`
 
 ### Standardized Regression Slopes
 
 #### Normal-Theory Approach
 
 \
-[`BetaMC`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)`(``mvn``, alpha ``=`` ``0.05``)`\
+[`BetaMC`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)`(``object ``=`` ``mvn``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> BetaMC(object = mvn, alpha = 0.05)`\
 `#> `\
 `#> Standardized regression slopes`\
 `#> type = "mvn"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.4951 0.0758 20000 0.3404 0.6341`\
-`#> PCTGRT  0.3915 0.0766 20000 0.2366 0.5365`\
-`#> PCTSUPP 0.2632 0.0749 20000 0.1188 0.4103`
+`#> NARTIC  0.4951 0.0760 20000 0.3383 0.6353`\
+`#> PCTGRT  0.3915 0.0768 20000 0.2374 0.5377`\
+`#> PCTSUPP 0.2632 0.0746 20000 0.1186 0.4099`
 
 #### Asymptotic distribution-free Approach
 
 \
-[`BetaMC`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)`(``adf``, alpha ``=`` ``0.05``)`\
+[`BetaMC`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)`(``object ``=`` ``adf``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> BetaMC(object = adf, alpha = 0.05)`\
 `#> `\
@@ -122,22 +122,22 @@ Fit the regression model using the
 `#> type = "adf"`\
 `#>            est     se     R   2.5%  97.5%`\
 `#> NARTIC  0.4951 0.0676 20000 0.3501 0.6157`\
-`#> PCTGRT  0.3915 0.0707 20000 0.2438 0.5217`\
+`#> PCTGRT  0.3915 0.0707 20000 0.2439 0.5217`\
 `#> PCTSUPP 0.2632 0.0771 20000 0.1033 0.4086`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 \
-[`BetaMC`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+[`BetaMC`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)`(``object ``=`` ``hc3``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> BetaMC(object = hc3, alpha = 0.05)`\
 `#> `\
 `#> Standardized regression slopes`\
 `#> type = "hc3"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.4951 0.0796 20000 0.3252 0.6375`\
-`#> PCTGRT  0.3915 0.0820 20000 0.2192 0.5387`\
-`#> PCTSUPP 0.2632 0.0856 20000 0.0899 0.4277`
+`#> NARTIC  0.4951 0.0797 20000 0.3250 0.6375`\
+`#> PCTGRT  0.3915 0.0819 20000 0.2192 0.5388`\
+`#> PCTSUPP 0.2632 0.0856 20000 0.0899 0.4278`
 
 ### Other Effect Sizes
 
@@ -157,71 +157,71 @@ for differences of standardized regression coefficients.
 #### Multiple Correlation Coefficients (R-squared and adjusted R-squared)
 
 \
-[`RSqMC`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+[`RSqMC`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md)`(``object ``=`` ``hc3``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> RSqMC(object = hc3, alpha = 0.05)`\
 `#> `\
 `#> R-squared and adjusted R-squared`\
 `#> type = "hc3"`\
 `#>        est     se     R   2.5%  97.5%`\
-`#> rsq 0.8045 0.0620 20000 0.6465 0.8883`\
-`#> adj 0.7906 0.0665 20000 0.6213 0.8803`
+`#> rsq 0.8045 0.0621 20000 0.6461 0.8883`\
+`#> adj 0.7906 0.0665 20000 0.6208 0.8803`
 
 #### Improvement in R-squared
 
 \
-[`DeltaRSqMC`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+[`DeltaRSqMC`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md)`(``object ``=`` ``hc3``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> DeltaRSqMC(object = hc3, alpha = 0.05)`\
 `#> `\
 `#> Improvement in R-squared`\
 `#> type = "hc3"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.1859 0.0694 20000 0.0499 0.3236`\
-`#> PCTGRT  0.1177 0.0543 20000 0.0251 0.2349`\
-`#> PCTSUPP 0.0569 0.0378 20000 0.0061 0.1508`
+`#> NARTIC  0.1859 0.0695 20000 0.0499 0.3237`\
+`#> PCTGRT  0.1177 0.0543 20000 0.0251 0.2348`\
+`#> PCTSUPP 0.0569 0.0378 20000 0.0061 0.1510`
 
 #### Semipartial Correlation Coefficients
 
 \
-[`SCorMC`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+[`SCorMC`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)`(``object ``=`` ``hc3``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> SCorMC(object = hc3, alpha = 0.05)`\
 `#> `\
 `#> Semipartial correlations`\
 `#> type = "hc3"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.4312 0.0872 20000 0.2235 0.5689`\
-`#> PCTGRT  0.3430 0.0830 20000 0.1584 0.4846`\
-`#> PCTSUPP 0.2385 0.0784 20000 0.0784 0.3884`
+`#> NARTIC  0.4312 0.0873 20000 0.2234 0.5689`\
+`#> PCTGRT  0.3430 0.0829 20000 0.1584 0.4846`\
+`#> PCTSUPP 0.2385 0.0784 20000 0.0784 0.3886`
 
 #### Squared Partial Correlation Coefficients
 
 \
-[`PCorMC`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+[`PCorMC`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md)`(``object ``=`` ``hc3``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> PCorMC(object = hc3, alpha = 0.05)`\
 `#> `\
 `#> Squared partial correlations`\
 `#> type = "hc3"`\
 `#>            est     se     R   2.5%  97.5%`\
-`#> NARTIC  0.4874 0.1196 20000 0.1751 0.6492`\
-`#> PCTGRT  0.3757 0.1155 20000 0.1045 0.5530`\
-`#> PCTSUPP 0.2254 0.1126 20000 0.0254 0.4568`
+`#> NARTIC  0.4874 0.1197 20000 0.1750 0.6492`\
+`#> PCTGRT  0.3757 0.1154 20000 0.1046 0.5530`\
+`#> PCTSUPP 0.2254 0.1126 20000 0.0254 0.4572`
 
 #### Differences of Standardized Regression Coefficients
 
 \
-[`DiffBetaMC`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)`(``hc3``, alpha ``=`` ``0.05``)`\
+[`DiffBetaMC`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)`(``object ``=`` ``hc3``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> DiffBetaMC(object = hc3, alpha = 0.05)`\
 `#> `\
 `#> Differences of standardized regression slopes`\
 `#> type = "hc3"`\
 `#>                   est     se     R    2.5%  97.5%`\
-`#> NARTIC-PCTGRT  0.1037 0.1417 20000 -0.1736 0.3789`\
-`#> NARTIC-PCTSUPP 0.2319 0.1331 20000 -0.0378 0.4826`\
-`#> PCTGRT-PCTSUPP 0.1282 0.1372 20000 -0.1464 0.3871`
+`#> NARTIC-PCTGRT  0.1037 0.1417 20000 -0.1736 0.3787`\
+`#> NARTIC-PCTSUPP 0.2319 0.1331 20000 -0.0379 0.4826`\
+`#> PCTGRT-PCTSUPP 0.1282 0.1372 20000 -0.1461 0.3871`
 
 ## Documentation
 

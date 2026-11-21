@@ -65,9 +65,11 @@ the user maintains (aims, data, notation, co-authors, open issues).
 | `.setup/build/` | the package tarball and the PDF manual (`Build()`, `Manual()`) |
 | `.setup/cpp/` | C++ sources, copied into `src/` |
 | `.setup/r-dependencies/` | R functions shared with other packages, copied into `R/` |
-| `.setup/r-miscellaneous/` | helpers that are not part of the package (for example `texTools`) |
+| `.setup/r-miscellaneous/` | helpers that are not part of the package (for example `texHelper`) |
 | `.setup/tests-benchmark/` | benchmark tests, outside the unit tests (`test-benchmark-<pkg>-<name>.R`) |
 | `.setup/tests-external/` | external tests, outside the unit tests (`test-external-<pkg>-<name>.R`) |
+| `.setup/data-raw/` | shareable raw data |
+| `.setup/data-process/` | scripts that build `data/*.rda` from the raw data |
 | `.setup/bin/` | optional: R scripts run at `make project` (for example, to build a bespoke binary) |
 
 ## Make targets
@@ -85,6 +87,7 @@ the user maintains (aims, data, notation, co-authors, open issues).
 | `make release` | `make all`, the secret scan, then `make auto`; stops at the first failure |
 | `make dotfiles` | install the shell, tmux, Vim, and xterm files from rProject (`make all` does not) |
 | `make tree` | the project’s folders and what each is for; flags missing and non-standard folders |
+| `make conform` | compare the project with the standard (`REFERENCE=<project>`, `REMOTE=TRUE`); `FIX=TRUE` writes the `fix` rows, then the log and the upload folder |
 | `make project` | settings, template files; restores `.setup/scripts/rproject.lock` (rProject, image, snapshot) |
 | `make upgrade` | move to the newest rProject; the next `make auto` updates the lock. Never upgrade a package the image has: add it to the image |
 
@@ -98,28 +101,28 @@ the user maintains (aims, data, notation, co-authors, open issues).
 
 ## Overleaf and generated files
 
-- Generated files may stay in Overleaf as regular files, never as links;
-  a template change reaches Overleaf with the project’s next upload
-  (`Verify()` skips them).
+- Generated files may stay in Overleaf as regular files; a template
+  change reaches Overleaf with the project’s next upload (`Verify()`
+  skips them).
 - Keep the `Makefile`, `project.Rproj`, the `.gitignore` files, and the
   scripts the project’s own build uses. Remove only `.setup/scripts/*`
   except `project.R`.
 - A copy without the `Makefile`:
   `Rscript -e 'rProject::Template(getwd())'` once, then `make`.
 
-## Linked from functions
+## Copies of the source libraries
 
-Files in `.setup/r-dependencies/` are Overleaf links to the private
-functions repository (`<lib>/<file>` there), shared with other projects.
+Files in `.setup/r-dependencies/<lib>/` are copies of `R/<file>` in the
+source library project `<lib>` (next to the projects), shared with other
+projects. They are regular files, not links.
 
-- Never edit them in a project or put them in its upload folder.
-- To change one, edit the local functions clone (next to the projects;
-  agents never push) and write an upload folder for functions; for a
-  test, copy the files into a scratch build of the project, not into the
-  project.
-- Order: functions first; then refresh the links in each project that
-  has them and push. The reply and the log name the links to refresh.
-- `make linked` compares the files with the functions clone
+- Keep them identical, byte by byte, to the library’s files (`cmp`).
+- To change one, change it in the library project first (its own spec,
+  log, and upload folder); then copy it into each project that has it
+  and put the copies in that project’s upload folder. The reply and the
+  log name them.
+- Copy only a library’s pushed and verified state.
+- `make linked` compares the files with a local clone
   (`FUNCTIONS=<path>`).
 
 ## Size
@@ -135,6 +138,11 @@ and never store the same file twice. `make sizecheck` reports problems.
 - Keep the R style rules from your global instructions (BigCamelCase,
   one function per file, internal `.Foo` functions in
   `R/<pkg>-<name>-dot.R`).
+- Keep every line of R code and roxygen at 80 characters or fewer: the
+  public CI lint fails on one. Read the `make lint` output, not only its
+  exit code. `make lint` (via the line-length gate), `make upload`, and
+  `make verify` check it; `LINTR_ERROR_ON_LINT=false` switches the check
+  off.
 
 ## CRAN
 

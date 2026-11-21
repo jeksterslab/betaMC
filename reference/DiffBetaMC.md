@@ -71,7 +71,8 @@ Other Beta Monte Carlo Functions:
 [`MCMI()`](https://jeksterslab.github.io/betaMC/reference/MCMI.md),
 [`PCorMC()`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md),
 [`RSqMC()`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md),
-[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)
+[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md),
+[`SCorSqMC()`](https://jeksterslab.github.io/betaMC/reference/SCorSqMC.md)
 
 ## Author
 
@@ -84,20 +85,23 @@ Ivan Jacob Agaloos Pesigan
 data("nas1982", package = "betaMC")
 
 # Fit Model in lm ----------------------------------------------------------
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
 
 # MC -----------------------------------------------------------------------
 mc <- MC(
-  object,
+  object = object,
   R = 100, # use a large value e.g., 20000L for actual research
   seed = 0508
 )
 
 # DiffBetaMC ---------------------------------------------------------------
-out <- DiffBetaMC(mc, alpha = 0.05)
+out <- DiffBetaMC(object = mc, alpha = 0.05)
 
 ## Methods -----------------------------------------------------------------
-print(out)
+print(x = out)
 #> Call:
 #> DiffBetaMC(object = mc, alpha = 0.05)
 #> 
@@ -107,7 +111,7 @@ print(out)
 #> NARTIC-PCTGRT  0.1037 0.1296 100 -0.1366 0.3402
 #> NARTIC-PCTSUPP 0.2319 0.1288 100 -0.0081 0.4676
 #> PCTGRT-PCTSUPP 0.1282 0.1256 100 -0.1156 0.3734
-summary(out)
+summary(object = out)
 #> Call:
 #> DiffBetaMC(object = mc, alpha = 0.05)
 #> 
@@ -117,17 +121,17 @@ summary(out)
 #> NARTIC-PCTGRT  0.1037 0.1296 100 -0.1366 0.3402
 #> NARTIC-PCTSUPP 0.2319 0.1288 100 -0.0081 0.4676
 #> PCTGRT-PCTSUPP 0.1282 0.1256 100 -0.1156 0.3734
-coef(out)
+coef(object = out)
 #>  NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP 
 #>      0.1036564      0.2318974      0.1282410 
-vcov(out)
+vcov(object = out)
 #>                NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP
 #> NARTIC-PCTGRT    0.016806528    0.008807174   -0.007999354
 #> NARTIC-PCTSUPP   0.008807174    0.016590325    0.007783151
 #> PCTGRT-PCTSUPP  -0.007999354    0.007783151    0.015782505
-confint(out, level = 0.95)
+confint(object = out, level = 0.95)
 #>                       2.5 %    97.5 %
-#> NARTIC-PCTGRT  -0.136563746 0.3402320
-#> NARTIC-PCTSUPP -0.008099417 0.4676292
-#> PCTGRT-PCTSUPP -0.115552543 0.3733956
+#> NARTIC-PCTGRT  -0.136563745 0.3402320
+#> NARTIC-PCTSUPP -0.008099414 0.4676292
+#> PCTGRT-PCTSUPP -0.115552544 0.3733956
 ```

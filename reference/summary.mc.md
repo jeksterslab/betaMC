@@ -62,9 +62,12 @@ Ivan Jacob Agaloos Pesigan
 
 ``` r
 # Fit the regression model
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-mc <- MC(object, R = 100)
-summary(mc)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+mc <- MC(object = object, R = 100)
+summary(object = mc)
 #> MC(object = object, R = 100)
 #> $mean
 #>        b1        b2        b3   sigmasq sigmax1x1 sigmax2x1 sigmax3x1 sigmax2x2 

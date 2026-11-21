@@ -1,7 +1,7 @@
 # betaMC: Monte Carlo Method Combined with Multiple Imputation
 
 The Monte Carlo Method combined with multiple imputation described in
-(**Pesigan-Cheung-2023?**) is implemented using the
+Pesigan & Cheung (2024) is implemented using the
 [`MCMI()`](https://jeksterslab.github.io/betaMC/reference/MCMI.md)
 function in the context of linear regression. Multiple imputation is
 used to deal with missing values in a data set. The vector of parameter
@@ -30,14 +30,14 @@ We use the
 function to generate a data set with missing values.
 
 \
-[`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`
+[`library`](https://rdrr.io/r/base/library.html)`(``package ``=`` ``betaMC``)`
 
 \
 `df`` ``<-`` ``betaMC``::`[`nas1982`](https://jeksterslab.github.io/betaMC/reference/nas1982.md)
 
 \
-[`set.seed`](https://rdrr.io/r/base/Random.html)`(``42``)`\
-`df`` ``<-`` ``mice``::`[`ampute`](https://amices.org/mice/reference/ampute.html)`(``df``)``$``amp`\
+[`set.seed`](https://rdrr.io/r/base/Random.html)`(``seed ``=`` ``42``)`\
+`df`` ``<-`` ``mice``::`[`ampute`](https://amices.org/mice/reference/ampute.html)`(``data ``=`` ``df``)``$``amp`\
 `df`\
 `#>    QUALITY NFACUL NGRADS PCTSUPP PCTGRT NARTIC PCTPUB`\
 `#> 1       12     13     19      16      8     14     39`\
@@ -91,7 +91,7 @@ function to generate a data set with missing values.
 
 \
 `mi`` ``<-`` ``mice``::`[`mice`](https://amices.org/mice/reference/mice.html)`(`\
-`  ``df``,`\
+`  data ``=`` ``df``,`\
 `  m ``=`` ``100``,`\
 `  seed ``=`` ``42``,`\
 `  print ``=`` ``FALSE`\
@@ -107,98 +107,103 @@ with each imputed data within the
 function.
 
 \
-`object`` ``<-`` `[`lm`](https://rdrr.io/r/stats/lm.html)`(``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
+`object`` ``<-`` ``stats``::`[`lm`](https://rdrr.io/r/stats/lm.html)`(``formula ``=`` ``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
 
 ### Monte Carlo Sampling Distribution of Parameters
 
 \
-`hc3`` ``<-`` `[`MCMI`](https://jeksterslab.github.io/betaMC/reference/MCMI.md)`(``object``, mi ``=`` ``mi``, type ``=`` ``"hc3"``)`
+`hc3`` ``<-`` `[`MCMI`](https://jeksterslab.github.io/betaMC/reference/MCMI.md)`(``object ``=`` ``object``, mi ``=`` ``mi``, type ``=`` ``"hc3"``)`
 
 ### Standardized Regression Slopes
 
 \
-[`BetaMC`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)`(``hc3``)`\
+[`BetaMC`](https://jeksterslab.github.io/betaMC/reference/BetaMC.md)`(``object ``=`` ``hc3``)`\
 `#> Call:`\
 `#> BetaMC(object = hc3)`\
 `#> `\
 `#> Standardized regression slopes`\
 `#> type = "hc3"`\
 `#>            est     se     R   0.05%    0.5%   2.5%  97.5%  99.5% 99.95%`\
-`#> NARTIC  0.5197 0.0787 20000  0.2380  0.3003 0.3513 0.6582 0.7024 0.7480`\
-`#> PCTGRT  0.4017 0.0858 20000  0.1035  0.1707 0.2277 0.5626 0.6112 0.6789`\
-`#> PCTSUPP 0.2327 0.0908 20000 -0.0872 -0.0165 0.0459 0.4020 0.4557 0.5277`
+`#> NARTIC  0.5197 0.0787 20000  0.2267  0.3008 0.3499 0.6579 0.7014 0.7456`\
+`#> PCTGRT  0.4017 0.0859 20000  0.1058  0.1705 0.2270 0.5636 0.6125 0.6778`\
+`#> PCTSUPP 0.2327 0.0905 20000 -0.0861 -0.0144 0.0484 0.4024 0.4546 0.5359`
 
 ### Multiple Correlation Coefficients
 
 \
-[`RSqMC`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md)`(``hc3``)`\
+[`RSqMC`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md)`(``object ``=`` ``hc3``)`\
 `#> Call:`\
 `#> RSqMC(object = hc3)`\
 `#> `\
 `#> R-squared and adjusted R-squared`\
 `#> type = "hc3"`\
 `#>        est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
-`#> rsq 0.8154 0.0613 20000 0.4924 0.5924 0.6573 0.8983 0.9235 0.9469`\
-`#> adj 0.8022 0.0674 20000 0.4416 0.5517 0.6230 0.8881 0.9159 0.9416`
+`#> rsq 0.8154 0.0610 20000 0.5097 0.5978 0.6583 0.8976 0.9217 0.9451`\
+`#> adj 0.8022 0.0671 20000 0.4607 0.5575 0.6241 0.8873 0.9138 0.9396`
 
 ### Improvement in R-squared
 
 \
-[`DeltaRSqMC`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md)`(``hc3``)`\
+[`DeltaRSqMC`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md)`(``object ``=`` ``hc3``)`\
 `#> Call:`\
 `#> DeltaRSqMC(object = hc3)`\
 `#> `\
 `#> Improvement in R-squared`\
 `#> type = "hc3"`\
 `#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
-`#> NARTIC  0.2070 0.0717 20000 0.0029 0.0246 0.0622 0.3452 0.4051 0.4774`\
-`#> PCTGRT  0.1270 0.0612 20000 0.0014 0.0108 0.0273 0.2652 0.3209 0.4105`\
-`#> PCTSUPP 0.0435 0.0347 20000 0.0000 0.0001 0.0019 0.1307 0.1753 0.2537`
+`#> NARTIC  0.2070 0.0717 20000 0.0032 0.0243 0.0601 0.3448 0.4013 0.4730`\
+`#> PCTGRT  0.1270 0.0614 20000 0.0016 0.0108 0.0275 0.2654 0.3265 0.4089`\
+`#> PCTSUPP 0.0435 0.0346 20000 0.0000 0.0002 0.0019 0.1301 0.1736 0.2534`
 
 ### Semipartial Correlation Coefficients
 
 \
-[`SCorMC`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)`(``hc3``)`\
+[`SCorMC`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)`(``object ``=`` ``hc3``)`\
 `#> Call:`\
 `#> SCorMC(object = hc3)`\
 `#> `\
 `#> Semipartial correlations`\
 `#> type = "hc3"`\
 `#>            est     se     R   0.05%    0.5%   2.5%  97.5%  99.5% 99.95%`\
-`#> NARTIC  0.4549 0.0856 20000  0.0538  0.1569 0.2494 0.5875 0.6365 0.6909`\
-`#> PCTGRT  0.3564 0.0887 20000  0.0379  0.1040 0.1652 0.5150 0.5665 0.6407`\
-`#> PCTSUPP 0.2085 0.0820 20000 -0.0818 -0.0146 0.0401 0.3615 0.4187 0.5037`
+`#> NARTIC  0.4549 0.0858 20000  0.0570  0.1559 0.2451 0.5872 0.6335 0.6878`\
+`#> PCTGRT  0.3564 0.0890 20000  0.0396  0.1038 0.1657 0.5152 0.5714 0.6395`\
+`#> PCTSUPP 0.2085 0.0816 20000 -0.0751 -0.0124 0.0420 0.3607 0.4167 0.5034`
 
 ### Squared Partial Correlation Coefficients
 
 \
-[`PCorMC`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md)`(``hc3``)`\
+[`PCorMC`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md)`(``object ``=`` ``hc3``)`\
 `#> Call:`\
 `#> PCorMC(object = hc3)`\
 `#> `\
 `#> Squared partial correlations`\
 `#> type = "hc3"`\
 `#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
-`#> NARTIC  0.5289 0.1165 20000 0.0104 0.1010 0.2268 0.6859 0.7413 0.8014`\
-`#> PCTGRT  0.4082 0.1218 20000 0.0060 0.0523 0.1242 0.5944 0.6614 0.7348`\
-`#> PCTSUPP 0.1917 0.1150 20000 0.0000 0.0004 0.0083 0.4380 0.5289 0.6313`
+`#> NARTIC  0.5289 0.1169 20000 0.0159 0.0969 0.2207 0.6855 0.7432 0.7962`\
+`#> PCTGRT  0.4082 0.1221 20000 0.0080 0.0551 0.1228 0.5953 0.6606 0.7452`\
+`#> PCTSUPP 0.1917 0.1148 20000 0.0000 0.0007 0.0085 0.4390 0.5307 0.6277`
 
 ### Differences of Standardized Regression Slopes
 
 \
-[`DiffBetaMC`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)`(``hc3``)`\
+[`DiffBetaMC`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)`(``object ``=`` ``hc3``)`\
 `#> Call:`\
 `#> DiffBetaMC(object = hc3)`\
 `#> `\
 `#> Differences of standardized regression slopes`\
 `#> type = "hc3"`\
-`#>                   est    se     R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%`\
-`#> NARTIC-PCTGRT  0.1179 0.144 20000 -0.3728 -0.2603 -0.1686 0.3908 0.4787 0.5991`\
-`#> NARTIC-PCTSUPP 0.2869 0.138 20000 -0.1638 -0.0734  0.0077 0.5514 0.6357 0.7383`\
-`#> PCTGRT-PCTSUPP 0.1690 0.143 20000 -0.3142 -0.2036 -0.1092 0.4455 0.5407 0.6334`
+`#>                   est     se     R   0.05%    0.5%    2.5%  97.5%  99.5% 99.95%`\
+`#> NARTIC-PCTGRT  0.1179 0.1441 20000 -0.3857 -0.2584 -0.1715 0.3922 0.4777 0.5928`\
+`#> NARTIC-PCTSUPP 0.2869 0.1376 20000 -0.1701 -0.0728  0.0073 0.5486 0.6278 0.7173`\
+`#> PCTGRT-PCTSUPP 0.1690 0.1430 20000 -0.3190 -0.2025 -0.1103 0.4459 0.5356 0.6320`
 
 ## References
 
 Dudgeon, P. (2017). Some improvements in confidence intervals for
 standardized regression coefficients. *Psychometrika*, *82*(4), 928–951.
 <https://doi.org/10.1007/s11336-017-9563-z>
+
+Pesigan, I. J. A., & Cheung, S. F. (2024). Monte Carlo confidence
+intervals for the indirect effect with missing data. *Behavior Research
+Methods*, *56*(3), 1678–1696.
+<https://doi.org/10.3758/s13428-023-02114-4>

@@ -9,7 +9,7 @@ Using the Monte Carlo Method for Data with Missing Values"></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">betaMC</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.4.9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -226,7 +226,8 @@ Advantages of Monte Carlo confidence intervals for indirect effects.
 <code><a href="MC.html">MC()</a></code>,
 <code><a href="PCorMC.html">PCorMC()</a></code>,
 <code><a href="RSqMC.html">RSqMC()</a></code>,
-<code><a href="SCorMC.html">SCorMC()</a></code></p></div>
+<code><a href="SCorMC.html">SCorMC()</a></code>,
+<code><a href="SCorSqMC.html">SCorSqMC()</a></code></p></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -237,20 +238,24 @@ Advantages of Monte Carlo confidence intervals for indirect effects.
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Data ---------------------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"nas1982"</span>, package <span class="op">=</span> <span class="st">"betaMC"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">nas1982_missing</span> <span class="op">&lt;-</span> <span class="fu">mice</span><span class="fu">::</span><span class="fu"><a href="https://amices.org/mice/reference/ampute.html" class="external-link">ampute</a></span><span class="op">(</span><span class="va">nas1982</span><span class="op">)</span><span class="op">$</span><span class="va">amp</span> <span class="co"># data set with missing values</span></span></span>
+<span class="r-in"><span><span class="co"># data set with missing values</span></span></span>
+<span class="r-in"><span><span class="va">nas1982_missing</span> <span class="op">&lt;-</span> <span class="fu">mice</span><span class="fu">::</span><span class="fu"><a href="https://amices.org/mice/reference/ampute.html" class="external-link">ampute</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">nas1982</span><span class="op">)</span><span class="op">$</span><span class="va">amp</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Multiple Imputation</span></span></span>
-<span class="r-in"><span><span class="va">mi</span> <span class="op">&lt;-</span> <span class="fu">mice</span><span class="fu">::</span><span class="fu"><a href="https://amices.org/mice/reference/mice.html" class="external-link">mice</a></span><span class="op">(</span><span class="va">nas1982_missing</span>, m <span class="op">=</span> <span class="fl">5</span>, seed <span class="op">=</span> <span class="fl">42</span>, print <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mi</span> <span class="op">&lt;-</span> <span class="fu">mice</span><span class="fu">::</span><span class="fu"><a href="https://amices.org/mice/reference/mice.html" class="external-link">mice</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">nas1982_missing</span>, m <span class="op">=</span> <span class="fl">5</span>, seed <span class="op">=</span> <span class="fl">42</span>, print <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Fit Model in lm ----------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Note that this does not deal with missing values.</span></span></span>
 <span class="r-in"><span><span class="co">## The fitted model (`object`) is updated with each imputed data</span></span></span>
 <span class="r-in"><span><span class="co">## within the `MCMI()` function.</span></span></span>
-<span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">nas1982_missing</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  formula <span class="op">=</span> <span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>,</span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">nas1982_missing</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Monte Carlo --------------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="va">mc</span> <span class="op">&lt;-</span> <span class="fu">MCMI</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="va">object</span>,</span></span>
+<span class="r-in"><span>  object <span class="op">=</span> <span class="va">object</span>,</span></span>
 <span class="r-in"><span>  mi <span class="op">=</span> <span class="va">mi</span>,</span></span>
 <span class="r-in"><span>  R <span class="op">=</span> <span class="fl">100</span>, <span class="co"># use a large value e.g., 20000L for actual research</span></span></span>
 <span class="r-in"><span>  seed <span class="op">=</span> <span class="fl">0508</span></span></span>
@@ -277,9 +282,11 @@ Advantages of Monte Carlo confidence intervals for indirect effects.
 <span class="r-in"><span><span class="co">#   - BetaMC</span></span></span>
 <span class="r-in"><span><span class="co">#   - DeltaRSqMC</span></span></span>
 <span class="r-in"><span><span class="co">#   - DiffBetaMC</span></span></span>
+<span class="r-in"><span><span class="co">#   - FSqMC</span></span></span>
 <span class="r-in"><span><span class="co">#   - PCorMC</span></span></span>
 <span class="r-in"><span><span class="co">#   - RSqMC</span></span></span>
 <span class="r-in"><span><span class="co">#   - SCorMC</span></span></span>
+<span class="r-in"><span><span class="co">#   - SCorSqMC</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

@@ -125,13 +125,14 @@ elements:
 ## Details
 
 Let the parameter vector of the unstandardized regression model be given
-by \$\$ \boldsymbol{\theta} = \left\\{ \mathbf{b}, \sigma^{2},
-\mathrm{vech} \left( \boldsymbol{\Sigma}\_{\mathbf{X}\mathbf{X}} \right)
-\right\\} \$\$ where \\(\mathbf{b}\\) is the vector of regression
-slopes, \\(\sigma^{2}\\) is the error variance, and \\( \mathrm{vech}
-\left( \boldsymbol{\Sigma}\_{\mathbf{X}\mathbf{X}} \right) \\) is the
-vector of unique elements of the covariance matrix of the regressor
-variables. The empirical sampling distribution of
+by \$\$ \boldsymbol{\theta} = \left\\{ \boldsymbol{b}, \sigma^{2},
+\operatorname{vech} \left(
+\boldsymbol{\Sigma}\_{\boldsymbol{X}\boldsymbol{X}} \right) \right\\}
+\$\$ where \\(\boldsymbol{b}\\) is the vector of regression slopes,
+\\(\sigma^{2}\\) is the error variance, and \\( \operatorname{vech}
+\left( \boldsymbol{\Sigma}\_{\boldsymbol{X}\boldsymbol{X}} \right) \\)
+is the vector of unique elements of the covariance matrix of the
+regressor variables. The empirical sampling distribution of
 \\(\boldsymbol{\theta}\\) is generated using the Monte Carlo method,
 that is, random values of parameter estimates are sampled from the
 multivariate normal distribution using the estimated parameter vector as
@@ -171,7 +172,8 @@ Other Beta Monte Carlo Functions:
 [`MCMI()`](https://jeksterslab.github.io/betaMC/reference/MCMI.md),
 [`PCorMC()`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md),
 [`RSqMC()`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md),
-[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)
+[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md),
+[`SCorSqMC()`](https://jeksterslab.github.io/betaMC/reference/SCorSqMC.md)
 
 ## Author
 
@@ -184,11 +186,14 @@ Ivan Jacob Agaloos Pesigan
 data("nas1982", package = "betaMC")
 
 # Fit Model in lm ----------------------------------------------------------
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
 
 # MC -----------------------------------------------------------------------
 mc <- MC(
-  object,
+  object = object,
   R = 100, # use a large value e.g., 20000L for actual research
   seed = 0508
 )
@@ -214,7 +219,9 @@ mc
 #   - BetaMC
 #   - DeltaRSqMC
 #   - DiffBetaMC
+#   - FSqMC
 #   - PCorMC
 #   - RSqMC
 #   - SCorMC
+#   - SCorSqMC
 ```

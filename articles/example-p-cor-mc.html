@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">betaMC</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.4.9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,7 +72,7 @@ generated using the <code><a href="../reference/PCorMC.html">PCorMC()</a></code>
 the model used in <a href="example-beta-mc.html">betaMC: Example Using
 the BetaMC Function</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/betaMC" class="external-link">betaMC</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span>package <span class="op">=</span> <span class="va">betaMC</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">betaMC</span><span class="fu">::</span><span class="va"><a href="../reference/nas1982.html">nas1982</a></span></span></code></pre></div>
 <div class="section level3">
@@ -80,7 +80,7 @@ the BetaMC Function</a>.</p>
 </h3>
 <p>Fit the regression model using the <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code> function.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="monte-carlo-sampling-distribution-of-parameters">Monte Carlo Sampling Distribution of Parameters<a class="anchor" aria-label="anchor" href="#monte-carlo-sampling-distribution-of-parameters"></a>
@@ -89,19 +89,19 @@ the BetaMC Function</a>.</p>
 <h4 id="normal-theory-approach">Normal-Theory Approach<a class="anchor" aria-label="anchor" href="#normal-theory-approach"></a>
 </h4>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mvn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MC.html">MC</a></span><span class="op">(</span><span class="va">object</span>, type <span class="op">=</span> <span class="st">"mvn"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">mvn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MC.html">MC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span>, type <span class="op">=</span> <span class="st">"mvn"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="asymptotic-distribution-free-approach">Asymptotic distribution-free Approach<a class="anchor" aria-label="anchor" href="#asymptotic-distribution-free-approach"></a>
 </h4>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">adf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MC.html">MC</a></span><span class="op">(</span><span class="va">object</span>, type <span class="op">=</span> <span class="st">"adf"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">adf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MC.html">MC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span>, type <span class="op">=</span> <span class="st">"adf"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="heteroskedasticity-consistent-approach-hc3">Heteroskedasticity Consistent Approach (HC3)<a class="anchor" aria-label="anchor" href="#heteroskedasticity-consistent-approach-hc3"></a>
 </h4>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">hc3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MC.html">MC</a></span><span class="op">(</span><span class="va">object</span>, type <span class="op">=</span> <span class="st">"hc3"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">hc3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MC.html">MC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span>, type <span class="op">=</span> <span class="st">"hc3"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
@@ -111,19 +111,19 @@ the BetaMC Function</a>.</p>
 <h4 id="normal-theory-approach-1">Normal-Theory Approach<a class="anchor" aria-label="anchor" href="#normal-theory-approach-1"></a>
 </h4>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mvn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PCorMC.html">PCorMC</a></span><span class="op">(</span><span class="va">mvn</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">mvn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PCorMC.html">PCorMC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">mvn</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="asymptotic-distribution-free-approach-1">Asymptotic distribution-free Approach<a class="anchor" aria-label="anchor" href="#asymptotic-distribution-free-approach-1"></a>
 </h4>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">adf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PCorMC.html">PCorMC</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">adf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PCorMC.html">PCorMC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">adf</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="heteroskedasticity-consistent-approach-hc3-1">Heteroskedasticity Consistent Approach (HC3)<a class="anchor" aria-label="anchor" href="#heteroskedasticity-consistent-approach-hc3-1"></a>
 </h4>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">hc3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PCorMC.html">PCorMC</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">hc3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PCorMC.html">PCorMC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">hc3</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -134,49 +134,49 @@ the BetaMC Function</a>.</p>
 </h3>
 <p>Summary of the results of <code><a href="../reference/PCorMC.html">PCorMC()</a></code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mvn</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">mvn</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; PCorMC(object = mvn)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Squared partial correlations</span></span>
 <span><span class="co">#&gt; type = "mvn"</span></span>
 <span><span class="co">#&gt;            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4874 0.1056 20000 0.1215 0.1809 0.2439 0.6516 0.7070 0.7729</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3757 0.1069 20000 0.0502 0.0972 0.1474 0.5596 0.6227 0.6930</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2254 0.0992 20000 0.0041 0.0208 0.0467 0.4290 0.5044 0.5855</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
+<span><span class="co">#&gt; NARTIC  0.4874 0.1049 20000 0.1187 0.1847 0.2440 0.6547 0.7079 0.7669</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3757 0.1066 20000 0.0556 0.0970 0.1490 0.5602 0.6247 0.6820</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2254 0.0989 20000 0.0053 0.0188 0.0486 0.4258 0.4988 0.5942</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">adf</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; PCorMC(object = adf)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Squared partial correlations</span></span>
 <span><span class="co">#&gt; type = "adf"</span></span>
 <span><span class="co">#&gt;            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4874 0.1001 20000 0.0531 0.1551 0.2387 0.6328 0.6854 0.7525</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3757 0.1009 20000 0.0252 0.0899 0.1450 0.5357 0.5911 0.6601</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2254 0.1033 20000 0.0004 0.0101 0.0364 0.4335 0.5023 0.5826</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; NARTIC  0.4874 0.1000 20000 0.0531 0.1566 0.2389 0.6329 0.6854 0.7525</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3757 0.1009 20000 0.0252 0.0899 0.1450 0.5355 0.5905 0.6601</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2254 0.1034 20000 0.0004 0.0101 0.0364 0.4339 0.5023 0.5826</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">hc3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; PCorMC(object = hc3)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Squared partial correlations</span></span>
 <span><span class="co">#&gt; type = "hc3"</span></span>
 <span><span class="co">#&gt;            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4874 0.1185 20000 0.0101 0.0747 0.1813 0.6485 0.7086 0.7726</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3757 0.1150 20000 0.0068 0.0479 0.1073 0.5532 0.6143 0.6846</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2254 0.1139 20000 0.0001 0.0034 0.0250 0.4581 0.5461 0.6468</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.4874 0.1184 20000 0.0101 0.0747 0.1814 0.6482 0.7078 0.7726</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3757 0.1150 20000 0.0068 0.0479 0.1073 0.5532 0.6161 0.6846</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2254 0.1139 20000 0.0001 0.0034 0.0248 0.4580 0.5452 0.6468</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="coef">coef<a class="anchor" aria-label="anchor" href="#coef"></a>
 </h3>
 <p>Return the vector of estimates.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mvn</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">mvn</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    NARTIC    PCTGRT   PCTSUPP </span></span>
 <span><span class="co">#&gt; 0.4874382 0.3757383 0.2253739</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
+<span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">adf</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    NARTIC    PCTGRT   PCTSUPP </span></span>
 <span><span class="co">#&gt; 0.4874382 0.3757383 0.2253739</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
+<span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">hc3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    NARTIC    PCTGRT   PCTSUPP </span></span>
 <span><span class="co">#&gt; 0.4874382 0.3757383 0.2253739</span></span></code></pre></div>
 </div>
@@ -185,42 +185,42 @@ the BetaMC Function</a>.</p>
 </h3>
 <p>Return the sampling covariance matrix.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">mvn</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">mvn</span><span class="op">)</span></span>
 <span><span class="co">#&gt;               NARTIC       PCTGRT      PCTSUPP</span></span>
-<span><span class="co">#&gt; NARTIC  0.0111416715 0.0006771445 0.0004585966</span></span>
-<span><span class="co">#&gt; PCTGRT  0.0006771445 0.0114229744 0.0001186545</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.0004585966 0.0001186545 0.0098435770</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
+<span><span class="co">#&gt; NARTIC  0.0110141845 6.580146e-04 3.645558e-04</span></span>
+<span><span class="co">#&gt; PCTGRT  0.0006580146 1.136777e-02 3.109028e-06</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.0003645558 3.109028e-06 9.783594e-03</span></span>
+<span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">adf</span><span class="op">)</span></span>
 <span><span class="co">#&gt;              NARTIC       PCTGRT      PCTSUPP</span></span>
-<span><span class="co">#&gt; NARTIC  0.010020154 0.0025967551 0.0021447945</span></span>
-<span><span class="co">#&gt; PCTGRT  0.002596755 0.0101857725 0.0008667582</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.002144795 0.0008667582 0.0106690364</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
-<span><span class="co">#&gt;              NARTIC      PCTGRT     PCTSUPP</span></span>
-<span><span class="co">#&gt; NARTIC  0.014034713 0.003686483 0.002925480</span></span>
-<span><span class="co">#&gt; PCTGRT  0.003686483 0.013228458 0.001002455</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.002925480 0.001002455 0.012964028</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.010008319 0.0025897215 0.0021423294</span></span>
+<span><span class="co">#&gt; PCTGRT  0.002589721 0.0101780631 0.0008563851</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.002142329 0.0008563851 0.0106838539</span></span>
+<span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">hc3</span><span class="op">)</span></span>
+<span><span class="co">#&gt;              NARTIC       PCTGRT      PCTSUPP</span></span>
+<span><span class="co">#&gt; NARTIC  0.014020632 0.0036807534 0.0029199035</span></span>
+<span><span class="co">#&gt; PCTGRT  0.003680753 0.0132272021 0.0009992982</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.002919904 0.0009992982 0.0129621009</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="confint">confint<a class="anchor" aria-label="anchor" href="#confint"></a>
 </h3>
 <p>Return confidence intervals.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">mvn</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">mvn</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;              2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; NARTIC  0.24389871 0.6515824</span></span>
-<span><span class="co">#&gt; PCTGRT  0.14737337 0.5596427</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.04672414 0.4290453</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">adf</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
+<span><span class="co">#&gt; NARTIC  0.24404271 0.6546911</span></span>
+<span><span class="co">#&gt; PCTGRT  0.14898177 0.5601978</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.04855312 0.4257944</span></span>
+<span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">adf</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
+<span><span class="co">#&gt;             2.5 %    97.5 %</span></span>
+<span><span class="co">#&gt; NARTIC  0.2389386 0.6329057</span></span>
+<span><span class="co">#&gt; PCTGRT  0.1449664 0.5355016</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.0363954 0.4339313</span></span>
+<span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">hc3</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;              2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; NARTIC  0.23873119 0.6328010</span></span>
-<span><span class="co">#&gt; PCTGRT  0.14495782 0.5356783</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.03640219 0.4334605</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">hc3</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
-<span><span class="co">#&gt;              2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; NARTIC  0.18130711 0.6485450</span></span>
-<span><span class="co">#&gt; PCTGRT  0.10733295 0.5532402</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.02497765 0.4580861</span></span></code></pre></div>
+<span><span class="co">#&gt; NARTIC  0.18140198 0.6482142</span></span>
+<span><span class="co">#&gt; PCTGRT  0.10730870 0.5532402</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.02483994 0.4579576</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2 unnumbered">
@@ -231,6 +231,11 @@ the BetaMC Function</a>.</p>
 Dudgeon, P. (2017). Some improvements in confidence intervals for
 standardized regression coefficients. <em>Psychometrika</em>,
 <em>82</em>(4), 928–951. <a href="https://doi.org/10.1007/s11336-017-9563-z" class="external-link">https://doi.org/10.1007/s11336-017-9563-z</a>
+</div>
+<div id="ref-Pesigan-Cheung-2024" class="csl-entry">
+Pesigan, I. J. A., &amp; Cheung, S. F. (2024). <span>Monte Carlo</span>
+confidence intervals for the indirect effect with missing data.
+<em>Behavior Research Methods</em>, <em>56</em>(3), 1678–1696. <a href="https://doi.org/10.3758/s13428-023-02114-4" class="external-link">https://doi.org/10.3758/s13428-023-02114-4</a>
 </div>
 </div>
 </div>

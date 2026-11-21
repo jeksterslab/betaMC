@@ -174,7 +174,8 @@ Other Beta Monte Carlo Functions:
 [`MC()`](https://jeksterslab.github.io/betaMC/reference/MC.md),
 [`PCorMC()`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md),
 [`RSqMC()`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md),
-[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)
+[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md),
+[`SCorSqMC()`](https://jeksterslab.github.io/betaMC/reference/SCorSqMC.md)
 
 ## Author
 
@@ -185,20 +186,24 @@ Ivan Jacob Agaloos Pesigan
 ``` r
 # Data ---------------------------------------------------------------------
 data("nas1982", package = "betaMC")
-nas1982_missing <- mice::ampute(nas1982)$amp # data set with missing values
+# data set with missing values
+nas1982_missing <- mice::ampute(data = nas1982)$amp
 
 # Multiple Imputation
-mi <- mice::mice(nas1982_missing, m = 5, seed = 42, print = FALSE)
+mi <- mice::mice(data = nas1982_missing, m = 5, seed = 42, print = FALSE)
 
 # Fit Model in lm ----------------------------------------------------------
 ## Note that this does not deal with missing values.
 ## The fitted model (`object`) is updated with each imputed data
 ## within the `MCMI()` function.
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982_missing)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982_missing
+)
 
 # Monte Carlo --------------------------------------------------------------
 mc <- MCMI(
-  object,
+  object = object,
   mi = mi,
   R = 100, # use a large value e.g., 20000L for actual research
   seed = 0508
@@ -225,7 +230,9 @@ mc
 #   - BetaMC
 #   - DeltaRSqMC
 #   - DiffBetaMC
+#   - FSqMC
 #   - PCorMC
 #   - RSqMC
 #   - SCorMC
+#   - SCorSqMC
 ```

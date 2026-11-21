@@ -74,7 +74,8 @@ Other Beta Monte Carlo Functions:
 [`MCMI()`](https://jeksterslab.github.io/betaMC/reference/MCMI.md),
 [`PCorMC()`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md),
 [`RSqMC()`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md),
-[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)
+[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md),
+[`SCorSqMC()`](https://jeksterslab.github.io/betaMC/reference/SCorSqMC.md)
 
 ## Author
 
@@ -87,20 +88,23 @@ Ivan Jacob Agaloos Pesigan
 data("nas1982", package = "betaMC")
 
 # Fit Model in lm ----------------------------------------------------------
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
 
 # MC -----------------------------------------------------------------------
 mc <- MC(
-  object,
+  object = object,
   R = 100, # use a large value e.g., 20000L for actual research
   seed = 0508
 )
 
 # FSqMC -----------------------------------------------------------------
-out <- FSqMC(mc, alpha = 0.05)
+out <- FSqMC(object = mc, alpha = 0.05)
 
 ## Methods -----------------------------------------------------------------
-print(out)
+print(x = out)
 #> Call:
 #> FSqMC(object = mc, alpha = 0.05)
 #> 
@@ -111,7 +115,7 @@ print(out)
 #> NARTIC  0.9510 0.4052 100 0.2035 1.5253
 #> PCTGRT  0.6019 0.2508 100 0.1242 1.0204
 #> PCTSUPP 0.2909 0.1772 100 0.0282 0.7090
-summary(out)
+summary(object = out)
 #> Call:
 #> FSqMC(object = mc, alpha = 0.05)
 #> 
@@ -122,16 +126,16 @@ summary(out)
 #> NARTIC  0.9510 0.4052 100 0.2035 1.5253
 #> PCTGRT  0.6019 0.2508 100 0.1242 1.0204
 #> PCTSUPP 0.2909 0.1772 100 0.0282 0.7090
-coef(out)
+coef(object = out)
 #>       fsq    NARTIC    PCTGRT   PCTSUPP 
 #> 4.1157764 0.9509843 0.6018924 0.2909455 
-vcov(out)
+vcov(object = out)
 #>               fsq     NARTIC      PCTGRT     PCTSUPP
-#> fsq     2.0517862 0.32640919 0.136049952 0.119430445
-#> NARTIC  0.3264092 0.16421176 0.034707122 0.015311713
-#> PCTGRT  0.1360500 0.03470712 0.062907742 0.005858214
+#> fsq     2.0517862 0.32640919 0.136049955 0.119430445
+#> NARTIC  0.3264092 0.16421176 0.034707123 0.015311713
+#> PCTGRT  0.1360500 0.03470712 0.062907743 0.005858214
 #> PCTSUPP 0.1194304 0.01531171 0.005858214 0.031412447
-confint(out, level = 0.95)
+confint(object = out, level = 0.95)
 #>              2.5 %   97.5 %
 #> fsq     1.87473817 7.309982
 #> NARTIC  0.20345951 1.525308

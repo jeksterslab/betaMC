@@ -8,7 +8,7 @@ and the model used in [betaMC: Example Using the BetaMC
 Function](https://jeksterslab.github.io/betaMC/articles/example-beta-mc.md).
 
 \
-[`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`
+[`library`](https://rdrr.io/r/base/library.html)`(``package ``=`` ``betaMC``)`
 
 \
 `df`` ``<-`` ``betaMC``::`[`nas1982`](https://jeksterslab.github.io/betaMC/reference/nas1982.md)
@@ -19,41 +19,41 @@ Fit the regression model using the
 [`lm()`](https://rdrr.io/r/stats/lm.html) function.
 
 \
-`object`` ``<-`` `[`lm`](https://rdrr.io/r/stats/lm.html)`(``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
+`object`` ``<-`` ``stats``::`[`lm`](https://rdrr.io/r/stats/lm.html)`(``formula ``=`` ``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
 
 ### Monte Carlo Sampling Distribution of Parameters
 
 #### Normal-Theory Approach
 
 \
-`mvn`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"mvn"``)`
+`mvn`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object ``=`` ``object``, type ``=`` ``"mvn"``)`
 
 #### Asymptotic distribution-free Approach
 
 \
-`adf`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"adf"``)`
+`adf`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object ``=`` ``object``, type ``=`` ``"adf"``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 \
-`hc3`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object``, type ``=`` ``"hc3"``)`
+`hc3`` ``<-`` `[`MC`](https://jeksterslab.github.io/betaMC/reference/MC.md)`(``object ``=`` ``object``, type ``=`` ``"hc3"``)`
 
 ### Improvement in R-squared
 
 #### Normal-Theory Approach
 
 \
-`mvn`` ``<-`` `[`DeltaRSqMC`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md)`(``mvn``)`
+`mvn`` ``<-`` `[`DeltaRSqMC`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md)`(``object ``=`` ``mvn``)`
 
 #### Asymptotic distribution-free Approach
 
 \
-`adf`` ``<-`` `[`DeltaRSqMC`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md)`(``adf``)`
+`adf`` ``<-`` `[`DeltaRSqMC`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md)`(``object ``=`` ``adf``)`
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 \
-`hc3`` ``<-`` `[`DeltaRSqMC`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md)`(``hc3``)`
+`hc3`` ``<-`` `[`DeltaRSqMC`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md)`(``object ``=`` ``hc3``)`
 
 ## Methods
 
@@ -63,49 +63,49 @@ Summary of the results of
 [`DeltaRSqMC()`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md).
 
 \
-[`summary`](https://rdrr.io/r/base/summary.html)`(``mvn``)`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``object ``=`` ``mvn``)`\
 `#> Call:`\
 `#> DeltaRSqMC(object = mvn)`\
 `#> `\
 `#> Improvement in R-squared`\
 `#> type = "mvn"`\
 `#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
-`#> NARTIC  0.1859 0.0663 20000 0.0324 0.0510 0.0726 0.3282 0.3908 0.4682`\
-`#> PCTGRT  0.1177 0.0511 20000 0.0141 0.0244 0.0382 0.2365 0.2914 0.3703`\
-`#> PCTSUPP 0.0569 0.0338 20000 0.0007 0.0049 0.0103 0.1403 0.1786 0.2342`\
-[`summary`](https://rdrr.io/r/base/summary.html)`(``adf``)`\
+`#> NARTIC  0.1859 0.0656 20000 0.0299 0.0489 0.0720 0.3290 0.3856 0.4507`\
+`#> PCTGRT  0.1177 0.0508 20000 0.0116 0.0251 0.0384 0.2340 0.2872 0.3467`\
+`#> PCTSUPP 0.0569 0.0339 20000 0.0003 0.0046 0.0107 0.1396 0.1800 0.2489`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``object ``=`` ``adf``)`\
 `#> Call:`\
 `#> DeltaRSqMC(object = adf)`\
 `#> `\
 `#> Improvement in R-squared`\
 `#> type = "adf"`\
 `#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
-`#> NARTIC  0.1859 0.0582 20000 0.0077 0.0450 0.0745 0.3032 0.3512 0.4044`\
-`#> PCTGRT  0.1177 0.0470 20000 0.0057 0.0219 0.0368 0.2198 0.2638 0.3255`\
-`#> PCTSUPP 0.0569 0.0330 20000 0.0001 0.0028 0.0094 0.1354 0.1748 0.2182`\
-[`summary`](https://rdrr.io/r/base/summary.html)`(``hc3``)`\
+`#> NARTIC  0.1859 0.0583 20000 0.0137 0.0443 0.0729 0.3028 0.3533 0.4149`\
+`#> PCTGRT  0.1177 0.0472 20000 0.0096 0.0231 0.0368 0.2212 0.2638 0.3186`\
+`#> PCTSUPP 0.0569 0.0334 20000 0.0001 0.0027 0.0088 0.1367 0.1778 0.2239`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``object ``=`` ``hc3``)`\
 `#> Call:`\
 `#> DeltaRSqMC(object = hc3)`\
 `#> `\
 `#> Improvement in R-squared`\
 `#> type = "hc3"`\
 `#>            est     se     R  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%`\
-`#> NARTIC  0.1859 0.0691 20000 0.0024 0.0185 0.0517 0.3245 0.3791 0.4458`\
-`#> PCTGRT  0.1177 0.0546 20000 0.0016 0.0109 0.0254 0.2334 0.2951 0.3749`\
-`#> PCTSUPP 0.0569 0.0372 20000 0.0000 0.0010 0.0064 0.1483 0.1923 0.2512`
+`#> NARTIC  0.1859 0.0681 20000 0.0020 0.0170 0.0495 0.3177 0.3767 0.4311`\
+`#> PCTGRT  0.1177 0.0540 20000 0.0013 0.0107 0.0265 0.2338 0.2901 0.3692`\
+`#> PCTSUPP 0.0569 0.0373 20000 0.0000 0.0011 0.0064 0.1481 0.1925 0.2652`
 
 ### coef
 
 Return the vector of estimates.
 
 \
-[`coef`](https://rdrr.io/r/stats/coef.html)`(``mvn``)`\
+`stats``::`[`coef`](https://rdrr.io/r/stats/coef.html)`(``object ``=`` ``mvn``)`\
 `#>    NARTIC    PCTGRT   PCTSUPP `\
 `#> 0.1858925 0.1176542 0.0568722`\
-[`coef`](https://rdrr.io/r/stats/coef.html)`(``adf``)`\
+`stats``::`[`coef`](https://rdrr.io/r/stats/coef.html)`(``object ``=`` ``adf``)`\
 `#>    NARTIC    PCTGRT   PCTSUPP `\
 `#> 0.1858925 0.1176542 0.0568722`\
-[`coef`](https://rdrr.io/r/stats/coef.html)`(``hc3``)`\
+`stats``::`[`coef`](https://rdrr.io/r/stats/coef.html)`(``object ``=`` ``hc3``)`\
 `#>    NARTIC    PCTGRT   PCTSUPP `\
 `#> 0.1858925 0.1176542 0.0568722`
 
@@ -114,45 +114,50 @@ Return the vector of estimates.
 Return the sampling covariance matrix.
 
 \
-[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``mvn``)`\
+`stats``::`[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``object ``=`` ``mvn``)`\
 `#>                NARTIC        PCTGRT       PCTSUPP`\
-`#> NARTIC   0.0043927066 -0.0007420947 -0.0003420446`\
-`#> PCTGRT  -0.0007420947  0.0026064133 -0.0002431884`\
-`#> PCTSUPP -0.0003420446 -0.0002431884  0.0011422639`\
-[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``adf``)`\
+`#> NARTIC   0.0043074664 -0.0006946688 -0.0003606126`\
+`#> PCTGRT  -0.0006946688  0.0025758293 -0.0002362047`\
+`#> PCTSUPP -0.0003606126 -0.0002362047  0.0011524040`\
+`stats``::`[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``object ``=`` ``adf``)`\
 `#>                NARTIC        PCTGRT       PCTSUPP`\
-`#> NARTIC   3.391031e-03  4.874407e-05 -0.0001580216`\
-`#> PCTGRT   4.874407e-05  2.207210e-03 -0.0002018811`\
-`#> PCTSUPP -1.580216e-04 -2.018811e-04  0.0010870440`\
-[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``hc3``)`\
+`#> NARTIC   3.404617e-03  4.612882e-05 -0.0001580908`\
+`#> PCTGRT   4.612882e-05  2.226522e-03 -0.0001956553`\
+`#> PCTSUPP -1.580908e-04 -1.956553e-04  0.0011161151`\
+`stats``::`[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``object ``=`` ``hc3``)`\
 `#>                NARTIC        PCTGRT       PCTSUPP`\
-`#> NARTIC   4.770940e-03  0.0001563451 -4.443315e-05`\
-`#> PCTGRT   1.563451e-04  0.0029767221 -1.524671e-04`\
-`#> PCTSUPP -4.443315e-05 -0.0001524671  1.381807e-03`
+`#> NARTIC   4.640667e-03  0.0001959007 -2.952555e-05`\
+`#> PCTGRT   1.959007e-04  0.0029156679 -1.953027e-04`\
+`#> PCTSUPP -2.952555e-05 -0.0001953027  1.389998e-03`
 
 ### confint
 
 Return confidence intervals.
 
 \
-[`confint`](https://rdrr.io/r/stats/confint.html)`(``mvn``, level ``=`` ``0.95``)`\
+`stats``::`[`confint`](https://rdrr.io/r/stats/confint.html)`(``object ``=`` ``mvn``, level ``=`` ``0.95``)`\
 `#>              2.5 %    97.5 %`\
-`#> NARTIC  0.07256185 0.3281640`\
-`#> PCTGRT  0.03821714 0.2365150`\
-`#> PCTSUPP 0.01031463 0.1402773`\
-[`confint`](https://rdrr.io/r/stats/confint.html)`(``adf``, level ``=`` ``0.95``)`\
+`#> NARTIC  0.07203962 0.3289978`\
+`#> PCTGRT  0.03837774 0.2340088`\
+`#> PCTSUPP 0.01072673 0.1395875`\
+`stats``::`[`confint`](https://rdrr.io/r/stats/confint.html)`(``object ``=`` ``adf``, level ``=`` ``0.95``)`\
 `#>               2.5 %    97.5 %`\
-`#> NARTIC  0.074519672 0.3031958`\
-`#> PCTGRT  0.036764139 0.2197601`\
-`#> PCTSUPP 0.009403787 0.1353896`\
-[`confint`](https://rdrr.io/r/stats/confint.html)`(``hc3``, level ``=`` ``0.95``)`\
+`#> NARTIC  0.072861942 0.3027791`\
+`#> PCTGRT  0.036796841 0.2212350`\
+`#> PCTSUPP 0.008828175 0.1367070`\
+`stats``::`[`confint`](https://rdrr.io/r/stats/confint.html)`(``object ``=`` ``hc3``, level ``=`` ``0.95``)`\
 `#>               2.5 %    97.5 %`\
-`#> NARTIC  0.051720568 0.3244929`\
-`#> PCTGRT  0.025360626 0.2333554`\
-`#> PCTSUPP 0.006386026 0.1483131`
+`#> NARTIC  0.049518793 0.3177486`\
+`#> PCTGRT  0.026522453 0.2338050`\
+`#> PCTSUPP 0.006403343 0.1480521`
 
 ## References
 
 Dudgeon, P. (2017). Some improvements in confidence intervals for
 standardized regression coefficients. *Psychometrika*, *82*(4), 928–951.
 <https://doi.org/10.1007/s11336-017-9563-z>
+
+Pesigan, I. J. A., & Cheung, S. F. (2024). Monte Carlo confidence
+intervals for the indirect effect with missing data. *Behavior Research
+Methods*, *56*(3), 1678–1696.
+<https://doi.org/10.3758/s13428-023-02114-4>

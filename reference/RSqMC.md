@@ -71,7 +71,8 @@ Other Beta Monte Carlo Functions:
 [`MC()`](https://jeksterslab.github.io/betaMC/reference/MC.md),
 [`MCMI()`](https://jeksterslab.github.io/betaMC/reference/MCMI.md),
 [`PCorMC()`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md),
-[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)
+[`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md),
+[`SCorSqMC()`](https://jeksterslab.github.io/betaMC/reference/SCorSqMC.md)
 
 ## Author
 
@@ -84,20 +85,23 @@ Ivan Jacob Agaloos Pesigan
 data("nas1982", package = "betaMC")
 
 # Fit Model in lm ----------------------------------------------------------
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
 
 # MC -----------------------------------------------------------------------
 mc <- MC(
-  object,
+  object = object,
   R = 100, # use a large value e.g., 20000L for actual research
   seed = 0508
 )
 
 # RSqMC --------------------------------------------------------------------
-out <- RSqMC(mc, alpha = 0.05)
+out <- RSqMC(object = mc, alpha = 0.05)
 
 ## Methods -----------------------------------------------------------------
-print(out)
+print(x = out)
 #> Call:
 #> RSqMC(object = mc, alpha = 0.05)
 #> 
@@ -106,7 +110,7 @@ print(out)
 #>        est     se   R   2.5%  97.5%
 #> rsq 0.8045 0.0602 100 0.6520 0.8797
 #> adj 0.7906 0.0645 100 0.6272 0.8711
-summary(out)
+summary(object = out)
 #> Call:
 #> RSqMC(object = mc, alpha = 0.05)
 #> 
@@ -115,14 +119,14 @@ summary(out)
 #>        est     se   R   2.5%  97.5%
 #> rsq 0.8045 0.0602 100 0.6520 0.8797
 #> adj 0.7906 0.0645 100 0.6272 0.8711
-coef(out)
+coef(object = out)
 #>       rsq       adj 
 #> 0.8045263 0.7905638 
-vcov(out)
+vcov(object = out)
 #>             rsq         adj
 #> rsq 0.003627964 0.003887104
 #> adj 0.003887104 0.004164754
-confint(out, level = 0.95)
+confint(object = out, level = 0.95)
 #>         2.5 %    97.5 %
 #> rsq 0.6520133 0.8796603
 #> adj 0.6271572 0.8710646
