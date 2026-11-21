@@ -51,7 +51,7 @@ Ivan Jacob Agaloos Pesigan
 fit <- stats::lm(formula = mpg ~ wt + hp, data = mtcars)
 out <- MC(object = fit, R = 199)
 SCorSqMC(object = out)
-#>           est      lower     upper
-#> wt 0.22434811 0.04479512 0.4157594
-#> hp 0.07395266 0.01366087 0.1686203
+#>           est     lower     upper
+#> wt 0.22434811 0.0618421 0.4233347
+#> hp 0.07395266 0.0149379 0.1643464
 ```
