@@ -2,7 +2,7 @@
 #'
 #' @details
 #' \deqn{
-#'   \mathrm{Var}_{\matnrm{MC}}
+#'   \operatorname{Var}_{\mathrm{MC}}
 #'    =
 #'    \left[
 #'      \left( R - 1 \right)^{-1}

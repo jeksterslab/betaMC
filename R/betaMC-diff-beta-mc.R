@@ -33,24 +33,27 @@
 #' data("nas1982", package = "betaMC")
 #'
 #' # Fit Model in lm ----------------------------------------------------------
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
 #'
 #' # MC -----------------------------------------------------------------------
 #' mc <- MC(
-#'   object,
+#'   object = object,
 #'   R = 100, # use a large value e.g., 20000L for actual research
 #'   seed = 0508
 #' )
 #'
 #' # DiffBetaMC ---------------------------------------------------------------
-#' out <- DiffBetaMC(mc, alpha = 0.05)
+#' out <- DiffBetaMC(object = mc, alpha = 0.05)
 #'
 #' ## Methods -----------------------------------------------------------------
-#' print(out)
-#' summary(out)
-#' coef(out)
-#' vcov(out)
-#' confint(out, level = 0.95)
+#' print(x = out)
+#' summary(object = out)
+#' coef(object = out)
+#' vcov(object = out)
+#' confint(object = out, level = 0.95)
 #'
 #' @family Beta Monte Carlo Functions
 #' @keywords betaMC diff
@@ -82,21 +85,15 @@ DiffBetaMC <- function(object,
     est <- object$lm_process$dif_betastar
   }
   std <- object$es$betastar
-  p_dif <- dim(x = object$lm_process$dif_idx)[2]
-  thetahatstar <- matrix(
-    data = 0.0,
-    ncol = p_dif,
-    nrow = dim(x = std)[1]
-  )
-  for (i in seq_len(length.out = p_dif)) {
-    thetahatstar[, i] <- std[
-      ,
-      object$lm_process$dif_idx[1, i]
-    ] - std[
-      ,
-      object$lm_process$dif_idx[2, i]
-    ]
-  }
+  thetahatstar <- std[
+    ,
+    object$lm_process$dif_idx[1, ],
+    drop = FALSE
+  ] - std[
+    ,
+    object$lm_process$dif_idx[2, ],
+    drop = FALSE
+  ]
   colnames(x = thetahatstar) <- names(x = object$lm_process$dif_betastar)
   out <- list(
     call = match.call(),

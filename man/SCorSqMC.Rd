@@ -27,8 +27,21 @@ fit <- stats::lm(formula = mpg ~ wt + hp, data = mtcars)
 out <- MC(object = fit, R = 199)
 SCorSqMC(object = out)
 }
+\seealso{
+Other Beta Monte Carlo Functions:
+\code{\link[=BetaMC]{BetaMC()}},
+\code{\link[=DeltaRSqMC]{DeltaRSqMC()}},
+\code{\link[=DiffBetaMC]{DiffBetaMC()}},
+\code{\link[=FSqMC]{FSqMC()}},
+\code{\link[=MC]{MC()}},
+\code{\link[=MCMI]{MCMI()}},
+\code{\link[=PCorMC]{PCorMC()}},
+\code{\link[=RSqMC]{RSqMC()}},
+\code{\link[=SCorMC]{SCorMC()}}
+}
 \author{
 Ivan Jacob Agaloos Pesigan
 }
+\concept{Beta Monte Carlo Functions}
 \keyword{betaMC}
 \keyword{scor}

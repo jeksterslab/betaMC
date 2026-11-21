@@ -15,7 +15,7 @@
 #' @noRd
 .ACovSEMInverse <- function(jcap,
                             acov) {
-  t(jcap) %*% chol2inv(
-    chol(acov)
+  t(x = jcap) %*% chol2inv(
+    x = chol(x = acov)
   ) %*% jcap
 }

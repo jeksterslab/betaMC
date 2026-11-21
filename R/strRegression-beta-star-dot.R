@@ -8,7 +8,7 @@
 #'     \boldsymbol{\beta}^{\ast}
 #'     =
 #'     \sigma_{Y}^{-1}
-#'     \boldsymbol{\sigma}_{\mathbf{X}}
+#'     \boldsymbol{\sigma}_{\boldsymbol{X}}
 #'     \boldsymbol{\beta} .
 #'   }
 #'
@@ -21,11 +21,14 @@
 #'   \eqn{\sigma_{Y}}.
 #'   Standard deviation of \eqn{Y}.
 #' @param sigmax Numeric vector.
-#'   \eqn{\boldsymbol{\sigma}_{\mathbf{X}}}.
+#'   \eqn{\boldsymbol{\sigma}_{\boldsymbol{X}}}.
 #'   Standard deviation of
 #'   \eqn{X_{1}, \dots, X_{j}, \dots, X_{p}}.
 #'
 #' @return Returns a vector.
+#' @examples
+#' strRegression:::.BetaStar(beta = c(0.5, 0.3), sigmay = 2, sigmax = c(1, 4))
+#'
 #' @family Standardized Slopes Functions
 #' @keywords strRegression slopesstd internal
 #' @noRd
@@ -33,7 +36,7 @@
                       sigmay,
                       sigmax) {
   .Vec(
-    (
+    x = (
       sigmax / sigmay
     ) * beta
   )

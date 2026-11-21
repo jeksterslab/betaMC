@@ -50,25 +50,53 @@ where \eqn{\alpha} is the significance level.
 data("nas1982", package = "betaMC")
 
 # Fit Model in lm ----------------------------------------------------------
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
 
 # MC -----------------------------------------------------------------------
 mc <- MC(
-  object,
+  object = object,
   R = 100, # use a large value e.g., 20000L for actual research
   seed = 0508
 )
 
 # DeltaRSqMC ---------------------------------------------------------------
-out <- DeltaRSqMC(mc, alpha = 0.05)
+out <- DeltaRSqMC(object = mc, alpha = 0.05)
 
 ## Methods -----------------------------------------------------------------
-print(out)
-summary(out)
-coef(out)
-vcov(out)
-confint(out, level = 0.95)
+print(x = out)
+summary(object = out)
+coef(object = out)
+vcov(object = out)
+confint(object = out, level = 0.95)
 
+}
+\references{
+Algina, J., Keselman, H. J., & Penfield, R. D. (2007).
+Confidence intervals for an effect size measure
+in multiple linear regression.
+\emph{Educational and Psychological Measurement}, \emph{67}(2), 207--218.
+\doi{10.1177/0013164406292030}
+
+Algina, J., Keselman, H. J., & Penfield, R. D. (2008a).
+Confidence intervals for the squared multiple semipartial
+correlation coefficient.
+\emph{Journal of Modern Applied Statistical Methods}, \emph{7}(1), 2--10.
+\doi{10.22237/jmasm/1209614460}
+
+Algina, J., Keselman, H. J., & Penfield, R. D. (2008b).
+Note on a confidence interval for the squared semipartial
+correlation coefficient.
+\emph{Educational and Psychological Measurement}, \emph{68}(5), 734--741.
+\doi{10.1177/0013164407313371}
+
+Algina, J., Keselman, H. J., & Penfield, R. D. (2010).
+Confidence intervals for squared semipartial correlation coefficients:
+The effect of nonnormality.
+\emph{Educational and Psychological Measurement}, \emph{70}(6), 926--940.
+\doi{10.1177/0013164410379335}
 }
 \seealso{
 Other Beta Monte Carlo Functions:
@@ -79,7 +107,8 @@ Other Beta Monte Carlo Functions:
 \code{\link[=MCMI]{MCMI()}},
 \code{\link[=PCorMC]{PCorMC()}},
 \code{\link[=RSqMC]{RSqMC()}},
-\code{\link[=SCorMC]{SCorMC()}}
+\code{\link[=SCorMC]{SCorMC()}},
+\code{\link[=SCorSqMC]{SCorSqMC()}}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

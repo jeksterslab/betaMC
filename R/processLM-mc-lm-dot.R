@@ -2,25 +2,45 @@
 #'
 #' Draws \eqn{\boldsymbol{\theta} =
 #' \left( \boldsymbol{\beta}, \sigma^2,
-#' \mathrm{vech} \left( \boldsymbol{\Sigma}_{\mathbf{X}} \right) \right)}
+#' \operatorname{vech}
+#' \left( \boldsymbol{\Sigma}_{\boldsymbol{X}} \right) \right)}
 #' from its sampling distribution,
 #' screens and redraws inadmissible draws in C++,
 #' and returns the model-implied covariance matrices of
-#' \eqn{\left( Y, \mathbf{X} \right)} as rows of a matrix.
+#' \eqn{\left( Y, \boldsymbol{X} \right)} as rows of a matrix.
 #' Gives the same draws as `.MC()` in betaMC for the same seed.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @inheritParams .ThetaHatStarScreen
+#' @param scale Numeric matrix.
+#'   Sampling variance-covariance matrix of parameter estimates.
+#' @param location Numeric vector.
+#'   Vector of parameter estimates.
+#' @param R Positive integer.
+#'   Number of Monte Carlo replications.
+#' @param decomposition Character string.
+#'   Matrix decomposition of `scale`,
+#'   `"chol"`, `"eigen"`, or `"svd"`.
+#' @param pd Logical.
+#'   If `pd = TRUE`, check that `scale` is positive semidefinite using `tol`
+#'   (a singular matrix, with a zero eigenvalue, passes).
+#'   If `decomposition = "chol"` and the Cholesky decomposition fails,
+#'   the eigenvalue decomposition is used.
+#' @param tol Numeric.
+#'   Tolerance used for `pd`.
+#' @param iter Positive integer.
+#'   Maximum number of redraws for one draw.
 #' @param p Positive integer.
 #'   Number of regressors.
 #' @param fixed_x Logical.
 #'   If `fixed_x = TRUE`,
 #'   `location` and `scale` exclude
-#'   \eqn{\mathrm{vech} \left( \boldsymbol{\Sigma}_{\mathbf{X}} \right)},
+#'   \eqn{\operatorname{vech}
+#'   \left( \boldsymbol{\Sigma}_{\boldsymbol{X}} \right)},
 #'   which is fixed at `vechsigmacapx`.
 #' @param vechsigmacapx Numeric vector.
-#'   \eqn{\mathrm{vech} \left( \boldsymbol{\Sigma}_{\mathbf{X}} \right)}
+#'   \eqn{\operatorname{vech}
+#'   \left( \boldsymbol{\Sigma}_{\boldsymbol{X}} \right)}
 #'   used when `fixed_x = TRUE`.
 #' @param seed Integer or `NULL`.
 #'   Random seed.
@@ -29,10 +49,10 @@
 #'   \item{`thetahatstar`}{Numeric matrix of draws of
 #'     \eqn{\boldsymbol{\theta}} (rows).}
 #'   \item{`vechsigmacap`}{Numeric matrix of draws of
-#'     \eqn{\mathrm{vech} \left( \boldsymbol{\Sigma} \right)} (rows).}
+#'     \eqn{\operatorname{vech} \left( \boldsymbol{\Sigma} \right)} (rows).}
 #' }
 #'
-#' @family Process LM Functions
+#' @family Process lm Functions
 #' @keywords processLM mc internal
 #' @noRd
 .MCLM <- function(scale,
@@ -46,8 +66,8 @@
                   tol = 1e-06,
                   iter = 1000L,
                   seed = NULL) {
-  if (!is.null(seed)) {
-    set.seed(seed)
+  if (!is.null(x = seed)) {
+    set.seed(seed = seed)
   }
   if (fixed_x) {
     append <- vechsigmacapx

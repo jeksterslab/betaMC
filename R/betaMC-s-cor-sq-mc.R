@@ -14,6 +14,7 @@
 #' fit <- stats::lm(formula = mpg ~ wt + hp, data = mtcars)
 #' out <- MC(object = fit, R = 199)
 #' SCorSqMC(object = out)
+#' @family Beta Monte Carlo Functions
 #' @keywords betaMC scor
 #' @export
 SCorSqMC <- function(object, level = 0.95) {

@@ -49,24 +49,27 @@ where \eqn{\alpha} is the significance level.
 data("nas1982", package = "betaMC")
 
 # Fit Model in lm ----------------------------------------------------------
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
 
 # MC -----------------------------------------------------------------------
 mc <- MC(
-  object,
+  object = object,
   R = 100, # use a large value e.g., 20000L for actual research
   seed = 0508
 )
 
 # DiffBetaMC ---------------------------------------------------------------
-out <- DiffBetaMC(mc, alpha = 0.05)
+out <- DiffBetaMC(object = mc, alpha = 0.05)
 
 ## Methods -----------------------------------------------------------------
-print(out)
-summary(out)
-coef(out)
-vcov(out)
-confint(out, level = 0.95)
+print(x = out)
+summary(object = out)
+coef(object = out)
+vcov(object = out)
+confint(object = out, level = 0.95)
 
 }
 \seealso{
@@ -78,7 +81,8 @@ Other Beta Monte Carlo Functions:
 \code{\link[=MCMI]{MCMI()}},
 \code{\link[=PCorMC]{PCorMC()}},
 \code{\link[=RSqMC]{RSqMC()}},
-\code{\link[=SCorMC]{SCorMC()}}
+\code{\link[=SCorMC]{SCorMC()}},
+\code{\link[=SCorSqMC]{SCorSqMC()}}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

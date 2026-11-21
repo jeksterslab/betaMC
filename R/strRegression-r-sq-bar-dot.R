@@ -9,6 +9,11 @@
 #' @param n Positive integer.
 #'   Sample size.
 #'
+#' @return Returns a numeric value, the adjusted R-squared.
+#'
+#' @examples
+#' strRegression:::.RSqBar(rsq = 0.5, k = 3, n = 100)
+#'
 #' @family R-squared Functions
 #' @keywords strRegression rsq internal
 #' @noRd

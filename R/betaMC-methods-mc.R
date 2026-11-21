@@ -9,9 +9,12 @@
 #' @param ... additional arguments.
 #'
 #' @examples
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' mc <- MC(object, R = 100)
-#' print(mc)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#' mc <- MC(object = object, R = 100)
+#' print(x = mc)
 #'
 #' @keywords methods
 #' @export
@@ -64,9 +67,12 @@ print.mc <- function(x,
 #'
 #' @examples
 #' # Fit the regression model
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' mc <- MC(object, R = 100)
-#' summary(mc)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#' mc <- MC(object = object, R = 100)
+#' summary(object = mc)
 #'
 #' @keywords methods
 #' @export

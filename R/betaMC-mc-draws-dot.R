@@ -12,16 +12,19 @@
 #' @inheritParams MC
 #' @inheritParams .MCLM
 #' @param vechsigmacapx Numeric vector.
-#'   \eqn{\mathrm{vech} \left( \boldsymbol{\Sigma}_{\mathbf{X}} \right)}
+#'   \eqn{
+#'     \operatorname{vech}
+#'     \left( \boldsymbol{\Sigma}_{\boldsymbol{X}} \right)
+#'   }
 #'   appended to every draw when `fixed_x = TRUE`.
 #' @return Returns a list with the following elements:
 #' \describe{
 #'   \item{`thetahatstar`}{Numeric matrix of draws of
 #'     \eqn{\left( \boldsymbol{\beta}, \sigma^2,
-#'     \mathrm{vech} \left( \boldsymbol{\Sigma}_{\mathbf{X}} \right)
+#'     \operatorname{vech} \left( \boldsymbol{\Sigma}_{\boldsymbol{X}} \right)
 #'     \right)} (rows).}
 #'   \item{`vechsigmacap`}{Numeric matrix of draws of
-#'     \eqn{\mathrm{vech} \left( \boldsymbol{\Sigma} \right)} (rows).}
+#'     \eqn{\operatorname{vech} \left( \boldsymbol{\Sigma} \right)} (rows).}
 #'   \item{`es`}{List of matrices of draws of
 #'     `betastar`, `rsq`, `spcor`, and `pcorsq`.}
 #' }
