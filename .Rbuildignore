@@ -5,6 +5,7 @@
 ^CITATION\.cff$
 ^CLAUDE\.local\.md$
 ^CLAUDE\.md$
+^cran-comments\.md$
 ^GEMINI\.md$
 ^LICENSE\.md$
 ^Makefile$
@@ -30,3 +31,4 @@
 ^quarto$
 ^scripts$
 ^vignettes$
+^cran-comments\.md$

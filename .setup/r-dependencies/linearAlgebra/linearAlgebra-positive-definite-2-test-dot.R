@@ -1,4 +1,4 @@
-#' Test for a Positive Definite Matrix
+#' Test for a Positive Definite Matrix by Cholesky (Internal)
 #'
 #' Returns `TRUE` if input
 #' is a positive definite matrix,
@@ -7,24 +7,29 @@
 #' A
 #' \eqn{k \times k}
 #' symmetric matrix
-#' \eqn{\mathbf{A}}
-#' is positive definite
-#' if Cholesky decomposition is successful.
+#' \eqn{\boldsymbol{A}}
+#' is taken as positive definite
+#' if its Cholesky decomposition succeeds
+#' without a warning or an error.
+#' No input checks.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param x an object for which a method exists.
-#'   The default method applies
-#'   to numeric (or logical) symmetric,
-#'   positive-definite matrices.
-#' @param ... arguments to be based to or from methods.
-#' @param pivot Should pivoting be used?
-#' @param tol A numeric tolerance for use with pivot = TRUE.
+#' @param x Numeric symmetric matrix.
+#' @param pivot Logical.
+#'   Should pivoting be used? Passed to [chol()].
+#' @param tol Numeric.
+#'   Tolerance for use with `pivot = TRUE`. Passed to [chol()].
+#' @param ... Other arguments passed to [chol()].
 #'
 #' @references
 #'   [Wikipedia: Definite matrix](https://en.wikipedia.org/wiki/Definite_matrix)
 #'
 #' @return Logical.
+#'
+#' @examples
+#' .TestPositiveDefinite2(x = diag(x = 2, nrow = 2))
+#' .TestPositiveDefinite2(x = matrix(data = c(1, 2, 2, 1), nrow = 2))
 #'
 #' @family Linear Algebra Functions
 #' @keywords linearAlgebra test internal
@@ -34,7 +39,7 @@
                                    tol = -1,
                                    ...) {
   out <- tryCatch(
-    {
+    expr = {
       chol(
         x = x,
         pivot = pivot,

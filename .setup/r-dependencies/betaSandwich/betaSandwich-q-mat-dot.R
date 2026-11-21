@@ -1,4 +1,4 @@
-#' Leverage Adjustment (\eqn{\mathbf{Q}})
+#' Leverage Adjustment (\eqn{\boldsymbol{Q}})
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -33,7 +33,7 @@
                   g1 = 1,
                   g2 = 1.5,
                   constant = 0.7) {
-  n <- length(h)
+  n <- length(x = h)
   if (type %in% c("hc0", "hc1")) {
     out <- rep(
       x = 1,
@@ -97,7 +97,7 @@
       }
     )
     out <- 1 / sqrt(
-      (1 - h)^gamma
+      x = (1 - h)^gamma
     )
   }
   out

@@ -104,21 +104,21 @@ of the unstandardized regression model be given by
     \boldsymbol{\theta}
     =
     \left\{
-    \mathbf{b},
+    \boldsymbol{b},
     \sigma^{2},
-    \mathrm{vech}
+    \operatorname{vech}
     \left(
-      \boldsymbol{\Sigma}_{\mathbf{X}\mathbf{X}}
+      \boldsymbol{\Sigma}_{\boldsymbol{X}\boldsymbol{X}}
     \right)
     \right\}
   }
-where \eqn{\mathbf{b}} is the vector of regression slopes,
+where \eqn{\boldsymbol{b}} is the vector of regression slopes,
 \eqn{\sigma^{2}} is the error variance,
 and
 \eqn{
-    \mathrm{vech}
+    \operatorname{vech}
     \left(
-      \boldsymbol{\Sigma}_{\mathbf{X}\mathbf{X}}
+      \boldsymbol{\Sigma}_{\boldsymbol{X}\boldsymbol{X}}
     \right)
   }
 is the vector of unique elements
@@ -140,11 +140,14 @@ is positive definite.
 data("nas1982", package = "betaMC")
 
 # Fit Model in lm ----------------------------------------------------------
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
 
 # MC -----------------------------------------------------------------------
 mc <- MC(
-  object,
+  object = object,
   R = 100, # use a large value e.g., 20000L for actual research
   seed = 0508
 )
@@ -154,9 +157,11 @@ mc
 #   - BetaMC
 #   - DeltaRSqMC
 #   - DiffBetaMC
+#   - FSqMC
 #   - PCorMC
 #   - RSqMC
 #   - SCorMC
+#   - SCorSqMC
 
 }
 \references{
@@ -191,7 +196,8 @@ Other Beta Monte Carlo Functions:
 \code{\link[=MCMI]{MCMI()}},
 \code{\link[=PCorMC]{PCorMC()}},
 \code{\link[=RSqMC]{RSqMC()}},
-\code{\link[=SCorMC]{SCorMC()}}
+\code{\link[=SCorMC]{SCorMC()}},
+\code{\link[=SCorSqMC]{SCorSqMC()}}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

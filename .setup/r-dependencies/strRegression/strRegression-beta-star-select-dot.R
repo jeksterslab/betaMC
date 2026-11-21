@@ -26,6 +26,15 @@
 #' @return Returns a numeric vector or matrix with the same shape as
 #'   `betastar`.
 #'
+#' @examples
+#' strRegression:::.BetaStarSelect(
+#'   betastar = c(0.4, 0.3),
+#'   sigmay = 2,
+#'   sigmax = c(1, 4),
+#'   std_y = FALSE,
+#'   std_x = c(TRUE, FALSE)
+#' )
+#'
 #' @family Structure of Regression Functions
 #' @keywords strRegression internal
 #' @noRd
@@ -34,12 +43,12 @@
                             sigmax,
                             std_y = TRUE,
                             std_x) {
-  if (is.matrix(betastar)) {
+  if (is.matrix(x = betastar)) {
     betastar * sigmay^(1 - std_y) * (
       sigmax^matrix(
         data = std_x - 1,
-        nrow = nrow(betastar),
-        ncol = ncol(betastar),
+        nrow = nrow(x = betastar),
+        ncol = ncol(x = betastar),
         byrow = TRUE
       )
     )

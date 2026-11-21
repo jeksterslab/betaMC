@@ -1,21 +1,22 @@
-#' Symmetric matrix A from vech(A)
+#' Symmetric Matrix from Its Half-Vectorization (Internal)
 #'
-#' Symmetric matrix from its half-vectorization.
+#' Builds the symmetric \eqn{k \times k} matrix
+#' from \eqn{\operatorname{vech} \! \left( \boldsymbol{A} \right)},
+#' its lower triangle stacked column by column.
+#' No input checks: see `SymofVech()`.
 #'
-#' Generates an
-#' \eqn{k \times k}
-#' symmetric matrix
-#' from a
-#' \eqn{\frac{1}{2}k(k + 1)}
-#' vector.
+#' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns a `k` by `k` matrix.
-#'
-#' @param x Vector of length `0.5 * k(k + 1)`.
-#'   Half-vectorization of a `k` by `k` matrix.
-#'   \eqn{\mathrm{vech} \left( \mathbf{A}_{k \times k} \right)}.
+#' @param x Numeric vector of length \eqn{k (k + 1) / 2}.
+#'   Half-vectorization of a \eqn{k \times k} matrix,
+#'   \eqn{\operatorname{vech} \! \left( \boldsymbol{A} \right)}.
 #' @param k Positive integer.
-#'   Dimension of the `k` by `k` matrix.
+#'   Dimension of the \eqn{k \times k} matrix.
+#'
+#' @return Returns a numeric \eqn{k \times k} symmetric matrix.
+#'
+#' @examples
+#' .SymofVech(x = c(1, 0.5, 0.25, 2, 0.5, 3), k = 3)
 #'
 #' @family Symmetric Functions
 #' @keywords linearAlgebra symmetric internal
@@ -27,7 +28,7 @@
     nrow = k,
     ncol = k
   )
-  sym[lower.tri(sym, diag = TRUE)] <- x
-  sym[upper.tri(sym)] <- t(sym)[upper.tri(sym)]
+  sym[lower.tri(x = sym, diag = TRUE)] <- x
+  sym[upper.tri(x = sym)] <- t(x = sym)[upper.tri(x = sym)]
   sym
 }

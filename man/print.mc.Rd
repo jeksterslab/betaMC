@@ -19,9 +19,12 @@ and model-implied covariance matrix.
 Print Method for an Object of Class \code{mc}
 }
 \examples{
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-mc <- MC(object, R = 100)
-print(mc)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+mc <- MC(object = object, R = 100)
+print(x = mc)
 
 }
 \author{

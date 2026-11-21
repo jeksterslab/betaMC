@@ -2,7 +2,7 @@
 #'
 #' @details
 #' \deqn{
-#'   \mathrm{Bias}_{\matnrm{MC}}
+#'   \mathrm{Bias}_{\mathrm{MC}}
 #'    =
 #'    \left(
 #'      R^{-1}

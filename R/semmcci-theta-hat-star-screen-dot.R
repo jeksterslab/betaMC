@@ -42,19 +42,19 @@
     pd = pd,
     tol = tol
   )$thetahatstar
-  if (!is.null(append)) {
+  if (!is.null(x = append)) {
     draws <- cbind(
       draws,
       matrix(
         data = append,
         nrow = R,
-        ncol = length(append),
+        ncol = length(x = append),
         byrow = TRUE
       )
     )
   }
   ok <- screen(draws)
-  for (i in which(!ok)) {
+  for (i in which(x = !ok)) {
     count <- 0L
     repeat {
       x <- .ThetaHatStar(
@@ -64,7 +64,7 @@
         decomposition = decomposition,
         pd = FALSE
       )$thetahatstar
-      if (!is.null(append)) {
+      if (!is.null(x = append)) {
         x <- cbind(
           x,
           matrix(

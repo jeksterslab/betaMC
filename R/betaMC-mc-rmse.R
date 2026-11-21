@@ -2,7 +2,7 @@
 #'
 #' @details
 #' \deqn{
-#'   \mathrm{RMSE}_{\matnrm{MC}}
+#'   \mathrm{RMSE}_{\mathrm{MC}}
 #'    =
 #'    \left[
 #'      R^{-1}

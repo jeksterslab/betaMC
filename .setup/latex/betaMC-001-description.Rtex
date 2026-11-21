@@ -82,7 +82,7 @@ improvement in R-squared, squared partial correlations,
 and differences in standardized regression coefficients,
 for models fitted by \texttt{lm()}.
 \texttt{betaMC} combines ideas from Monte Carlo confidence intervals for the indirect effect
-\parencite{Pesigan-Cheung-2023}
+\parencite{Pesigan-Cheung-2024}
 and the sampling covariance matrix of regression coefficients
 \parencite{Dudgeon-2017}
 to generate confidence intervals effect sizes in regression.

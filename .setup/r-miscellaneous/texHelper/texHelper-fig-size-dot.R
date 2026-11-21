@@ -6,6 +6,7 @@
 #' @param size Character string. `"column"`, `"page"`, or `"slide"`.
 #' @param height Numeric. Overrides the preset's height, in inches.
 #' @returns Returns a list: width, height, family, and base_size.
+#' @keywords texHelper figure internal
 #' @noRd
 .FigSize <- function(size = "page",
                      height = NULL) {

@@ -20,11 +20,11 @@
                     gammacap,
                     gammacap_mvn) {
   inversemvn <- chol2inv(
-    chol(gammacap_mvn)
+    x = chol(x = gammacap_mvn)
   )
-  tjcapinversemvn <- t(jcap) %*% inversemvn
+  tjcapinversemvn <- t(x = jcap) %*% inversemvn
   bread <- chol2inv(
-    chol(tjcapinversemvn %*% jcap)
+    x = chol(x = tjcapinversemvn %*% jcap)
   )
   meat <- tjcapinversemvn %*% gammacap %*% inversemvn %*% jcap
   bread %*% meat %*% bread

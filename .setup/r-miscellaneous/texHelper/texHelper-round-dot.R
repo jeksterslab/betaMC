@@ -8,7 +8,7 @@
 #' @param digits Digits for numeric values.
 #'
 #' @family Rounding Functions
-#' @keywords texTools round internal
+#' @keywords texHelper round internal
 #' @noRd
 .Round <- function(x,
                    digits = 2) {

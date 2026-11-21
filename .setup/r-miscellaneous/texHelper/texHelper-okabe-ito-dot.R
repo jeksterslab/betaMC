@@ -4,6 +4,7 @@
 #' that figures read in greyscale.
 #'
 #' @returns Returns a character vector of colours, without black.
+#' @keywords texHelper figure internal
 #' @noRd
 .OkabeIto <- function() {
   unname(obj = grDevices::palette.colors(palette = "Okabe-Ito"))[-1L]

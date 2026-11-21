@@ -38,7 +38,10 @@ ver <- c()
 
 pkg_bioconductor <- c()
 
-ignore <- "^vignettes$"
+ignore <- c(
+  "^vignettes$",
+  "^cran-comments\\.md$"
+)
 
 license <- "mit"
 

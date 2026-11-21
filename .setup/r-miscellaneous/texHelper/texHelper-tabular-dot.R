@@ -6,9 +6,15 @@
 #'
 #' @param x Data frame of matrix.
 #' @param digits Digits for numeric values.
+#' @param open Character string.
+#'   Opening delimiter around numeric values.
+#' @param close Character string.
+#'   Closing delimiter around numeric values.
+#' @param init Character string or `NULL`.
+#'   Text placed before every row, if not `NULL`.
 #'
 #' @family Tabular Functions
-#' @keywords texTools tabular internal
+#' @keywords texHelper tabular internal
 #' @noRd
 .Tabular <- function(x,
                      digits = 2,

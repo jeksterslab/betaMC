@@ -7,21 +7,21 @@
 #'     \boldsymbol{\theta}
 #'     =
 #'     \left\{
-#'     \mathbf{b},
+#'     \boldsymbol{b},
 #'     \sigma^{2},
-#'     \mathrm{vech}
+#'     \operatorname{vech}
 #'     \left(
-#'       \boldsymbol{\Sigma}_{\mathbf{X}\mathbf{X}}
+#'       \boldsymbol{\Sigma}_{\boldsymbol{X}\boldsymbol{X}}
 #'     \right)
 #'     \right\}
 #'   }
-#'   where \eqn{\mathbf{b}} is the vector of regression slopes,
+#'   where \eqn{\boldsymbol{b}} is the vector of regression slopes,
 #'   \eqn{\sigma^{2}} is the error variance,
 #'   and
 #'   \eqn{
-#'     \mathrm{vech}
+#'     \operatorname{vech}
 #'     \left(
-#'       \boldsymbol{\Sigma}_{\mathbf{X}\mathbf{X}}
+#'       \boldsymbol{\Sigma}_{\boldsymbol{X}\boldsymbol{X}}
 #'     \right)
 #'   }
 #'   is the vector of unique elements
@@ -130,11 +130,14 @@
 #' data("nas1982", package = "betaMC")
 #'
 #' # Fit Model in lm ----------------------------------------------------------
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
 #'
 #' # MC -----------------------------------------------------------------------
 #' mc <- MC(
-#'   object,
+#'   object = object,
 #'   R = 100, # use a large value e.g., 20000L for actual research
 #'   seed = 0508
 #' )
@@ -144,9 +147,11 @@
 #' #   - BetaMC
 #' #   - DeltaRSqMC
 #' #   - DiffBetaMC
+#' #   - FSqMC
 #' #   - PCorMC
 #' #   - RSqMC
 #' #   - SCorMC
+#' #   - SCorSqMC
 #'
 #' @family Beta Monte Carlo Functions
 #' @keywords betaMC mc
@@ -162,12 +167,7 @@ MC <- function(object,
                tol = 1e-06,
                fixed_x = FALSE,
                seed = NULL) {
-  stopifnot(
-    inherits(
-      x = object,
-      what = "lm"
-    )
-  )
+  .CheckLM(object = object)
   lm_process <- .ProcessLM(object = object)
   stopifnot(
     type %in% c(

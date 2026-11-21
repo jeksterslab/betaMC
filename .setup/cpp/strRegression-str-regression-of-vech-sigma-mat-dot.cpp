@@ -1,25 +1,45 @@
 // -----------------------------------------------------------------------------
-// edit
-// functions/strRegression/strRegression-str-regression-of-vech-sigma-mat-dot.cpp
-// (linked into .setup/cpp/; change it in the functionsCpp project)
+// edit .setup/cpp/strRegression-str-regression-of-vech-sigma-mat-dot.cpp
 // Ivan Jacob Agaloos Pesigan
 // -----------------------------------------------------------------------------
 
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 
-arma::mat SymofVechCpp(const arma::rowvec& x, const arma::uword k);
-
-// Regression effect sizes for each row of vech(sigmacap),
-// where sigmacap is the covariance matrix of (y, x_1, ..., x_p):
-// standardized slopes (betastar), R-squared (rsq),
-// semipartial correlations (spcor),
-// and squared partial correlations (pcorsq).
-// Same quantities as .BetaStarofSigma(), .RSqofSigma(), .SPCor(),
-// and .PCorSq() in R. Rows that fail are NA.
+//' Regression Effect Sizes of Draws of the Covariance Matrix (C++)
+//'
+//' Regression effect sizes for each row of
+//' \eqn{\operatorname{vech} \left( \boldsymbol{\Sigma} \right)},
+//' where \eqn{\boldsymbol{\Sigma}} is the covariance matrix of
+//' \eqn{\left( y, x_{1}, \dots, x_{p} \right)}:
+//' standardized slopes (`betastar`), R-squared (`rsq`),
+//' semipartial correlations (`spcor`),
+//' and squared partial correlations (`pcorsq`).
+//' Same quantities as `.BetaStarofSigma()`, `.RSqofSigma()`, `.SPCor()`,
+//' and `.PCorSq()` in R.
+//' Rows that fail (a nonpositive variance or a singular matrix) are `NA`.
+//'
+//' @author Ivan Jacob Agaloos Pesigan
+//'
+//' @param vechsigmacap Numeric matrix.
+//'   Each row is the half-vectorization of a covariance matrix
+//'   with `k * (k + 1) / 2` columns.
+//' @param k Positive integer.
+//'   Number of variables, \eqn{p + 1}.
+//'
+//' @return A list with the matrix `betastar` (`n` by `p`),
+//'   the vector `rsq` (length `n`),
+//'   and the matrices `spcor` and `pcorsq` (`n` by `p`).
+//'
+//' @examples
+//' sigmacap <- matrix(data = c(4, 1, 1, 1, 9, 2, 1, 2, 16), nrow = 3)
+//' vechsigmacap <- rbind(sigmacap[lower.tri(x = sigmacap, diag = TRUE)])
+//' .StrRegressionofVechSigmaMat(vechsigmacap = vechsigmacap, k = 3)
+//'
+//' @noRd
 // [[Rcpp::export(.StrRegressionofVechSigmaMat)]]
 Rcpp::List StrRegressionofVechSigmaMat(const arma::mat& vechsigmacap,
-                                       const arma::uword k) {
+                                       const arma::uword& k) {
   const arma::uword n = vechsigmacap.n_rows;
   const arma::uword p = k - 1;
   arma::mat betastar(n, p);

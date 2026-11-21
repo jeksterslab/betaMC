@@ -5,11 +5,11 @@ lapply(
                  text,
                  n,
                  tol) {
-    set.seed(42)
+    set.seed(seed = 42)
     message(text)
-    if (!exists("nas1982")) {
+    if (!exists(x = "nas1982")) {
       try(
-        data(
+        expr = utils::data(
           "nas1982",
           package = "betaMC"
         ),
@@ -18,19 +18,19 @@ lapply(
     }
     df <- nas1982
     df <- as.data.frame(
-      MASS::mvrnorm(
+      x = MASS::mvrnorm(
         n = n,
         mu = colMeans(
-          df[, c("QUALITY", "NARTIC", "PCTGRT", "PCTSUPP")]
+          x = df[, c("QUALITY", "NARTIC", "PCTGRT", "PCTSUPP")]
         ),
-        Sigma = cov(
-          df[, c("QUALITY", "NARTIC", "PCTGRT", "PCTSUPP")]
+        Sigma = stats::cov(
+          x = df[, c("QUALITY", "NARTIC", "PCTGRT", "PCTSUPP")]
         ),
         empirical = TRUE
       )
     )
-    object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-    rsq <- RSqMC(MC(object, type = "hc0"))
+    object <- stats::lm(formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+    rsq <- RSqMC(object = MC(object = object, type = "hc0"))
     model <- paste(
       "QUALITY ~ NARTIC + PCTGRT + PCTSUPP;",
       "QUALITY ~~ sigmasq * QUALITY;",
@@ -42,54 +42,54 @@ lapply(
       data = df,
       estimator = "MLM"
     )
-    std <- semmcci:::summary.semmcci(semmcci::MCStd(semmcci::MC(lav)))
+    std <- semmcci:::summary.semmcci(semmcci::MCStd(mc = semmcci::MC(lav = lav)))
     testthat::test_that(
-      paste(text, "coef"),
-      {
+      desc = paste(text, "coef"),
+      code = {
         testthat::skip_on_cran()
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              coef(rsq) - std[c("rsq", "adj"), "est"]
+              x = stats::coef(object = rsq) - std[c("rsq", "adj"), "est"]
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "se"),
-      {
+      desc = paste(text, "se"),
+      code = {
         testthat::skip_on_cran()
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              sqrt(diag(vcov(rsq))) - std[c("rsq", "adj"), "se"]
+              x = sqrt(x = diag(x = stats::vcov(object = rsq))) - std[c("rsq", "adj"), "se"]
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "ci.lower"),
-      {
+      desc = paste(text, "ci.lower"),
+      code = {
         testthat::skip_on_cran()
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              confint(rsq)[, 1] - std[c("rsq", "adj"), "2.5%"]
+              x = stats::confint(object = rsq)[, 1] - std[c("rsq", "adj"), "2.5%"]
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "ci.upper"),
-      {
+      desc = paste(text, "ci.upper"),
+      code = {
         testthat::skip_on_cran()
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              confint(rsq)[, 2] - std[c("rsq", "adj"), "97.5%"]
+              x = stats::confint(object = rsq)[, 2] - std[c("rsq", "adj"), "97.5%"]
             ) <= tol
           )
         )

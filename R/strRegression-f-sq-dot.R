@@ -13,16 +13,19 @@
 #' @return Returns a numeric matrix with the column `fsq`
 #'   followed by one column per regressor.
 #'
+#' @examples
+#' strRegression:::.FSq(rsq = 0.5, spcor = rbind(c(x1 = 0.3, x2 = 0.4)))
+#'
 #' @family Structure of Regression Functions
 #' @keywords strRegression internal
 #' @noRd
 .FSq <- function(rsq,
                  spcor) {
-  rsq <- as.vector(rsq)
+  rsq <- as.vector(x = rsq)
   out <- cbind(
     fsq = rsq / (1 - rsq),
     spcor^2 / (1 - rsq)
   )
-  colnames(out) <- c("fsq", colnames(spcor))
+  colnames(x = out) <- c("fsq", colnames(x = spcor))
   out
 }

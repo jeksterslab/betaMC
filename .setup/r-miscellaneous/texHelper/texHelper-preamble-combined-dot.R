@@ -6,6 +6,8 @@
 #'
 #' @param path Character string.
 #'   Path to `*.bib` files.
+#' @param output_path Character string.
+#'   Output path.
 #' @param style Character string.
 #'   `"apa"` or `"reading"`.
 #' @param sortcites Logical.
@@ -23,19 +25,28 @@
 #' @param maxcitenames Logical.
 #'   If `maxcitenames = TRUE`,
 #'   maxcitenames is set to 100.
+#' @param fn_bib Character string.
+#'   Biblatex filename.
 #'
 #' @family Bibliography Functions
-#' @keywords texTools biblatex internal
+#' @keywords texHelper biblatex internal
 #' @noRd
-.PreambleBiblatex <- function(path,
+.PreambleCombined <- function(path,
+                              output_path,
                               style = "apa",
                               sortcites = TRUE,
                               sorting = "nyt",
                               map = TRUE,
-                              maxcitenames = FALSE) {
+                              maxcitenames = FALSE,
+                              fn_bib = "bib.bib") {
   if (dir.exists(paths = path)) {
-    bibs <- file.path(path, "bib.bib")
-    if (file.exists(bibs)) {
+    bibs <- list.files(
+      path = path,
+      pattern = "\\.bib$",
+      full.names = TRUE,
+      all.files = TRUE
+    )
+    if (length(x = bibs) > 0) {
       if (sortcites) {
         sortcites <- "true"
       } else {
@@ -48,6 +59,26 @@
       } else {
         maxcitenames <- ""
       }
+      bibs <- unlist(
+        x = lapply(
+          X = bibs,
+          FUN = readLines
+        )
+      )
+      dir.create(
+        path = output_path,
+        showWarnings = FALSE
+      )
+      output_file <- file.path(
+        output_path,
+        fn_bib
+      )
+      con <- file(description = output_file)
+      writeLines(
+        text = bibs,
+        con = con
+      )
+      close(con = con)
       biblatex <- paste0(
         "\n",
         "\\usepackage[",
@@ -100,7 +131,7 @@
         paste0(
           "\n",
           "\\addbibresource{",
-          bibs,
+          output_file,
           "}",
           "\n",
           collapse = ""

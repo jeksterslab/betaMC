@@ -14,21 +14,21 @@ lapply(
     # when the regressors are multivariate normal
     # and the error term is homoskedastic and normally distributed.
     message(text)
-    set.seed(42)
-    sigmacapx <- diag(p)
+    set.seed(seed = 42)
+    sigmacapx <- diag(x = p)
     beta <- rep(x = beta, times = p)
     sigmasq <- (
       1 - (
-        tcrossprod(beta, sigmacapx) %*% beta
+        tcrossprod(x = beta, y = sigmacapx) %*% beta
       )
     )
     theta <- c(
       beta,
       sigmasq,
-      .Vech(sigmacapx)
+      .Vech(x = sigmacapx)
     )
     x <- scale(
-      matrix(
+      x = matrix(
         data = stats::rnorm(
           n = n * p
         ),
@@ -38,198 +38,198 @@ lapply(
     )
     y <- (
       x %*% beta
-    ) + rnorm(
+    ) + stats::rnorm(
       n = n,
-      sd = sqrt(sigmasq)
+      sd = sqrt(x = sigmasq)
     )
     df <- cbind(
       y,
       x
     )
-    colnames(df) <- c(
+    colnames(x = df) <- c(
       "y",
-      paste0("x", seq_len(p))
+      paste0("x", seq_len(length.out = p))
     )
-    df <- as.data.frame(df)
-    object <- lm(y ~ ., data = df)
-    mvn <- summary.mc(MC(object, R = R, type = "mvn"))
-    adf <- summary.mc(MC(object, R = R, type = "adf"))
-    hc0 <- summary.mc(MC(object, R = R, type = "hc0"))
-    hc1 <- summary.mc(MC(object, R = R, type = "hc1"))
-    hc2 <- summary.mc(MC(object, R = R, type = "hc2"))
-    hc3 <- summary.mc(MC(object, R = R, type = "hc3"))
-    hc4 <- summary.mc(MC(object, R = R, type = "hc4"))
-    hc4m <- summary.mc(MC(object, R = R, type = "hc4m"))
-    hc5 <- summary.mc(MC(object, R = R, type = "hc5"))
-    mvn_cov <- as.vector(mvn$var)
+    df <- as.data.frame(x = df)
+    object <- stats::lm(formula = y ~ ., data = df)
+    mvn <- summary.mc(object = MC(object = object, R = R, type = "mvn"))
+    adf <- summary.mc(object = MC(object = object, R = R, type = "adf"))
+    hc0 <- summary.mc(object = MC(object = object, R = R, type = "hc0"))
+    hc1 <- summary.mc(object = MC(object = object, R = R, type = "hc1"))
+    hc2 <- summary.mc(object = MC(object = object, R = R, type = "hc2"))
+    hc3 <- summary.mc(object = MC(object = object, R = R, type = "hc3"))
+    hc4 <- summary.mc(object = MC(object = object, R = R, type = "hc4"))
+    hc4m <- summary.mc(object = MC(object = object, R = R, type = "hc4m"))
+    hc5 <- summary.mc(object = MC(object = object, R = R, type = "hc5"))
+    mvn_cov <- as.vector(x = mvn$var)
     testthat::test_that(
-      paste(text, "means"),
-      {
+      desc = paste(text, "means"),
+      code = {
         testthat::skip_on_cran()
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn$mean - theta
+              x = mvn$mean - theta
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              adf$mean - theta
+              x = adf$mean - theta
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              hc0$mean - theta
+              x = hc0$mean - theta
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              hc1$mean - theta
+              x = hc1$mean - theta
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              hc2$mean - theta
+              x = hc2$mean - theta
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              hc3$mean - theta
+              x = hc3$mean - theta
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              hc4$mean - theta
+              x = hc4$mean - theta
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              hc4m$mean - theta
+              x = hc4m$mean - theta
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              hc5$mean - theta
+              x = hc5$mean - theta
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "adf"),
-      {
+      desc = paste(text, "adf"),
+      code = {
         testthat::skip_on_cran()
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn_cov - as.vector(adf$var)
+              x = mvn_cov - as.vector(x = adf$var)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "hc0"),
-      {
+      desc = paste(text, "hc0"),
+      code = {
         testthat::skip_on_cran()
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn_cov - as.vector(hc0$var)
+              x = mvn_cov - as.vector(x = hc0$var)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "hc1"),
-      {
+      desc = paste(text, "hc1"),
+      code = {
         testthat::skip_on_cran()
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn_cov - as.vector(hc1$var)
+              x = mvn_cov - as.vector(x = hc1$var)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "hc2"),
-      {
+      desc = paste(text, "hc2"),
+      code = {
         testthat::skip_on_cran()
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn_cov - as.vector(hc2$var)
+              x = mvn_cov - as.vector(x = hc2$var)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "hc3"),
-      {
+      desc = paste(text, "hc3"),
+      code = {
         testthat::skip_on_cran()
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn_cov - as.vector(hc3$var)
+              x = mvn_cov - as.vector(x = hc3$var)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "hc4"),
-      {
+      desc = paste(text, "hc4"),
+      code = {
         testthat::skip_on_cran()
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn_cov - as.vector(hc4$var)
+              x = mvn_cov - as.vector(x = hc4$var)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "hc4m"),
-      {
+      desc = paste(text, "hc4m"),
+      code = {
         testthat::skip_on_cran()
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn_cov - as.vector(hc4m$var)
+              x = mvn_cov - as.vector(x = hc4m$var)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "hc5"),
-      {
+      desc = paste(text, "hc5"),
+      code = {
         testthat::skip_on_cran()
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              mvn_cov - as.vector(hc5$var)
+              x = mvn_cov - as.vector(x = hc5$var)
             ) <= tol
           )
         )
@@ -237,15 +237,15 @@ lapply(
     )
     # coverage
     print.mc(
-      MC(
-        object,
+      x = MC(
+        object = object,
         R = 5L,
         decomposition = "chol"
       )
     )
     print.mc(
-      MC(
-        object,
+      x = MC(
+        object = object,
         R = 5L,
         decomposition = "svd"
       )

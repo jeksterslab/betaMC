@@ -5,7 +5,7 @@ output: rmarkdown::html_vignette
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
-  @Pesigan-Cheung-2023
+  @Pesigan-Cheung-2024
   @Dudgeon-2017
 vignette: >
   %\VignetteIndexEntry{betaMC: Monte Carlo Method Combined with Multiple Imputation}
@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 ```
 
 The Monte Carlo Method combined with multiple imputation
-described in @Pesigan-Cheung-2023
+described in @Pesigan-Cheung-2024
 is implemented using the `MCMI()` function
 in the context of linear regression.
 Multiple imputation is used to deal with missing values in a data set.
@@ -51,14 +51,14 @@ We use the `mice::ampute()` function to generate a data set with missing values.
 
 ```{r}
 #| message = FALSE
-library(betaMC)
+library(package = betaMC)
 ```
 
 ```{r}
 #| echo = FALSE
-if (!exists("nas1982")) {
+if (!exists(x = "nas1982")) {
   try(
-    data(
+    expr = utils::data(
       "nas1982",
       package = "betaMC"
     ),
@@ -74,8 +74,8 @@ df <- betaMC::nas1982
 ```
 
 ```{r}
-set.seed(42)
-df <- mice::ampute(df)$amp
+set.seed(seed = 42)
+df <- mice::ampute(data = df)$amp
 df
 ```
 
@@ -83,7 +83,7 @@ df
 
 ```{r}
 mi <- mice::mice(
-  df,
+  data = df,
   m = 100,
   seed = 42,
   print = FALSE
@@ -98,49 +98,49 @@ The fitted model (`object`) is updated with each imputed data
 within the `MCMI()` function.
 
 ```{r}
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+object <- stats::lm(formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
 ### Monte Carlo Sampling Distribution of Parameters
 
 ```{r}
-hc3 <- MCMI(object, mi = mi, type = "hc3")
+hc3 <- MCMI(object = object, mi = mi, type = "hc3")
 ```
 
 ### Standardized Regression Slopes
 
 ```{r}
-BetaMC(hc3)
+BetaMC(object = hc3)
 ```
 
 ### Multiple Correlation Coefficients
 
 ```{r}
-RSqMC(hc3)
+RSqMC(object = hc3)
 ```
 
 ### Improvement in R-squared
 
 ```{r}
-DeltaRSqMC(hc3)
+DeltaRSqMC(object = hc3)
 ```
 
 ### Semipartial Correlation Coefficients
 
 ```{r}
-SCorMC(hc3)
+SCorMC(object = hc3)
 ```
 
 ### Squared Partial Correlation Coefficients
 
 ```{r}
-PCorMC(hc3)
+PCorMC(object = hc3)
 ```
 
 ### Differences of Standardized Regression Slopes
 
 ```{r}
-DiffBetaMC(hc3)
+DiffBetaMC(object = hc3)
 ```
 
 ## References

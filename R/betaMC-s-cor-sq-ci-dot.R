@@ -6,7 +6,8 @@
 #' @param ci Matrix with ordered lower and upper endpoints.
 #' @return Data frame with squared estimates, lower and upper limits.
 #' @examples
-#' .SCorSqCI(est = c(x = 0), ci = matrix(c(-0.2, 0.3),
+#' .SCorSqCI(est = c(x = 0), ci = matrix(
+#'   data = c(-0.2, 0.3),
 #'   nrow = 1,
 #'   dimnames = list("x", c("lower", "upper"))
 #' ))

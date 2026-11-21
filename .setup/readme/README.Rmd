@@ -45,9 +45,9 @@ improvement in R-squared, squared partial correlations,
 and differences in standardized regression coefficients,
 for models fitted by `lm()`.
 `betaMC` combines ideas from Monte Carlo confidence intervals for the indirect effect
-(Pesigan and Cheung, 2024: http://doi.org/10.3758/s13428-023-02114-4)
+(Pesigan and Cheung, 2024: <https://doi.org/10.3758/s13428-023-02114-4>)
 and the sampling covariance matrix of regression coefficients
-(Dudgeon, 2017: http://doi.org/10.1007/s11336-017-9563-z)
+(Dudgeon, 2017: <https://doi.org/10.1007/s11336-017-9563-z>)
 to generate confidence intervals effect sizes in regression.
 
 ## Installation
@@ -79,14 +79,14 @@ using the `BetaMC()` function from the `betaMC` package.
 
 ```{r}
 #| message = FALSE
-library(betaMC)
+library(package = betaMC)
 ```
 
 ```{r}
 #| echo = FALSE
-if (!exists("nas1982")) {
+if (!exists(x = "nas1982")) {
   try(
-    data(
+    expr = utils::data(
       "nas1982",
       package = "betaMC"
     ),
@@ -106,7 +106,7 @@ df <- betaMC::nas1982
 Fit the regression model using the `lm()` function.
 
 ```{r}
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+object <- stats::lm(formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
 ### Monte Carlo Sampling Distribution of Parameters
@@ -114,19 +114,19 @@ object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 #### Normal-Theory Approach
 
 ```{r}
-mvn <- MC(object, type = "mvn")
+mvn <- MC(object = object, type = "mvn")
 ```
 
 #### Asymptotic distribution-free Approach
 
 ```{r}
-adf <- MC(object, type = "adf")
+adf <- MC(object = object, type = "adf")
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 ```{r}
-hc3 <- MC(object, type = "hc3")
+hc3 <- MC(object = object, type = "hc3")
 ```
 
 ### Standardized Regression Slopes
@@ -134,19 +134,19 @@ hc3 <- MC(object, type = "hc3")
 #### Normal-Theory Approach
 
 ```{r}
-BetaMC(mvn, alpha = 0.05)
+BetaMC(object = mvn, alpha = 0.05)
 ```
 
 #### Asymptotic distribution-free Approach
 
 ```{r}
-BetaMC(adf, alpha = 0.05)
+BetaMC(object = adf, alpha = 0.05)
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 ```{r}
-BetaMC(hc3, alpha = 0.05)
+BetaMC(object = hc3, alpha = 0.05)
 ```
 
 ### Other Effect Sizes
@@ -163,31 +163,31 @@ and
 #### Multiple Correlation Coefficients (R-squared and adjusted R-squared)
 
 ```{r}
-RSqMC(hc3, alpha = 0.05)
+RSqMC(object = hc3, alpha = 0.05)
 ```
 
 #### Improvement in R-squared
 
 ```{r}
-DeltaRSqMC(hc3, alpha = 0.05)
+DeltaRSqMC(object = hc3, alpha = 0.05)
 ```
 
 #### Semipartial Correlation Coefficients
 
 ```{r}
-SCorMC(hc3, alpha = 0.05)
+SCorMC(object = hc3, alpha = 0.05)
 ```
 
 #### Squared Partial Correlation Coefficients
 
 ```{r}
-PCorMC(hc3, alpha = 0.05)
+PCorMC(object = hc3, alpha = 0.05)
 ```
 
 #### Differences of Standardized Regression Coefficients
 
 ```{r}
-DiffBetaMC(hc3, alpha = 0.05)
+DiffBetaMC(object = hc3, alpha = 0.05)
 ```
 
 ## Documentation

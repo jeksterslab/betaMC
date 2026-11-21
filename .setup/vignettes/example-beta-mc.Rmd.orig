@@ -5,7 +5,7 @@ output: rmarkdown::html_vignette
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
-  @Pesigan-Cheung-2023
+  @Pesigan-Cheung-2024
   @Dudgeon-2017
 vignette: >
   %\VignetteIndexEntry{betaMC: Example Using the BetaMC Function}
@@ -31,14 +31,14 @@ using the `BetaMC()` function from the `betaMC` package.
 
 ```{r}
 #| message = FALSE
-library(betaMC)
+library(package = betaMC)
 ```
 
 ```{r}
 #| echo = FALSE
-if (!exists("nas1982")) {
+if (!exists(x = "nas1982")) {
   try(
-    data(
+    expr = utils::data(
       "nas1982",
       package = "betaMC"
     ),
@@ -58,7 +58,7 @@ df <- betaMC::nas1982
 Fit the regression model using the `lm()` function.
 
 ```{r}
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+object <- stats::lm(formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
 ### Monte Carlo Sampling Distribution of Parameters
@@ -66,19 +66,19 @@ object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 #### Normal-Theory Approach
 
 ```{r}
-mvn <- MC(object, type = "mvn")
+mvn <- MC(object = object, type = "mvn")
 ```
 
 #### Asymptotic distribution-free Approach
 
 ```{r}
-adf <- MC(object, type = "adf")
+adf <- MC(object = object, type = "adf")
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 ```{r}
-hc3 <- MC(object, type = "hc3")
+hc3 <- MC(object = object, type = "hc3")
 ```
 
 ### Standardized Regression Slopes
@@ -86,19 +86,19 @@ hc3 <- MC(object, type = "hc3")
 #### Normal-Theory Approach
 
 ```{r}
-mvn <- BetaMC(mvn)
+mvn <- BetaMC(object = mvn)
 ```
 
 #### Asymptotic distribution-free Approach
 
 ```{r}
-adf <- BetaMC(adf)
+adf <- BetaMC(object = adf)
 ```
 
 #### Heteroskedasticity Consistent Approach (HC3)
 
 ```{r}
-hc3 <- BetaMC(hc3)
+hc3 <- BetaMC(object = hc3)
 ```
 
 ## Methods
@@ -108,9 +108,9 @@ hc3 <- BetaMC(hc3)
 Summary of the results of `BetaMC()`.
 
 ```{r}
-summary(mvn)
-summary(adf)
-summary(hc3)
+summary(object = mvn)
+summary(object = adf)
+summary(object = hc3)
 ```
 
 ### coef
@@ -118,9 +118,9 @@ summary(hc3)
 Return the vector of estimates.
 
 ```{r}
-coef(mvn)
-coef(adf)
-coef(hc3)
+stats::coef(object = mvn)
+stats::coef(object = adf)
+stats::coef(object = hc3)
 ```
 
 ### vcov
@@ -128,9 +128,9 @@ coef(hc3)
 Return the sampling covariance matrix.
 
 ```{r}
-vcov(mvn)
-vcov(adf)
-vcov(hc3)
+stats::vcov(object = mvn)
+stats::vcov(object = adf)
+stats::vcov(object = hc3)
 ```
 
 ### confint
@@ -138,9 +138,9 @@ vcov(hc3)
 Return confidence intervals.
 
 ```{r}
-confint(mvn, level = 0.95)
-confint(adf, level = 0.95)
-confint(hc3, level = 0.95)
+stats::confint(object = mvn, level = 0.95)
+stats::confint(object = adf, level = 0.95)
+stats::confint(object = hc3, level = 0.95)
 ```
 
 ## References

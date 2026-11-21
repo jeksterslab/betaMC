@@ -11,44 +11,57 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// Quantile
+Rcpp::NumericVector Quantile(const arma::vec& x, const arma::vec& probs);
+RcppExport SEXP _betaMC_Quantile(SEXP xSEXP, SEXP probsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type probs(probsSEXP);
+    rcpp_result_gen = Rcpp::wrap(Quantile(x, probs));
+    return rcpp_result_gen;
+END_RCPP
+}
 // MCScreenLM
-Rcpp::LogicalVector MCScreenLM(const arma::mat& thetahatstar, const arma::uword p);
+Rcpp::LogicalVector MCScreenLM(const arma::mat& thetahatstar, const arma::uword& p);
 RcppExport SEXP _betaMC_MCScreenLM(SEXP thetahatstarSEXP, SEXP pSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::mat& >::type thetahatstar(thetahatstarSEXP);
-    Rcpp::traits::input_parameter< const arma::uword >::type p(pSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type p(pSEXP);
     rcpp_result_gen = Rcpp::wrap(MCScreenLM(thetahatstar, p));
     return rcpp_result_gen;
 END_RCPP
 }
 // MCVechSigmaLM
-arma::mat MCVechSigmaLM(const arma::mat& thetahatstar, const arma::uword p);
+arma::mat MCVechSigmaLM(const arma::mat& thetahatstar, const arma::uword& p);
 RcppExport SEXP _betaMC_MCVechSigmaLM(SEXP thetahatstarSEXP, SEXP pSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::mat& >::type thetahatstar(thetahatstarSEXP);
-    Rcpp::traits::input_parameter< const arma::uword >::type p(pSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type p(pSEXP);
     rcpp_result_gen = Rcpp::wrap(MCVechSigmaLM(thetahatstar, p));
     return rcpp_result_gen;
 END_RCPP
 }
 // StrRegressionofVechSigmaMat
-Rcpp::List StrRegressionofVechSigmaMat(const arma::mat& vechsigmacap, const arma::uword k);
+Rcpp::List StrRegressionofVechSigmaMat(const arma::mat& vechsigmacap, const arma::uword& k);
 RcppExport SEXP _betaMC_StrRegressionofVechSigmaMat(SEXP vechsigmacapSEXP, SEXP kSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::mat& >::type vechsigmacap(vechsigmacapSEXP);
-    Rcpp::traits::input_parameter< const arma::uword >::type k(kSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type k(kSEXP);
     rcpp_result_gen = Rcpp::wrap(StrRegressionofVechSigmaMat(vechsigmacap, k));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_betaMC_Quantile", (DL_FUNC) &_betaMC_Quantile, 2},
     {"_betaMC_MCScreenLM", (DL_FUNC) &_betaMC_MCScreenLM, 2},
     {"_betaMC_MCVechSigmaLM", (DL_FUNC) &_betaMC_MCVechSigmaLM, 2},
     {"_betaMC_StrRegressionofVechSigmaMat", (DL_FUNC) &_betaMC_StrRegressionofVechSigmaMat, 2},

@@ -21,6 +21,20 @@
 #'   If `fixed_x = FALSE`, treat the regressors as random.
 #'
 #' @return Returns a matrix.
+#' @examples
+#' beta <- c(0.5, 0.3)
+#' sigmacapx <- matrix(data = c(1, 0.2, 0.2, 2), nrow = 2)
+#' sigmacap <- matrix(
+#'   data = c(0.89, 0.56, 0.7, 0.56, 1, 0.2, 0.7, 0.2, 2),
+#'   nrow = 3
+#' )
+#' strRegression:::.JacVechSigmaWRTTheta(
+#'   beta = beta,
+#'   sigmacapx = sigmacapx,
+#'   q = 6,
+#'   p = 2
+#' )
+#'
 #' @family Derivatives Functions
 #' @keywords strRegression derivatives internal
 #' @noRd
@@ -37,8 +51,8 @@
     p = p
   )
   u <- 0.5 * p * (p + 1)
-  dp <- .DMat(p)
-  iden <- diag(p)
+  dp <- .DMat(k = p)
+  iden <- diag(x = p)
   if (fixed_x) {
     jcap <- matrix(
       data = 0.0,
@@ -52,19 +66,19 @@
       ncol = q
     )
   }
-  rownames(jcap) <- c(
+  rownames(x = jcap) <- c(
     moments$sigmaysq,
     moments$sigmayx,
     moments$vechsigmacapx
   )
-  if (is.null(rsq)) {
+  if (is.null(x = rsq)) {
     if (fixed_x) {
-      colnames(jcap) <- c(
+      colnames(x = jcap) <- c(
         theta$beta,
         theta$sigmasq
       )
     } else {
-      colnames(jcap) <- c(
+      colnames(x = jcap) <- c(
         theta$beta,
         theta$sigmasq,
         theta$vechsigmacapx
@@ -72,12 +86,12 @@
     }
   } else {
     if (fixed_x) {
-      colnames(jcap) <- c(
+      colnames(x = jcap) <- c(
         theta$beta,
         "rsq"
       )
     } else {
-      colnames(jcap) <- c(
+      colnames(x = jcap) <- c(
         theta$beta,
         "rsq",
         theta$vechsigmacapx
@@ -88,21 +102,21 @@
   # sigmaysq = beta' sigmacapx beta / rsq,
   # so its derivatives with respect to beta and vech(sigmacapx)
   # are divided by rsq
-  if (is.null(rsq)) {
+  if (is.null(x = rsq)) {
     scale <- 1
   } else {
-    scale <- 1 / as.vector(rsq)[1]
+    scale <- 1 / as.vector(x = rsq)[1]
   }
   jcap[
     moments$sigmaysq,
     theta$beta
   ] <- scale * .Vec(
-    2 * crossprod(
-      beta,
-      sigmacapx
+    x = 2 * crossprod(
+      x = beta,
+      y = sigmacapx
     )
   )
-  if (is.null(rsq)) {
+  if (is.null(x = rsq)) {
     jcap[
       moments$sigmaysq,
       theta$sigmasq
@@ -112,14 +126,14 @@
       moments$sigmaysq,
       "rsq"
     ] <- -(
-      t(beta) %*% sigmacapx %*% beta
+      t(x = beta) %*% sigmacapx %*% beta
     ) / rsq^2
   }
   if (!fixed_x) {
     jcap[
       moments$sigmaysq,
       theta$vechsigmacapx
-    ] <- scale * .Vec(tcrossprod(beta)) %*% dp
+    ] <- scale * .Vec(x = tcrossprod(x = beta)) %*% dp
   }
   jcap[
     moments$sigmayx,
@@ -130,13 +144,13 @@
       moments$sigmayx,
       theta$vechsigmacapx
     ] <- kronecker(
-      t(beta),
-      iden
+      X = t(x = beta),
+      Y = iden
     ) %*% dp
     jcap[
       moments$vechsigmacapx,
       theta$vechsigmacapx
-    ] <- diag(u)
+    ] <- diag(x = u)
   }
   jcap
 }

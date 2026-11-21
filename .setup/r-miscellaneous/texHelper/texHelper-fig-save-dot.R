@@ -9,6 +9,7 @@
 #' @param height Numeric. See `.FigSize()`.
 #' @param path Character string. The project root.
 #' @returns Invisibly returns the paths of the two files.
+#' @keywords texHelper figure internal
 #' @noRd
 .FigSave <- function(plot,
                      name,

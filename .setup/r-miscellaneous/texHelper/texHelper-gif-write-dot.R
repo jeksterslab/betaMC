@@ -1,9 +1,10 @@
 #' Write an Animated Figure
 #'
-#' Calls a `Fig*()` once per frame. One source gives the GIF (pkgdown, Quarto,
-#' README, Reveal.js), the PNG frames (`\PSUanimation`), and a multi-page PDF
-#' (`animate`, `\PSUanimationpdf`), in `.setup/latex/figures/`. Papers also
-#' show chosen frames as small multiples.
+#' Calls a figure function once per frame. One source gives the GIF
+#' (pkgdown, Quarto, README, Reveal.js), the PNG frames (`\PSUanimation`),
+#' and a multi-page PDF (`animate`, `\PSUanimationpdf`), in
+#' `.setup/latex/figures/`. Papers also show chosen frames as small
+#' multiples.
 #'
 #' @param fig Function. Takes `frame` and `size`, and returns a ggplot2 plot.
 #' @param frames Vector. The values of `frame`.
@@ -12,13 +13,14 @@
 #' @param size Character string. See `.FigSize()`.
 #' @param path Character string. The project root.
 #' @returns Invisibly returns the path of the GIF.
+#' @keywords texHelper figure internal
 #' @noRd
-GifWrite <- function(fig,
-                     frames,
-                     name,
-                     fps = 5,
-                     size = "slide",
-                     path = ".") {
+.GifWrite <- function(fig,
+                      frames,
+                      name,
+                      fps = 5,
+                      size = "slide",
+                      path = ".") {
   # magick needs a factor of 100; over 3 per second is fine for motion, but a
   # figure must not flash (the caption says what changes)
   stopifnot(fps %in% c(2, 4, 5, 10))

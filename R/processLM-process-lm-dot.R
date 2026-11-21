@@ -39,11 +39,13 @@
 #'     \item{theta}{Parameters in the covariance structure,
 #'       that is, `beta`, `sigmasq`, `vechsigmacapx`.}
 #'     \item{betastar}{Vector of standardized regression slopes.}
-#'     \item{scor}{Vector of semipatial correlations.}
-#'     \item{pcor}{Vector of squared patial correlations.}
-#'     \item{rsq}{Vector of multiple correlation coefficients
-#'       (R-squared and adjusted R-squared).}
-#'     \item{dif_beta}{Differences of partial regression slopes.}
+#'     \item{scor}{Vector of semipartial correlations
+#'       (equal to `betastar` when `p = 1`).}
+#'     \item{pcor}{Vector of squared partial correlations
+#'       (equal to the R-squared when `p = 1`).}
+#'     \item{rsq}{Vector of the R-squared and the adjusted R-squared.}
+#'     \item{dif_beta}{Differences of partial regression slopes
+#'       (`NA` when `p = 1`).}
 #'     \item{dif_betastar}{Differences of standardized
 #'       partial regression slopes.}
 #'     \item{dif_idx}{Differences index.}
@@ -56,18 +58,18 @@
 #' @noRd
 .ProcessLM <- function(object) {
   # call
-  call0 <- stats::getCall(object)
+  call0 <- stats::getCall(x = object)
   # data set used by lm
   y <- object$model[, 1]
-  x <- stats::model.matrix(object)
+  x <- stats::model.matrix(object = object)
   X <- x
   x[, 1] <- y
-  varnames <- colnames(x)
-  varnames[1] <- colnames(object$model)[1]
-  colnames(x) <- varnames
+  varnames <- colnames(x = x)
+  varnames[1] <- colnames(x = object$model)[1]
+  colnames(x = x) <- varnames
   xnames <- varnames[-1]
   # n, k, p, q, df
-  dims <- dim(x)
+  dims <- dim(x = x)
   n <- dims[1]
   k <- dims[2]
   p <- k - 1
@@ -75,38 +77,40 @@
   q <- p + 1 + 0.5 * p * (p + 1)
   # moments
   ## means
-  mu <- colMeans(x)
+  mu <- colMeans(x = x)
   ## covariances
-  sigmacap <- stats::cov(x)
+  sigmacap <- stats::cov(x = x)
   vechsigmacap <- .Vech(
-    sigmacap
+    x = sigmacap
   )
   sigmacapx <- sigmacap[2:k, 2:k, drop = FALSE]
   vechsigmacapx <- .Vech(
-    sigmacapx
+    x = sigmacapx
   )
-  sigma <- sqrt(diag(sigmacap))
+  sigma <- sqrt(x = diag(x = sigmacap))
   sigmacap_consistent <- (
     sigmacap * (
       n - 1
     ) / n
   )
   vechsigmacap_consistent <- .Vech(
-    sigmacap_consistent
+    x = sigmacap_consistent
   )
-  pinv_of_dcap <- .PInvDmat(.DMat(k))
+  pinv_of_dcap <- .PInvDmat(
+    d = .DMat(k = k)
+  )
   ## correlations
   rhocap <- .RhoofSigma(
-    sigmacap,
+    x = sigmacap,
     q = 1 / sigma
   )
   ## parameter estimates
-  coef <- beta <- object$coefficients
+  coef <- object$coefficients
   beta0 <- coef[1]
   beta <- coef[-1]
-  sigmasq <- stats::sigma(object)^2
+  sigmasq <- stats::sigma(object = object)^2
   theta <- unname(
-    c(
+    obj = c(
       beta,
       sigmasq,
       vechsigmacapx
@@ -118,7 +122,7 @@
     rhocap = rhocap,
     k = k
   )
-  names(betastar) <- xnames
+  names(x = betastar) <- xnames
   ## R-squared
   rsq <- .RSqofSigma(
     sigmacap = sigmacap,
@@ -135,21 +139,17 @@
   )
   ## semi-partial correlations
   ## squared partial correlations
-  if (p > 1) {
-    scor <- .SPCor(
-      betastar = betastar,
-      sigmacapx = sigmacapx
-    )
-    pcor <- .PCorSq(
-      srsq = scor^2,
-      rsq = rsq[1]
-    )
-    names(scor) <- xnames
-    names(pcor) <- xnames
-  } else {
-    scor <- NA
-    pcor <- NA
-  }
+  ## (p = 1: scor is betastar, pcor is the R-squared)
+  scor <- .SPCor(
+    betastar = betastar,
+    sigmacapx = sigmacapx
+  )
+  pcor <- .PCorSq(
+    srsq = scor^2,
+    rsq = rsq[1]
+  )
+  names(x = scor) <- xnames
+  names(x = pcor) <- xnames
   ## differences of slopes
   dif <- .Dif(
     beta = beta,

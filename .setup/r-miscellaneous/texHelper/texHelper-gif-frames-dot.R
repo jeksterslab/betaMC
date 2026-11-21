@@ -8,9 +8,10 @@
 #' @param path Character string. The project root.
 #' @param width Integer. Maximum frame width in pixels.
 #' @returns Invisibly returns a named integer vector of frame counts.
+#' @keywords texHelper figure internal
 #' @noRd
-GifFrames <- function(path,
-                      width = 960) {
+.GifFrames <- function(path,
+                       width = 960) {
   figures <- file.path(path, ".setup", "latex", "figures")
   gif_files <- list.files(
     path = file.path(figures, "gif"),

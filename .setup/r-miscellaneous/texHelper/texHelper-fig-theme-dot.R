@@ -2,6 +2,7 @@
 #'
 #' @param size Character string. See `.FigSize()`.
 #' @returns Returns a ggplot2 theme.
+#' @keywords texHelper figure internal
 #' @noRd
 .FigTheme <- function(size = "page") {
   preset <- .FigSize(size = size)

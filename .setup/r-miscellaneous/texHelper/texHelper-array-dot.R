@@ -8,7 +8,7 @@
 #' @param digits Digits for numeric values.
 #'
 #' @family Array Functions
-#' @keywords texTools array internal
+#' @keywords texHelper array internal
 #' @noRd
 .Array <- function(x,
                    digits = 2) {
@@ -59,7 +59,7 @@
     paste(
       rep(
         x = "c",
-        times = dim(x = x)[2]
+        times = dims[2]
       ),
       collapse = ""
     ),

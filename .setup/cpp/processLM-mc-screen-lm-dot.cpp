@@ -1,18 +1,15 @@
 // -----------------------------------------------------------------------------
-// edit functionsCpp/processLM/processLM-mc-screen-lm-dot.cpp
-// (linked into .setup/cpp/; change it in the functionsCpp project)
+// edit .setup/cpp/processLM-mc-screen-lm-dot.cpp
 // Ivan Jacob Agaloos Pesigan
 // -----------------------------------------------------------------------------
 
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 
-arma::mat SymofVechCpp(const arma::rowvec& x, const arma::uword k);
-
 // Model-implied covariance matrix of (y, x) from
 // theta = (beta, sigmasq, vech(sigmacapx)).
 // Returns false in ok when the draw is not admissible.
-arma::mat SigmaofThetaLMCpp(const arma::rowvec& theta, const arma::uword p,
+arma::mat SigmaofThetaLMCpp(const arma::rowvec& theta, const arma::uword& p,
                             bool& ok) {
   const arma::uword k = p + 1;
   const arma::vec beta = theta.subvec(0, p - 1).t();
@@ -42,7 +39,7 @@ arma::mat SigmaofThetaLMCpp(const arma::rowvec& theta, const arma::uword p,
 // Same checks as .MCThetaHat() in betaMC.
 // [[Rcpp::export(.MCScreenLM)]]
 Rcpp::LogicalVector MCScreenLM(const arma::mat& thetahatstar,
-                               const arma::uword p) {
+                               const arma::uword& p) {
   const arma::uword n = thetahatstar.n_rows;
   Rcpp::LogicalVector out(n);
   for (arma::uword r = 0; r < n; r++) {

@@ -117,12 +117,12 @@ jobs:
               nm = rtex
             )
           )
-          # texTools helpers call each other but are not a package:
+          # texHelper helpers call each other but are not a package:
           # object_usage_linter cannot see them. The template's smoke test has
           # a {{pkg}} placeholder.
           tex_tools <- list.files(
             path = ".",
-            pattern = "^texTools-.*\\.R$",
+            pattern = "^texHelper-.*\\.R$",
             recursive = TRUE,
             all.files = TRUE
           )

@@ -18,21 +18,34 @@
                      sigmacap,
                      qcap,
                      n) {
+  # rows of v are vech(d_i d_i' - sigmacap), built for all observations at once
+  idx <- which(
+    x = lower.tri(
+      x = sigmacap,
+      diag = TRUE
+    ),
+    arr.ind = TRUE
+  )
+  v <- (
+    d[
+      ,
+      idx[, 1],
+      drop = FALSE
+    ] * d[
+      ,
+      idx[, 2],
+      drop = FALSE
+    ]
+  ) - rep(
+    x = .Vech(
+      x = sigmacap
+    ),
+    each = n
+  )
   (
     1 / n
-  ) * Reduce(
-    f = "+",
-    x = lapply(
-      X = seq_len(n),
-      FUN = function(i) {
-        qcap[i] * tcrossprod(
-          .Vech(
-            tcrossprod(
-              d[i, ]
-            ) - sigmacap
-          )
-        )
-      }
-    )
+  ) * crossprod(
+    x = v * qcap,
+    y = v
   )
 }

@@ -1,4 +1,4 @@
-.PHONY: all release build clean cleanall cleanpkg cleanproj cleanpush cleantinytex bib libcheck libformat bibrproject clone coverage data dependencies readme docs dotfiles aiglobal secretscan verify spec log sizecheck template tree public ai manifest install latex lint local localforce pdf pkg pkgdown project push quarto style tinytex tinytexforce vignettes upgrade
+.PHONY: all release build clean cleanall cleanpkg cleanproj cleanpush cleantinytex bib libcheck libformat bibrproject clone coverage data dependencies readme docs dotfiles aiglobal secretscan verify status spec log fixup upload sizecheck template tree conform public ai manifest install latex lint local localforce pdf pkg pkgdown project push quarto style tinytex tinytexforce vignettes upgrade
 
 push: build docs latex coverage cleanpush
 
@@ -24,6 +24,18 @@ template:
 
 tree:
 	@Rscript -e "rProject::Tree(\"${PWD}\")"
+
+# make conform [REFERENCE=<project>] [REMOTE=TRUE] [LINT=TRUE] [TESTS=TRUE] [FIX=TRUE [TOPIC=<topic>]]
+# compares the project with the standard; FIX=TRUE writes the missing files
+# and removes the strays (main.tex), then updates the log and the upload folder;
+# LINT=TRUE runs make lint and TESTS=TRUE runs the unit tests (findings, logs in tempdir)
+conform:
+	@echo "\n\nChecking the project against the standard...\n\n"
+	@if [ "$(FIX)" = "TRUE" ]; then \
+	Rscript -e "rProject::ConformFix(\"${PWD}\", reference = if (nzchar(\"$(REFERENCE)\")) \"$(REFERENCE)\", topic = \"$(or ${TOPIC},conform)\", remove = TRUE, lint = $(or ${LINT},FALSE), tests = $(or ${TESTS},FALSE))"; \
+	else \
+	Rscript -e "rProject::Conform(\"${PWD}\", reference = if (nzchar(\"$(REFERENCE)\")) \"$(REFERENCE)\", remote = $(or ${REMOTE},FALSE), lint = $(or ${LINT},FALSE), tests = $(or ${TESTS},FALSE))"; \
+	fi
 
 pkg:
 	@echo "\n\nInstalling packages...\n\n"
@@ -125,6 +137,10 @@ verify:
 	@bash .setup/scripts/verify.sh || echo "\n\nWARNING: .verify was not updated (no SSH here). Run bash .setup/scripts/verify.sh on the host, then make verify again.\n\n"
 	@Rscript -e "rProject::Verify(\"${PWD}\", record = $(or ${RECORD},FALSE))"
 
+status:
+	@echo "\n\nReporting the private and public repositories...\n\n"
+	@SET="$(SET)" bash .setup/scripts/repo-status.sh $(PROJECTS)
+
 # make spec TOPIC=<topic>
 spec:
 	@echo "\n\nCreating a spec...\n\n"
@@ -135,6 +151,17 @@ spec:
 log:
 	@echo "\n\nWriting the change-set log...\n\n"
 	@Rscript -e "rProject::Log(\"${PWD}\", topic = \"${TOPIC}\", summary = \"${SUMMARY}\", update = $(or ${UPDATE},FALSE))"
+
+# make fixup TOPIC=<topic> SUMMARY="<first line of the fix-up's commit message>"
+# adds a fix-up section, a pending Pushes row, and a pending index row to the topic's log
+fixup:
+	@echo "\n\nAdding a fix-up to the change-set log...\n\n"
+	@Rscript -e "rProject::FixUp(\"${PWD}\", topic = \"${TOPIC}\", summary = \"${SUMMARY}\")"
+
+# make upload TOPIC=<topic> [FIXUP=TRUE] builds the upload folder from the log's lists
+upload:
+	@echo "\n\nBuilding the upload folder...\n\n"
+	@Rscript -e "rProject::Upload(\"${PWD}\", topic = \"${TOPIC}\", fixup = $(or ${FIXUP},FALSE))"
 
 # project AI instructions: AGENTS.md, CLAUDE.md, .github/copilot-instructions.md
 ai:

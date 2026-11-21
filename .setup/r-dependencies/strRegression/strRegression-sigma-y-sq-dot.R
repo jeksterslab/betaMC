@@ -11,7 +11,7 @@
 #'     \sigma^{2}
 #'     +
 #'     \boldsymbol{\beta}^{\prime}
-#'     \boldsymbol{\Sigma}_{\mathbf{X}, \mathbf{X}}
+#'     \boldsymbol{\Sigma}_{\boldsymbol{X}, \boldsymbol{X}}
 #'     \boldsymbol{\beta}
 #' }
 #'
@@ -24,9 +24,20 @@
 #'   \eqn{\sigma^{2}}.
 #'   Error variance.
 #' @param sigmacapx Numeric matrix
-#'   \eqn{\boldsymbol{\Sigma}_{\mathbf{X}, \mathbf{X}}}.
+#'   \eqn{\boldsymbol{\Sigma}_{\boldsymbol{X}, \boldsymbol{X}}}.
 #'   Covariance matrix of
 #'   \eqn{X_{1}, \dots, X_{j}, \dots, X_{p}}.
+#'
+#' @return Returns a numeric value, the variance of Y.
+#'
+#' @examples
+#' beta <- c(0.5, 0.3)
+#' sigmacapx <- matrix(data = c(1, 0.2, 0.2, 2), nrow = 2)
+#' sigmacap <- matrix(
+#'   data = c(0.89, 0.56, 0.7, 0.56, 1, 0.2, 0.7, 0.2, 2),
+#'   nrow = 3
+#' )
+#' strRegression:::.SigmaYSq(beta = beta, sigmasq = 0.4, sigmacapx = sigmacapx)
 #'
 #' @family Moments Functions
 #' @keywords strRegression moments internal
@@ -35,9 +46,9 @@
                       sigmasq,
                       sigmacapx) {
   .Vec(
-    sigmasq + crossprod(
-      beta,
-      sigmacapx
+    x = sigmasq + crossprod(
+      x = beta,
+      y = sigmacapx
     ) %*% beta
   )
 }
