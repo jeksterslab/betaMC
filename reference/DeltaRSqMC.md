@@ -128,9 +128,9 @@ print(x = out)
 #> Improvement in R-squared
 #> type = "hc3"
 #>            est     se   R   2.5%  97.5%
-#> NARTIC  0.1859 0.0673 100 0.0527 0.3163
-#> PCTGRT  0.1177 0.0496 100 0.0272 0.2156
-#> PCTSUPP 0.0569 0.0323 100 0.0079 0.1274
+#> NARTIC  0.1859 0.0679 100 0.0442 0.2932
+#> PCTGRT  0.1177 0.0562 100 0.0136 0.2230
+#> PCTSUPP 0.0569 0.0318 100 0.0134 0.1272
 summary(object = out)
 #> Call:
 #> DeltaRSqMC(object = mc, alpha = 0.05)
@@ -138,20 +138,20 @@ summary(object = out)
 #> Improvement in R-squared
 #> type = "hc3"
 #>            est     se   R   2.5%  97.5%
-#> NARTIC  0.1859 0.0673 100 0.0527 0.3163
-#> PCTGRT  0.1177 0.0496 100 0.0272 0.2156
-#> PCTSUPP 0.0569 0.0323 100 0.0079 0.1274
+#> NARTIC  0.1859 0.0679 100 0.0442 0.2932
+#> PCTGRT  0.1177 0.0562 100 0.0136 0.2230
+#> PCTSUPP 0.0569 0.0318 100 0.0134 0.1272
 coef(object = out)
 #>    NARTIC    PCTGRT   PCTSUPP 
 #> 0.1858925 0.1176542 0.0568722 
 vcov(object = out)
-#>                NARTIC        PCTGRT       PCTSUPP
-#> NARTIC   0.0045232624  0.0005521535 -0.0001510877
-#> PCTGRT   0.0005521535  0.0024592634 -0.0002500183
-#> PCTSUPP -0.0001510877 -0.0002500183  0.0010413251
+#>                NARTIC       PCTGRT       PCTSUPP
+#> NARTIC   4.605450e-03 2.708872e-04 -3.484382e-05
+#> PCTGRT   2.708872e-04 3.155103e-03  3.317709e-05
+#> PCTSUPP -3.484382e-05 3.317709e-05  1.013640e-03
 confint(object = out, level = 0.95)
-#>               2.5 %    97.5 %
-#> NARTIC  0.052718279 0.3162597
-#> PCTGRT  0.027238743 0.2156250
-#> PCTSUPP 0.007917799 0.1273978
+#>              2.5 %    97.5 %
+#> NARTIC  0.04416496 0.2931815
+#> PCTGRT  0.01363412 0.2229883
+#> PCTSUPP 0.01337168 0.1272339
 ```

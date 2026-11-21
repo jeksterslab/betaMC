@@ -108,8 +108,8 @@ print(x = out)
 #> R-squared and adjusted R-squared
 #> type = "hc3"
 #>        est     se   R   2.5%  97.5%
-#> rsq 0.8045 0.0602 100 0.6520 0.8797
-#> adj 0.7906 0.0645 100 0.6272 0.8711
+#> rsq 0.8045 0.0589 100 0.6534 0.8809
+#> adj 0.7906 0.0631 100 0.6286 0.8724
 summary(object = out)
 #> Call:
 #> RSqMC(object = mc, alpha = 0.05)
@@ -117,17 +117,17 @@ summary(object = out)
 #> R-squared and adjusted R-squared
 #> type = "hc3"
 #>        est     se   R   2.5%  97.5%
-#> rsq 0.8045 0.0602 100 0.6520 0.8797
-#> adj 0.7906 0.0645 100 0.6272 0.8711
+#> rsq 0.8045 0.0589 100 0.6534 0.8809
+#> adj 0.7906 0.0631 100 0.6286 0.8724
 coef(object = out)
 #>       rsq       adj 
 #> 0.8045263 0.7905638 
 vcov(object = out)
 #>             rsq         adj
-#> rsq 0.003627964 0.003887104
-#> adj 0.003887104 0.004164754
+#> rsq 0.003463417 0.003710804
+#> adj 0.003710804 0.003975862
 confint(object = out, level = 0.95)
 #>         2.5 %    97.5 %
-#> rsq 0.6520133 0.8796603
-#> adj 0.6271572 0.8710646
+#> rsq 0.6533782 0.8809066
+#> adj 0.6286195 0.8724000
 ```

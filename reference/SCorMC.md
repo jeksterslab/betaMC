@@ -106,9 +106,9 @@ print(x = out)
 #> Semipartial correlations
 #> type = "hc3"
 #>            est     se   R   2.5%  97.5%
-#> NARTIC  0.4312 0.0874 100 0.2295 0.5623
-#> PCTGRT  0.3430 0.0778 100 0.1650 0.4643
-#> PCTSUPP 0.2385 0.0720 100 0.0880 0.3569
+#> NARTIC  0.4312 0.0904 100 0.2101 0.5414
+#> PCTGRT  0.3430 0.0883 100 0.1165 0.4722
+#> PCTSUPP 0.2385 0.0660 100 0.1155 0.3567
 summary(object = out)
 #> Call:
 #> SCorMC(object = mc, alpha = 0.05)
@@ -116,20 +116,20 @@ summary(object = out)
 #> Semipartial correlations
 #> type = "hc3"
 #>            est     se   R   2.5%  97.5%
-#> NARTIC  0.4312 0.0874 100 0.2295 0.5623
-#> PCTGRT  0.3430 0.0778 100 0.1650 0.4643
-#> PCTSUPP 0.2385 0.0720 100 0.0880 0.3569
+#> NARTIC  0.4312 0.0904 100 0.2101 0.5414
+#> PCTGRT  0.3430 0.0883 100 0.1165 0.4722
+#> PCTSUPP 0.2385 0.0660 100 0.1155 0.3567
 coef(object = out)
 #>    NARTIC    PCTGRT   PCTSUPP 
 #> 0.4311525 0.3430075 0.2384789 
 vcov(object = out)
-#>                NARTIC        PCTGRT       PCTSUPP
-#> NARTIC   0.0076365444  0.0016690138 -0.0003859994
-#> PCTGRT   0.0016690138  0.0060497382 -0.0006650079
-#> PCTSUPP -0.0003859994 -0.0006650079  0.0051908878
+#>                NARTIC       PCTGRT       PCTSUPP
+#> NARTIC   0.0081718086 1.533084e-03 -1.363309e-04
+#> PCTGRT   0.0015330842 7.803924e-03  3.933106e-05
+#> PCTSUPP -0.0001363309 3.933106e-05  4.350514e-03
 confint(object = out, level = 0.95)
-#>              2.5 %    97.5 %
-#> NARTIC  0.22954565 0.5622638
-#> PCTGRT  0.16503601 0.4642695
-#> PCTSUPP 0.08800891 0.3569279
+#>             2.5 %    97.5 %
+#> NARTIC  0.2101302 0.5414426
+#> PCTGRT  0.1164884 0.4722133
+#> PCTSUPP 0.1154947 0.3566907
 ```
