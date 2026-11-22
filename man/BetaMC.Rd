@@ -60,6 +60,25 @@ percentiles corresponding to \eqn{100(1 - \alpha)\%}
 from the generated sampling
 distribution of \eqn{\boldsymbol{\hat{\beta}}},
 where \eqn{\alpha} is the significance level.
+
+From the regression parameters
+\eqn{\boldsymbol{\theta} = \left\{ \boldsymbol{b}, \sigma^{2},
+\operatorname{vech} \left( \boldsymbol{\Sigma}_{\boldsymbol{X}
+\boldsymbol{X}} \right) \right\}} of each draw (see \code{\link[=MC]{MC()}}),
+the variance of the outcome and the standardized regression slopes are
+\deqn{\sigma^{2}_{y} = \boldsymbol{b}^{\prime}
+\boldsymbol{\Sigma}_{\boldsymbol{X} \boldsymbol{X}} \boldsymbol{b} +
+\sigma^{2}, \quad \beta^{\ast}_{j} = b_{j}
+\frac{\sigma_{x_{j}}}{\sigma_{y}},}
+where \eqn{\sigma_{x_{j}}} is the square root of the \eqn{j}th diagonal
+element of \eqn{\boldsymbol{\Sigma}_{\boldsymbol{X} \boldsymbol{X}}}.
+The estimates are computed from the fitted model,
+the draws \eqn{\hat{\boldsymbol{\beta}}^{\ast}_{r}} from each Monte Carlo
+draw, and \code{vcov} is the sample covariance matrix of the draws.
+The percentile interval is
+\eqn{\left[ \hat{G}^{-1} \left( \alpha / 2 \right), \hat{G}^{-1} \left( 1 -
+\alpha / 2 \right) \right]},
+where \eqn{\hat{G}} is the empirical distribution function of the draws.
 }
 \examples{
 # Data ---------------------------------------------------------------------
@@ -88,6 +107,29 @@ coef(object = out)
 vcov(object = out)
 confint(object = out, level = 0.95)
 
+}
+\references{
+Dudgeon, P. (2017).
+Some improvements in confidence intervals
+for standardized regression coefficients.
+\emph{Psychometrika}, \emph{82}(4), 928--951.
+\doi{10.1007/s11336-017-9563-z}
+
+MacKinnon, D. P., Lockwood, C. M., & Williams, J. (2004).
+Confidence limits for the indirect effect:
+Distribution of the product and resampling methods.
+\emph{Multivariate Behavioral Research}, \emph{39}(1), 99--128.
+\doi{10.1207/s15327906mbr3901_4}
+
+Pesigan, I. J. A., & Cheung, S. F. (2024).
+Monte Carlo confidence intervals for the indirect effect with missing data.
+\emph{Behavior Research Methods}.
+\doi{10.3758/s13428-023-02114-4}
+
+Preacher, K. J., & Selig, J. P. (2012).
+Advantages of Monte Carlo confidence intervals for indirect effects.
+\emph{Communication Methods and Measures}, \emph{6}(2), 77--98.
+\doi{10.1080/19312458.2012.679848}
 }
 \seealso{
 Other Beta Monte Carlo Functions:

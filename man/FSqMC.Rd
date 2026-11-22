@@ -2,7 +2,7 @@
 % Please edit documentation in R/betaMC-f-sq-mc.R
 \name{FSqMC}
 \alias{FSqMC}
-\title{Estimate Cohen's f-Squared
+\title{Estimate Cohen's f-Squared and Local f-Squared
 and Generate the Corresponding Sampling Distribution
 Using the Monte Carlo Method}
 \usage{
@@ -29,7 +29,7 @@ of class \code{betamc} which is a list with the following elements:
 }
 }
 \description{
-Estimate Cohen's f-Squared
+Estimate Cohen's f-Squared and Local f-Squared
 and Generate the Corresponding Sampling Distribution
 Using the Monte Carlo Method
 }

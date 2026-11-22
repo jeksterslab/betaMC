@@ -2,8 +2,7 @@
 % Please edit documentation in R/betaMC-methods-beta-mc.R
 \name{confint.betamc}
 \alias{confint.betamc}
-\title{Confidence Intervals Method for an Object of Class
-\code{betamc}}
+\title{Confidence Intervals Method for an Object of Class \code{betamc}}
 \usage{
 \method{confint}{betamc}(object, parm = NULL, level = 0.95, ...)
 }
@@ -11,13 +10,8 @@
 \item{object}{Object of Class \code{betamc},
 that is,
 the output of the
-\code{BetaMC()},
-\code{RSqMC()},
-\code{SCorMC()},
-\code{DeltaRSqMC()},
-\code{PCorMC()}, or
-\code{DiffBetaMC()}
-functions.}
+\code{\link[=BetaMC]{BetaMC()}}, \code{\link[=RSqMC]{RSqMC()}}, \code{\link[=SCorMC]{SCorMC()}}, \code{\link[=DeltaRSqMC]{DeltaRSqMC()}},
+\code{\link[=PCorMC]{PCorMC()}}, \code{\link[=FSqMC]{FSqMC()}}, or \code{\link[=DiffBetaMC]{DiffBetaMC()}} functions.}
 
 \item{parm}{a specification of which parameters
 are to be given confidence intervals,
@@ -32,8 +26,39 @@ If missing, all parameters are considered.}
 Returns a matrix of confidence intervals.
 }
 \description{
-Confidence Intervals Method for an Object of Class
-\code{betamc}
+Confidence Intervals Method for an Object of Class \code{betamc}
+}
+\details{
+The confidence intervals are percentile intervals,
+\eqn{\left[ \hat{G}^{-1} \left( \alpha / 2 \right), \hat{G}^{-1} \left( 1 -
+\alpha / 2 \right) \right]},
+where \eqn{\hat{G}} is the empirical distribution function of the Monte
+Carlo draws (type 7 quantiles).
+The standard errors are the standard deviations of the draws.
+}
+\examples{
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaMC")
+
+# Fit Model in lm ----------------------------------------------------------
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+
+# MC -----------------------------------------------------------------------
+mc <- MC(
+  object = object,
+  R = 100, # use a large value e.g., 20000L for actual research
+  seed = 0508
+)
+
+# BetaMC -------------------------------------------------------------------
+out <- BetaMC(object = mc, alpha = 0.05)
+
+## Methods -----------------------------------------------------------------
+confint(object = out, level = 0.95)
+
 }
 \author{
 Ivan Jacob Agaloos Pesigan

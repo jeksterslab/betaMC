@@ -12,6 +12,24 @@
 #' of regression parameters.
 #' See `MC()` for more details on the Monte Carlo method.
 #'
+#' @details
+#' Let \eqn{\hat{\boldsymbol{\theta}}_{m}} and
+#' \eqn{\hat{\boldsymbol{V}}_{m}} be the parameter estimates and their
+#' sampling covariance matrix in imputed data set \eqn{m = 1, \dots, M}.
+#' The pooled estimates and covariance matrices (Rubin's rules) are
+#' \deqn{\bar{\boldsymbol{\theta}} = \frac{1}{M} \sum_{m = 1}^{M}
+#' \hat{\boldsymbol{\theta}}_{m}, \quad \bar{\boldsymbol{W}} = \frac{1}{M}
+#' \sum_{m = 1}^{M} \hat{\boldsymbol{V}}_{m}, \quad \boldsymbol{B} =
+#' \frac{1}{M - 1} \sum_{m = 1}^{M} \left( \hat{\boldsymbol{\theta}}_{m} -
+#' \bar{\boldsymbol{\theta}} \right) \left( \hat{\boldsymbol{\theta}}_{m} -
+#' \bar{\boldsymbol{\theta}} \right)^{\prime},}
+#' \deqn{\boldsymbol{T} = \bar{\boldsymbol{W}} + \left( 1 + \frac{1}{M}
+#' \right) \boldsymbol{B}.}
+#' The draws are generated from
+#' \eqn{\mathcal{N} \left( \bar{\boldsymbol{\theta}}, \boldsymbol{T}
+#' \right)}, with the replacement sampling of [MC()] for a positive definite
+#' model-implied covariance matrix.
+#'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns an object
@@ -41,13 +59,13 @@
 #' Dudgeon, P. (2017).
 #' Some improvements in confidence intervals
 #' for standardized regression coefficients.
-#' *Psychometrika*, *82*(4), 928–951.
+#' *Psychometrika*, *82*(4), 928--951.
 #' \doi{10.1007/s11336-017-9563-z}
 #'
 #' MacKinnon, D. P., Lockwood, C. M., & Williams, J. (2004).
 #' Confidence limits for the indirect effect:
 #' Distribution of the product and resampling methods.
-#' *Multivariate Behavioral Research*, *39*(1), 99-128.
+#' *Multivariate Behavioral Research*, *39*(1), 99--128.
 #' \doi{10.1207/s15327906mbr3901_4}
 #'
 #' Pesigan, I. J. A., & Cheung, S. F. (2024).
@@ -57,7 +75,7 @@
 #'
 #' Preacher, K. J., & Selig, J. P. (2012).
 #' Advantages of Monte Carlo confidence intervals for indirect effects.
-#' *Communication Methods and Measures*, *6*(2), 77–98.
+#' *Communication Methods and Measures*, *6*(2), 77--98.
 #' \doi{10.1080/19312458.2012.679848}
 #'
 #' @examples

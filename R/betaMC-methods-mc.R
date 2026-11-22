@@ -9,11 +9,19 @@
 #' @param ... additional arguments.
 #'
 #' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaMC")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # MC -----------------------------------------------------------------------
 #' mc <- MC(object = object, R = 100)
+#'
+#' ## Methods -----------------------------------------------------------------
 #' print(x = mc)
 #'
 #' @keywords methods
@@ -40,8 +48,7 @@ print.mc <- function(x,
   )
 }
 
-#' Summary Method for an Object of Class
-#' `mc`
+#' Summary Method for an Object of Class `mc`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -66,12 +73,19 @@ print.mc <- function(x,
 #' @param digits Digits to print.
 #'
 #' @examples
-#' # Fit the regression model
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaMC")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # MC -----------------------------------------------------------------------
 #' mc <- MC(object = object, R = 100)
+#'
+#' ## Methods -----------------------------------------------------------------
 #' summary(object = mc)
 #'
 #' @keywords methods

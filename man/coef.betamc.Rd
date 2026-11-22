@@ -2,8 +2,7 @@
 % Please edit documentation in R/betaMC-methods-beta-mc.R
 \name{coef.betamc}
 \alias{coef.betamc}
-\title{Estimated Parameter Method for an Object of Class
-\code{betamc}}
+\title{Estimated Parameter Method for an Object of Class \code{betamc}}
 \usage{
 \method{coef}{betamc}(object, ...)
 }
@@ -11,13 +10,8 @@
 \item{object}{Object of Class \code{betamc},
 that is,
 the output of the
-\code{BetaMC()},
-\code{RSqMC()},
-\code{SCorMC()},
-\code{DeltaRSqMC()},
-\code{PCorMC()}, or
-\code{DiffBetaMC()}
-functions.}
+\code{\link[=BetaMC]{BetaMC()}}, \code{\link[=RSqMC]{RSqMC()}}, \code{\link[=SCorMC]{SCorMC()}}, \code{\link[=DeltaRSqMC]{DeltaRSqMC()}},
+\code{\link[=PCorMC]{PCorMC()}}, \code{\link[=FSqMC]{FSqMC()}}, or \code{\link[=DiffBetaMC]{DiffBetaMC()}} functions.}
 
 \item{...}{additional arguments.}
 }
@@ -25,8 +19,31 @@ functions.}
 Returns a vector of estimated parameters.
 }
 \description{
-Estimated Parameter Method for an Object of Class
-\code{betamc}
+Estimated Parameter Method for an Object of Class \code{betamc}
+}
+\examples{
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaMC")
+
+# Fit Model in lm ----------------------------------------------------------
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+
+# MC -----------------------------------------------------------------------
+mc <- MC(
+  object = object,
+  R = 100, # use a large value e.g., 20000L for actual research
+  seed = 0508
+)
+
+# BetaMC -------------------------------------------------------------------
+out <- BetaMC(object = mc, alpha = 0.05)
+
+## Methods -----------------------------------------------------------------
+coef(object = out)
+
 }
 \author{
 Ivan Jacob Agaloos Pesigan

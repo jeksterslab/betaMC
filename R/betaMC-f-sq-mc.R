@@ -1,4 +1,4 @@
-#' Estimate Cohen's f-Squared
+#' Estimate Cohen's f-Squared and Local f-Squared
 #' and Generate the Corresponding Sampling Distribution
 #' Using the Monte Carlo Method
 #'

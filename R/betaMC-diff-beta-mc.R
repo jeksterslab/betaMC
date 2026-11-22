@@ -1,4 +1,4 @@
-#' Estimate Differences of Standardized Slopes
+#' Estimate Differences of Standardized Regression Coefficients
 #' and Generate the Corresponding Sampling Distribution
 #' Using the Monte Carlo Method
 #'
@@ -11,6 +11,13 @@
 #'   from the generated sampling
 #'   distribution of differences of standardized regression slopes,
 #'   where \eqn{\alpha} is the significance level.
+#'
+#' @details
+#' For every pair of regressors \eqn{j < l},
+#' the difference of the standardized regression slopes (see [BetaMC()]) is
+#' \deqn{\Delta \beta^{\ast}_{jl} = \beta^{\ast}_{j} - \beta^{\ast}_{l},}
+#' computed from the fitted model for the estimate
+#' and from each Monte Carlo draw (see [MC()]) for the draws.
 #'
 #' @return Returns an object
 #'   of class `betamc` which is a list with the following elements:

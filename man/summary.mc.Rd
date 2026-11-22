@@ -2,8 +2,7 @@
 % Please edit documentation in R/betaMC-methods-mc.R
 \name{summary.mc}
 \alias{summary.mc}
-\title{Summary Method for an Object of Class
-\code{mc}}
+\title{Summary Method for an Object of Class \code{mc}}
 \usage{
 \method{summary}{mc}(object, digits = 4, ...)
 }
@@ -32,16 +31,22 @@ Returns a list with the following elements:
 }
 }
 \description{
-Summary Method for an Object of Class
-\code{mc}
+Summary Method for an Object of Class \code{mc}
 }
 \examples{
-# Fit the regression model
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaMC")
+
+# Fit Model in lm ----------------------------------------------------------
 object <- stats::lm(
   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
   data = nas1982
 )
+
+# MC -----------------------------------------------------------------------
 mc <- MC(object = object, R = 100)
+
+## Methods -----------------------------------------------------------------
 summary(object = mc)
 
 }
