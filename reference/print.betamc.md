@@ -19,6 +19,7 @@ print(x, alpha = NULL, digits = 4, ...)
   [`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md),
   [`DeltaRSqMC()`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md),
   [`PCorMC()`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md),
+  [`FSqMC()`](https://jeksterslab.github.io/betaMC/reference/FSqMC.md),
   or
   [`DiffBetaMC()`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)
   functions.
@@ -44,3 +45,38 @@ replications, and confidence intervals.
 ## Author
 
 Ivan Jacob Agaloos Pesigan
+
+## Examples
+
+``` r
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaMC")
+
+# Fit Model in lm ----------------------------------------------------------
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+
+# MC -----------------------------------------------------------------------
+mc <- MC(
+  object = object,
+  R = 100, # use a large value e.g., 20000L for actual research
+  seed = 0508
+)
+
+# BetaMC -------------------------------------------------------------------
+out <- BetaMC(object = mc, alpha = 0.05)
+
+## Methods -----------------------------------------------------------------
+print(x = out)
+#> Call:
+#> BetaMC(object = mc, alpha = 0.05)
+#> 
+#> Standardized regression slopes
+#> type = "hc3"
+#>            est     se   R   2.5%  97.5%
+#> NARTIC  0.4951 0.0760 100 0.3508 0.6231
+#> PCTGRT  0.3915 0.0732 100 0.2643 0.5224
+#> PCTSUPP 0.2632 0.0808 100 0.1014 0.4009
+```

@@ -119,6 +119,45 @@ percentiles corresponding to \(100(1 - \alpha)\%\)
 from the generated sampling
 distribution of \(\boldsymbol{\hat{\beta}}\),
 where \(\alpha\) is the significance level.</p>
+<p>From the regression parameters
+\(\boldsymbol{\theta} = \left\{ \boldsymbol{b}, \sigma^{2},
+\operatorname{vech} \left( \boldsymbol{\Sigma}_{\boldsymbol{X}
+\boldsymbol{X}} \right) \right\}\) of each draw (see <code><a href="MC.html">MC()</a></code>),
+the variance of the outcome and the standardized regression slopes are
+$$\sigma^{2}_{y} = \boldsymbol{b}^{\prime}
+\boldsymbol{\Sigma}_{\boldsymbol{X} \boldsymbol{X}} \boldsymbol{b} +
+\sigma^{2}, \quad \beta^{\ast}_{j} = b_{j}
+\frac{\sigma_{x_{j}}}{\sigma_{y}},$$
+where \(\sigma_{x_{j}}\) is the square root of the \(j\)th diagonal
+element of \(\boldsymbol{\Sigma}_{\boldsymbol{X} \boldsymbol{X}}\).
+The estimates are computed from the fitted model,
+the draws \(\hat{\boldsymbol{\beta}}^{\ast}_{r}\) from each Monte Carlo
+draw, and <code>vcov</code> is the sample covariance matrix of the draws.
+The percentile interval is
+\(\left[ \hat{G}^{-1} \left( \alpha / 2 \right), \hat{G}^{-1} \left( 1 -
+\alpha / 2 \right) \right]\),
+where \(\hat{G}\) is the empirical distribution function of the draws.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
+    <p>Dudgeon, P. (2017).
+Some improvements in confidence intervals
+for standardized regression coefficients.
+<em>Psychometrika</em>, <em>82</em>(4), 928–951.
+<a href="https://doi.org/10.1007/s11336-017-9563-z" class="external-link">doi:10.1007/s11336-017-9563-z</a></p>
+<p>MacKinnon, D. P., Lockwood, C. M., &amp; Williams, J. (2004).
+Confidence limits for the indirect effect:
+Distribution of the product and resampling methods.
+<em>Multivariate Behavioral Research</em>, <em>39</em>(1), 99–128.
+<a href="https://doi.org/10.1207/s15327906mbr3901_4" class="external-link">doi:10.1207/s15327906mbr3901_4</a></p>
+<p>Pesigan, I. J. A., &amp; Cheung, S. F. (2024).
+Monte Carlo confidence intervals for the indirect effect with missing data.
+<em>Behavior Research Methods</em>.
+<a href="https://doi.org/10.3758/s13428-023-02114-4" class="external-link">doi:10.3758/s13428-023-02114-4</a></p>
+<p>Preacher, K. J., &amp; Selig, J. P. (2012).
+Advantages of Monte Carlo confidence intervals for indirect effects.
+<em>Communication Methods and Measures</em>, <em>6</em>(2), 77–98.
+<a href="https://doi.org/10.1080/19312458.2012.679848" class="external-link">doi:10.1080/19312458.2012.679848</a></p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -167,9 +206,9 @@ where \(\alpha\) is the significance level.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Standardized regression slopes</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> type = "hc3"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            est     se   R   2.5%  97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.4951 0.0805 100 0.3107 0.6135</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.3915 0.0810 100 0.2495 0.5347</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.2632 0.0730 100 0.1307 0.4055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.4951 0.0760 100 0.3508 0.6231</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.3915 0.0732 100 0.2643 0.5224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.2632 0.0808 100 0.1014 0.4009</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> BetaMC(object = mc, alpha = 0.05)</span>
@@ -177,22 +216,22 @@ where \(\alpha\) is the significance level.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Standardized regression slopes</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> type = "hc3"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            est     se   R   2.5%  97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.4951 0.0805 100 0.3107 0.6135</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.3915 0.0810 100 0.2495 0.5347</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.2632 0.0730 100 0.1307 0.4055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.4951 0.0760 100 0.3508 0.6231</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.3915 0.0732 100 0.2643 0.5224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.2632 0.0808 100 0.1014 0.4009</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    NARTIC    PCTGRT   PCTSUPP </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.4951451 0.3914887 0.2632477 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               NARTIC       PCTGRT      PCTSUPP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC   0.006474424 -0.003611896 -0.002023361</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  -0.003611896  0.006565249 -0.001581942</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP -0.002023361 -0.001581942  0.005336272</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC   0.005776525 -0.002834952 -0.002143637</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  -0.002834952  0.005360100 -0.001947940</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP -0.002143637 -0.001947940  0.006526525</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">out</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             2.5 %    97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.3106786 0.6134972</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.2494813 0.5346903</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.1306721 0.4055249</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.3507721 0.6231028</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.2643226 0.5224279</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.1013892 0.4008517</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

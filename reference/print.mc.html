@@ -69,11 +69,19 @@ and model-implied covariance matrix.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Data ---------------------------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"nas1982"</span>, package <span class="op">=</span> <span class="st">"betaMC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Fit Model in lm ----------------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  formula <span class="op">=</span> <span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>,</span></span>
 <span class="r-in"><span>  data <span class="op">=</span> <span class="va">nas1982</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># MC -----------------------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="va">mc</span> <span class="op">&lt;-</span> <span class="fu"><a href="MC.html">MC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span>, R <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Methods -----------------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mc</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> MC(object = object, R = 100)</span>
@@ -81,15 +89,15 @@ and model-implied covariance matrix.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> and model-implied covariance matrix.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $thetahatstar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 7.669018e-02 3.110721e-01 1.404036e-01 1.351980e+01 3.364274e+03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] 5.506635e+02 3.764402e+02 3.213907e+02 1.270293e+02 3.917781e+02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 7.589203e-02 1.670426e-01 1.504328e-01 1.836997e+01 5.093445e+03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] 5.901704e+02 8.408989e+02 3.122785e+02 1.548085e+02 5.120073e+02</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sigmacap</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          [,1]      [,2]     [,3]     [,4]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 117.6055  482.1564 160.0415 123.3916</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] 482.1564 3364.2744 550.6635 376.4402</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] 160.0415  550.6635 321.3907 127.0293</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4,] 123.3916  376.4402 127.0293 391.7781</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 109.9507  611.6342 120.2413 166.6998</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] 611.6342 5093.4452 590.1704 840.8989</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] 120.2413  590.1704 312.2785 154.8085</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4,] 166.6998  840.8989 154.8085 512.0073</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

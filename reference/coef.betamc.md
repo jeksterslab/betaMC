@@ -19,6 +19,7 @@ coef(object, ...)
   [`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md),
   [`DeltaRSqMC()`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md),
   [`PCorMC()`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md),
+  [`FSqMC()`](https://jeksterslab.github.io/betaMC/reference/FSqMC.md),
   or
   [`DiffBetaMC()`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)
   functions.
@@ -34,3 +35,31 @@ Returns a vector of estimated parameters.
 ## Author
 
 Ivan Jacob Agaloos Pesigan
+
+## Examples
+
+``` r
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaMC")
+
+# Fit Model in lm ----------------------------------------------------------
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+
+# MC -----------------------------------------------------------------------
+mc <- MC(
+  object = object,
+  R = 100, # use a large value e.g., 20000L for actual research
+  seed = 0508
+)
+
+# BetaMC -------------------------------------------------------------------
+out <- BetaMC(object = mc, alpha = 0.05)
+
+## Methods -----------------------------------------------------------------
+coef(object = out)
+#>    NARTIC    PCTGRT   PCTSUPP 
+#> 0.4951451 0.3914887 0.2632477 
+```

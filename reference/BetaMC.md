@@ -76,6 +76,46 @@ obtaining percentiles corresponding to \\(100(1 - \alpha)\\%\\) from the
 generated sampling distribution of \\(\boldsymbol{\hat{\beta}}\\), where
 \\(\alpha\\) is the significance level.
 
+From the regression parameters \\(\boldsymbol{\theta} = \left\\{
+\boldsymbol{b}, \sigma^{2}, \operatorname{vech} \left(
+\boldsymbol{\Sigma}\_{\boldsymbol{X} \boldsymbol{X}} \right)
+\right\\}\\) of each draw (see
+[`MC()`](https://jeksterslab.github.io/betaMC/reference/MC.md)), the
+variance of the outcome and the standardized regression slopes are
+\$\$\sigma^{2}\_{y} = \boldsymbol{b}^{\prime}
+\boldsymbol{\Sigma}\_{\boldsymbol{X} \boldsymbol{X}} \boldsymbol{b} +
+\sigma^{2}, \quad \beta^{\ast}\_{j} = b\_{j}
+\frac{\sigma\_{x\_{j}}}{\sigma\_{y}},\$\$ where \\(\sigma\_{x\_{j}}\\)
+is the square root of the \\(j\\)th diagonal element of
+\\(\boldsymbol{\Sigma}\_{\boldsymbol{X} \boldsymbol{X}}\\). The
+estimates are computed from the fitted model, the draws
+\\(\hat{\boldsymbol{\beta}}^{\ast}\_{r}\\) from each Monte Carlo draw,
+and `vcov` is the sample covariance matrix of the draws. The percentile
+interval is \\(\left\[ \hat{G}^{-1} \left( \alpha / 2 \right),
+\hat{G}^{-1} \left( 1 - \alpha / 2 \right) \right\]\\), where
+\\(\hat{G}\\) is the empirical distribution function of the draws.
+
+## References
+
+Dudgeon, P. (2017). Some improvements in confidence intervals for
+standardized regression coefficients. *Psychometrika*, *82*(4), 928–951.
+[doi:10.1007/s11336-017-9563-z](https://doi.org/10.1007/s11336-017-9563-z)
+
+MacKinnon, D. P., Lockwood, C. M., & Williams, J. (2004). Confidence
+limits for the indirect effect: Distribution of the product and
+resampling methods. *Multivariate Behavioral Research*, *39*(1), 99–128.
+[doi:10.1207/s15327906mbr3901_4](https://doi.org/10.1207/s15327906mbr3901_4)
+
+Pesigan, I. J. A., & Cheung, S. F. (2024). Monte Carlo confidence
+intervals for the indirect effect with missing data. *Behavior Research
+Methods*.
+[doi:10.3758/s13428-023-02114-4](https://doi.org/10.3758/s13428-023-02114-4)
+
+Preacher, K. J., & Selig, J. P. (2012). Advantages of Monte Carlo
+confidence intervals for indirect effects. *Communication Methods and
+Measures*, *6*(2), 77–98.
+[doi:10.1080/19312458.2012.679848](https://doi.org/10.1080/19312458.2012.679848)
+
 ## See also
 
 Other Beta Monte Carlo Functions:
@@ -123,9 +163,9 @@ print(x = out)
 #> Standardized regression slopes
 #> type = "hc3"
 #>            est     se   R   2.5%  97.5%
-#> NARTIC  0.4951 0.0805 100 0.3107 0.6135
-#> PCTGRT  0.3915 0.0810 100 0.2495 0.5347
-#> PCTSUPP 0.2632 0.0730 100 0.1307 0.4055
+#> NARTIC  0.4951 0.0760 100 0.3508 0.6231
+#> PCTGRT  0.3915 0.0732 100 0.2643 0.5224
+#> PCTSUPP 0.2632 0.0808 100 0.1014 0.4009
 summary(object = out)
 #> Call:
 #> BetaMC(object = mc, alpha = 0.05)
@@ -133,20 +173,20 @@ summary(object = out)
 #> Standardized regression slopes
 #> type = "hc3"
 #>            est     se   R   2.5%  97.5%
-#> NARTIC  0.4951 0.0805 100 0.3107 0.6135
-#> PCTGRT  0.3915 0.0810 100 0.2495 0.5347
-#> PCTSUPP 0.2632 0.0730 100 0.1307 0.4055
+#> NARTIC  0.4951 0.0760 100 0.3508 0.6231
+#> PCTGRT  0.3915 0.0732 100 0.2643 0.5224
+#> PCTSUPP 0.2632 0.0808 100 0.1014 0.4009
 coef(object = out)
 #>    NARTIC    PCTGRT   PCTSUPP 
 #> 0.4951451 0.3914887 0.2632477 
 vcov(object = out)
 #>               NARTIC       PCTGRT      PCTSUPP
-#> NARTIC   0.006474424 -0.003611896 -0.002023361
-#> PCTGRT  -0.003611896  0.006565249 -0.001581942
-#> PCTSUPP -0.002023361 -0.001581942  0.005336272
+#> NARTIC   0.005776525 -0.002834952 -0.002143637
+#> PCTGRT  -0.002834952  0.005360100 -0.001947940
+#> PCTSUPP -0.002143637 -0.001947940  0.006526525
 confint(object = out, level = 0.95)
 #>             2.5 %    97.5 %
-#> NARTIC  0.3106786 0.6134972
-#> PCTGRT  0.2494813 0.5346903
-#> PCTSUPP 0.1306721 0.4055249
+#> NARTIC  0.3507721 0.6231028
+#> PCTGRT  0.2643226 0.5224279
+#> PCTSUPP 0.1013892 0.4008517
 ```

@@ -143,6 +143,23 @@ regression parameters. See
 [`MC()`](https://jeksterslab.github.io/betaMC/reference/MC.md) for more
 details on the Monte Carlo method.
 
+Let \\(\hat{\boldsymbol{\theta}}\_{m}\\) and
+\\(\hat{\boldsymbol{V}}\_{m}\\) be the parameter estimates and their
+sampling covariance matrix in imputed data set \\(m = 1, \dots, M\\).
+The pooled estimates and covariance matrices (Rubin's rules) are
+\$\$\bar{\boldsymbol{\theta}} = \frac{1}{M} \sum\_{m = 1}^{M}
+\hat{\boldsymbol{\theta}}\_{m}, \quad \bar{\boldsymbol{W}} = \frac{1}{M}
+\sum\_{m = 1}^{M} \hat{\boldsymbol{V}}\_{m}, \quad \boldsymbol{B} =
+\frac{1}{M - 1} \sum\_{m = 1}^{M} \left(
+\hat{\boldsymbol{\theta}}\_{m} - \bar{\boldsymbol{\theta}} \right)
+\left( \hat{\boldsymbol{\theta}}\_{m} - \bar{\boldsymbol{\theta}}
+\right)^{\prime},\$\$ \$\$\boldsymbol{T} = \bar{\boldsymbol{W}} + \left(
+1 + \frac{1}{M} \right) \boldsymbol{B}.\$\$ The draws are generated from
+\\(\mathcal{N} \left( \bar{\boldsymbol{\theta}}, \boldsymbol{T}
+\right)\\), with the replacement sampling of
+[`MC()`](https://jeksterslab.github.io/betaMC/reference/MC.md) for a
+positive definite model-implied covariance matrix.
+
 ## References
 
 Dudgeon, P. (2017). Some improvements in confidence intervals for
@@ -151,7 +168,7 @@ standardized regression coefficients. *Psychometrika*, *82*(4), 928–951.
 
 MacKinnon, D. P., Lockwood, C. M., & Williams, J. (2004). Confidence
 limits for the indirect effect: Distribution of the product and
-resampling methods. *Multivariate Behavioral Research*, *39*(1), 99-128.
+resampling methods. *Multivariate Behavioral Research*, *39*(1), 99–128.
 [doi:10.1207/s15327906mbr3901_4](https://doi.org/10.1207/s15327906mbr3901_4)
 
 Pesigan, I. J. A., & Cheung, S. F. (2024). Monte Carlo confidence
@@ -215,15 +232,15 @@ mc
 #> and model-implied covariance matrix.
 #> 
 #> $thetahatstar
-#>  [1] 1.138873e-01 1.325214e-01 8.302584e-02 2.312027e+01 3.949381e+03
-#>  [6] 3.650281e+02 4.500908e+02 3.633795e+02 1.788778e+02 5.905260e+02
+#>  [1] 8.360573e-02 1.826980e-01 1.552558e-01 2.030319e+01 3.712851e+03
+#>  [6] 6.091971e+02 6.355153e+02 3.322336e+02 2.011010e+02 5.499604e+02
 #> 
 #> $sigmacap
 #>          [,1]      [,2]     [,3]     [,4]
-#> [1,] 108.2637  535.5277 104.5791 123.9937
-#> [2,] 535.5277 3949.3813 365.0281 450.0908
-#> [3,] 104.5791  365.0281 363.3795 178.8778
-#> [4,] 123.9937  450.0908 178.8778 590.5260
+#> [1,] 117.1189  520.3821 142.8529 175.2580
+#> [2,] 520.3821 3712.8505 609.1971 635.5153
+#> [3,] 142.8529  609.1971 332.2336 201.1010
+#> [4,] 175.2580  635.5153 201.1010 549.9604
 #> 
 # The `mc` object can be passed as the first argument
 # to the following functions

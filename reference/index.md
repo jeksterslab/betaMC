@@ -15,44 +15,39 @@
   : Estimate Standardized Regression Coefficients and Generate the
   Corresponding Sampling Distribution Using the Monte Carlo Method
 
-## Multiple Correlation
+## R-Squared
 
 - [`RSqMC()`](https://jeksterslab.github.io/betaMC/reference/RSqMC.md) :
-  Estimate Multiple Correlation Coefficients (R-Squared and Adjusted
-  R-Squared) and Generate the Corresponding Sampling Distribution Using
-  the Monte Carlo Method
+  Estimate R-Squared and Adjusted R-Squared and Generate the
+  Corresponding Sampling Distribution Using the Monte Carlo Method
 
-## Semipartial Correlation
+## Semipartial and Squared Partial Correlations
 
 - [`SCorMC()`](https://jeksterslab.github.io/betaMC/reference/SCorMC.md)
   : Estimate Semipartial Correlation Coefficients and Generate the
   Corresponding Sampling Distribution Using the Monte Carlo Method
 - [`SCorSqMC()`](https://jeksterslab.github.io/betaMC/reference/SCorSqMC.md)
-  : Squared Signed-Semipartial Confidence Intervals
+  : Estimate Squared Semipartial Correlation Coefficients and the
+  Corresponding Confidence Intervals From the Signed Intervals
+- [`PCorMC()`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md)
+  : Estimate Squared Partial Correlation Coefficients and Generate the
+  Corresponding Sampling Distribution Using the Monte Carlo Method
 
-## Improvement in R-Squared
+## Improvement in R-Squared and Cohen’s f-Squared
 
 - [`DeltaRSqMC()`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md)
   : Estimate Improvement in R-Squared and Generate the Corresponding
   Sampling Distribution Using the Monte Carlo Method
-
-## Squared Partial Correlation
-
-- [`PCorMC()`](https://jeksterslab.github.io/betaMC/reference/PCorMC.md)
-  : Estimate Squared Partial Correlation Coefficients and Generate the
+- [`FSqMC()`](https://jeksterslab.github.io/betaMC/reference/FSqMC.md) :
+  Estimate Cohen's f-Squared and Local f-Squared and Generate the
   Corresponding Sampling Distribution Using the Monte Carlo Method
 
 ## Differences of Standardized Regression Coefficients
 
 - [`DiffBetaMC()`](https://jeksterslab.github.io/betaMC/reference/DiffBetaMC.md)
-  : Estimate Differences of Standardized Slopes and Generate the
-  Corresponding Sampling Distribution Using the Monte Carlo Method
-
-## Cohen’s f-Squared
-
-- [`FSqMC()`](https://jeksterslab.github.io/betaMC/reference/FSqMC.md) :
-  Estimate Cohen's f-Squared and Generate the Corresponding Sampling
-  Distribution Using the Monte Carlo Method
+  : Estimate Differences of Standardized Regression Coefficients and
+  Generate the Corresponding Sampling Distribution Using the Monte Carlo
+  Method
 
 ## Methods
 
