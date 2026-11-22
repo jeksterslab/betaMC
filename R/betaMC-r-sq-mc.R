@@ -1,5 +1,4 @@
-#' Estimate Multiple Correlation Coefficients
-#' (R-Squared and Adjusted R-Squared)
+#' Estimate R-Squared and Adjusted R-Squared
 #' and Generate the Corresponding Sampling Distribution
 #' Using the Monte Carlo Method
 #'

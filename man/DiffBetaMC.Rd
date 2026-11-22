@@ -2,7 +2,7 @@
 % Please edit documentation in R/betaMC-diff-beta-mc.R
 \name{DiffBetaMC}
 \alias{DiffBetaMC}
-\title{Estimate Differences of Standardized Slopes
+\title{Estimate Differences of Standardized Regression Coefficients
 and Generate the Corresponding Sampling Distribution
 Using the Monte Carlo Method}
 \usage{
@@ -31,7 +31,7 @@ differences of standardized regression slopes.}
 }
 }
 \description{
-Estimate Differences of Standardized Slopes
+Estimate Differences of Standardized Regression Coefficients
 and Generate the Corresponding Sampling Distribution
 Using the Monte Carlo Method
 }
@@ -43,6 +43,12 @@ percentiles corresponding to \eqn{100(1 - \alpha)\%}
 from the generated sampling
 distribution of differences of standardized regression slopes,
 where \eqn{\alpha} is the significance level.
+
+For every pair of regressors \eqn{j < l},
+the difference of the standardized regression slopes (see \code{\link[=BetaMC]{BetaMC()}}) is
+\deqn{\Delta \beta^{\ast}_{jl} = \beta^{\ast}_{j} - \beta^{\ast}_{l},}
+computed from the fitted model for the estimate
+and from each Monte Carlo draw (see \code{\link[=MC]{MC()}}) for the draws.
 }
 \examples{
 # Data ---------------------------------------------------------------------

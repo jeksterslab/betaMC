@@ -7,6 +7,7 @@ csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa
 nocite: |
   @Pesigan-Cheung-2024
   @Dudgeon-2017
+  @RCoreTeam-2026
 vignette: >
   %\VignetteIndexEntry{betaMC: Monte Carlo for Regression Effect Sizes}
   %\VignetteEngine{knitr::rmarkdown}
@@ -45,10 +46,10 @@ improvement in R-squared, squared partial correlations,
 and differences in standardized regression coefficients,
 for models fitted by `lm()`.
 `betaMC` combines ideas from Monte Carlo confidence intervals for the indirect effect
-(Pesigan and Cheung, 2024: <https://doi.org/10.3758/s13428-023-02114-4>)
+(Pesigan and Cheung, 2024, [doi:10.3758/s13428-023-02114-4](https://doi.org/10.3758/s13428-023-02114-4))
 and the sampling covariance matrix of regression coefficients
-(Dudgeon, 2017: <https://doi.org/10.1007/s11336-017-9563-z>)
-to generate confidence intervals effect sizes in regression.
+(Dudgeon, 2017, [doi:10.1007/s11336-017-9563-z](https://doi.org/10.1007/s11336-017-9563-z))
+to generate confidence intervals for effect sizes in regression.
 
 ## Installation
 
@@ -101,94 +102,55 @@ df <- nas1982
 df <- betaMC::nas1982
 ```
 
-### Regression
-
-Fit the regression model using the `lm()` function.
+### Fit the regression model using the `lm()` function.
 
 ```{r}
 object <- stats::lm(formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
-### Monte Carlo Sampling Distribution of Parameters
-
-#### Normal-Theory Approach
+### Generate the sampling distribution of the regression parameters using the Monte Carlo method.
 
 ```{r}
-mvn <- MC(object = object, type = "mvn")
+mc <- MC(object = object, type = "mvn", R = 20000L, seed = 0508)
 ```
 
-#### Asymptotic distribution-free Approach
+### Estimate the standardized regression slopes and the corresponding confidence intervals.
 
 ```{r}
-adf <- MC(object = object, type = "adf")
+BetaMC(object = mc, alpha = 0.05)
 ```
 
-#### Heteroskedasticity Consistent Approach (HC3)
+## Other Features
 
-```{r}
-hc3 <- MC(object = object, type = "hc3")
-```
+The package provides the following functions.
 
-### Standardized Regression Slopes
+| Function | Purpose |
+|---|---|
+| `MC()` | Monte Carlo sampling distribution of the regression parameters (`type = "mvn"`, `"adf"`, or HC0-HC5) |
+| `MCMI()` | `MC()` for multiply imputed data |
+| `BetaMC()` | Standardized regression coefficients |
+| `RSqMC()` | R-squared and adjusted R-squared |
+| `DiffBetaMC()` | Differences of standardized regression coefficients |
+| `SCorMC()` | Semipartial correlations |
+| `SCorSqMC()` | Squared semipartial correlations (squared signed interval) |
+| `PCorMC()` | Squared partial correlations |
+| `DeltaRSqMC()` | Improvement in R-squared |
+| `FSqMC()` | Cohen's f-squared and local f-squared |
 
-#### Normal-Theory Approach
+The `coef()`, `vcov()`, `confint()`, `summary()`, and `print()` methods
+are available for the returned objects.
+The example above uses the normal-theory sampling covariance matrix;
+the asymptotically distribution-free (`type = "adf"`)
+and heteroskedasticity-consistent (`type = "hc3"` and others) matrices
+are chosen with the `type` argument of `MC()`.
+Examples for each function are in the package vignettes.
 
-```{r}
-BetaMC(object = mvn, alpha = 0.05)
-```
+## Effect Sizes
 
-#### Asymptotic distribution-free Approach
-
-```{r}
-BetaMC(object = adf, alpha = 0.05)
-```
-
-#### Heteroskedasticity Consistent Approach (HC3)
-
-```{r}
-BetaMC(object = hc3, alpha = 0.05)
-```
-
-### Other Effect Sizes
-
-The `betaMC` package also has functions to generate Monte Carlo confidence intervals
-for other effect sizes such as
-`RSqMC()` for multiple correlation coefficients (R-squared and adjusted R-squared),
-`DeltaRSqMC()` for improvement in R-squared,
-`SCorMC()` for semipartial correlation coefficients,
-`PCorMC()` for squared partial correlation coefficients,
-and
-`DiffBetaMC()` for differences of standardized regression coefficients.
-
-#### Multiple Correlation Coefficients (R-squared and adjusted R-squared)
-
-```{r}
-RSqMC(object = hc3, alpha = 0.05)
-```
-
-#### Improvement in R-squared
-
-```{r}
-DeltaRSqMC(object = hc3, alpha = 0.05)
-```
-
-#### Semipartial Correlation Coefficients
-
-```{r}
-SCorMC(object = hc3, alpha = 0.05)
-```
-
-#### Squared Partial Correlation Coefficients
-
-```{r}
-PCorMC(object = hc3, alpha = 0.05)
-```
-
-#### Differences of Standardized Regression Coefficients
-
-```{r}
-DiffBetaMC(object = hc3, alpha = 0.05)
-```
+The definitions, formulas, and notes on the intervals
+are in the help pages of the functions
+and in the
+[example vignettes](index.html).
 
 ## Documentation
 

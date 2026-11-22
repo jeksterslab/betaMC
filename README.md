@@ -1,14 +1,14 @@
 betaMC
 ================
 Ivan Jacob Agaloos Pesigan
-2026-11-21
+2026-11-22
 
-<!-- README.md is generated from .setup/readme/README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 <!-- badges: start -->
 [![DOI](https://zenodo.org/badge/DOI/10.3758/s13428-023-02114-4.svg)](https://doi.org/10.3758/s13428-023-02114-4)
 [![CRAN Status](https://www.r-pkg.org/badges/version/betaMC)](https://cran.r-project.org/package=betaMC)
-[![R-Universe Status](https://jeksterslab.r-universe.dev/badges/betaMC)](https://jeksterslab.r-universe.dev/betaMC)
+[![R-Universe Status](https://jeksterslab.r-universe.dev/badges/betaMC)](https://jeksterslab.r-universe.dev)
 [![pages-build-deployment](https://github.com/jeksterslab/betaMC/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/pages/pages-build-deployment)
 [![codecov](https://codecov.io/gh/jeksterslab/betaMC/branch/main/graph/badge.svg?token=KVLUET3DJ6)](https://codecov.io/gh/jeksterslab/betaMC)
 [![Make Project (make all)](https://github.com/jeksterslab/betaMC/actions/workflows/make-all.yml/badge.svg)](https://github.com/jeksterslab/betaMC/actions/workflows/make-all.yml)
@@ -37,10 +37,12 @@ correlation, semipartial correlations, improvement in R-squared, squared
 partial correlations, and differences in standardized regression
 coefficients, for models fitted by `lm()`. `betaMC` combines ideas from
 Monte Carlo confidence intervals for the indirect effect (Pesigan and
-Cheung, 2024: <https://doi.org/10.3758/s13428-023-02114-4>) and the
-sampling covariance matrix of regression coefficients (Dudgeon, 2017:
-<https://doi.org/10.1007/s11336-017-9563-z>) to generate confidence
-intervals effect sizes in regression.
+Cheung, 2024,
+[doi:10.3758/s13428-023-02114-4](https://doi.org/10.3758/s13428-023-02114-4))
+and the sampling covariance matrix of regression coefficients (Dudgeon,
+2017,
+[doi:10.1007/s11336-017-9563-z](https://doi.org/10.1007/s11336-017-9563-z))
+to generate confidence intervals for effect sizes in regression.
 
 ## Installation
 
@@ -79,164 +81,62 @@ library(package = betaMC)
 df <- betaMC::nas1982
 ```
 
-### Regression
-
-Fit the regression model using the `lm()` function.
+### Fit the regression model using the `lm()` function.
 
 ``` r
 object <- stats::lm(formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
-### Monte Carlo Sampling Distribution of Parameters
-
-#### Normal-Theory Approach
+### Generate the sampling distribution of the regression parameters using the Monte Carlo method.
 
 ``` r
-mvn <- MC(object = object, type = "mvn")
+mc <- MC(object = object, type = "mvn", R = 20000L, seed = 0508)
 ```
 
-#### Asymptotic distribution-free Approach
+### Estimate the standardized regression slopes and the corresponding confidence intervals.
 
 ``` r
-adf <- MC(object = object, type = "adf")
-```
-
-#### Heteroskedasticity Consistent Approach (HC3)
-
-``` r
-hc3 <- MC(object = object, type = "hc3")
-```
-
-### Standardized Regression Slopes
-
-#### Normal-Theory Approach
-
-``` r
-BetaMC(object = mvn, alpha = 0.05)
+BetaMC(object = mc, alpha = 0.05)
 #> Call:
-#> BetaMC(object = mvn, alpha = 0.05)
+#> BetaMC(object = mc, alpha = 0.05)
 #> 
 #> Standardized regression slopes
 #> type = "mvn"
 #>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0759 20000 0.3411 0.6375
-#> PCTGRT  0.3915 0.0770 20000 0.2385 0.5392
-#> PCTSUPP 0.2632 0.0743 20000 0.1175 0.4108
+#> NARTIC  0.4951 0.0755 20000 0.3393 0.6334
+#> PCTGRT  0.3915 0.0765 20000 0.2376 0.5374
+#> PCTSUPP 0.2632 0.0744 20000 0.1182 0.4087
 ```
 
-#### Asymptotic distribution-free Approach
+## Other Features
 
-``` r
-BetaMC(object = adf, alpha = 0.05)
-#> Call:
-#> BetaMC(object = adf, alpha = 0.05)
-#> 
-#> Standardized regression slopes
-#> type = "adf"
-#>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0676 20000 0.3502 0.6151
-#> PCTGRT  0.3915 0.0705 20000 0.2423 0.5194
-#> PCTSUPP 0.2632 0.0770 20000 0.1070 0.4090
-```
+The package provides the following functions.
 
-#### Heteroskedasticity Consistent Approach (HC3)
+| Function | Purpose |
+|----|----|
+| `MC()` | Monte Carlo sampling distribution of the regression parameters (`type = "mvn"`, `"adf"`, or HC0-HC5) |
+| `MCMI()` | `MC()` for multiply imputed data |
+| `BetaMC()` | Standardized regression coefficients |
+| `RSqMC()` | R-squared and adjusted R-squared |
+| `DiffBetaMC()` | Differences of standardized regression coefficients |
+| `SCorMC()` | Semipartial correlations |
+| `SCorSqMC()` | Squared semipartial correlations (squared signed interval) |
+| `PCorMC()` | Squared partial correlations |
+| `DeltaRSqMC()` | Improvement in R-squared |
+| `FSqMC()` | Cohen’s f-squared and local f-squared |
 
-``` r
-BetaMC(object = hc3, alpha = 0.05)
-#> Call:
-#> BetaMC(object = hc3, alpha = 0.05)
-#> 
-#> Standardized regression slopes
-#> type = "hc3"
-#>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4951 0.0798 20000 0.3234 0.6358
-#> PCTGRT  0.3915 0.0821 20000 0.2182 0.5412
-#> PCTSUPP 0.2632 0.0856 20000 0.0865 0.4238
-```
+The `coef()`, `vcov()`, `confint()`, `summary()`, and `print()` methods
+are available for the returned objects. The example above uses the
+normal-theory sampling covariance matrix; the asymptotically
+distribution-free (`type = "adf"`) and heteroskedasticity-consistent
+(`type = "hc3"` and others) matrices are chosen with the `type` argument
+of `MC()`. Examples for each function are in the package vignettes.
 
-### Other Effect Sizes
+## Effect Sizes
 
-The `betaMC` package also has functions to generate Monte Carlo
-confidence intervals for other effect sizes such as `RSqMC()` for
-multiple correlation coefficients (R-squared and adjusted R-squared),
-`DeltaRSqMC()` for improvement in R-squared, `SCorMC()` for semipartial
-correlation coefficients, `PCorMC()` for squared partial correlation
-coefficients, and `DiffBetaMC()` for differences of standardized
-regression coefficients.
-
-#### Multiple Correlation Coefficients (R-squared and adjusted R-squared)
-
-``` r
-RSqMC(object = hc3, alpha = 0.05)
-#> Call:
-#> RSqMC(object = hc3, alpha = 0.05)
-#> 
-#> R-squared and adjusted R-squared
-#> type = "hc3"
-#>        est     se     R   2.5%  97.5%
-#> rsq 0.8045 0.0617 20000 0.6466 0.8879
-#> adj 0.7906 0.0661 20000 0.6214 0.8799
-```
-
-#### Improvement in R-squared
-
-``` r
-DeltaRSqMC(object = hc3, alpha = 0.05)
-#> Call:
-#> DeltaRSqMC(object = hc3, alpha = 0.05)
-#> 
-#> Improvement in R-squared
-#> type = "hc3"
-#>            est     se     R   2.5%  97.5%
-#> NARTIC  0.1859 0.0692 20000 0.0487 0.3212
-#> PCTGRT  0.1177 0.0547 20000 0.0255 0.2377
-#> PCTSUPP 0.0569 0.0373 20000 0.0057 0.1484
-```
-
-#### Semipartial Correlation Coefficients
-
-``` r
-SCorMC(object = hc3, alpha = 0.05)
-#> Call:
-#> SCorMC(object = hc3, alpha = 0.05)
-#> 
-#> Semipartial correlations
-#> type = "hc3"
-#>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4312 0.0871 20000 0.2206 0.5667
-#> PCTGRT  0.3430 0.0833 20000 0.1597 0.4875
-#> PCTSUPP 0.2385 0.0784 20000 0.0755 0.3852
-```
-
-#### Squared Partial Correlation Coefficients
-
-``` r
-PCorMC(object = hc3, alpha = 0.05)
-#> Call:
-#> PCorMC(object = hc3, alpha = 0.05)
-#> 
-#> Squared partial correlations
-#> type = "hc3"
-#>            est     se     R   2.5%  97.5%
-#> NARTIC  0.4874 0.1197 20000 0.1741 0.6521
-#> PCTGRT  0.3757 0.1157 20000 0.1060 0.5587
-#> PCTSUPP 0.2254 0.1125 20000 0.0240 0.4529
-```
-
-#### Differences of Standardized Regression Coefficients
-
-``` r
-DiffBetaMC(object = hc3, alpha = 0.05)
-#> Call:
-#> DiffBetaMC(object = hc3, alpha = 0.05)
-#> 
-#> Differences of standardized regression slopes
-#> type = "hc3"
-#>                   est     se     R    2.5%  97.5%
-#> NARTIC-PCTGRT  0.1037 0.1423 20000 -0.1834 0.3778
-#> NARTIC-PCTSUPP 0.2319 0.1331 20000 -0.0369 0.4841
-#> PCTGRT-PCTSUPP 0.1282 0.1365 20000 -0.1481 0.3897
-```
+The definitions, formulas, and notes on the intervals are in the help
+pages of the functions and in the [example
+vignettes](https://jeksterslab.github.io/betaMC/articles/index.html).
 
 ## Documentation
 
@@ -274,6 +174,14 @@ Pesigan, I. J. A., & Cheung, S. F. (2024). Monte Carlo confidence
 intervals for the indirect effect with missing data. *Behavior Research
 Methods*, *56*(3), 1678–1696.
 <https://doi.org/10.3758/s13428-023-02114-4>
+
+</div>
+
+<div id="ref-RCoreTeam-2026" class="csl-entry">
+
+R Core Team. (2026). *R: A language and environment for statistical
+computing*. R Foundation for Statistical Computing.
+<https://www.R-project.org/>
 
 </div>
 

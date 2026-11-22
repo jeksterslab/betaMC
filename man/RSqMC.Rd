@@ -2,8 +2,7 @@
 % Please edit documentation in R/betaMC-r-sq-mc.R
 \name{RSqMC}
 \alias{RSqMC}
-\title{Estimate Multiple Correlation Coefficients
-(R-Squared and Adjusted R-Squared)
+\title{Estimate R-Squared and Adjusted R-Squared
 and Generate the Corresponding Sampling Distribution
 Using the Monte Carlo Method}
 \usage{
@@ -32,8 +31,7 @@ of class \code{betamc} which is a list with the following elements:
 }
 }
 \description{
-Estimate Multiple Correlation Coefficients
-(R-Squared and Adjusted R-Squared)
+Estimate R-Squared and Adjusted R-Squared
 and Generate the Corresponding Sampling Distribution
 Using the Monte Carlo Method
 }

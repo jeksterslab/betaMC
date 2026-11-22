@@ -1,30 +1,43 @@
-#' Print Method for an Object of Class
-#' `betamc`
+#' Print Method for an Object of Class `betamc`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Prints a matrix of
-#'   estimates,
-#'   standard errors,
-#'   number of Monte Carlo replications,
-#'   and
-#'   confidence intervals.
+#' @return Prints a matrix of estimates, standard errors,
+#'   number of Monte Carlo replications, and confidence intervals.
 #'
 #' @param x Object of Class `betamc`,
 #'   that is,
 #'   the output of the
-#'   `BetaMC()`,
-#'   `RSqMC()`,
-#'   `SCorMC()`,
-#'   `DeltaRSqMC()`,
-#'   `PCorMC()`, or
-#'   `DiffBetaMC()`
-#'   functions.
+#'   [BetaMC()], [RSqMC()], [SCorMC()], [DeltaRSqMC()],
+#'   [PCorMC()], [FSqMC()], or [DiffBetaMC()] functions.
 #' @param alpha Numeric vector.
 #'   Significance level \eqn{\alpha}.
 #'   If `alpha = NULL`,
 #'   use the argument `alpha` used in `x`.
 #' @inheritParams summary.betamc
+#'
+#' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaMC")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#'
+#' # MC -----------------------------------------------------------------------
+#' mc <- MC(
+#'   object = object,
+#'   R = 100, # use a large value e.g., 20000L for actual research
+#'   seed = 0508
+#' )
+#'
+#' # BetaMC -------------------------------------------------------------------
+#' out <- BetaMC(object = mc, alpha = 0.05)
+#'
+#' ## Methods -----------------------------------------------------------------
+#' print(x = out)
 #'
 #' @keywords methods
 #' @export
@@ -41,10 +54,17 @@ print.betamc <- function(x,
   )
 }
 
-#' Summary Method for an Object of Class
-#' `betamc`
+#' Summary Method for an Object of Class `betamc`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
+#'
+#' @details
+#' The confidence intervals are percentile intervals,
+#' \eqn{\left[ \hat{G}^{-1} \left( \alpha / 2 \right), \hat{G}^{-1} \left( 1 -
+#' \alpha / 2 \right) \right]},
+#' where \eqn{\hat{G}} is the empirical distribution function of the Monte
+#' Carlo draws (type 7 quantiles).
+#' The standard errors are the standard deviations of the draws.
 #'
 #' @return Returns a matrix of
 #'   estimates,
@@ -56,19 +76,37 @@ print.betamc <- function(x,
 #' @param object Object of Class `betamc`,
 #'   that is,
 #'   the output of the
-#'   `BetaMC()`,
-#'   `RSqMC()`,
-#'   `SCorMC()`,
-#'   `DeltaRSqMC()`,
-#'   `PCorMC()`, or
-#'   `DiffBetaMC()`
-#'   functions.
+#'   [BetaMC()], [RSqMC()], [SCorMC()], [DeltaRSqMC()],
+#'   [PCorMC()], [FSqMC()], or [DiffBetaMC()] functions.
 #' @param ... additional arguments.
 #' @param alpha Numeric vector.
 #'   Significance level \eqn{\alpha}.
 #'   If `alpha = NULL`,
 #'   use the argument `alpha` used in `object`.
 #' @param digits Digits to print.
+#'
+#' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaMC")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#'
+#' # MC -----------------------------------------------------------------------
+#' mc <- MC(
+#'   object = object,
+#'   R = 100, # use a large value e.g., 20000L for actual research
+#'   seed = 0508
+#' )
+#'
+#' # BetaMC -------------------------------------------------------------------
+#' out <- BetaMC(object = mc, alpha = 0.05)
+#'
+#' ## Methods -----------------------------------------------------------------
+#' summary(object = out)
 #'
 #' @keywords methods
 #' @export
@@ -157,14 +195,36 @@ print.summary.betamc <- function(x,
   invisible(x = x)
 }
 
-#' Sampling Variance-Covariance Matrix Method for an Object of Class
-#' `betamc`
+#' Sampling Variance-Covariance Matrix Method for an Object of Class `betamc`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns the variance-covariance matrix of estimates.
 #'
 #' @inheritParams summary.betamc
+#'
+#' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaMC")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#'
+#' # MC -----------------------------------------------------------------------
+#' mc <- MC(
+#'   object = object,
+#'   R = 100, # use a large value e.g., 20000L for actual research
+#'   seed = 0508
+#' )
+#'
+#' # BetaMC -------------------------------------------------------------------
+#' out <- BetaMC(object = mc, alpha = 0.05)
+#'
+#' ## Methods -----------------------------------------------------------------
+#' vcov(object = out)
 #'
 #' @keywords methods
 #' @export
@@ -177,14 +237,36 @@ vcov.betamc <- function(object,
   stats::var(x = thetahatstar)
 }
 
-#' Estimated Parameter Method for an Object of Class
-#' `betamc`
+#' Estimated Parameter Method for an Object of Class `betamc`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns a vector of estimated parameters.
 #'
 #' @inheritParams summary.betamc
+#'
+#' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaMC")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#'
+#' # MC -----------------------------------------------------------------------
+#' mc <- MC(
+#'   object = object,
+#'   R = 100, # use a large value e.g., 20000L for actual research
+#'   seed = 0508
+#' )
+#'
+#' # BetaMC -------------------------------------------------------------------
+#' out <- BetaMC(object = mc, alpha = 0.05)
+#'
+#' ## Methods -----------------------------------------------------------------
+#' coef(object = out)
 #'
 #' @keywords methods
 #' @export
@@ -193,12 +275,13 @@ coef.betamc <- function(object,
   object$est
 }
 
-#' Confidence Intervals Method for an Object of Class
-#' `betamc`
+#' Confidence Intervals Method for an Object of Class `betamc`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns a matrix of confidence intervals.
+#'
+#' @inherit summary.betamc details
 #'
 #' @inheritParams summary.betamc
 #' @param parm a specification of which parameters
@@ -206,6 +289,29 @@ coef.betamc <- function(object,
 #'   either a vector of numbers or a vector of names.
 #'   If missing, all parameters are considered.
 #' @param level the confidence level required.
+#'
+#' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaMC")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#'
+#' # MC -----------------------------------------------------------------------
+#' mc <- MC(
+#'   object = object,
+#'   R = 100, # use a large value e.g., 20000L for actual research
+#'   seed = 0508
+#' )
+#'
+#' # BetaMC -------------------------------------------------------------------
+#' out <- BetaMC(object = mc, alpha = 0.05)
+#'
+#' ## Methods -----------------------------------------------------------------
+#' confint(object = out, level = 0.95)
 #'
 #' @keywords methods
 #' @export

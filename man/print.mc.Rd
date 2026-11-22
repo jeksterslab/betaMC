@@ -19,11 +19,19 @@ and model-implied covariance matrix.
 Print Method for an Object of Class \code{mc}
 }
 \examples{
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaMC")
+
+# Fit Model in lm ----------------------------------------------------------
 object <- stats::lm(
   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
   data = nas1982
 )
+
+# MC -----------------------------------------------------------------------
 mc <- MC(object = object, R = 100)
+
+## Methods -----------------------------------------------------------------
 print(x = mc)
 
 }
