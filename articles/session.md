@@ -1,12 +1,12 @@
 # betaMC: Session
 
 \
-[`library`](https://rdrr.io/r/base/library.html)`(``package ``=`` ``betaMC``)`
+[`library`](https://rdrr.io/r/base/library.html)`(`[`betaMC`](https://github.com/jeksterslab/betaMC)`)`
 
 ## Session
 
 \
-`utils``::`[`sessionInfo`](https://rdrr.io/r/utils/sessionInfo.html)`(``)`\
+[`sessionInfo`](https://rdrr.io/r/utils/sessionInfo.html)`(``)`\
 `#> R version 4.6.2 (2026-10-29)`\
 `#> Platform: x86_64-pc-linux-gnu`\
 `#> Running under: Ubuntu 26.04.1 LTS`\
@@ -47,10 +47,10 @@
 `#> [45] xfun_0.62        tibble_3.3.1     tidyselect_1.2.1 knitr_1.52      `\
 `#> [49] nlme_3.1-171     compiler_4.6.2`
 
-### Packages
+## Packages
 
 \
-`utils``::`[`installed.packages`](https://rdrr.io/r/utils/installed.packages.html)`(``)``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"Package"``, ``"Version"``)``]`\
+[`installed.packages`](https://rdrr.io/r/utils/installed.packages.html)`(``)``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"Package"``, ``"Version"``)``]`\
 `#>                   Package             Version     `\
 `#> betaMC            "betaMC"            "1.3.5"     `\
 `#> rProject          "rProject"          "0.0.76"    `\
@@ -461,7 +461,7 @@
 `#> tools             "tools"             "4.6.2"     `\
 `#> utils             "utils"             "4.6.2"`
 
-### CPU
+## CPU
 
     #> Architecture:                            x86_64
     #> CPU op-mode(s):                          32-bit, 64-bit
@@ -478,7 +478,7 @@
     #> Socket(s):                               1
     #> Stepping:                                0
     #> Frequency boost:                         enabled
-    #> CPU(s) scaling MHz:                      62%
+    #> CPU(s) scaling MHz:                      59%
     #> CPU max MHz:                             5060.9761
     #> CPU min MHz:                             1219.5129
     #> BogoMIPS:                                4990.62
@@ -510,9 +510,9 @@
     #> Vulnerability Tsx async abort:           Not affected
     #> Vulnerability Vmscape:                   Mitigation; IBPB on VMEXIT
 
-### Memory
+## Memory
 
     #>                total        used        free      shared  buff/cache   available
-    #> Mem:            44Gi       2.8Gi        39Gi        13Mi       2.8Gi        41Gi
+    #> Mem:            44Gi       2.9Gi        39Gi        13Mi       2.7Gi        41Gi
     #> Swap:           22Gi          0B        22Gi
-    #> Total:          66Gi       2.8Gi        61Gi
+    #> Total:          66Gi       2.9Gi        61Gi
