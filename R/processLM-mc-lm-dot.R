@@ -50,6 +50,12 @@
 #'     \eqn{\boldsymbol{\theta}} (rows).}
 #'   \item{`vechsigmacap`}{Numeric matrix of draws of
 #'     \eqn{\operatorname{vech} \left( \boldsymbol{\Sigma} \right)} (rows).}
+#'   \item{`screen`}{Named integer vector of the counts of the screened draws:
+#'     `requested` (`R`), `retained` (rows returned),
+#'     `rejected` (first-pass draws that fail the screen),
+#'     `redraws` (all redraws, passed and failed),
+#'     `exhausted` (rejected draws dropped after `iter` failed redraws),
+#'     and `iter`.}
 #' }
 #'
 #' @family Process lm Functions
@@ -90,11 +96,14 @@
     tol = tol,
     iter = iter
   )
+  screen <- attr(x = thetahatstar, which = "screen")
+  attr(x = thetahatstar, which = "screen") <- NULL
   list(
     thetahatstar = thetahatstar,
     vechsigmacap = .MCVechSigmaLM(
       thetahatstar = thetahatstar,
       p = p
-    )
+    ),
+    screen = screen
   )
 }

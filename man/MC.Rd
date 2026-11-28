@@ -90,6 +90,13 @@ estimates.}
 of the model-implied covariance matrix (a matrix, one draw per row).}
 \item{es}{Sampling distribution of the effect sizes
 (a list of matrices).}
+\item{screen}{Counts of the screened draws
+(a named integer vector):
+\code{requested} (\code{R}), \code{retained} (rows of \code{thetahatstar}),
+\code{rejected} (first-pass draws that are inadmissible),
+\code{redraws} (all redraws, passed and failed),
+\code{exhausted} (draws dropped after 1000 failed redraws),
+and \code{iter} (1000).}
 \item{fun}{Function used ("MC").}
 }
 }
