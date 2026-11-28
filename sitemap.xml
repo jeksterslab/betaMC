@@ -1,7 +1,5 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://jeksterslab.github.io/betaMC//404.html</loc></url>
-<url><loc>https://jeksterslab.github.io/betaMC//AGENTS.html</loc></url>
-<url><loc>https://jeksterslab.github.io/betaMC//CLAUDE.html</loc></url>
 <url><loc>https://jeksterslab.github.io/betaMC//LICENSE-text.html</loc></url>
 <url><loc>https://jeksterslab.github.io/betaMC//LICENSE.html</loc></url>
 <url><loc>https://jeksterslab.github.io/betaMC//articles/benchmark.html</loc></url>
@@ -16,7 +14,6 @@
 <url><loc>https://jeksterslab.github.io/betaMC//articles/index.html</loc></url>
 <url><loc>https://jeksterslab.github.io/betaMC//articles/session.html</loc></url>
 <url><loc>https://jeksterslab.github.io/betaMC//authors.html</loc></url>
-<url><loc>https://jeksterslab.github.io/betaMC//copilot-instructions.html</loc></url>
 <url><loc>https://jeksterslab.github.io/betaMC//index.html</loc></url>
 <url><loc>https://jeksterslab.github.io/betaMC//news/index.html</loc></url>
 <url><loc>https://jeksterslab.github.io/betaMC//reference/BetaMC.html</loc></url>

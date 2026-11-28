@@ -61,6 +61,16 @@
 - [`DeltaRSqMC()`](https://jeksterslab.github.io/betaMC/reference/DeltaRSqMC.md)
   cites Algina, Keselman, and Penfield (2007, 2008a, 2008b, 2010), as
   `DeltaRSqSandwich()` and `DeltaRSqNB()` do.
+- [`MC()`](https://jeksterslab.github.io/betaMC/reference/MC.md) and
+  [`MCMI()`](https://jeksterslab.github.io/betaMC/reference/MCMI.md)
+  return `screen`, the counts of the screened Monte Carlo draws:
+  requested, retained, rejected (inadmissible first-pass draws),
+  redraws, and exhausted (dropped after 1000 failed redraws). The draws
+  are unchanged.
+- Internal copies refreshed from semmcci 1.1.7 (`1076264`:
+  `.ThetaHatStarScreen()` counts the draws; its redraws use the same
+  `pd` and `tol` as the first pass) and processLM 0.0.12 (`d6e0211`:
+  `.MCLM()` returns the counts).
 
 ## betaMC 1.3.4
 
