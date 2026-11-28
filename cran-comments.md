@@ -8,6 +8,7 @@ This is a minor update (1.3.4 -> 1.3.5).
 - The `thetahatstar` elements of `mc` and `betamc` objects are matrices (one draw per row) instead of lists.
 - `MC()` and `MCMI()` now stop with an error for an `lm` fit without an intercept, with `weights`, or with an `offset` (these fits gave wrong results before).
 - A draw that fails the admissibility checks 1000 times in a row is dropped (earlier versions could loop without end).
+- `MC()` and `MCMI()` return the counts of the screened draws (requested, retained, rejected, redraws, exhausted) as `screen`.
 - Documentation edits (formulas, links).
 
 ## Test environments

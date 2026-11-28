@@ -666,6 +666,58 @@ lapply(
         )
       }
     )
+    testthat::test_that(
+      desc = paste(text, "screen counts"),
+      code = {
+        if (!exists(x = "nas1982")) {
+          try(
+            expr = utils::data(
+              "nas1982",
+              package = "betaMC"
+            ),
+            silent = TRUE
+          )
+        }
+        object <- stats::lm(
+          formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+          data = nas1982
+        )
+        out <- MCMI(
+          object = object,
+          mi = mice::mice(
+            data = nas1982,
+            m = 5,
+            seed = 42,
+            print = FALSE
+          ),
+          R = R,
+          seed = 42
+        )
+        counts <- out$screen
+        testthat::expect_equal(
+          object = names(x = counts),
+          expected = c(
+            "requested", "retained", "rejected",
+            "redraws", "exhausted", "iter"
+          )
+        )
+        testthat::expect_equal(
+          object = counts[["requested"]],
+          expected = R
+        )
+        testthat::expect_equal(
+          object = counts[["retained"]],
+          expected = nrow(x = out$thetahatstar)
+        )
+        testthat::expect_equal(
+          object = counts[["retained"]],
+          expected = counts[["requested"]] - counts[["exhausted"]]
+        )
+        testthat::expect_true(
+          object = counts[["redraws"]] >= counts[["rejected"]]
+        )
+      }
+    )
   },
   text = "test-betaMC-mc-mi",
   tol = 0.05,

@@ -47,6 +47,13 @@
 #'       of the model-implied covariance matrix (a matrix, one draw per row).}
 #'     \item{es}{Sampling distribution of the effect sizes
 #'       (a list of matrices).}
+#'     \item{screen}{Counts of the screened draws
+#'       (a named integer vector):
+#'       `requested` (`R`), `retained` (rows of `thetahatstar`),
+#'       `rejected` (first-pass draws that are inadmissible),
+#'       `redraws` (all redraws, passed and failed),
+#'       `exhausted` (draws dropped after 1000 failed redraws),
+#'       and `iter` (1000).}
 #'     \item{fun}{Function used ("MCMI").}
 #' }
 #'
@@ -303,6 +310,7 @@ MCMI <- function(object,
     thetahatstar = draws$thetahatstar,
     vechsigmacap = draws$vechsigmacap,
     es = draws$es,
+    screen = draws$screen,
     fun = "MCMI"
   )
   class(x = out) <- c(
